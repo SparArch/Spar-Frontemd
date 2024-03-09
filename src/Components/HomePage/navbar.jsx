@@ -1,9 +1,4 @@
 import React from 'react'
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
 import './homepage.css'
 import { Image, List, ListItem } from '@chakra-ui/react';
 import Logo from '../Images/SparLogo.png'
@@ -25,7 +20,7 @@ const Navbar = () => {
           </div>
           <div className="column-2">
             <List className="div-3">
-              <ListItem cursor={'pointer'} onClick={() => navigate("/")} className="div-4">Home</ListItem>
+              <ListItem cursor={'pointer'} onClick={() => navigate("/")} className="div-4 ${navigate(-1)}">Home</ListItem>
               <ListItem cursor={'pointer'} onClick={() => navigate("/about")} className="div-5">About</ListItem>
               <ListItem cursor={'pointer'} onClick={() => navigate("/service")} className="div-6">Service</ListItem>
               <ListItem cursor={'pointer'} className="div-7">Gallery</ListItem>
