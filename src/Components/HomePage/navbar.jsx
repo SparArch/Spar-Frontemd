@@ -7,8 +7,8 @@ import { useNavigate } from 'react-router-dom';
 const Navbar = () => {
   const navigate = useNavigate();
   return (
-    <div>
-      <div className="navbar">
+    <div className='fixed z-50 w-full p-2'>
+      <div className="navbar drop-shadow-xl">
         <div className="div-2">
           <div className="column">
             <Image
@@ -20,7 +20,7 @@ const Navbar = () => {
           </div>
           <div className="column-2">
             <List className="div-3">
-              <ListItem cursor={'pointer'} onClick={() => navigate("/")} className="div-4 ${navigate(-1)}">Home</ListItem>
+              <ListItem cursor={'pointer'} onClick={() => navigate("/")} className="div-4">Home</ListItem>
               <ListItem cursor={'pointer'} onClick={() => navigate("/about")} className="div-5">About</ListItem>
               <ListItem cursor={'pointer'} onClick={() => navigate("/service")} className="div-6">Service</ListItem>
               <ListItem cursor={'pointer'} className="div-7">Gallery</ListItem>

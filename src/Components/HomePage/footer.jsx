@@ -17,21 +17,21 @@ const Footer = () => {
             <div className="text-white text-lg w-56 mt-12">Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
             <div className="flex flex-col h-48 justify-between mb-16">
                 <div className="text-white text-lg">Service</div>
-                <div className="text-white text-sm">Architecture</div>
-                <div className="text-white text-sm">Interior Design</div>
-                <div className="text-white text-sm">Lighting Installation</div>
-                <div className="text-white text-sm">Floor Planning</div>
+                <div className="text-white text-sm cursor-pointer">Architecture</div>
+                <div className="text-white text-sm cursor-pointer">Interior Design</div>
+                <div className="text-white text-sm cursor-pointer">Lighting Installation</div>
+                <div className="text-white text-sm cursor-pointer">Floor Planning</div>
             </div>
             <div className="flex flex-col h-48 justify-between mb-16">
                 <div className="text-white text-lg">About Us</div>
-                <div className="text-white text-sm">About Us</div>
-                <div className="text-white text-sm">Our Team</div>
-                <div className="text-white text-sm">Testimonials</div>
-                <div className="text-white text-sm">Contact</div>
+                <div className="text-white text-sm cursor-pointer">About Us</div>
+                <div className="text-white text-sm cursor-pointer">Our Team</div>
+                <div className="text-white text-sm cursor-pointer">Testimonials</div>
+                <div className="text-white text-sm cursor-pointer">Contact</div>
             </div>
             <div className="text-white text-lg">
                 Recent Work
-                <div className="grid grid-cols-3 gap-4 mt-6">
+                <div className="grid grid-cols-3 gap-4 mt-6 cursor-pointer">
                     <img src={img1} alt="" />
                     <img src={img2} alt="" />
                     <img src={img3} alt="" />
@@ -45,10 +45,10 @@ const Footer = () => {
         <div className="flex flex-row justify-between w-full mt-4">
             <div className="text-white text-lg">Copyright @ 2024 SPAR. All rights reserved</div>
             <div className="flex flex-row w-[15%] justify-between">
-                <img src={insta} className="h-6" alt="" />
-                <img src={linkedin} className="h-6" alt="" />
-                <img src={fb} className="h-6" alt="" />
-                <img src={twitter} className="h-6" alt="" />
+                <img src={insta} className="h-6 cursor-pointer" alt="" />
+                <img src={linkedin} className="h-6 cursor-pointer" alt="" />
+                <img src={fb} className="h-6 cursor-pointer" alt="" />
+                <img src={twitter} className="h-6 cursor-pointer" alt="" />
             </div>
         </div>
     </div>

@@ -1,26 +1,21 @@
 import React from 'react'
 import Navbar from '../HomePage/navbar'
 import aboutimg1 from '../Images/About img1.png'
-import clientlist from '../Images/client list.png'
 import aboutus from '../Images/aboutus.png'
 import aboutgraphic from '../Images/aboutgraphic.png'
 import testimonialimage from '../Images/testimonial image.png'
 import './aboutus.css'
 import Footer from '../HomePage/footer'
+import Clientlist from './clientlist'
+import clientlist from '../Images/client list.png'
 
 
 const Aboutus = () => {
   return (
     <div className='flex flex-col items-center'>
-      <div className='p-2 w-full'><div className='drop-shadow-xl'><Navbar page = "about"/></div></div>
-      <img src={aboutimg1} alt="aboutimg1" className="absolute -z-20 w-full top-0"/>
-      <div className='w-full bg-transparent'></div>
-      <div className='rounded-3xl absolute flex flex-row w-[95%] justify-evenly items-center bg-[#1E443E] h-36 mt-[20vw] drop-shadow-xl'>
-        <img src={clientlist} alt="clientlist" className="w-[80%]"/>
-        <div className='w-[2px] bg-white h-4/5'></div>
-        <div className=' rounded-full bg-white h-fit px-6 py-2 text-[1rem] font-bold text-[#1E443E] drop-shadow-xl'>VIEW ALL CLIENTS</div>
-      </div>
-      <div className='mt-[15vw] w-full flex flex-row justify-between'>
+      <img src={aboutimg1} alt="aboutimg1" className="-z-20 w-full top-0"/>
+      <Clientlist /> 
+      <div className='mt-16 w-full flex flex-row justify-between'>
         <img src={aboutus} alt="aboutus" className="w-[40%]"/>
         <div className='flex flex-col w-full p-10 mt-12'>
           <div className='text-[#707070] text-[4rem] flex flex-row justify-between font-bold '>
