@@ -15,9 +15,13 @@ import diff3 from '../Images/diff3.png'
 import diff4 from '../Images/diff4.png'
 import journey from '../Images/Group 120.png'
 import './services.css'
+import { useEffect } from 'react'
 
 
 const Service = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <div className='flex flex-col items-center'>
       <img src={service} alt="aboutimg1" className="-z-20 w-full top-0"/>
@@ -103,7 +107,6 @@ const Service = () => {
         <div className='text-[#1E443E] cursor-pointer bg-white rounded-full text-2xl py-2 px-4 font-bold'>TALK TO US</div>
       </div>
       <img src={journey} className="w-[90%] mb-2 block md:hidden" alt="" />
-      <Footer/>
     </div>
   )
 }

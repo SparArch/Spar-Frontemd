@@ -12,17 +12,17 @@ import twitter from "../Images/twitter.png"
 
 
 const Footer = () => {
-    return <div className='bg-[#1D1D1D] w-full flex flex-col items-center py-20 px-32'>
-        <div className="flex flex-row justify-between w-full">
-            <div className="text-white text-lg w-56 mt-12">Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
-            <div className="flex flex-col h-48 justify-between mb-16">
+    return <div className='bg-[#1D1D1D] w-full flex flex-col items-center py-2 pb-6 px-6 md:py-20 md:px-32'>
+        <div className="flex md:flex-row flex-row-reverse justify-between w-full">
+            <div className="text-white md:block hidden text-lg w-56 mt-12">Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
+            <div className="md:flex hidden flex-col h-48 justify-between mb-16">
                 <div className="text-white text-lg">Service</div>
                 <div className="text-white text-sm cursor-pointer">Architecture</div>
                 <div className="text-white text-sm cursor-pointer">Interior Design</div>
                 <div className="text-white text-sm cursor-pointer">Lighting Installation</div>
                 <div className="text-white text-sm cursor-pointer">Floor Planning</div>
             </div>
-            <div className="flex flex-col h-48 justify-between mb-16">
+            <div className="flex flex-col md:h-48 justify-between mb-6 md:mb-16">
                 <div className="text-white text-lg">About Us</div>
                 <div className="text-white text-sm cursor-pointer">About Us</div>
                 <div className="text-white text-sm cursor-pointer">Our Team</div>
@@ -31,20 +31,20 @@ const Footer = () => {
             </div>
             <div className="text-white text-lg">
                 Recent Work
-                <div className="grid grid-cols-3 gap-4 mt-6 cursor-pointer">
-                    <img src={img1} alt="" />
-                    <img src={img2} alt="" />
-                    <img src={img3} alt="" />
-                    <img src={img4} alt="" />
-                    <img src={img5} alt="" />
-                    <img src={img6} alt="" />
+                <div className="grid grid-cols-3 gap-2 mr-3 md:gap-4 mt-6 mb-6 cursor-pointer">
+                    <img src={img1} alt="" className="w-12 md:w-16" />
+                    <img src={img2} alt="" className="w-12 md:w-16" />
+                    <img src={img3} alt="" className="w-12 md:w-16" />
+                    <img src={img4} alt="" className="w-12 md:w-16" />
+                    <img src={img5} alt="" className="w-12 md:w-16" />
+                    <img src={img6} alt="" className="w-12 md:w-16" />
                 </div>
             </div>
         </div>
         <div className="w-full h-[1px] bg-white"></div>
-        <div className="flex flex-row justify-between w-full mt-4">
-            <div className="text-white text-lg">Copyright @ 2024 SPAR. All rights reserved</div>
-            <div className="flex flex-row w-[15%] justify-between">
+        <div className="flex flex-row justify-between w-full mt-1 md:mt-4">
+            <div className="text-white text-sm md:text-lg">Copyright @ 2024 SPAR. All rights reserved</div>
+            <div className="md:flex flex-row w-[15%] hidden justify-between">
                 <img src={insta} className="h-6 cursor-pointer" alt="" />
                 <img src={linkedin} className="h-6 cursor-pointer" alt="" />
                 <img src={fb} className="h-6 cursor-pointer" alt="" />
