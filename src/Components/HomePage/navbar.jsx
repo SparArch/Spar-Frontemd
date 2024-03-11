@@ -8,7 +8,8 @@ import './homepage.css'
 import { Image, List, ListItem } from '@chakra-ui/react';
 import Logo from '../Images/SparLogo.png'
 import { useNavigate } from 'react-router-dom';
-
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
+import SearchLogo from '../Images/SearchIcon.png'
 const Navbar = () => {
   const navigate = useNavigate();
   return (
@@ -38,10 +39,10 @@ const Navbar = () => {
               <Image
                 cursor={'pointer'}
                 loading="lazy"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/b6dc452f9f72263f44ec88b171b71b6e5d910581f453de26685cf136064293c7?apiKey=5bec9a7aa31245c0924cf67e237de84d&"
-                className="img-2"
+                src={SearchLogo}
+                className="search"
               />
-              <div className="div-11">Book A Call</div>
+              <div className="bookbtn">Book A Call</div>
             </div>
           </div>
         </div>
