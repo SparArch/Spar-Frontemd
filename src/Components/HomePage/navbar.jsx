@@ -1,9 +1,4 @@
 import React from 'react'
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
 import './homepage.css'
 import { Image, List, ListItem } from '@chakra-ui/react';
 import Logo from '../Images/SparLogo.png'
@@ -13,8 +8,8 @@ import SearchLogo from '../Images/SearchIcon.png'
 const Navbar = () => {
   const navigate = useNavigate();
   return (
-    <div>
-      <div className="navbar">
+    <div className='fixed z-50 w-full p-2'>
+      <div className="navbar drop-shadow-xl">
         <div className="div-2">
           <div className="column">
             <Image
