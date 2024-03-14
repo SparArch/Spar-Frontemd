@@ -8,7 +8,7 @@ import SearchLogo from '../Images/SearchIcon.png'
 const Navbar = () => {
   const navigate = useNavigate();
   return (
-    <div className='fixed z-50 w-full p-2'>
+    <div className='fixed z-50 w-full p-2 '>
       <div className="navbar drop-shadow-xl">
         <div className="div-2">
           <div className="column">

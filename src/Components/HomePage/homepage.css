@@ -171,3 +171,28 @@
     white-space: initial;
   }
 }
+
+.quote-box {
+  padding: 20px 20px;
+  color: #fff;
+  background-color: #6d776c;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -481px;
+  left: 70px;
+  width: 296px;
+  z-index: 20;
+  border-radius: 45px;
+}
+.quote-1 {
+  font-size: 20px;
+  font-weight: 500;
+}
+.quote-2 {
+  font-size: 30px;
+  font-weight: 500;
+}
