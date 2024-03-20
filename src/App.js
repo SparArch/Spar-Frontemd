@@ -6,12 +6,12 @@ import Service from "./Components/Services/service";
 import Gallery from "./Components/Gallery/gallery";
 import Navbar from "./Components/HomePage/navbar";
 import Footer from "./Components/HomePage/footer";
-import Blogs from './Components/Bogs/blogs'
+import Blogs from './Components/Blogs/blogs'
 
 function App() {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/"
           element={<Homepage />} />
