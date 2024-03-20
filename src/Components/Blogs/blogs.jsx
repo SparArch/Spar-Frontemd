@@ -2,6 +2,7 @@ import React from 'react'
 import blogsbg from '../Images/blogsbg.png'
 import { Button, Image, Text, background } from '@chakra-ui/react'
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
+import Arrow from '../Images/Arrow.png'
 const blogs = () => {
   return (
     <div className='blogs'>
@@ -22,17 +23,23 @@ const blogs = () => {
                 <Image backgroundColor={'grey'} borderRadius={'30px'} height={'200px'} width={'300px'} alt={''} />
                 <div className='flex flex-col justify-center'>
                   <div className='blog-title '>The 15 Emerging Trends in the Office Space</div>
-                  <div>Dec 19,2024</div>
-                  <Button></Button>
+                  <div className='text-[12px] italic'>Dec 19,2024</div>
+                  <Button borderRadius={'80px'} backgroundColor={'#D9D9D9'} width={'50px'}>
+
+                    <Image width={'40px'} height={'10px'} src={Arrow} />
+
+                  </Button>
                 </div>
 
               </div>
             </TabPanel>
             <TabPanel>
-              <p>two!</p>
+              <p>
+                Case Study Content
+              </p>
             </TabPanel>
             <TabPanel>
-              <p>three!</p>
+              <p>Media Content</p>
             </TabPanel>
           </TabPanels>
         </Tabs>

@@ -8,8 +8,8 @@ import SearchLogo from '../Images/SearchIcon.png'
 const Navbar = () => {
   const navigate = useNavigate();
   return (
-    <div className='NavBar'>
-      <div className='fixed z-[120] w-full p-2 '>
+    <div className='NavBar flex justify-center'>
+      <div className='fixed z-[120] w-full p-2 flex justify-center'>
         <div className="navbar drop-shadow-xl">
           <div className="div-2">
             <div className="column">
@@ -21,14 +21,14 @@ const Navbar = () => {
               />
             </div>
             <div className="column-2">
-              <List className="div-3">
-                <ListItem cursor={'pointer'} onClick={() => navigate("/")} className="div-4">Home</ListItem>
-                <ListItem cursor={'pointer'} onClick={() => navigate("/about")} className="div-5">About</ListItem>
-                <ListItem cursor={'pointer'} onClick={() => navigate("/service")} className="div-6">Service</ListItem>
-                <ListItem cursor={'pointer'} className="div-7">Gallery</ListItem>
-                <ListItem cursor={'pointer'} onClick={() => navigate("/blogs")} className="div-8">Blogs</ListItem>
-                <ListItem cursor={'pointer'} className="div-9">Contact Us</ListItem>
-              </List>
+              <ul className="div-3">
+                <li cursor={'pointer'} onClick={() => navigate("/")} className="div-4">Home</li>
+                <li cursor={'pointer'} onClick={() => navigate("/about")} className="div-5">About</li>
+                <li cursor={'pointer'} onClick={() => navigate("/service")} className="div-6">Service</li>
+                <li cursor={'pointer'} className="div-7">Gallery</li>
+                <li cursor={'pointer'} onClick={() => navigate("/blogs")} className="div-8">Blogs</li>
+                <li cursor={'pointer'} className="div-9">Contact Us</li>
+              </ul>
             </div>
             <div className="column-3">
               <div className="div-10" >

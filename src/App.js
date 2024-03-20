@@ -5,7 +5,7 @@ import Homepage from './Components/HomePage/homepage';
 import Service from "./Components/Services/service";
 import Navbar from "./Components/HomePage/navbar";
 import Footer from "./Components/HomePage/footer";
-import Blogs from './Components/Bogs/blogs'
+import Blogs from './Components/Blogs/blogs'
 
 function App() {
   return (

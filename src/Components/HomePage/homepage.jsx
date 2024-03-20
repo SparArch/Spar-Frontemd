@@ -31,6 +31,7 @@ import line from '../Images/line.png'
 import midsec71 from '../Images/midsec7-1.png'
 import midsec81 from '../Images/midsec8-1.png'
 import midsec82 from '../Images/midsec8-2.png'
+import { Tooltip } from '@chakra-ui/react'
 const Homepage = () => {
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -222,7 +223,7 @@ const Homepage = () => {
         </div>
 
       </div>
-      <div className='midsec8'>
+      <div className='midsec8 mb-10'>
         <div className='midsec8-title flex justify-center text-[35px] font-bold '>
           Latest Posts
         </div>
