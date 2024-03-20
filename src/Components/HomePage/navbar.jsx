@@ -25,7 +25,7 @@ const Navbar = () => {
                 <ListItem cursor={'pointer'} onClick={() => navigate("/")} className="div-4">Home</ListItem>
                 <ListItem cursor={'pointer'} onClick={() => navigate("/about")} className="div-5">About</ListItem>
                 <ListItem cursor={'pointer'} onClick={() => navigate("/service")} className="div-6">Service</ListItem>
-                <ListItem cursor={'pointer'} className="div-7">Gallery</ListItem>
+                <ListItem cursor={'pointer'} onClick={() => navigate("/gallery")} className="div-7">Gallery</ListItem>
                 <ListItem cursor={'pointer'} className="div-8">Blogs</ListItem>
                 <ListItem cursor={'pointer'} className="div-9">Contact Us</ListItem>
               </List>
