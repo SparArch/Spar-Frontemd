@@ -234,3 +234,11 @@
 .midsec7-title {
   color: #1e443e;
 }
+.midse8-post2 {
+  background-image: url("../Images/midsec8-2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* filter: contrast(60%); */
+  /* filter: brightness(50%); */
+  color: white;
+}

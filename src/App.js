@@ -6,7 +6,7 @@ import Service from "./Components/Services/service";
 import Gallery from "./Components/Gallery/gallery";
 import Navbar from "./Components/HomePage/navbar";
 import Footer from "./Components/HomePage/footer";
-
+import Blogs from './Components/Bogs/blogs'
 
 function App() {
   return (
@@ -21,6 +21,8 @@ function App() {
           element={<Service />} />
         <Route path='/gallery'
           element={<Gallery />} />
+        <Route path='/blogs'
+          element={<Blogs />} />
       </Routes>
       <Footer />
     </div>

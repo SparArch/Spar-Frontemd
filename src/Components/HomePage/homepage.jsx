@@ -28,9 +28,9 @@ import midsec54 from '../Images/midsec5-4.png'
 import midsec55 from '../Images/midsec5-5.png'
 import midsec56 from '../Images/midsec5-6.png'
 import line from '../Images/line.png'
-
-
-
+import midsec71 from '../Images/midsec7-1.png'
+import midsec81 from '../Images/midsec8-1.png'
+import midsec82 from '../Images/midsec8-2.png'
 const Homepage = () => {
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -213,13 +213,49 @@ const Homepage = () => {
       </div>
       <div className='midsec7 mb-10'>
         <div className='flex flex-col justify-center'>
-          <div className='midsec7-title flex justify-center text-[30px]'>60 Days Journey From Design to Final Handover</div>
+          <div className='midsec7-title flex justify-center text-[40px] font-bold'>60 Days Journey From Design to Final Handover</div>
           <Divider />
           {/* <div className='line flex flex-col justify-center'><Image maxWidth={'500px'} src={line} /></div> */}
+          <div className='flex justify-center p-10'>
+            <Image width={'180vh'} height={'25vh'} src={midsec71} />
+          </div>
         </div>
 
       </div>
-
+      <div className='midsec8'>
+        <div className='midsec8-title flex justify-center text-[35px] font-bold '>
+          Latest Posts
+        </div>
+        <div className='flex flex-row justify-center gap-8 mt-8'>
+          <div className='flex flex-col gap-4 max-w-[250px]'>
+            <div className='text-[#4B4B4B]'>23 jun 2019</div>
+            <div className='font-bold'>We’ll your next project, because nobody wants.....</div>
+            <div>Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
+            <div className='flex flex-row gap-4'>
+              <p className='text-[#4A8780]'>Read more </p>
+              <Image marginTop={'10px'} height={'8px'} width={'10px'} src={midsec81} />
+            </div>
+          </div>
+          <div className='midse8-post2 flex flex-col gap-4 max-w-[250px] rounded'>
+            <div className='text-[#4B4B4B]'>23 jun 2019</div>
+            <div className='font-bold'>We'll your next project, because nobody wants.....</div>
+            <div>Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
+            <div className='flex flex-row gap-4'>
+              <p className='text-[#4A8780]'>Read more </p>
+              <Image marginTop={'10px'} height={'8px'} width={'10px'} src={midsec81} />
+            </div>
+          </div>
+          <div className='flex flex-col gap-4 max-w-[250px]'>
+            <div className='text-[#4B4B4B]'>23 jun 2019</div>
+            <div className='font-bold'>We’ll your next project, because nobody wants.....</div>
+            <div>Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
+            <div className='flex flex-row gap-4'>
+              <p className='text-[#4A8780]'>Read more </p>
+              <Image marginTop={'10px'} height={'8px'} width={'10px'} src={midsec81} />
+            </div>
+          </div>
+        </div>
+      </div>
     </div >
   )
 }
