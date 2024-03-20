@@ -5,7 +5,7 @@ import Homepage from './Components/HomePage/homepage';
 import Service from "./Components/Services/service";
 import Navbar from "./Components/HomePage/navbar";
 import Footer from "./Components/HomePage/footer";
-
+import Blogs from './Components/Bogs/blogs'
 
 function App() {
   return (
@@ -18,6 +18,8 @@ function App() {
           element={<Aboutus />} />
         <Route path='/service'
           element={<Service />} />
+        <Route path='/blogs'
+          element={<Blogs />} />
       </Routes>
       <Footer />
     </div>
