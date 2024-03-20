@@ -4,6 +4,7 @@ import Aboutus from './Components/AboutUs/aboutus';
 import Homepage from './Components/HomePage/homepage';
 import Service from "./Components/Services/service";
 import Navbar from "./Components/HomePage/navbar";
+import Footer from "./Components/HomePage/footer";
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
         <Route path='/service'
           element={<Service />} />
       </Routes>
-
+      <Footer />
     </div>
   );
 }

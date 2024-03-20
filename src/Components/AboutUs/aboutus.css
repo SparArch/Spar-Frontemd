@@ -1,12 +1,9 @@
 .shade {
-    box-shadow: 1px 3px 1px 1px rgba(0,0,0,0.5);
--webkit-box-shadow: 1px 3px 1px 1px rgba(0,0,0,0.5);
--moz-box-shadow: 1px 3px 1px 1px rgba(0,0,0,0.5);
+  box-shadow: 1px 3px 1px 1px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 1px 3px 1px 1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 1px 3px 1px 1px rgba(0, 0, 0, 0.5);
 }
-.clientlist::-webkit-scrollbar {
-    display: none;
+
+.slider-container {
+  cursor: none;
 }
-.clientlist {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-}  

@@ -2,19 +2,28 @@
   display: flex;
   flex-direction: row;
 } */
-.Home {
-  position: relative;
-  top: 0;
-}
+
 .navbar {
   /* margin-top: 10px; */
   padding-top: 10px;
-  align-self: stretch;
+  /* align-self: stretch; */
   width: 100%;
   padding: 39px 80px;
   background-color: #ffffff;
   border-radius: 2rem;
   box-shadow: 0px 5px #d7d7d7;
+  margin-right: 10px;
+}
+@media (max-width: 820px) {
+  .column-2 {
+    display: none;
+  }
+  /* .bookbtn {
+    display: none;
+  } */
+  .div-4 .div-5 .div-6 .div-7 {
+    display: none;
+  }
 }
 
 @media (max-width: 991px) {
@@ -166,11 +175,6 @@
   justify-content: center;
   padding: 15px 12px;
 }
-@media (max-width: 991px) {
-  .bookbtn {
-    white-space: initial;
-  }
-}
 
 .quote-box {
   padding: 20px 20px;
@@ -195,4 +199,38 @@
 .quote-2 {
   font-size: 30px;
   font-weight: 500;
+  margin-bottom: 10px;
+}
+.quote-name {
+  border-radius: 2px;
+  align-items: center;
+}
+.quote-number {
+  border-radius: 2px;
+}
+.clientlist {
+  z-index: 100;
+}
+.midsec2 {
+  border-radius: 20px;
+  margin-bottom: 10vh;
+}
+.midsec2-content {
+  max-width: 70vh;
+  font-size: 13px;
+  line-height: 25px;
+  margin-bottom: 30px;
+}
+.midsec22 {
+  background-image: url(../Images/services\ bg.png);
+  background-size: cover;
+}
+.work2 {
+  background-color: #4a8780;
+  color: white;
+  border-radius: 10px;
+}
+
+.midsec7-title {
+  color: #1e443e;
 }

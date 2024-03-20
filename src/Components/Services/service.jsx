@@ -15,15 +15,20 @@ import diff3 from '../Images/diff3.png'
 import diff4 from '../Images/diff4.png'
 import journey from '../Images/Group 120.png'
 import './services.css'
+import { useEffect } from 'react'
 
 
 const Service = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <div className='flex flex-col items-center'>
-      <img src={service} alt="aboutimg1" className="-z-20 w-full top-0"/>
-      <Clientlist />
-      {/* <img src={servicesbg} className="" alt="" /> */}
-      <div className='w-full flex flex-col items-center services'> {/*need the edited image for the background here*/}
+      <img src={service} alt="aboutimg1" className="z-10 w-full top-0" />
+      <div className=" w-full md:top-[-1.25rem] top-[-0.5rem] flex flex-col items-center relative">
+        <Clientlist />
+      </div>
+      <div className='w-full md:mt-[-8rem] mt-[-2rem] flex flex-col items-center services'> {/*need the edited image for the background here*/}
         <p className='text-4xl md:block hidden font-semibold mt-36 mb-16'>Services provided by us</p>
         <div className='mt-12 grid md:gap-10 gap-3 grid-cols-2 md:grid-cols-3 md:w-2/3 w-[90%] mb-12'>
           <div className=' bg-white flex flex-col items-center px-4 md:px-10 py-2 md:py-6 rounded-xl md:rounded-3xl'>
@@ -103,7 +108,6 @@ const Service = () => {
         <div className='text-[#1E443E] cursor-pointer bg-white rounded-full text-2xl py-2 px-4 font-bold'>TALK TO US</div>
       </div>
       <img src={journey} className="w-[90%] mb-2 block md:hidden" alt="" />
-      <Footer/>
     </div>
   )
 }
