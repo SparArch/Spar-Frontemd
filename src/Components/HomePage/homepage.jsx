@@ -59,7 +59,7 @@ const Homepage = () => {
           <Clientlist />
         </div>
       </div>
-      <div className='midsec1 flex mt-[50px]' >
+      <div className='midsec1 bg-[#f8f8f8] flex pt-20 mt-[50px]' >
         <Image src={midsecback1} width={'250px'} height={'165px'} position={'absolute'} marginLeft={'100px'} marginTop={'-100px'} />
         <Image src={midsecback2} width={'780px'} height={'466px'} marginLeft={'200px'} />
         <div className='relative ml-[-195px] mt-[50px] '>
