@@ -1,0 +1,161 @@
+/* .HomeBG {
+  display: flex;
+  flex-direction: row;
+} */
+.NavBar {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+}
+.navbar {
+  /* margin-top: 10px; */
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  /* align-self: stretch; */
+  width: 98vw;
+  padding: 19px 40px;
+  background-color: #ffffff;
+  border-radius: 2rem;
+  box-shadow: 0px 5px #d7d7d7;
+
+  /* margin-right: 10px; */
+}
+.hamburger {
+  display: none;
+}
+
+.img {
+  height: 70px;
+  width: 130px;
+}
+
+.search {
+  aspect-ratio: 1;
+  object-fit: auto;
+  object-position: center;
+  width: 20px;
+  fill: #000;
+  margin: auto 0;
+  margin-right: 50px;
+}
+.bookbtn {
+  font-family: Work Sans, sans-serif;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 15px;
+  background-color: #2c6856;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.quote-box {
+  padding: 20px 20px;
+  color: #fff;
+  background-color: #6d776c;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -481px;
+  left: 70px;
+  width: 296px;
+  z-index: 20;
+  border-radius: 45px;
+}
+.quote-1 {
+  font-size: 20px;
+  font-weight: 500;
+}
+.quote-2 {
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.quote-name {
+  border-radius: 2px;
+  align-items: center;
+}
+.quote-number {
+  border-radius: 2px;
+}
+.clientlist {
+  z-index: 100;
+}
+.midsec2 {
+  border-radius: 20px;
+  margin-bottom: 10vh;
+}
+.midsec2-content {
+  max-width: 70vh;
+  font-size: 13px;
+  line-height: 25px;
+  margin-bottom: 30px;
+}
+.midsec22 {
+  background-image: url(../Images/services\ bg.png);
+  background-size: cover;
+}
+.work2 {
+  background-color: #4a8780;
+  color: white;
+  border-radius: 10px;
+}
+
+.midsec7-title {
+  color: #1e443e;
+}
+.midse8-post2 {
+  background-image: url("../Images/midsec8-2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* filter: contrast(60%); */
+  /* filter: brightness(50%); */
+  color: white;
+}
+@media (max-width: 1050px) {
+}
+@media (max-width: 1120px) {
+  .search img {
+    margin-right: 20px;
+  }
+  .div-10 {
+    gap: -10px;
+  }
+}
+@media (max-width: 1072px) {
+  li {
+    display: none;
+  }
+  .column-2 {
+    display: none;
+    margin: 0;
+  }
+  .navbar {
+    width: 120vw;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .bookbtn {
+    display: none;
+  }
+  .img {
+    width: 200px;
+    height: 80px;
+  }
+  .div-2 {
+    display: flex;
+    gap: 50vw;
+  }
+  .hamburger {
+    display: flex;
+  }
+}
