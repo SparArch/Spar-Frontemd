@@ -41,40 +41,45 @@ const Homepage = () => {
       <div>
 
         <Image
-          marginLeft={'14rem'}
           src={Back}
           width={'1350px'}
           height={'1081px'}
-
+          backgroundPosition={'center'}
+          backgroundSize={'cover'}
+          className='homeback'
         />
         <div className='quote-box'>
           <div className='quote-1'>Quick Service Request</div>
           <div className='quote-2'>Get a Free Quote</div>
-          <input className='quote-name' type="text" placeholder='Name' style={{ color: '#C4C4C4' }} />
-          <input className='quote-num' type="text" placeholder='Phone No.' style={{ color: '#C4C4C4' }} />
+          <input className='quote-name px-3' type="text" placeholder='Name' style={{ color: '#C4C4C4' }} />
+          <input className='quote-num px-3' type="text" placeholder='Phone No.' style={{ color: '#C4C4C4' }} />
           <Button backgroundColor={'#2C6856'} color={'white'}>Send </Button>
         </div>
         {/* <div className='relative bottom-36 -mt-16 -mb-20'><Clientlist /></div> */}
-        <div className=" w-full md:top-[-1.25rem] top-[-0.5rem] flex flex-col items-center relative">
+        <div className=" w-full md:top-[-1.25rem] top-[-0.5rem] flex flex-col items-center relative mt-[-200px]">
           <Clientlist />
         </div>
       </div>
       <div className='midsec1 bg-[#f8f8f8] flex pt-20 mt-[50px]' >
-        <Image src={midsecback1} width={'250px'} height={'165px'} position={'absolute'} marginLeft={'100px'} marginTop={'-100px'} />
-        <Image src={midsecback2} width={'780px'} height={'466px'} marginLeft={'200px'} />
-        <div className='relative ml-[-195px] mt-[50px] '>
-          <div className='midsec2 flex flex-col bg-[#fff] p-[60px] z-20 pb-[90px]' >
-            <div className='midsec2-title text-3xl font-bold mb-[2vh]'>
-              How We are Different?
+        <img src={midsecback1} className='absolute mt-[-100px] ml-[100px] w-[250px] h-[165px] 
+        md:block w-[20vw] hidden' />
+        <div className='flex flex-row justify-center align-middle'>
+          <img src={midsecback2} className=' h-[466px] w-[780px] ml-[200px] ' />
+          <div className='relative ml-[-195px] mt-[50px] '>
+            <div className='midsec2 flex flex-col bg-[#fff] p-[60px] z-20 pb-[90px]' >
+              <div className='midsec2-title text-3xl font-bold mb-[2vh]'>
+                How We are Different?
+              </div>
+              <div className='midsec2-content'>
+                "Discover excellence with SPAR TechnoVet! Based in India, we specialize in top-notch fit-out services and bespoke furniture. Our seasoned professionals bring vast expertise in crafting exceptional commercial and residential spaces. From captivating retail areas to functional offices, we turn visions into reality. At SPAR TechnoVet, we blend innovation with precision, delivering unparalleled results. Elevate your space with us – Where Vision Meets Expertise!"
+              </div>
+              <Button maxWidth={'140px'} backgroundColor={'#2C6856'} color={'white'}>
+                KNOW MORE
+              </Button>
             </div>
-            <div className='midsec2-content'>
-              "Discover excellence with SPAR TechnoVet! Based in India, we specialize in top-notch fit-out services and bespoke furniture. Our seasoned professionals bring vast expertise in crafting exceptional commercial and residential spaces. From captivating retail areas to functional offices, we turn visions into reality. At SPAR TechnoVet, we blend innovation with precision, delivering unparalleled results. Elevate your space with us – Where Vision Meets Expertise!"
-            </div>
-            <Button maxWidth={'140px'} backgroundColor={'#2C6856'} color={'white'}>
-              KNOW MORE
-            </Button>
           </div>
         </div>
+
       </div>
       <div className="midsec22 flex justify-center">
         <div className='mt-12 grid md:gap-10 gap-3 grid-cols-2 md:grid-cols-3 md:w-2/3 w-[90%] mb-12'>
@@ -89,10 +94,10 @@ const Homepage = () => {
             <p className='text-center text-[8px] md:text-[0.8vw]'>"Transform your workspace with SPAR TechnoVet. Innovative, functional, and tailored office interiors for elevated productivity."</p>
           </div>
           <div className=' flex flex-col justify-start'>
-            <p className='md:text-[2vw] text-sm text-center font-bold my-1 md:my-4'>Services Provided By Us</p>
+            <p className='md:text-[2vw] text-sm text-center font-bold my-1 leading-10 md:my-4'>Services Provided By Us</p>
             <p className='text-center text-[8px] md:text-[0.8vw]'>We have been providing great
               interior solutions service.</p>
-            <Button color={'white'} backgroundColor={'#2C6856'} maxWidth={'6vw'}>Learn More</Button>
+            <button className='text-white bg-[#2C6856]max-w-[20px]'>Learn More</button>
           </div>
           <div className=' bg-white flex flex-col items-center px-4 md:px-10 py-2 md:py-6 rounded-xl md:rounded-3xl'>
             <img src={service4} className='md:h-[30%] h-10' alt="" />
@@ -110,8 +115,10 @@ const Homepage = () => {
               <p className='md:text-[2vw] text-sm text-center font-semibold my-1 md:my-4 p-[6vh] pt-1'>More</p>
             </div>
             <div className='flex flex-col'>
-              <Image width={'60px'} height={'125px'} src={service6} alt="" />
-              <Image width={'30px'} height={'30px'} margin={'50px'} src={morebtn} alt="" />
+              <img src={service6} alt="" className='w-[60px] h-[125px] ' />
+              <img src={morebtn} alt=""
+                className='w-[10px] h-[30px] m-[50px]  md:hidden block'
+              />
             </div>
           </div>
         </div>
@@ -237,12 +244,12 @@ const Homepage = () => {
               <Image marginTop={'10px'} height={'8px'} width={'10px'} src={midsec81} />
             </div>
           </div>
-          <div className='midse8-post2 flex flex-col gap-4 max-w-[250px] rounded'>
-            <div className='text-[#4B4B4B]'>23 jun 2019</div>
+          <div className='midse8-post2 flex flex-col gap-4 max-w-[250px] rounded-lg px-6 py-2'>
+            <div className='text-[#f7f7f7]'>23 jun 2019</div>
             <div className='font-bold'>We'll your next project, because nobody wants.....</div>
             <div>Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
             <div className='flex flex-row gap-4'>
-              <p className='text-[#4A8780]'>Read more </p>
+              <p className='text-[#5AA199]'>Read more </p>
               <Image marginTop={'10px'} height={'8px'} width={'10px'} src={midsec81} />
             </div>
           </div>
