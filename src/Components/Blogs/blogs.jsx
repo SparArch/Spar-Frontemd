@@ -5,6 +5,8 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import Arrow from '../Images/Arrow.png'
 import axios from 'axios';
 import BACKEND_URL from '../../helper';
+import Navbar from '../HomePage/navbar';
+import Footer from '../HomePage/footer';
 const Blogs = () => {
   const [blogPosts, setBlogPosts] = useState([]);
 
@@ -22,6 +24,7 @@ const Blogs = () => {
   };
   return (
     <div className='blogs'>
+      <Navbar />
       <img src={blogsbg} alt="aboutimg1" className="z-10 w-full top-0 filter brightness-50" />
       <Text position={'relative'} display={'flex'} justifyContent={'center'} color={'white'} marginTop={'-60px'} fontSize={'40px'} fontWeight={'600'}>BLOGS, CASE STUDIES & MEDIA MENTIONS</Text>
       <div className="blogsec1 flex flex-row gap-6 justify-center rounded-3xl">
@@ -36,7 +39,7 @@ const Blogs = () => {
           <TabPanels>
             <TabPanel>
               <div className='blog flex flex-row justify-center gap-6'>
-              {blogPosts.map(post => (
+                {blogPosts.map(post => (
                   <div key={post._id} className='flex flex-col justify-center'>
                     <Image src={post.image} borderRadius={'30px'} height={'200px'} width={'300px'} alt={''} />
                     <div className='blog-title '>{post.title}</div>
@@ -60,6 +63,7 @@ const Blogs = () => {
           </TabPanels>
         </Tabs>
       </div>
+      <Footer />
     </div>
   )
 }

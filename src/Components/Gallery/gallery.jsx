@@ -6,6 +6,8 @@ import homepagebackground from '../Images/Homepage_back.png'
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import { Button, Image, Text, background } from '@chakra-ui/react'
 import './gallery.css'
+import Navbar from '../HomePage/navbar'
+import Footer from '../HomePage/footer'
 
 
 const Gallery = () => {
@@ -14,6 +16,7 @@ const Gallery = () => {
     }, [])
     return (
         <div className='flex flex-col items-center'>
+            <Navbar />
             <img src={gallerybanner} alt="aboutimg1" className="z-10 w-full top-0" />
             <div className=" w-full md:top-[-1.25rem] top-[-0.5rem] flex flex-col items-center relative">
                 <Clientlist />
@@ -127,7 +130,7 @@ const Gallery = () => {
                 </Tabs>
                 <Button marginBottom={'100px'} backgroundColor={'#2C6856'} color={'white'} className='hover:text-black '><p className='md:text-xl'>View More</p></Button>
             </div>
-
+            <Footer />
         </div>
     )
 }

@@ -1,0 +1,45 @@
+.services-main {
+  display: flex;
+  justify-content: center;
+  margin-top: 10rem;
+  background-color: #fff;
+}
+.service {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 50px;
+  /* margin-left: 50px; */
+}
+.service h3 {
+  /* font-family:; */
+  font-weight: 700;
+  font-size: 35px;
+  color: #4a8780;
+}
+.title1 {
+  display: flex;
+  gap: 10px;
+}
+.title1 img {
+  height: 20px;
+}
+.certificates {
+  height: 240px;
+  width: 300px;
+  background-color: #dedcdc;
+  margin-bottom: 100px;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: right;
+}
+.work-process {
+  margin-top: 20px;
+  height: 240px;
+  width: 300px;
+  background-color: #dedcdc;
+  margin-bottom: 100px;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: right;
+}

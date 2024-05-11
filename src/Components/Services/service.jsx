@@ -13,6 +13,8 @@ import diff4 from '../Images/diff4.png'
 import journey from '../Images/Group 120.png'
 import './services.css'
 import { useEffect } from 'react'
+import Navbar from '../HomePage/navbar'
+import Footer from '../HomePage/footer'
 
 
 const Service = () => {
@@ -21,6 +23,7 @@ const Service = () => {
   }, [])
   return (
     <div className='flex flex-col items-center'>
+      <Navbar />
       <img src={service} alt="aboutimg1" className="z-10 w-full top-0" />
       <div className=" w-full md:top-[-1.25rem] top-[-0.5rem] flex flex-col items-center relative">
         <Clientlist />
@@ -105,6 +108,7 @@ const Service = () => {
         <div className='text-[#1E443E] cursor-pointer bg-white rounded-full text-2xl py-2 px-4 font-bold'>TALK TO US</div>
       </div>
       <img src={journey} className="w-[90%] mb-2 block md:hidden" alt="" />
+      <Footer />
     </div>
   )
 }

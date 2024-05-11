@@ -9,15 +9,17 @@ import Clientlist from './clientlist'
 import { useEffect } from 'react'
 import axios from 'axios'
 import BACKEND_URL from '../../helper'
+import Navbar from '../HomePage/navbar'
+import Footer from '../HomePage/footer'
 
 
 const Aboutus = () => {
   const [testimonials, setTestimonials] = useState([]);
-  const [about,setAbout]=useState('');
-  const [pic,setPic]=useState('');
+  const [about, setAbout] = useState('');
+  const [pic, setPic] = useState('');
   useEffect(() => {
     fetchData();
-   
+
   }, []);
 
   const fetchData = async () => {
@@ -27,7 +29,7 @@ const Aboutus = () => {
       setTestimonials(response.data);
       setAbout(response_about.data[0].content);
       setPic(response_about.data[0].image);
-     
+
     } catch (error) {
       console.error('Error fetching testimonials:', error);
     }
@@ -38,6 +40,7 @@ const Aboutus = () => {
 
   return (
     <div className='flex flex-col items-center justify-center'>
+      <Navbar />
       <img src={aboutimg1} alt="aboutimg1" className="-z-20 w-full relative" />
       <div className=" w-full md:top-[-1.25rem] top-[-0.5rem] flex flex-col items-center relative">
         <Clientlist />
@@ -57,7 +60,7 @@ const Aboutus = () => {
       <div className=' font-bold text-xs md:text-4xl pt-2 md:pt-12 bg-[#F8F8F8] w-full text-center'>TESTIMONIALS</div>
       <div className='text-4xl md:text-8xl text-[#2C6856] font-bold bg-[#F8F8F8] w-full text-center py-2 md:py-6'>PEOPLE SAYS</div>
       <div className=' grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-6 md:gap-y-12 w-2/3 md:w-4/5 mb-6 md:mb-36'>
-      {testimonials.map(testimonial => (
+        {testimonials.map(testimonial => (
           <div key={testimonial._id} className='w-[100%] p-4 shade rounded-lg'>
             <div className='italic text-xs md:text-lg'>" {testimonial.content} "</div>
             <div className='flex flex-row items-center mt-4'>
@@ -67,6 +70,7 @@ const Aboutus = () => {
           </div>
         ))}
       </div>
+      <Footer />
     </div>
   )
 }

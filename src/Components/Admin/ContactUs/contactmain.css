@@ -1,0 +1,19 @@
+.contactus-main {
+  display: flex;
+  justify-content: center;
+  margin-top: 10rem;
+  background-color: #fff;
+}
+.contactus {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 50px;
+  margin-left: 90px;
+}
+.contactus h3 {
+  /* font-family:; */
+  font-weight: 700;
+  font-size: 35px;
+  color: #4a8780;
+}

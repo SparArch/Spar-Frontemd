@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './homepage.css'
+import '../HomePage/homepage.css'
 import { Box, Button, Divider, Flex, Image, Input, List, ListItem, Popover, PopoverContent, PopoverTrigger, useDisclosure } from '@chakra-ui/react';
 import Logo from '../Images/SparLogo.png'
 import { useNavigate } from 'react-router-dom';
@@ -15,7 +15,7 @@ import {
   ModalBody,
   ModalCloseButton,
 } from '@chakra-ui/react'
-const Navbar = () => {
+const NavAd = () => {
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [showSearchBox, setShowSearchBox] = useState(false);
@@ -30,7 +30,7 @@ const Navbar = () => {
   };
   return (
     <>
-      <div className='NavBar flex justify-center align-middle'>
+      <div className='NavBar flex justify-center'>
         <div className='fixed z-[120]  p-2 flex justify-center'>
           <div className="navbar drop-shadow-xl">
             <div className="div-2 flex flex-row justify-center gap-[240px]">
@@ -39,17 +39,16 @@ const Navbar = () => {
                   cursor={'pointer'}
                   src={Logo}
                   className="img"
-
                 />
               </div>
               <div className="column-2 flex justify-center align-middle mt-[20px]">
                 <ul className="div-3 text-[14px] flex flex-row justify-center gap-[60px] font-bold">
-                  <li onClick={() => navigate("/")} className="div-4 cursor-pointer">Home</li>
-                  <li onClick={() => navigate("/about")} className="div-5 cursor-pointer">About</li>
-                  <li onClick={() => navigate("/service")} className="div-6 cursor-pointer">Service</li>
-                  <li className="div-7 cursor-pointer" onClick={() => navigate("/gallery")}>Gallery</li>
-                  <li onClick={() => navigate("/blogs")} className="div-8 cursor-pointer" >Blogs</li>
-                  <li className="div-9 cursor-pointer">Contact Us</li>
+                  <li onClick={() => navigate("/admin-home")} className="div-4 cursor-pointer">Home</li>
+                  <li onClick={() => navigate("/admin-about")} className="div-5 cursor-pointer">About</li>
+                  <li onClick={() => navigate("/admin-services")} className="div-6 cursor-pointer">Service</li>
+                  <li className="div-7 cursor-pointer" onClick={() => navigate("/admin-gallery")}>Gallery</li>
+                  <li onClick={() => navigate("/admin-blogs")} className="div-8 cursor-pointer" >Blogs</li>
+                  <li onClick={() => navigate("/admin-contact-main")} className="div-9 cursor-pointer">Contact Us</li>
                 </ul>
               </div>
               <div className="column-3 flex flex-row justify-center md:ml-[-100px]">
@@ -70,7 +69,7 @@ const Navbar = () => {
                     </PopoverContent>
                   </Popover>
                 </Box>
-                <button className="bookbtn">Book A Call</button>
+                {/* <button className="bookbtn">Book A Call</button> */}
                 <Image className='hamburger' cursor={'pointer'} onClick={onOpen} src={hamburger} />
               </div>
             </div>
@@ -97,7 +96,7 @@ const Navbar = () => {
             }}>About</div>
             <Divider />
             <div onClick={() => {
-              navigate("/service");
+              navigate("/services");
               onClose();
             }}>Service</div>
             <Divider />
@@ -112,7 +111,6 @@ const Navbar = () => {
             }}>Blogs</div>
             <Divider />
             <div>Contact Us</div>
-            <button className="bookbtnalt">Book A Call</button>
           </ModalBody>
         </ModalContent>
       </Modal>
@@ -120,4 +118,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default NavAd

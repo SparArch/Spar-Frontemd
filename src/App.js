@@ -7,11 +7,21 @@ import Gallery from "./Components/Gallery/gallery";
 import Navbar from "./Components/HomePage/navbar";
 import Footer from "./Components/HomePage/footer";
 import Blogs from './Components/Blogs/blogs'
-
+import AdminLogin from "./Components/Admin/AdminLogin";
+import Admin from "./Components/Admin/Admin";
+import AdminHome from "./Components/Admin/Home/home"
+import AdminBlog from './Components/Admin/Blogs/Blogs'
+import AdminGallery from "./Components/Admin/Gallery/Gallery"
+import AdminServices from "./Components/Admin/Services/Services"
+import AdminAbout from "./Components/Admin/About/about"
+import AdminNewBlog from './Components/Admin/Blogs/newblog'
+import AdminNewPost from './Components/Admin/Gallery/newpost'
+import AdminContactUs from './Components/Admin/ContactUs/contactus'
+import AdminContactMain from './Components/Admin/ContactUs/contactmain'
 function App() {
   return (
     <div>
-      <Navbar />
+
       <Routes>
         <Route path="/"
           element={<Homepage />} />
@@ -23,8 +33,31 @@ function App() {
           element={<Gallery />} />
         <Route path='/blogs'
           element={<Blogs />} />
+        <Route path='/adminlogin'
+          element={<AdminLogin />} />
+        <Route path='/admin'
+          element={<Admin />} />
+        <Route path='/admin-about'
+          element={<AdminAbout />} />
+        <Route path='/admin-home'
+          element={<AdminHome />} />
+        <Route path='/admin-services'
+          element={<AdminServices />} />
+        <Route path='/admin-blogs'
+          element={<AdminBlog />} />
+        <Route path='/admin-gallery'
+          element={<AdminGallery />} />
+        <Route path="/add-new-blog"
+          element={<AdminNewBlog />} />
+        <Route path="/add-new-post"
+          element={<AdminNewPost />} />
+        <Route path="/admin-contactus"
+          element={<AdminContactUs />} />
+        <Route path="/admin-contact-main"
+          element={<AdminContactMain />}
+        />
       </Routes>
-      <Footer />
+
     </div>
   );
 }

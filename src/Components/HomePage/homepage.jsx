@@ -37,7 +37,9 @@ const Homepage = () => {
     window.scrollTo(0, 0)
   }, [])
   return (
+
     <div className='Home'>
+      <Navbar />
       <div>
 
         <Image
@@ -264,6 +266,7 @@ const Homepage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div >
   )
 }
