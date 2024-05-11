@@ -49,7 +49,7 @@ const Navbar = () => {
                   <li onClick={() => navigate("/service")} className="div-6 cursor-pointer">Service</li>
                   <li className="div-7 cursor-pointer" onClick={() => navigate("/gallery")}>Gallery</li>
                   <li onClick={() => navigate("/blogs")} className="div-8 cursor-pointer" >Blogs</li>
-                  <li className="div-9 cursor-pointer">Contact Us</li>
+                  <li onClick={() => navigate("/contactus")} className="div-9 cursor-pointer">Contact Us</li>
                 </ul>
               </div>
               <div className="column-3 flex flex-row justify-center md:ml-[-100px]">

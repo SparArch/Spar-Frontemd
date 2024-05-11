@@ -1,6 +1,5 @@
 import React from 'react'
 import gallerybanner from '../Images/gallery banner.png'
-import Clientlist from '../AboutUs/clientlist'
 import { useEffect } from 'react'
 import homepagebackground from '../Images/Homepage_back.png'
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
@@ -15,9 +14,7 @@ const Gallery = () => {
     return (
         <div className='flex flex-col items-center'>
             <img src={gallerybanner} alt="aboutimg1" className="z-10 w-full top-0" />
-            <div className=" w-full md:top-[-1.25rem] top-[-0.5rem] flex flex-col items-center relative">
-                <Clientlist />
-            </div>
+            
             <div className="blogsec1 flex flex-col gap-6 items-center rounded-3xl">
                 <Tabs display={'flex'} justifyItems={'center'} alignItems={'center'} justifyContent={'center'} flexDirection={'column'}>
                     <TabList>
@@ -69,7 +66,7 @@ const Gallery = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className='md:hidden w-full h-[600px] my-8 grid gap-2 grid-rows-6 grid-cols-2'>
+                            <div className='md:hidden w-full my-8 grid gap-2 grid-rows-6 grid-cols-2'>
                                 <div className='h-full bg-[#d9d9d9]'>
                                     <img src={homepagebackground} alt="" className="object-cover w-full h-full" />
                                 </div>

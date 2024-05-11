@@ -12,24 +12,29 @@ import twitter from "../Images/twitter.png"
 
 
 const Footer = () => {
-    return <div className='bg-[#1D1D1D] w-full flex flex-col items-center py-2 pb-6 px-6 md:py-20 md:px-32'>
-        <div className="flex md:flex-row flex-row-reverse justify-between w-full">
-            <div className="text-white md:block hidden text-lg w-56 mt-12">Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
-            <div className="md:flex hidden flex-col h-48 justify-between mb-16">
-                <div className="text-white text-lg">Service</div>
-                <div className="text-white text-sm cursor-pointer">Architecture</div>
-                <div className="text-white text-sm cursor-pointer">Interior Design</div>
-                <div className="text-white text-sm cursor-pointer">Lighting Installation</div>
-                <div className="text-white text-sm cursor-pointer">Floor Planning</div>
+    return <div className='w-full flex flex-col items-center py-2 pb-6 px-6'>
+        <div className="w-full h-[1px] bg-black mb-4"></div>
+        <div className="flex flex-row text-[#666666] justify-between w-full md:w-[90%]">
+        <div className="flex flex-col h-48">
+                <div className="text-base md:text-xl font-bold">Community</div>
+                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer">Blogs</div>
+                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer">Case Studies</div>
+                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer">Media</div>
             </div>
-            <div className="flex flex-col md:h-48 justify-between mb-6 md:mb-16">
-                <div className="text-white text-lg">About Us</div>
-                <div className="text-white text-sm cursor-pointer">About Us</div>
-                <div className="text-white text-sm cursor-pointer">Our Team</div>
-                <div className="text-white text-sm cursor-pointer">Testimonials</div>
-                <div className="text-white text-sm cursor-pointer">Contact</div>
+            <div className="flex flex-col h-48">
+                <div className="text-base md:text-xl font-bold">Company</div>
+                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer">About Us</div>
+                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer">Testimonials</div>
+                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer">Gallery</div>
+                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer">Contact</div>
             </div>
-            <div className="text-white text-lg">
+            <div className="flex flex-col md:h-48">
+                <div className="text-base md:text-xl font-bold">Useful Links</div>
+                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer">Privacy Policy</div>
+                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer">Testimonials</div>
+                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer">Terms & Conditions</div>
+            </div>
+            <div className="md:block hidden text-xl font-bold">
                 Recent Work
                 <div className="grid grid-cols-3 gap-2 mr-3 md:gap-4 mt-6 mb-6 cursor-pointer">
                     <img src={img1} alt="" className="w-12 md:w-16" />
@@ -41,14 +46,14 @@ const Footer = () => {
                 </div>
             </div>
         </div>
-        <div className="w-full h-[1px] bg-white"></div>
-        <div className="flex flex-row justify-between w-full mt-1 md:mt-4">
-            <div className="text-white text-sm md:text-lg">Copyright @ 2024 SPAR. All rights reserved</div>
-            <div className="md:flex flex-row w-[15%] hidden justify-between">
-                <img src={insta} className="h-6 cursor-pointer" alt="" />
-                <img src={linkedin} className="h-6 cursor-pointer" alt="" />
-                <img src={fb} className="h-6 cursor-pointer" alt="" />
-                <img src={twitter} className="h-6 cursor-pointer" alt="" />
+        <div className="w-full h-[1px] bg-black"></div>
+        <div className="flex flex-col-reverse md:flex-row items-center justify-between w-full mt-1 md:mt-4">
+            <div className=" text-xs md:text-xl">Copyright @ 2024 SPAR. All rights reserved</div>
+            <div className="flex flex-row w-2/5 my-3 md:w-[15%] justify-between">
+                <img src={insta} className="h-4 md:h-6 cursor-pointer" alt="" />
+                <img src={linkedin} className="h-4 md:h-6 cursor-pointer" alt="" />
+                <img src={fb} className="h-4 md:h-6 cursor-pointer" alt="" />
+                <img src={twitter} className="h-4 md:h-6 cursor-pointer" alt="" />
             </div>
         </div>
     </div>
