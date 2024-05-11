@@ -2,13 +2,16 @@ import React, { useState } from 'react'
 import aboutimg1 from '../Images/About img1.png'
 import aboutusphone from '../Images/aboutus phone.png'
 import aboutus from '../Images/aboutus.png'
-import aboutgraphic from '../Images/aboutgraphic.png'
-import testimonialimage from '../Images/testimonial image.png'
 import './aboutus.css'
 import Clientlist from './clientlist'
 import { useEffect } from 'react'
 import axios from 'axios'
 import BACKEND_URL from '../../helper'
+import diff1 from '../Images/diff1.png'
+import diff2 from '../Images/diff2.png'
+import diff3 from '../Images/diff3.png'
+import diff4 from '../Images/diff4.png'
+import diff5 from '../Images/diff5.png'
 import Navbar from '../HomePage/navbar'
 import Footer from '../HomePage/footer'
 
@@ -35,7 +38,7 @@ const Aboutus = () => {
     }
   };
   useEffect(() => {
-    window.scrollTo(0, 0)
+    // window.scrollTo(0, 0)
   }, [])
 
   return (
@@ -45,33 +48,70 @@ const Aboutus = () => {
       <div className=" w-full md:top-[-1.25rem] top-[-0.5rem] flex flex-col items-center relative">
         <Clientlist />
       </div>
-      <div className=' w-full md:mt-[-3rem] mt-[-2rem] flex flex-col md:flex-row justify-between'>
-        <img src={pic} alt="aboutus" className="w-[40%] -z-30 flex-shrink-0 md:block hidden" />
-        <div className='flex flex-col w-full px-8 md:py-10 md:mt-12'>
-          <div className='text-[#707070] text-4xl md:text-[4rem] flex flex-row justify-between font-bold '>
-            <div className='mt-[7vw] flex-shrink-0 w-full mb-4 md:mb-0 text-center md:w-auto'>About Us</div>
-            <img src={aboutgraphic} alt="aboutgraphic" className='md:block w-[20vw] hidden' />
-          </div>
-          <img src={aboutusphone} alt="aboutusphone" className='md:hidden block w-full' />
-          <div className='text-[#5C675A] text-[9px] leading-[10px] md:text-xl mb-4 md:mb-0 font-normal md:font-medium md:w-[90%] mt-4'>
-            {about}</div>
+      <div className='w-full flex flex-col items-center'>
+        <div className='text-[10vw] md:hidden block my-2 font-bold'>About Us</div>
+        <img src={aboutusphone} alt="aboutusphone" className="w-[90%] md:w-3/4" />
+        <div className='text-[7vw] font-bold md:block hidden'>About Us</div>
+        <div className='text-center text-[#5C675A] text-[9px] my-2 md:text-xl font-semibold w-[85%] md:w-3/4'>SPAR is a leading provider of bespoke solutions for a wide range of spaces, including retail, hospitality, corporate, and more. With a focus on innovation and quality, we offer end-to-end services from concept to installation, ensuring that every project meets the highest standards of excellence. Our team of experts is committed to delivering tailored solutions that not only meet but exceed our clients' expectations. Join us on a journey of transformation and let us bring your vision to life.</div>
+      </div>
+      <div className='md:w-4/5 w-[90%] grid grid-cols-2 md:hidden p-4 pt-8 pb-6 md:p-12 rounded-[40px] shade mb-3 md:mb-0'>
+        <div className='px-3 pb-6 border-r-[1px] border-black'>
+          <p className='md:text-2xl text-[11px] font-bold mb-2'>Our Mission</p>
+          <p className='text-[10px] md:text-[20px]'>To Digitize the Construction Supply Chain to bring in the control and predictability in construction project management.</p>
+        </div>
+        <div className='px-3 pb-6 border-black'>
+          <p className='md:text-2xl text-[11px] font-bold mb-2'>Our Vision</p>
+          <p className='text-[10px] md:text-[20px]'>To be the fastest ever construction company in India for small and medium scale projects.</p>
+        </div>
+        <div className='px-3 pb-6 border-r-[1px] border-black'>
+          <p className='md:text-2xl text-[11px] font-bold mb-2'>Our Values</p>
+          <p className='text-[10px] md:text-[20px]'>Infuse the idea of Leadership, Collaboration, Integrity, Accountability & Passion in each individual.</p>
+        </div>
+        <div className='px-3 pb-6'>
+          <p className='md:text-2xl text-[11px] font-bold mb-2'>Our Culture</p>
+          <p className='text-[10px] md:text-[20px]'>Create a strong culture where the entire team lifts each other up in good & bad times.</p>
         </div>
       </div>
-      <div className=' font-bold text-xs md:text-4xl pt-2 md:pt-12 bg-[#F8F8F8] w-full text-center'>TESTIMONIALS</div>
-      <div className='text-4xl md:text-8xl text-[#2C6856] font-bold bg-[#F8F8F8] w-full text-center py-2 md:py-6'>PEOPLE SAYS</div>
-      <div className=' grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-6 md:gap-y-12 w-2/3 md:w-4/5 mb-6 md:mb-36'>
-        {testimonials.map(testimonial => (
-          <div key={testimonial._id} className='w-[100%] p-4 shade rounded-lg'>
-            <div className='italic text-xs md:text-lg'>" {testimonial.content} "</div>
-            <div className='flex flex-row items-center mt-4'>
-              <img src={testimonial.image} className='md:w-auto w-8' alt="" />
-              <div className='italic text-xs md:text-lg ml-4'>{testimonial.name}</div>
-            </div>
+      <div className='md:text-[4vw] text-2xl my-2 font-bold'>We Solve the Right Problems.</div>
+      <div className='flex gap-12 flex-col my-12 items-center w-[90%]'>
+        <div className='flex w-full justify-evenly flex-row gap-6 items-center'>
+          <div className='flex flex-col items-center'>
+            <img src={diff1} alt="aboutus" className="w-20" />
+            <div className='text-center font-semibold text-3xl'>Highly Committed to Work</div>
           </div>
-        ))}
+          <div className='text-white text-[1.5vw] bg-[#2C6856] p-6 px-12 rounded-full w-3/5'>We are dedicated to delivering exceptional results and ensuring customer satisfaction.</div>
+        </div>
+        <div className='flex w-full justify-evenly flex-row-reverse gap-6 items-center'>
+          <div className='flex flex-col items-center'>
+            <img src={diff2} alt="aboutus" className="w-20" />
+            <div className='text-center font-semibold text-3xl'>Own Team and Supply Unit</div>
+          </div>
+          <div className='text-white text-[1.5vw] bg-[#2C6856] p-6 px-12 rounded-full w-3/5'>With our in-house team and supply unit, we have full control over the quality and timeline of our projects.</div>
+        </div>
+        <div className='flex w-full justify-evenly flex-row gap-6 items-center'>
+          <div className='flex flex-col items-center'>
+            <img src={diff3} alt="aboutus" className="w-20" />
+            <div className='text-center font-semibold text-3xl'>Controlled Customization Cost</div>
+          </div>
+          <div className='text-white text-[1.5vw] bg-[#2C6856] p-6 px-12 rounded-full w-3/5'> We offer cost-effective solutions without compromising on quality, ensuring that customization remains affordable.</div>
+        </div>
+        <div className='flex w-full justify-evenly flex-row-reverse gap-6 items-center'>
+          <div className='flex flex-col items-center'>
+            <img src={diff4} alt="aboutus" className="w-20" />
+            <div className='text-center font-semibold text-3xl'>End-to-End Solution</div>
+          </div>
+          <div className='text-white text-[1.5vw] bg-[#2C6856] p-6 px-12 rounded-full w-3/5'>From concept to completion, we provide comprehensive services, handling every aspect of the project.</div>
+        </div>
+        <div className='flex w-full justify-evenly flex-row gap-6 items-center'>
+          <div className='flex flex-col items-center'>
+            <img src={diff5} alt="aboutus" className="w-20" />
+            <div className='text-center font-semibold text-3xl'>Prototype and Mockup to Roll Out</div>
+          </div>
+          <div className='text-white text-[1.5vw] bg-[#2C6856] p-6 px-12 rounded-full w-3/5'>Our process includes creating prototypes and mockups to ensure that the final product meets your expectations before full-scale rollout.</div>
+        </div>
       </div>
       <Footer />
-    </div>
+    </div >
   )
 }
 

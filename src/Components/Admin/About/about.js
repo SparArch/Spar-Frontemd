@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import NavAd from '../NavAd'
 import SideNav from '../SideNav'
 import '../Home/home.css'
@@ -9,7 +9,23 @@ import right_align_icon from '../../Images/right_align.png'
 import center_align_icon from '../../Images/center_align.png'
 import bullet_icon from '../../Images/bullets.png'
 import b from '../../Images/b.png'
-const about = () => {
+import axios from 'axios'
+import BACKEND_URL from '../../../helper'
+const About = () => {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const handleSubmitAboutUs = async (e) => {
+    e.preventDefault();
+
+    try {
+      await axios.post(`${BACKEND_URL}/api/about`, { title, content });
+      // Assuming successful creation, you may want to show a success message or redirect
+      console.log('About Us created successfully');
+    } catch (error) {
+      console.error('Error creating About Us:', error);
+      // Handle error, show error message to the user, etc.
+    }
+  };
   return (
     <div style={{ backgroundColor: "#D9E2DF" }}>
       <NavAd />
@@ -31,11 +47,13 @@ const about = () => {
               <Button><img src={bullet_icon} alt="clip_logo" /></Button>
               <Button>FONT Options</Button>
 
-              <Button marginLeft={'20rem'} backgroundColor={'#2C6856'} color={'#fff'}>SAVE CHANGES</Button>
+              <Button onClick={handleSubmitAboutUs} marginLeft={'20rem'} backgroundColor={'#2C6856'} color={'#fff'}>SAVE CHANGES</Button>
             </div>
             <div>
-              <Input marginTop={'20px'} borderRadius={'50px'} marginBottom={'20px'} placeholder='Title' />
-              <Input placeholder='Write...' borderRadius={'20px'} minHeight={'80px'} />
+              <Input value={title}
+                onChange={(e) => setTitle(e.target.value)} marginTop={'20px'} borderRadius={'50px'} marginBottom={'20px'} placeholder='Title' />
+              <Input value={content}
+                onChange={(e) => setContent(e.target.value)} placeholder='Write...' borderRadius={'20px'} minHeight={'80px'} />
             </div>
           </div>
           <div>
@@ -101,4 +119,4 @@ const about = () => {
   )
 }
 
-export default about
+export default About;

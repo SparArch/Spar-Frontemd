@@ -57,29 +57,28 @@
 }
 
 .quote-box {
-  padding: 20px 20px;
+  padding: 15px;
+  padding-top: 25px;
   color: #fff;
   background-color: #6d776c;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
   justify-content: center;
   align-items: center;
   position: relative;
-  top: -650px;
-  left: 70px;
-  width: 296px;
+  width: 270px;
   z-index: 20;
   border-radius: 45px;
 }
 .quote-1 {
-  font-size: 20px;
+  font-size: 16px;
+  line-height: 5px;
   font-weight: 500;
 }
 .quote-2 {
   font-size: 30px;
-  font-weight: 500;
-  margin-bottom: 10px;
+  font-weight: 700;
 }
 .quote-name {
   border-radius: 2px;
@@ -94,12 +93,6 @@
 .midsec2 {
   border-radius: 20px;
   margin-bottom: 10vh;
-}
-.midsec2-content {
-  max-width: 70vh;
-  font-size: 13px;
-  line-height: 25px;
-  margin-bottom: 30px;
 }
 .midsec22 {
   background-image: url(../Images/services\ bg.png);
@@ -122,8 +115,19 @@
   /* filter: brightness(50%); */
   color: white;
 }
+
 .homeback {
-  margin-left: 14rem;
+  width: 75vw;
+}
+
+.img {
+  width: 120px;
+  height: 60px;
+}
+
+.img {
+  width: 120px;
+  height: 60px;
 }
 .img {
   width: 120px;
@@ -146,7 +150,8 @@
     top: -700px;
     /* left: 390px; */
   }
-
+}
+@media (max-width: 1072px) {
   li {
     display: none;
   }

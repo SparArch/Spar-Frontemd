@@ -1,236 +1,159 @@
 import React from 'react';
 import './homepage.css'
-import Navbar from './navbar'
 import { Button, Divider, Image, position } from '@chakra-ui/react';
-import Back from '../Images/Homepage_back.png'
-import Footer from './footer'
+import Slider from 'react-slick';
+import homebg from '../Images/homebg.png'
+import homebg2 from '../Images/homebg2.png'
 import { useEffect } from 'react';
-import Clientlist from '../AboutUs/clientlist';
-import midsecback1 from '../Images/home-mid1.png'
-import midsecback2 from '../Images/home-mid2.png'
+import Clientlist from '../AboutUs/clientlist'
 import service1 from '../Images/service1.png'
 import service2 from '../Images/service2.png'
+import service3 from '../Images/service3.png'
 import service4 from '../Images/service4.png'
 import service5 from '../Images/service5.png'
 import service6 from '../Images/midsec2-1.png'
+import rightprob from '../Images/rightprob.png'
+import rightprobphone from '../Images/rightprobphone.png'
+import joinus from '../Images/joinus.png'
+import Bookacall from '../AboutUs/bookacall'
 import morebtn from '../Images/midsec2-2.png'
-import midsec31 from '../Images/midsec3-1.png'
-import midsec32 from '../Images/midsec3-2.png'
-import midsec33 from '../Images/midsec3-3.png'
-import diff1 from '../Images/diff1.png'
-import diff2 from '../Images/diff2.png'
-import diff3 from '../Images/diff3.png'
-import diff4 from '../Images/diff4.png'
 import midsec51 from '../Images/midsec5-1.png'
 import midsec52 from '../Images/midsec5-2.png'
 import midsec53 from '../Images/midsec5-3.png'
 import midsec54 from '../Images/midsec5-4.png'
 import midsec55 from '../Images/midsec5-5.png'
-import midsec56 from '../Images/midsec5-6.png'
-import line from '../Images/line.png'
 import midsec71 from '../Images/midsec7-1.png'
 import midsec81 from '../Images/midsec8-1.png'
-import midsec82 from '../Images/midsec8-2.png'
-import { Tooltip } from '@chakra-ui/react'
+import Navbar from './navbar';
 const Homepage = () => {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+
+  //sample testimonials
+  const testimonials = [{ _id: 1, content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', name: 'Alan David', image: "" },
+  { _id: 1, content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', name: 'Alan David', image: "" },
+  { _id: 1, content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', name: 'Alan David', image: "" },];
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000
+  };
+
   return (
 
     <div className='Home'>
       <Navbar />
-      <div>
-
-        <Image
-          src={Back}
-          width={'1350px'}
-          height={'1081px'}
-          backgroundPosition={'center'}
-          backgroundSize={'cover'}
-          className='homeback'
-        />
-        <div className='quote-box'>
-          <div className='quote-1'>Quick Service Request</div>
-          <div className='quote-2'>Get a Free Quote</div>
-          <input className='quote-name px-3' type="text" placeholder='Name' style={{ color: '#C4C4C4' }} />
-          <input className='quote-num px-3' type="text" placeholder='Phone No.' style={{ color: '#C4C4C4' }} />
-          <Button backgroundColor={'#2C6856'} color={'white'}>Send </Button>
+      <div className=' '>
+        <div className='w-full'>
+          <img src={homebg} className='w-full' />
         </div>
         {/* <div className='relative bottom-36 -mt-16 -mb-20'><Clientlist /></div> */}
-        <div className=" w-full md:top-[-1.25rem] top-[-0.5rem] flex flex-col items-center relative mt-[-200px]">
+        <div className=" w-full md:top-[-1.25rem] top-[-1.5rem] flex flex-col items-center relative">
           <Clientlist />
         </div>
-      </div>
-      <div className='midsec1 bg-[#f8f8f8] flex pt-20 mt-[50px]' >
-        <img src={midsecback1} className='absolute mt-[-100px] ml-[100px] w-[250px] h-[165px] 
-        md:block w-[20vw] hidden' />
-        <div className='flex flex-row justify-center align-middle'>
-          <img src={midsecback2} className=' h-[466px] w-[780px] ml-[200px] ' />
-          <div className='relative ml-[-195px] mt-[50px] '>
-            <div className='midsec2 flex flex-col bg-[#fff] p-[60px] z-20 pb-[90px]' >
-              <div className='midsec2-title text-3xl font-bold mb-[2vh]'>
-                How We are Different?
-              </div>
-              <div className='midsec2-content'>
-                "Discover excellence with SPAR TechnoVet! Based in India, we specialize in top-notch fit-out services and bespoke furniture. Our seasoned professionals bring vast expertise in crafting exceptional commercial and residential spaces. From captivating retail areas to functional offices, we turn visions into reality. At SPAR TechnoVet, we blend innovation with precision, delivering unparalleled results. Elevate your space with us – Where Vision Meets Expertise!"
-              </div>
-              <Button maxWidth={'140px'} backgroundColor={'#2C6856'} color={'white'}>
-                KNOW MORE
-              </Button>
-            </div>
-          </div>
+        <div className='w-full'>
+          <img src={homebg2} className='w-full' />
         </div>
-
       </div>
-      <div className="midsec22 flex justify-center">
+      <div className="midsec22 flex flex-col items-center justify-center">
+        <div className=' text-3xl md:text-5xl font-bold mt-8 text-center'>We Know Every Space.</div>
+        <div className=' text-base md:text-xl font-semibold mt-4 text-center'>Transformative, Tailored, Innovative.</div>
         <div className='mt-12 grid md:gap-10 gap-3 grid-cols-2 md:grid-cols-3 md:w-2/3 w-[90%] mb-12'>
           <div className=' bg-white flex flex-col items-center px-4 md:px-10 py-2 md:py-6 rounded-xl md:rounded-3xl'>
             <img src={service1} className='md:h-[30%] h-10' alt="" />
-            <p className='md:text-[1.2vw] text-sm text-center font-semibold my-1 md:my-4'>Retail interior</p>
-            <p className='text-center text-[8px] md:text-[0.8vw]'>"Elevate your retail experience with SPAR TechnoVet. We design spaces that captivate, engage, and reflect your brand identity. Transform your retail environment with us."</p>
+            <p className='md:text-[1.2vw] text-sm text-center font-semibold my-1 md:my-4'>Bespoke Solutions</p>
+            <p className='text-center text-[8px] md:text-[0.8vw]'>Customized design solutions tailored to fit the unique requirements and branding of each space.</p>
           </div>
           <div className=' bg-white flex flex-col items-center px-4 md:px-10 py-2 md:py-6 rounded-xl md:rounded-3xl'>
             <img src={service2} className='md:h-[30%] h-10' alt="" />
-            <p className='md:text-[1.2vw] text-sm text-center font-semibold my-1 md:my-4'>Office interior</p>
-            <p className='text-center text-[8px] md:text-[0.8vw]'>"Transform your workspace with SPAR TechnoVet. Innovative, functional, and tailored office interiors for elevated productivity."</p>
+            <p className='md:text-[1.2vw] text-sm text-center font-semibold my-1 md:my-4'>Roll-out Pervices</p>
+            <p className='text-center text-[8px] md:text-[0.8vw]'>Strategic planning and execution of multi-location rollouts, maintaining consistency and quality across all spaces.</p>
           </div>
-          <div className=' flex flex-col justify-start'>
-            <p className='md:text-[2vw] text-sm text-center font-bold my-1 leading-10 md:my-4'>Services Provided By Us</p>
-            <p className='text-center text-[8px] md:text-[0.8vw]'>We have been providing great
-              interior solutions service.</p>
-            <button className='text-white bg-[#2C6856]max-w-[20px]'>Learn More</button>
+          <div className=' bg-white hidden md:flex flex-col items-center px-4 md:px-10 py-2 md:py-6 rounded-xl md:rounded-3xl'>
+            <img src={service3} className='md:h-[30%] h-10' alt="" />
+            <p className='md:text-[1.2vw] text-sm text-center font-semibold my-1 md:my-4'>Sustainable Practices</p>
+            <p className='text-center text-[8px] md:text-[0.8vw]'>Committed to sustainable practices, offering Eco-friendly solutions for retail environments.</p>
           </div>
           <div className=' bg-white flex flex-col items-center px-4 md:px-10 py-2 md:py-6 rounded-xl md:rounded-3xl'>
             <img src={service4} className='md:h-[30%] h-10' alt="" />
-            <p className='md:text-[1.2vw] text-sm text-center font-semibold my-1 md:my-4'>Restaurant interior</p>
-            <p className='text-center text-[8px] md:text-[0.8vw]'>"Experience dining differently with SPAR TechnoVet. We create inviting restaurant interiors that elevate your culinary journey."</p>
+            <p className='md:text-[1.2vw] text-sm text-center font-semibold my-1 md:my-4'>Manufacturing</p>
+            <p className='text-center text-[8px] md:text-[0.8vw]'>High-quality manufacturing of fixtures, fittings, and furniture to bring designs to life.</p>
           </div>
-          <div className=' bg-white flex flex-col items-center px-4 md:px-10 py-2 md:py-6 rounded-xl md:rounded-3xl'>
+          <div className=' bg-white hidden md:flex flex-col items-center px-4 md:px-10 py-2 md:py-6 rounded-xl md:rounded-3xl'>
             <img src={service5} className='md:h-[30%] h-10' alt="" />
-            <p className='md:text-[1.2vw] text-sm text-center font-semibold my-1 md:my-4'>Turnkey Retail Fit-out</p>
-            <p className='text-center text-[8px] md:text-[0.8vw]'>"SPAR Technovet excels in turnkey retail fitouts, providing end-to-end solutions for seamless and efficient design-to-execution services."</p>
+            <p className='md:text-[1.2vw] text-sm text-center font-semibold my-1 md:my-4'>End-to-End Solutions</p>
+            <p className='text-center text-[8px] md:text-[0.8vw]'> Offers comprehensive end-to-end solutions for all interiors, covering everything from initial design concepts to final installation.</p>
           </div>
-          <div className=' bg-[#2C6856] flex flex-row md:rounded-3xl text-white '>
-            <div>
-              <p className='md:text-[1.6vw] text-sm text-center font-semibold my-1 md:my-4 p-[6vh] pl-[0] pt-[8vh] pb-0'>+4</p>
-              <p className='md:text-[2vw] text-sm text-center font-semibold my-1 md:my-4 p-[6vh] pt-1'>More</p>
+          <div className=' bg-[#2C6856] flex flex-row rounded-xl md:rounded-3xl text-white '>
+            <div className='ml-3'>
+              <p className='md:text-[1.6vw] text-sm text-center font-semibold my-1 md:my-4 pl-[0] pt-14 md:pt-20 pb-0'>+4</p>
+              <p className='md:text-[1.6vw] text-sm font-semibold my-1 md:my-10 pl-[0] pb-0'>Learn More</p>
             </div>
             <div className='flex flex-col'>
-              <img src={service6} alt="" className='w-[60px] h-[125px] ' />
-              <img src={morebtn} alt=""
-                className='w-[10px] h-[30px] m-[50px]  md:hidden block'
-              />
+              <img src={service6} alt="" className='md:w-[60px] md:h-[125px] h-[70px] w-[50px]' />
+              <div><img src={morebtn} alt=""
+                className='h-[20px] md:h-auto m-4'
+              /></div>
             </div>
           </div>
         </div>
       </div>
-      <div className="midsec3 mt-20 flex flex-row gap-6 justify-center align-text-bottom">
-        <div className='flex flex-col max-w-[400px]'>
-          <p className='text-[40px] font-bold'>
-            Creative Solutions by Professional
-          </p>
-          <p className='max-w-[600px]'>
-            SPAR Technovet stands out for seamlessly integrating design and execution, offering end-to-end solutions with efficient project management, transparent pricing, and a comprehensive approach. The company's expertise includes in-house manufacturing, proven project success, and strategic labor optimization for optimal timelines and quality results.
-          </p>
-          <div display={'flex'} justifyContent={'center'} >
-            <Image margin={'1.2rem'} width={'300px'} height={'70px'} src={midsec33} />
-          </div>
+
+      <div className='w-full my-8 flex flex-col items-center'>
+        <img src={rightprob} onClick={{}} className='hidden w-4/5 md:block'></img>
+        <img src={rightprobphone} onClick={{}} className='md:hidden w-4/5 block'></img>
+      </div>
+
+      <div className='w-full flex flex-col items-center overflow-hidden'>
+        <div className='text-2xl font-bold md:text-4xl'>Testimonials</div>
+        <div className='text-base my-2 md:my-6 font-semibold md:text-xl'>Where Excellence Meets Execution</div>
+        <Slider {...settings} className='w-[98%] md:w-[90%]'>
+          {testimonials.map(testimonial => (
+            <div className='p-1 md:p-4'>
+              <div key={testimonial._id} className=' md:p-5 p-3 text-white bg-[#4A8780] rounded-lg'>
+                <div className='italic text-[8px] md:text-lg'>" {testimonial.content} "</div>
+                <div className='flex flex-row items-center mt-4'>
+                  <img src={testimonial.image} className='md:w-16 w-5' alt="" />
+                  <div className='italic text-[8px] md:text-lg ml-4'>{testimonial.name}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </Slider>
+      </div>
+
+      <div className='midsec5 flex flex-col p-[40px] md:p-[100px] bg-zinc-100 justify-center'>
+
+        <div className='flex flex-row justify-between mb-2 md:mb-8'>
+          <p className='md:text-[35px] flex-shrink-0 text-[15px] font-bold'>Our Featured Projects</p>
 
         </div>
-        <div>
-          <Image width={'300px'} height={'370px'} src={midsec31} />
-        </div>
-        <div>
-          <Image width={'300px'} height={'460px'} src={midsec32} />
-        </div>
-      </div>
-      <div className='midsec4 flex justify-center mt-10'>
-        <div className='flex flex-row w-4/5 justify-evenly'>
-          <div className='flex flex-col items-center text-2xl w-52 text-center font-semibold text-[#1E443E]'>
-            <img src={diff1} className='mb-2 h-24' alt="" />
-            Highly committed to Work
-          </div>
-          <div className='flex flex-col items-center text-2xl w-52 text-center font-semibold text-[#1E443E]'>
-            <img src={diff2} className='mb-2 h-24' alt="" />
-            Own team and supply unit
-          </div>
-          <div className='flex flex-col items-center text-2xl w-52 text-center font-semibold text-[#1E443E]'>
-            <img src={diff3} className='mb-2 h-24' alt="" />
-            Controlled Customization cost
-          </div>
-          <div className='flex flex-col items-center text-2xl w-52 text-center font-semibold text-[#1E443E]'>
-            <img src={diff4} className='mb-2 h-24' alt="" />
-            End to end solution
-          </div>
-        </div>
-      </div>
-      <div className='midsec5 flex flex-col p-[100px] bg-zinc-100 justify-center'>
+        <div className='flex flex-col gap-1 w-[80vw] md:gap-4 items-center'>
 
-        <div className='flex flex-row justify-center gap-[50vw] mb-8'>
-          <p className='text-[35px] font-bold'>Our Featured Projects</p>
-          <Button maxWidth={'120px'} backgroundColor={'#2C6856'} color={'white'}>View More</Button>
-        </div>
-        <div className='flex flex-col gap-4 justify-center ml-[100px] mr-[auto]'>
-          <Image width={'170px'} height={'250px'} position={'absolute'} marginTop={'200px'} marginLeft={'-120px'} src={midsec56} />
-          <div className='flex flex-row gap-4'>
-            <Image width={'700px'} height={'410px'} src={midsec51} />
-            <div className='flex flex-col gap-4'>
-              <Image width={'400px'} height={'200px'} src={midsec52} />
-              <Image width={'400px'} height={'200px'} src={midsec53} />
+          <div className='flex flex-row gap-1 md:gap-4'>
+            <div><Image src={midsec51} /></div>
+            <div className='flex flex-col gap-1 md:gap-4'>
+              <div><Image src={midsec52} /></div>
+              <div><Image src={midsec53} /></div>
             </div>
           </div>
 
-          <div className='flex flex-row gap-4'>
-            <Image width={'720px'} height={'200px'} src={midsec54} />
-            <Image width={'380px'} height={'200px'} src={midsec55} />
+          <div className='flex flex-row w-full gap-1 md:gap-4'>
+            <div><img src={midsec54} /></div>
+            <div><img src={midsec55} /></div>
           </div>
         </div>
-      </div>
-      <div className="midsec6 mb-[100px]">
-        <div className='title flex justify-center font-bold text-[30px]'>
-          How we Work
-        </div>
-        <div className='flex flex-row justify-center gap-8 mt-6'>
-          <div className='flex flex-col pl-[20px] pr-[45px] pt-[20px] pb-[30px] max-w-[80vh] gap-2'>
-            <p className='text-[40px] font-bold'>01</p>
-            <p className='text-[18px] font-bold max-w-[120px]'>Initial Consultation
-            </p>
-            <p className='max-w-[160px] text-[12px]'>Begin with a detailed discussion to comprehend the client's vision and requirements.</p>
-          </div>
-          <div className='work2 flex flex-col pl-[20px] pr-[45px] pt-[20px] pb-[30px] max-w-[80vh] gap-2'>
-            <p className='text-[40px] font-bold'>02</p>
-            <p className='text-[18px] font-bold max-w-[120px]'>Concept Development
-            </p>
-            <p className='max-w-[160px] text-[12px]'>Create innovative and personalized design concepts based on client input.
-            </p>
-          </div>
-          <div className='flex flex-col pl-[20px] pr-[45px] pt-[20px] pb-[30px] max-w-[80vh] gap-2'>
-            <p className='text-[40px] font-bold'>03</p>
-            <p className='text-[18px] font-bold max-w-[120px]'>Design
-              Approval
-            </p>
-            <p className='max-w-[160px] text-[12px]'>Present design proposals for client feedback and secure design approval.
-            </p>
-          </div>
-          <div className='btn flex flex-col mt-[80px]'>
-            <Button padding={'20px'} backgroundColor={'#2C6856'} color={'white'}>KNOW MORE</Button>
-
-          </div>
-        </div>
-        <Image src={midsecback1} width={'230px'} height={'145px'} position={'absolute'} marginLeft={'1120px'} marginTop={'-120px'} />
+        <div className='flex flex-col items-center w-full'><Button maxWidth={'120px'} className='my-2' backgroundColor={'#2C6856'} color={'white'}>View More</Button></div>
 
       </div>
-      <div className='midsec7 mb-10'>
-        <div className='flex flex-col justify-center'>
-          <div className='midsec7-title flex justify-center text-[40px] font-bold'>60 Days Journey From Design to Final Handover</div>
-          <Divider />
-          {/* <div className='line flex flex-col justify-center'><Image maxWidth={'500px'} src={line} /></div> */}
-          <div className='flex justify-center p-10'>
-            <Image width={'180vh'} height={'25vh'} src={midsec71} />
-          </div>
-        </div>
 
+      <div>
+        <img src={joinus} className='w-full my-4 md:my-8' alt="" />
       </div>
       <div className='midsec8 mb-10'>
         <div className='midsec8-title flex justify-center text-[35px] font-bold '>
@@ -266,7 +189,6 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div >
   )
 }
