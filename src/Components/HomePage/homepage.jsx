@@ -163,7 +163,7 @@ const Homepage = () => {
           <div className='flex flex-row gap-1 md:gap-4'>
             <div className='relative'>
               <Image src={midsec51} />
-              <div className='w-full h-full opacity-0 duration-500 hover:opacity-100 absolute top-0'>
+              <div className='w-full h-full opacity-0 duration-500 hover:opacity-100 bg-black/50 absolute top-0'>
                 <div className='flex absolute text-white bottom-0 flex-col p-1 md:p-3'>
                   <p className='text-[3cqw] md:text-[2cqw] font-bold'>Project Name</p>
                   <p className='text-[2cqw] md:text-[1cqw] md:my-2'>Location:- UK</p>
@@ -174,7 +174,7 @@ const Homepage = () => {
             <div className='flex flex-col gap-1 md:gap-4'>
               <div className='relative'>
                 <Image src={midsec52} />
-                <div className='w-full h-full opacity-0 duration-500 hover:opacity-100 absolute top-0'>
+                <div className='w-full h-full opacity-0 duration-500 hover:opacity-100 bg-black/50 absolute top-0'>
                 <div className='flex absolute text-white bottom-0 flex-col p-1 md:p-3'>
                   <p className='text-[3cqw] md:text-[2cqw] font-bold'>Project Name</p>
                   <p className='text-[2cqw] md:text-[1cqw] md:my-2'>Location:- UK</p>
@@ -184,7 +184,7 @@ const Homepage = () => {
               </div>
               <div className='relative'>
                 <Image src={midsec53} />
-                <div className='w-full h-full opacity-0 duration-500 hover:opacity-100 absolute top-0'>
+                <div className='w-full h-full opacity-0 duration-500 hover:opacity-100 bg-black/50 absolute top-0'>
                 <div className='flex absolute text-white bottom-0 flex-col p-1 md:p-3'>
                   <p className='text-[3cqw] md:text-[2cqw] font-bold'>Project Name</p>
                   <p className='text-[2cqw] md:text-[1cqw] md:my-2'>Location:- UK</p>
@@ -198,7 +198,7 @@ const Homepage = () => {
           <div className='flex flex-row gap-1 md:gap-4'>
             <div className='relative'>
               <img src={midsec54} />
-              <div className='w-full h-full opacity-0 duration-500 hover:opacity-100 absolute top-0'>
+              <div className='w-full h-full opacity-0 duration-500 hover:opacity-100 bg-black/50 absolute top-0'>
                 <div className='flex absolute text-white bottom-0 flex-col p-1 md:p-3'>
                   <p className='text-[3cqw] md:text-[2cqw] font-bold'>Project Name</p>
                   <p className='text-[2cqw] md:text-[1cqw] md:my-2'>Location:- UK</p>
@@ -208,7 +208,7 @@ const Homepage = () => {
             </div>
             <div className='relative'>
               <img src={midsec55} />
-              <div className='w-full h-full opacity-0 duration-500 hover:opacity-100 absolute top-0'>
+              <div className='w-full h-full opacity-0 duration-500 hover:opacity-100 bg-black/50 absolute top-0'>
                 <div className='flex absolute text-white bottom-0 flex-col p-1 md:p-3'>
                   <p className='text-[3cqw] md:text-[2cqw] font-bold'>Project Name</p>
                   <p className='text-[2cqw] md:text-[1cqw] md:my-2'>Location:- UK</p>

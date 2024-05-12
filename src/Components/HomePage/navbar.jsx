@@ -30,7 +30,7 @@ const Navbar = () => {
   };
   return (
     <>
-      <div className='NavBar flex justify-center'>
+      <div className='NavBar flex justify-center align-middle'>
         <div className='fixed z-[120]  p-2 flex justify-center'>
           <div className="navbar drop-shadow-xl">
             <div className="div-2 flex flex-row justify-center gap-[240px]">
@@ -97,7 +97,7 @@ const Navbar = () => {
             }}>About</div>
             <Divider />
             <div onClick={() => {
-              navigate("/services");
+              navigate("/service");
               onClose();
             }}>Service</div>
             <Divider />

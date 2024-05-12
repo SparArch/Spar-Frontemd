@@ -1,0 +1,40 @@
+.Titles-main {
+  display: flex;
+  justify-content: center;
+  margin-top: 10rem;
+  /* align-content: flex-start; */
+  background-color: #fff;
+  /* background-image: url("../../Images/admin-bg2.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: none; */
+}
+.Titles {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 50px;
+  margin-left: 200px;
+}
+.Titles h3 {
+  /* font-family:; */
+  font-weight: 700;
+  font-size: 35px;
+  color: #4a8780;
+}
+.title1 {
+  display: flex;
+  gap: 10px;
+}
+.title1 img {
+  height: 20px;
+}
+.title2 {
+  display: flex;
+  justify-content: space-between;
+}
+.title3 {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
