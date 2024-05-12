@@ -1,0 +1,9 @@
+.shade {
+  -webkit-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+.slider-container {
+  cursor: none;
+}

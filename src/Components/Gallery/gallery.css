@@ -1,0 +1,10 @@
+.abcd {
+    border-radius: 5px;
+}
+
+@media (max-width:768px) {
+    .chakra-tabs__tab{
+        padding-left: 3px !important;
+        padding-right: 3px !important;
+    }
+}
