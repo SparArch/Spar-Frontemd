@@ -5,7 +5,6 @@ import Bookacall from '../AboutUs/bookacall'
 import Clientlist from '../AboutUs/clientlist'
 import contactusbg from '../Images/contactusbg.png'
 import { Button } from '@chakra-ui/react'
-import Navbar from '../HomePage/navbar'
 
 
 const Gallerypost = () => {
@@ -15,7 +14,6 @@ const Gallerypost = () => {
 
     return (
         <div className='flex flex-col items-center'>
-            <Navbar />
             <img src={contactusbanner} alt="aboutimg1" className="z-10 w-full top-0" />
             <div className=" w-full md:top-[-1.25rem] top-[-1.5rem] flex flex-col items-center relative">
                 <Clientlist />
@@ -34,7 +32,7 @@ const Gallerypost = () => {
                         <div className='text-sm md:text-xl mt-6 font-bold'>Contact No</div>
                         <input type='text' className='w-full p-1 my-2' placeholder='Enter Your Contact No' />
                         <div className='text-sm md:text-xl mt-6 font-bold'>Message/Enquiry</div>
-                        <textarea rows={5} cols={60} style={{ resize: "none" }} className='w-full p-1 my-2' placeholder='Enter Your Message/Enquiry' />
+                        <textarea rows={5} cols={60} style={{resize:"none"}} className='w-full p-1 my-2' placeholder='Enter Your Message/Enquiry' />
                         <div className='w-full flex flex-col items-center'><Button maxWidth={'120px'} className='my-2' backgroundColor={'#2C6856'} color={'white'}>SUBMIT</Button></div>
                     </div>
                 </div>

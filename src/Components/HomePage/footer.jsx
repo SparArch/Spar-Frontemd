@@ -47,7 +47,7 @@ const Footer = () => {
             </div>
         </div>
         <div className="w-full h-[1px] bg-black"></div>
-        <div className="flex flex-col-reverse md:flex-row items-center justify-between w-full mt-1 md:mt-4">
+        <div className="flex flex-col-reverse md:flex-row items-center justify-between w-full md:w-[90%] mt-1 md:mt-4">
             <div className=" text-xs md:text-xl">Copyright @ 2024 SPAR. All rights reserved</div>
             <div className="flex flex-row w-2/5 my-3 md:w-[15%] justify-between">
                 <img src={insta} className="h-4 md:h-6 cursor-pointer" alt="" />

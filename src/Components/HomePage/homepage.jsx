@@ -24,10 +24,14 @@ import midsec54 from '../Images/midsec5-4.png'
 import midsec55 from '../Images/midsec5-5.png'
 import midsec71 from '../Images/midsec7-1.png'
 import midsec81 from '../Images/midsec8-1.png'
-import Navbar from './navbar';
+import diff1 from '../Images/diff1.png'
+import diff2 from '../Images/diff2.png'
+import diff3 from '../Images/diff3.png'
+import diff4 from '../Images/diff4.png'
+import diff5 from '../Images/diff5.png'
 const Homepage = () => {
   useEffect(() => {
-    window.scrollTo(0, 0)
+    // window.scrollTo(0, 0)
   }, [])
 
   //sample testimonials
@@ -45,9 +49,7 @@ const Homepage = () => {
   };
 
   return (
-
     <div className='Home'>
-      <Navbar />
       <div className=' '>
         <div className='w-full'>
           <img src={homebg} className='w-full' />
@@ -63,7 +65,7 @@ const Homepage = () => {
       <div className="midsec22 flex flex-col items-center justify-center">
         <div className=' text-3xl md:text-5xl font-bold mt-8 text-center'>We Know Every Space.</div>
         <div className=' text-base md:text-xl font-semibold mt-4 text-center'>Transformative, Tailored, Innovative.</div>
-        <div className='mt-12 grid md:gap-10 gap-3 grid-cols-2 md:grid-cols-3 md:w-2/3 w-[90%] mb-12'>
+        <div className='mt-12 grid md:gap-10 gap-3 grid-cols-2 md:grid-cols-3 md:w-2/3 w-[90%] md:mb-12'>
           <div className=' bg-white flex flex-col items-center px-4 md:px-10 py-2 md:py-6 rounded-xl md:rounded-3xl'>
             <img src={service1} className='md:h-[30%] h-10' alt="" />
             <p className='md:text-[1.2vw] text-sm text-center font-semibold my-1 md:my-4'>Bespoke Solutions</p>
@@ -105,14 +107,37 @@ const Homepage = () => {
       </div>
 
       <div className='w-full my-8 flex flex-col items-center'>
-        <img src={rightprob} onClick={{}} className='hidden w-4/5 md:block'></img>
-        <img src={rightprobphone} onClick={{}} className='md:hidden w-4/5 block'></img>
+        <div className='text-2xl font-bold my-4 md:my-12 md:text-4xl'>We Solve the Right Problems.</div>
+        <div className='grid md:grid-cols-5 gap-8 grid-cols-2 w-[80%]'>
+          <div className='flex flex-col items-center justify-center text-base md:text-xl text-center font-semibold text-[#1E443E]'>
+            <img src={diff1} className='mb-2 h-12 md:h-24' alt="" />
+            Highly committed to Work
+          </div>
+          <div className='flex flex-col items-center justify-center text-base md:text-xl text-center font-semibold text-[#1E443E]'>
+            <img src={diff2} className='mb-2 h-12 md:h-24' alt="" />
+            Own team and supply unit
+          </div>
+          <div className='flex flex-col items-center justify-center text-base md:text-xl text-center font-semibold text-[#1E443E]'>
+            <img src={diff3} className='mb-2 h-12 md:h-24' alt="" />
+            Controlled Customization cost
+          </div>
+          <div className='flex flex-col items-center justify-center text-base md:text-xl text-center font-semibold text-[#1E443E]'>
+            <img src={diff4} className='mb-2 h-12 md:h-24' alt="" />
+            End to end solution
+          </div>
+          <div className='flex flex-col items-center justify-center text-base md:text-xl text-center font-semibold text-[#1E443E]'>
+            <img src={diff5} className='mb-2 h-12 md:h-24' alt="" />
+            Prototype/Mock-up to Roll-out.
+          </div>
+          <div className='md:hidden font-bold text-white bg-[#2C6856] m-4 rounded-xl text-center text-xl flex flex-col items-center justify-center'>KNOW<br /> MORE</div>
+        </div>
+        <div className='font-bold text-white bg-[#2C6856] p-4 m-4 rounded-xl text-center text-xl hidden md:flex flex-col items-center justify-center'>KNOW MORE</div>
       </div>
 
       <div className='w-full flex flex-col items-center overflow-hidden'>
         <div className='text-2xl font-bold md:text-4xl'>Testimonials</div>
         <div className='text-base my-2 md:my-6 font-semibold md:text-xl'>Where Excellence Meets Execution</div>
-        <Slider {...settings} className='w-[98%] md:w-[90%]'>
+        <Slider {...settings} className='w-[98%] md:w-[90%] max-w-[1100px]'>
           {testimonials.map(testimonial => (
             <div className='p-1 md:p-4'>
               <div key={testimonial._id} className=' md:p-5 p-3 text-white bg-[#4A8780] rounded-lg'>
@@ -127,25 +152,70 @@ const Homepage = () => {
         </Slider>
       </div>
 
-      <div className='midsec5 flex flex-col p-[40px] md:p-[100px] bg-zinc-100 justify-center'>
+      <div className='midsec5 flex items-center flex-col p-[40px] md:p-[100px] bg-zinc-100 justify-center'>
 
         <div className='flex flex-row justify-between mb-2 md:mb-8'>
           <p className='md:text-[35px] flex-shrink-0 text-[15px] font-bold'>Our Featured Projects</p>
 
         </div>
-        <div className='flex flex-col gap-1 w-[80vw] md:gap-4 items-center'>
+        <div className='flex flex-col gap-1 w-[80vw] font-semibold md:gap-4 items-center'>
 
           <div className='flex flex-row gap-1 md:gap-4'>
-            <div><Image src={midsec51} /></div>
+            <div className='relative'>
+              <Image src={midsec51} />
+              <div className='w-full h-full opacity-0 duration-500 hover:opacity-100 bg-black/50 absolute top-0'>
+                <div className='flex absolute text-white bottom-0 flex-col p-1 md:p-3'>
+                  <p className='text-[3cqw] md:text-[2cqw] font-bold'>Project Name</p>
+                  <p className='text-[2cqw] md:text-[1cqw] md:my-2'>Location:- UK</p>
+                  <button className='text-[2cqw] md:text-[1cqw] w-fit bg-opacity-30 bg-white rounded-sm md:rounded-lg border-white border-[1px] md:border-2 px-1 md:px-4 md:py-2'>View More</button>
+                </div>
+              </div>
+            </div>
             <div className='flex flex-col gap-1 md:gap-4'>
-              <div><Image src={midsec52} /></div>
-              <div><Image src={midsec53} /></div>
+              <div className='relative'>
+                <Image src={midsec52} />
+                <div className='w-full h-full opacity-0 duration-500 hover:opacity-100 bg-black/50 absolute top-0'>
+                <div className='flex absolute text-white bottom-0 flex-col p-1 md:p-3'>
+                  <p className='text-[3cqw] md:text-[2cqw] font-bold'>Project Name</p>
+                  <p className='text-[2cqw] md:text-[1cqw] md:my-2'>Location:- UK</p>
+                  <button className='text-[2cqw] md:text-[1cqw] w-fit bg-opacity-30 bg-white rounded-sm md:rounded-lg border-white border-[1px] md:border-2 px-1 md:px-4 md:py-2'>View More</button>
+                </div>
+              </div>
+              </div>
+              <div className='relative'>
+                <Image src={midsec53} />
+                <div className='w-full h-full opacity-0 duration-500 hover:opacity-100 bg-black/50 absolute top-0'>
+                <div className='flex absolute text-white bottom-0 flex-col p-1 md:p-3'>
+                  <p className='text-[3cqw] md:text-[2cqw] font-bold'>Project Name</p>
+                  <p className='text-[2cqw] md:text-[1cqw] md:my-2'>Location:- UK</p>
+                  <button className='text-[2cqw] md:text-[1cqw] w-fit bg-opacity-30 bg-white rounded-sm md:rounded-lg border-white border-[1px] md:border-2 px-1 md:px-4 md:py-2'>View More</button>
+                </div>
+              </div>
+              </div>
             </div>
           </div>
 
-          <div className='flex flex-row w-full gap-1 md:gap-4'>
-            <div><img src={midsec54} /></div>
-            <div><img src={midsec55} /></div>
+          <div className='flex flex-row gap-1 md:gap-4'>
+            <div className='relative'>
+              <img src={midsec54} />
+              <div className='w-full h-full opacity-0 duration-500 hover:opacity-100 bg-black/50 absolute top-0'>
+                <div className='flex absolute text-white bottom-0 flex-col p-1 md:p-3'>
+                  <p className='text-[3cqw] md:text-[2cqw] font-bold'>Project Name</p>
+                  <p className='text-[2cqw] md:text-[1cqw] md:my-2'>Location:- UK</p>
+                  <button className='text-[2cqw] md:text-[1cqw] w-fit bg-opacity-30 bg-white rounded-sm md:rounded-lg border-white border-[1px] md:border-2 px-1 md:px-4 md:py-2'>View More</button>
+                </div>
+              </div>
+            </div>
+            <div className='relative'>
+              <img src={midsec55} />
+              <div className='w-full h-full opacity-0 duration-500 hover:opacity-100 bg-black/50 absolute top-0'>
+                <div className='flex absolute text-white bottom-0 flex-col p-1 md:p-3'>
+                  <p className='text-[3cqw] md:text-[2cqw] font-bold'>Project Name</p>
+                  <p className='text-[2cqw] md:text-[1cqw] md:my-2'>Location:- UK</p>
+                  <button className='text-[2cqw] md:text-[1cqw] w-fit bg-opacity-30 bg-white rounded-sm md:rounded-lg border-white border-[1px] md:border-2 px-1 md:px-4 md:py-2'>View More</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div className='flex flex-col items-center w-full'><Button maxWidth={'120px'} className='my-2' backgroundColor={'#2C6856'} color={'white'}>View More</Button></div>
@@ -155,40 +225,8 @@ const Homepage = () => {
       <div>
         <img src={joinus} className='w-full my-4 md:my-8' alt="" />
       </div>
-      <div className='midsec8 mb-10'>
-        <div className='midsec8-title flex justify-center text-[35px] font-bold '>
-          Latest Posts
-        </div>
-        <div className='flex flex-row justify-center gap-8 mt-8'>
-          <div className='flex flex-col gap-4 max-w-[250px]'>
-            <div className='text-[#4B4B4B]'>23 jun 2019</div>
-            <div className='font-bold'>We’ll your next project, because nobody wants.....</div>
-            <div>Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
-            <div className='flex flex-row gap-4'>
-              <p className='text-[#4A8780]'>Read more </p>
-              <Image marginTop={'10px'} height={'8px'} width={'10px'} src={midsec81} />
-            </div>
-          </div>
-          <div className='midse8-post2 flex flex-col gap-4 max-w-[250px] rounded-lg px-6 py-2'>
-            <div className='text-[#f7f7f7]'>23 jun 2019</div>
-            <div className='font-bold'>We'll your next project, because nobody wants.....</div>
-            <div>Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
-            <div className='flex flex-row gap-4'>
-              <p className='text-[#5AA199]'>Read more </p>
-              <Image marginTop={'10px'} height={'8px'} width={'10px'} src={midsec81} />
-            </div>
-          </div>
-          <div className='flex flex-col gap-4 max-w-[250px]'>
-            <div className='text-[#4B4B4B]'>23 jun 2019</div>
-            <div className='font-bold'>We’ll your next project, because nobody wants.....</div>
-            <div>Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
-            <div className='flex flex-row gap-4'>
-              <p className='text-[#4A8780]'>Read more </p>
-              <Image marginTop={'10px'} height={'8px'} width={'10px'} src={midsec81} />
-            </div>
-          </div>
-        </div>
-      </div>
+      <div className='w-full items-center flex flex-col my-8'><Bookacall /></div>
+
     </div >
   )
 }
