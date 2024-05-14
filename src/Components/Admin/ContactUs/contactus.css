@@ -1,0 +1,27 @@
+.contact-main {
+  display: flex;
+  justify-content: center;
+  margin-top: 10rem;
+  background-color: #fff;
+}
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
+  margin-left: 50px;
+}
+.contact h3 {
+  /* font-family:; */
+  font-weight: 700;
+  font-size: 35px;
+  color: #4a8780;
+}
+.blogs1 {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 10px;
+}
+.blogs1 img {
+  height: 20px;
+}
