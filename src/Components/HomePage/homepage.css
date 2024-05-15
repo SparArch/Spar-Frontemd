@@ -6,7 +6,6 @@
   display: flex;
   justify-content: center;
   justify-items: center;
-  width: 100%;
 }
 .navbar {
   /* margin-top: 10px; */
@@ -24,6 +23,11 @@
 }
 .hamburger {
   display: none;
+}
+
+.img {
+  height: 60px;
+  width: 120px;
 }
 
 .search {
@@ -120,35 +124,13 @@
   width: 75vw;
 }
 
-.img {
-  width: 120px;
-  height: 60px;
-}
 
-.img {
-  width: 120px;
-  height: 60px;
-}
-.img {
-  width: 120px;
-  height: 60px;
-}
 @media (max-width: 1120px) {
   .search img {
     margin-right: 20px;
   }
   .div-10 {
     gap: -10px;
-  }
-  .homeback {
-    margin-left: 0;
-  }
-  .quote-box {
-    display: flex;
-    justify-content: center;
-    /* position: static; */
-    top: -700px;
-    /* left: 390px; */
   }
 }
 @media (max-width: 1072px) {
@@ -160,41 +142,22 @@
     margin: 0;
   }
   .navbar {
-    width: 100%;
+    width: 120vw;
     padding-top: 20px;
     padding-bottom: 20px;
   }
   .bookbtn {
     display: none;
   }
-  /* .img {
+  .img {
     width: 200px;
     height: 80px;
-  } */
-  .div-2 {
-    display: flex;
-    gap: 70vw;
   }
-  .hamburger {
-    display: flex;
-  }
-  /* .img {
-    height: 100px;
-    width: auto;
-  } */
-}
-@media (max-width: 769px) {
   .div-2 {
     display: flex;
     gap: 50vw;
   }
-}
-@media (max-width: 415px) {
-  .navbar {
-    width: 98%;
-  }
-  .div-2 {
+  .hamburger {
     display: flex;
-    gap: 30vw;
   }
 }

@@ -16,7 +16,10 @@ const Services = () => {
   // const [text, setText] = useState('');
   const [titleServices, setTitleServices] = useState("");
   const [contentServices, setContentServices] = useState("");
+  const [titleWork, setTitleWork] = useState("");
+  const [contentWork, setContentWork] = useState("");
   const [mediaFileServices, setMediaFileServices] = useState(null);
+  const [mediaFileWork, setMediaFileWork] = useState(null);
   // const handleButtonClick = () => {
   //   const boldText = `<b>${text}</b>`; // Wrap text in <b> HTML tag for bold formatting
   //   const data = { text: boldText };
@@ -34,6 +37,10 @@ const Services = () => {
 
   const handleFileChangeServices = (e) => {
     setMediaFileServices(e.target.files[0]);
+  };
+
+  const handleFileChangeWork = (e) => {
+    setMediaFileWork(e.target.files[0]);
   };
 
   const handleSubmitServices = async (e) => {
@@ -64,6 +71,36 @@ const Services = () => {
       console.error("Error uploading file to Cloudinary:", error);
     }
   };
+
+  const handleSubmitWork = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("file", mediaFileWork);
+    formData.append("upload_preset", "chat-app");
+    try {
+      // Upload file to Cloudinary
+      const response = await axios.post(
+        "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload", // Replace with your Cloudinary cloud name
+        formData
+      );
+
+      // Obtain URL of the uploaded file
+      const { secure_url } = response.data;
+
+      await axios.post(`${BACKEND_URL}/api/service/workProcess`, {
+        title: titleWork,
+        content: contentWork,
+        media: secure_url,
+      });
+      console.log("Services created successfully");
+
+      // Now you can use secure_url to display the media or save it to your backend
+      console.log("Uploaded media URL:", secure_url);
+    } catch (error) {
+      console.error("Error uploading file to Cloudinary:", error);
+    }
+  };
+
 
   return (
     <div style={{ backgroundColor: "#D9E2DF" }}>
@@ -142,24 +179,45 @@ const Services = () => {
           <div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <h3>OUR WORK PROCESS</h3>
+              <Button backgroundColor={"#2C6856"} color={"#fff"}>
+                <input
+                  type="file"
+                  id="uploadInputWork"
+                  accept="image/*"
+                  style={{ display: "none" }}
+                  onChange={handleFileChangeWork}
+                />
+                <label className="uploadbtn" htmlFor="uploadInputWork">
+                  ADD MEDIA
+                </label>
+              </Button>
               <Button
-                paddingLeft={"2rem"}
+                marginLeft={"20rem"}
                 paddingRight={"2rem"}
+                paddingLeft={"2rem"}
                 backgroundColor={"#2C6856"}
                 color={"#fff"}
+                onClick={handleSubmitWork}
               >
                 ADD
               </Button>
             </div>
             <div>
               <Input
-               
+               value={titleWork}
+               onChange={(e)=>{
+                setTitleWork(e.target.value)
+               }}
                 marginTop={"20px"}
                 borderRadius={"50px"}
                 marginBottom={"20px"}
                 placeholder="Title"
               />
               <Input
+              value={contentWork}
+              onChange={(e)=>{
+                setContentWork(e.target.value)
+               }}
                 placeholder="Write..."
                 borderRadius={"20px"}
                 minHeight={"80px"}

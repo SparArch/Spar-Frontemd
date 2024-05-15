@@ -45,13 +45,10 @@ const About = () => {
     formData.append("file", mediaFileAboutUs);
     formData.append("upload_preset", "chat-app");
     try {
-      // Upload file to Cloudinary
       const response = await axios.post(
         "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload", // Replace with your Cloudinary cloud name
         formData
       );
-
-      // Obtain URL of the uploaded file
       const { secure_url } = response.data;
 
       await axios.post(`${BACKEND_URL}/api/about`, {
@@ -60,8 +57,6 @@ const About = () => {
         image: secure_url,
       });
       console.log("About Us created successfully");
-
-      // Now you can use secure_url to display the media or save it to your backend
       console.log("Uploaded media URL:", secure_url);
     } catch (error) {
       console.error("Error uploading file to Cloudinary:", error);
@@ -75,7 +70,7 @@ const About = () => {
     formData.append("upload_preset", "chat-app");
     try {
       const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload", // Replace with your Cloudinary cloud name
+        "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload", 
         formData
       );
 
@@ -101,7 +96,7 @@ const About = () => {
     try {
       if (mediaFilesVision) {
         const response = await axios.post(
-          "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload", // Replace with your Cloudinary cloud name
+          "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload", 
           formData
         );
 
@@ -130,14 +125,14 @@ const About = () => {
     formData.append("upload_preset", "chat-app");
     try {
       const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload", // Replace with your Cloudinary cloud name
+        "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload", 
         formData
       );
 
       // Obtain URL of the uploaded file
       const { secure_url } = response.data;
 
-      await axios.put(`${BACKEND_URL}/api/about/ourClients`, {
+      await axios.post(`${BACKEND_URL}/api/about/ourClients`, {
         media: secure_url,
       });
       console.log("Clients created successfully");
