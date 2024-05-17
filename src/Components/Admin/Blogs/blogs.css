@@ -40,7 +40,8 @@
 }
 .blogs-cards {
   display: flex;
-  justify-content: left;
+  flex-direction: column;
+  /* justify-content: left; */
 }
 .card {
   display: flex;
