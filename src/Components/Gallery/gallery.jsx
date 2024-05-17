@@ -124,7 +124,6 @@ const Gallery = () => {
                 </Tabs>
                 <Button marginBottom={'100px'} backgroundColor={'#2C6856'} color={'white'} className='hover:text-black '><p className='md:text-xl'>View More</p></Button>
             </div>
-
         </div>
     )
 }

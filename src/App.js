@@ -18,7 +18,7 @@ import AdminHome from "./Components/Admin/Home/home"
 import AdminBlog from './Components/Admin/Blogs/Blogs'
 import AdminGallery from "./Components/Admin/Gallery/Gallery"
 import AdminServices from "./Components/Admin/Services/Services"
-import AdminAbout from "./Components/Admin/About/About"
+import AdminAbout from "./Components/Admin/About/about"
 import AdminNewBlog from './Components/Admin/Blogs/newblog'
 import AdminNewPost from './Components/Admin/Gallery/newpost'
 import AdminContactUs from './Components/Admin/ContactUs/contactus'
