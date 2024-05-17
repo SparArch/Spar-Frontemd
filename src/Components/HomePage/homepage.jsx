@@ -47,7 +47,7 @@ const Homepage = () => {
     autoplay: true,
     autoplaySpeed: 2000
   };
-
+  
   return (
     <div className='Home'>
       <div className=' '>
@@ -59,7 +59,7 @@ const Homepage = () => {
           <Clientlist />
         </div>
         <div className='w-full'>
-          <img src={homebg2} className='w-full' />
+          <img src={homebg2} className='w-full brightness-75' />
         </div>
       </div>
       <div className="midsec22 flex flex-col items-center justify-center">
