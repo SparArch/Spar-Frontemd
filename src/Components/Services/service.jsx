@@ -9,13 +9,20 @@ import service6 from '../Images/service6.png'
 import './services.css'
 import { useEffect } from 'react'
 import contactusbg from '../Images/contactusbg.png'
-import workprocess from '../Images/workprocess.png'
 import Bookacall from '../AboutUs/bookacall'
-
+import consultation from '../Images/consultation.png'
+import idea from '../Images/idea.png'
+import threed from '../Images/3d.png'
+import arrowservice from '../Images/arrowservice.png'
+import manuf from '../Images/manuf.png'
+import strategy from '../Images/strategy.png'
+import ship from '../Images/ship.png'
+import assembling from '../Images/assembling.png'
+import final from '../Images/final.png'
 
 const Service = () => {
   useEffect(() => {
-    window.scrollTo(0, 0)
+    // window.scrollTo(0, 0)
   }, [])
   return (
     <div className='flex flex-col items-center'>
@@ -74,8 +81,55 @@ const Service = () => {
           </div>
         </div>
       </div>
-      <img src={workprocess} alt="journey" className='w-4/5 mt-8 md:mb-48' />
-      <div className='w-full items-center flex flex-col my-4'><Bookacall /></div>
+      <p className='text-[7vw] leading-10 md:text-[4vw] font-bold md:my-8'>Our Work Process</p>
+      <p className='font-semibold my-6 md:my-12 text-[5vw] md:text-[3vw]'>Design</p>
+      <div className='flex flex-row items-center'>
+        <div className='flex flex-col items-center'>
+          <img src={consultation} alt="consultation" className='w-1/2' />
+          <p className='text-[3vw] md:text-[1vw] font-bold'>Consultation</p>
+        </div>
+        <img src={arrowservice} alt="arrow" className='w-6 md:w-12' />
+        <div className='flex flex-col items-center'>
+          <img src={idea} alt="consultation" className='w-1/2' />
+          <p className='text-[3vw] md:text-[1vw] font-bold'>Ideation</p>
+        </div>
+        <img src={arrowservice} alt="arrow" className='w-6 md:w-12' />
+        <div className='flex flex-col items-center'>
+          <img src={threed} alt="consultation" className='w-1/2' />
+          <p className='text-[3vw] md:text-[1vw] font-bold'>3D Design</p>
+        </div>
+      </div>
+      <p className='font-semibold my-6 md:my-12 text-[5vw] md:text-[3vw]'>Develop</p>
+      <div className='flex flex-row items-center'>
+        <div className='flex flex-col items-center'>
+          <img src={manuf} alt="consultation" className='w-1/2' />
+          <p className='text-[3vw] md:text-[1vw] font-bold'>In house Manufacturing</p>
+        </div>
+        <img src={arrowservice} alt="arrow" className='w-6 md:w-12' />
+        <div className='flex flex-col items-center'>
+          <img src={strategy} alt="consultation" className='w-1/2' />
+          <p className='text-[3vw] md:text-[1vw] font-bold'>Strategy Implementation</p>
+        </div>
+      </div>
+      <p className='font-semibold my-6 md:my-12 text-[5vw] md:text-[3vw]'>Deliver</p>
+      <div className='flex flex-row items-center'>
+        <div className='flex flex-col items-center'>
+          <img src={ship} alt="consultation" className='w-1/2' />
+          <p className='text-[3vw] md:text-[1vw] font-bold'>Material Shipping</p>
+        </div>
+        <img src={arrowservice} alt="arrow" className='w-6 md:w-12' />
+        <div className='flex flex-col items-center'>
+          <img src={assembling} alt="consultation" className='w-1/2' />
+          <p className='text-[3vw] md:text-[1vw] font-bold'>Assembling</p>
+        </div>
+        <img src={arrowservice} alt="arrow" className='w-6 md:w-12' />
+        <div className='flex flex-col items-center'>
+          <img src={final} alt="consultation" className='w-1/2' />
+          <p className='text-[3vw] md:text-[1vw] font-bold'>Final Delivery</p>
+        </div>
+      </div>
+      {/* <img src={workprocess} alt="journey" className='w-4/5 mt-8 md:mb-48' /> */}
+      <div className='w-full items-center flex flex-col mt-16 my-4'><Bookacall /></div>
     </div>
   )
 }

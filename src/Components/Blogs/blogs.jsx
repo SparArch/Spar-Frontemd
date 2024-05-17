@@ -8,6 +8,8 @@ import BACKEND_URL from '../../helper';
 import Clientlist from '../AboutUs/clientlist';
 import Bookacall from '../AboutUs/bookacall';
 import homebg from '../Images/homebg.png'
+import blogbtn from '../Images/blogbtn.png'
+
 const Blogs = () => {
   const [blogPosts, setBlogPosts] = useState([]);
 
@@ -40,7 +42,10 @@ const Blogs = () => {
             <div className='text-[1.5vw] font-bold'>19 AUG 2024  12:00PM</div>
             </div>
             <div className='text-[1vw] md:block hidden'>IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY. LOREM IPSUM HAS BEEN THE INDUSTRY'S STANDARD DUMMY TEXT EVER SINCE THE 1500S, WHEN AN UNKNOWN PRINTER TOOK A GALLEY OF TYPE AND SCRAMBLED IT TO MAKE A TYPE SPECIM.IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY. LOREM IPSUM HAS BEEN THE INDUSTRY'S STANDARD DUMMY TEXT EVER SINCE THE 1500S, WHEN AN UNKNOWN PRINTER TOOK A GALLEY OF TYPE AND SCRAMBLED IT TO MAKE A TYPE SPECIM</div>
+            <div className='flex flex-row items-center'>
             <div className='text-[2vw] md:mb-0 mb-2 md:text-[1.5vw] p-1 px-2 md:p-3 md:px-5 md:rounded-xl border-[#4A8780] border-[1px] md:border-2 w-fit font-semibold'>READ MORE → </div>
+            <img src={blogbtn} className='hidden h-3/4 ml-6 md:block' />
+            </div>
           </div>
         </div>
         <div className='flex flex-row gap-2 md:gap-12'>
@@ -52,7 +57,10 @@ const Blogs = () => {
             <div className='text-[1.5vw] font-bold'>19 AUG 2024  12:00PM</div>
             </div>
             <div className='text-[1vw] md:block hidden'>IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY. LOREM IPSUM HAS BEEN THE INDUSTRY'S STANDARD DUMMY TEXT EVER SINCE THE 1500S, WHEN AN UNKNOWN PRINTER TOOK A GALLEY OF TYPE AND SCRAMBLED IT TO MAKE A TYPE SPECIM.IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY. LOREM IPSUM HAS BEEN THE INDUSTRY'S STANDARD DUMMY TEXT EVER SINCE THE 1500S, WHEN AN UNKNOWN PRINTER TOOK A GALLEY OF TYPE AND SCRAMBLED IT TO MAKE A TYPE SPECIM</div>
+            <div className='flex flex-row items-center'>
             <div className='text-[2vw] md:mb-0 mb-2 md:text-[1.5vw] p-1 px-2 md:p-3 md:px-5 md:rounded-xl border-[#4A8780] border-[1px] md:border-2 w-fit font-semibold'>READ MORE → </div>
+            <img src={blogbtn} className='hidden h-3/4 ml-6 md:block' />
+            </div>
           </div>
         </div>
         <div className='flex flex-row gap-2 md:gap-12'>
@@ -64,7 +72,10 @@ const Blogs = () => {
             <div className='text-[1.5vw] font-bold'>19 AUG 2024  12:00PM</div>
             </div>
             <div className='text-[1vw] md:block hidden'>IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY. LOREM IPSUM HAS BEEN THE INDUSTRY'S STANDARD DUMMY TEXT EVER SINCE THE 1500S, WHEN AN UNKNOWN PRINTER TOOK A GALLEY OF TYPE AND SCRAMBLED IT TO MAKE A TYPE SPECIM.IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY. LOREM IPSUM HAS BEEN THE INDUSTRY'S STANDARD DUMMY TEXT EVER SINCE THE 1500S, WHEN AN UNKNOWN PRINTER TOOK A GALLEY OF TYPE AND SCRAMBLED IT TO MAKE A TYPE SPECIM</div>
+            <div className='flex flex-row items-center'>
             <div className='text-[2vw] md:mb-0 mb-2 md:text-[1.5vw] p-1 px-2 md:p-3 md:px-5 md:rounded-xl border-[#4A8780] border-[1px] md:border-2 w-fit font-semibold'>READ MORE → </div>
+            <img src={blogbtn} className='hidden h-3/4 ml-6 md:block' />
+            </div>
           </div>
         </div>
         <div className='flex flex-row gap-2 md:gap-12'>
@@ -76,7 +87,10 @@ const Blogs = () => {
             <div className='text-[1.5vw] font-bold'>19 AUG 2024  12:00PM</div>
             </div>
             <div className='text-[1vw] md:block hidden'>IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY. LOREM IPSUM HAS BEEN THE INDUSTRY'S STANDARD DUMMY TEXT EVER SINCE THE 1500S, WHEN AN UNKNOWN PRINTER TOOK A GALLEY OF TYPE AND SCRAMBLED IT TO MAKE A TYPE SPECIM.IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY. LOREM IPSUM HAS BEEN THE INDUSTRY'S STANDARD DUMMY TEXT EVER SINCE THE 1500S, WHEN AN UNKNOWN PRINTER TOOK A GALLEY OF TYPE AND SCRAMBLED IT TO MAKE A TYPE SPECIM</div>
+            <div className='flex flex-row items-center'>
             <div className='text-[2vw] md:mb-0 mb-2 md:text-[1.5vw] p-1 px-2 md:p-3 md:px-5 md:rounded-xl border-[#4A8780] border-[1px] md:border-2 w-fit font-semibold'>READ MORE → </div>
+            <img src={blogbtn} className='hidden h-3/4 ml-6 md:block' />
+            </div>
           </div>
         </div>
         <div className='flex flex-col items-center w-full'><Button maxWidth={'120px'} className='md:my-2' backgroundColor={'#2C6856'} color={'white'}>View More</Button></div>

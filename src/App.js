@@ -4,6 +4,7 @@ import Aboutus from './Components/AboutUs/aboutus';
 import Homepage from './Components/HomePage/homepage';
 import Service from "./Components/Services/service";
 import Gallery from "./Components/Gallery/gallery";//yaha pe alag alag gallery ki post aayegi jb gallery me kisi image pe click karenge
+import GalleryPost from "./Components/Gallery/gallerypost";
 import Navbar from "./Components/HomePage/navbar";
 import Footer from "./Components/HomePage/footer";
 import Blogs from './Components/Blogs/blogs';
@@ -29,7 +30,7 @@ import AdminSocial from './Components/Admin/Social/Social'
 function App() {
   return (
     <div>
-      {/* <Navbar /> */}
+      <Navbar />
       <Routes>
         <Route path="/"
           element={<Homepage />} />
@@ -80,7 +81,7 @@ function App() {
         <Route path="/admin-social"
           element={<AdminSocial />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
