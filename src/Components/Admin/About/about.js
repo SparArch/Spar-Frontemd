@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import NavAd from '../NavAd'
 import SideNav from '../SideNav'
 import '../Home/home.css'
-import { Button, Input } from '@chakra-ui/react'
+import { Button, Image, Input, Text } from '@chakra-ui/react'
 import clip from '../../Images/clip.png'
 import left_align_icon from '../../Images/left_align.png'
 import right_align_icon from '../../Images/right_align.png'
@@ -11,6 +11,8 @@ import bullet_icon from '../../Images/bullets.png'
 import b from '../../Images/b.png'
 import axios from 'axios'
 import BACKEND_URL from '../../../helper'
+import del from '../../Images/delete.png'
+import homeSpace from '../../Images/home-spaces.png'
 const About = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -87,6 +89,11 @@ const About = () => {
               <Button marginLeft={'28rem'} backgroundColor={'#2C6856'} color={'#fff'} paddingLeft={'2rem'} paddingRight={'2rem'}>ADD</Button>
             </div>
             <Input placeholder='Write...' marginTop={'20px'} marginBottom={'20px'} borderRadius={'20px'} minHeight={'80px'} />
+          </div>
+          <div>
+           
+            <div></div>
+            <div></div>
           </div>
           <div>
             <h3>MISSION/ VISION</h3>

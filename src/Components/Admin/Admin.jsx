@@ -6,57 +6,42 @@ import admin2 from '../Images/admin2.png';
 import admin3 from '../Images/admin3.png';
 import { Line } from 'react-chartjs-2';
 import axios from 'axios';
-import CanvasJSReact from '@canvasjs/react-charts';
+import ReactApexCharts from 'react-apexcharts';
 const Admin = () => {
-  var CanvasJS = CanvasJSReact.CanvasJS;
-  var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
-  const options = {
-    animationEnabled: true,
-    exportEnabled: true,
-    theme: "light2", // "light1", "dark1", "dark2"
+  const seriesData = [{
+    name: "Desktops",
+    data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+  }];
+
+  const chartOptions = {
+    chart: {
+      height: 350,
+      type: 'line',
+      zoom: {
+        enabled: false
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+      curve: 'straight'
+    },
     title: {
-      text: "Bounce Rate by Week of Year"
+      text: '',
+      align: 'left'
     },
-    axisY: {
-      title: "Bounce Rate",
-      suffix: "%"
+    grid: {
+      row: {
+        colors: ['#f3f3f3', 'transparent'],
+        opacity: 0.5
+      }
     },
-    axisX: {
-      title: "Week of Year",
-      prefix: "W",
-      interval: 2
-    },
-    data: [{
-      type: "line",
-      toolTipContent: "Week {x}: {y}%",
-      dataPoints: [
-        { x: 1, y: 64 },
-        { x: 2, y: 61 },
-        { x: 3, y: 64 },
-        { x: 4, y: 62 },
-        { x: 5, y: 64 },
-        { x: 6, y: 60 },
-        { x: 7, y: 58 },
-        { x: 8, y: 59 },
-        { x: 9, y: 53 },
-        { x: 10, y: 54 },
-        { x: 11, y: 61 },
-        { x: 12, y: 60 },
-        { x: 13, y: 55 },
-        { x: 14, y: 60 },
-        { x: 15, y: 56 },
-        { x: 16, y: 60 },
-        { x: 17, y: 59.5 },
-        { x: 18, y: 63 },
-        { x: 19, y: 58 },
-        { x: 20, y: 54 },
-        { x: 21, y: 59 },
-        { x: 22, y: 64 },
-        { x: 23, y: 59 }
-      ]
-    }]
-  }
+    xaxis: {
+      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']
+    }
+  };
 
   return (
     <div className='bg-[#D9E2DF]'>
@@ -87,14 +72,53 @@ const Admin = () => {
               </div>
             </div>
           </div>
-          <div className='w-70vw'>
-            <CanvasJSChart options={options}
-            /* onRef={ref => this.chart = ref} */
-            />
+          <div className=' flex justify-center mt-10 align-middle gap-[170px]'>
+            <div className='mr-600px flex align-center'>
+              <ReactApexCharts options={chartOptions} series={seriesData} type="line" height={350} width={500} />
+            </div>
+            <div className='flex-col'>
+              <div className='flex gap-12 mb-10' >
+                <h3 className='font-bold'>New Visits <br /> Avg per month</h3>
+                <div className='flex-col align-middle justify-center'>
+                  <h1 className='font-bold text-[25px] text-[#8D8D94]'>19</h1>
+                  <h1 className='text-[#00FFA3]'>0.24%</h1>
+                </div>
+              </div>
+              <div className='flex-col'>
+                <div className='flex gap-20'>
+                  <h3>Top Pages</h3>
+
+                </div>
+                <div className='flex gap-20'>
+                  <h3 className='text-[#8D8D94]'>Home</h3>
+                  <div className='flex jusify-center align-middle' >
+                    <div className='text-[25px] text-[#707070]'>19</div>
+                    <div className='text-[#00FFA3]'>0.24%</div>
+                  </div>
+                </div>
+                <div className='flex gap-20'><h3 className='text-[#8D8D94]'>About</h3>
+                  <div className='flex gap-4 align-middle ' >
+                    <div className='text-[25px] text-[#707070]'>19</div>
+                    <div className='text-[#00FFA3]'>0.24%</div>
+                  </div></div>
+                <div className='flex gap-20'><h3 className='text-[#8D8D94]'>Gallery</h3><div className='flex gap-4 align-middle ' >
+                  <div className='text-[25px] text-[#707070]'>19</div>
+                  <div className='text-[#00FFA3]'>0.24%</div>
+                </div></div>
+                <div className='flex gap-20'><h3 className='text-[#8D8D94]'>Blogs</h3><div className='flex gap-4 align-middle ' >
+                  <div className='text-[25px] text-[#707070]'>19</div>
+                  <div className='text-[#00FFA3]'>0.24%</div>
+                </div></div>
+                <div className='flex gap-20'><h3 className='text-[#8D8D94]'>Services</h3><div className='flex gap-4 align-middle ' >
+                  <div className='text-[25px] text-[#707070]'>19</div>
+                  <div className='text-[#00FFA3]'>0.24%</div>
+                </div></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

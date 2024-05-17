@@ -18,15 +18,18 @@ import AdminHome from "./Components/Admin/Home/home"
 import AdminBlog from './Components/Admin/Blogs/Blogs'
 import AdminGallery from "./Components/Admin/Gallery/Gallery"
 import AdminServices from "./Components/Admin/Services/Services"
-import AdminAbout from "./Components/Admin/About/about"
+import AdminAbout from "./Components/Admin/About/About"
 import AdminNewBlog from './Components/Admin/Blogs/newblog'
 import AdminNewPost from './Components/Admin/Gallery/newpost'
 import AdminContactUs from './Components/Admin/ContactUs/contactus'
 import AdminContactMain from './Components/Admin/ContactUs/contactmain'
+import AdminDownloads from './Components/Admin/Downloads/Downloads'
+import AdminJobs from './Components/Admin/Jobs/Jobs'
+import AdminSocial from './Components/Admin/Social/Social'
 function App() {
   return (
     <div>
-<Navbar/>
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/"
           element={<Homepage />} />
@@ -70,8 +73,14 @@ function App() {
         <Route path="/admin-contact-main"
           element={<AdminContactMain />}
         />
+        <Route path="/admin-downloads"
+          element={<AdminDownloads />} />
+        <Route path="/admin-jobs"
+          element={<AdminJobs />} />
+        <Route path="/admin-social"
+          element={<AdminSocial />} />
       </Routes>
-<Footer/>
+      {/* <Footer /> */}
     </div>
   );
 }
