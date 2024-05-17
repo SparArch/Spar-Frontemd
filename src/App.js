@@ -39,6 +39,8 @@ function App() {
         {/* <Route path='/gallery/:id' />  aisa kuch karna hai */}
         <Route path='/blogs'
           element={<Blogs />} />
+        <Route path='/blogs/:id'
+          element={<Blogpost />} />
         <Route path='/contactus'
           element={<Contactus />} />
         <Route path='/apply'

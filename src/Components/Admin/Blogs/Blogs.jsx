@@ -3,7 +3,7 @@ import NavAd from "../NavAd";
 import SideNav from "../SideNav";
 import { Button, Checkbox, Image, Input, Text } from "@chakra-ui/react";
 import "./blogs.css";
-import blankimg from "../../Images/black-img.png";
+      import blankimg from "../../Images/black-img.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import BACKEND_URL from "../../../helper";
