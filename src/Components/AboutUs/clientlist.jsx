@@ -7,7 +7,7 @@ const Clientlist = () => {
             <AutoPlay />
         </div>
         <div className='w-[1px] md:w-[2px] bg-white h-[6vw]'></div>
-        <div className=' rounded-full bg-white h-fit w-[15vw] text-center md:py-2 py-1 text-[1.3vw] font-bold text-[#1E443E] drop-shadow-xl'>VIEW ALL CLIENTS</div>
+        <button className=' rounded-full bg-white h-fit w-[15vw] text-center md:py-2 py-1 text-[1.3vw] font-bold text-[#1E443E] drop-shadow-xl'>VIEW ALL CLIENTS</button>
     </div>
 }
 

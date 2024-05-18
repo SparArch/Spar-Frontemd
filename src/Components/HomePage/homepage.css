@@ -124,6 +124,9 @@
   width: 75vw;
 }
 
+.bg-home-2 {
+  background-color: #00000090;
+}
 
 @media (max-width: 1120px) {
   .search img {
