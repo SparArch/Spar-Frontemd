@@ -75,7 +75,7 @@ const Homepage = () => {
 
   const fetchItemsTestimonials = async () => {
     try {
-      const response = await axios.get(`${BACKEND_URL}/api/home/knowEverySpaces`);
+      const response = await axios.get(`${BACKEND_URL}/api/home/testimonials`);
       setItemsTestimonials(response.data);
     } catch (error) {
       console.error('Error fetching items:', error);

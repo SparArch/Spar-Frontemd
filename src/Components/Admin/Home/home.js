@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavAd from "../NavAd";
 import SideNav from "../SideNav";
 import "./home.css";
-import { Button, Input } from "@chakra-ui/react";
+import { Button, Image, Input, Text } from "@chakra-ui/react";
 import clip from "../../Images/clip.png";
 import left_align_icon from "../../Images/left_align.png";
 import right_align_icon from "../../Images/right_align.png";
 import center_align_icon from "../../Images/center_align.png";
 import bullet_icon from "../../Images/bullets.png";
 import b from "../../Images/b.png";
+import del from "../../Images/delete.png";
+import solImage from "../../Images/solution1.png";
+import homeSpace from "../../Images/home-spaces.png";
 import axios from "axios";
-import BACKEND_URL from "../../../helper";
 import { useNavigate } from "react-router-dom";
+import BACKEND_URL from "../../../helper";
+
 const Home = () => {
   const navigate = useNavigate();
   const [titleTopCover, setTitleTopCover] = useState("");
@@ -34,6 +38,12 @@ const Home = () => {
   const [titleJoin, setTitleJoin] = useState("");
   const [mediaFileJoin, setMediaFileJoin] = useState(null);
   const [mediaFilesClient, setMediaFilesClient] = useState(null);
+  const [itemsClients, setItemsClients] = useState([]);
+  const [itemsSpaces, setItemsSpaces] = useState([]);
+  const [itemsSolve, setItemsSolve] = useState([]);
+  const [itemsTestimonials, setItemsTestimonials] = useState([]);
+  const [itemsProjects, setItemsProjects] = useState([]);
+
   const handleFileChangeTopCover = (e) => {
     setMediaFileTopCover(e.target.files[0]);
   };
@@ -56,6 +66,131 @@ const Home = () => {
   const handleFileChangeJoin = (e) => {
     setMediaFileJoin(e.target.files[0]);
   };
+
+  const handleFileChangeClient = (e) => {
+    setMediaFilesClient(e.target.files[0]);
+  };
+
+  useEffect(() => {
+    fetchItemsClients();
+  }, []);
+
+  useEffect(() => {
+    fetchItemsSpaces();
+  }, []);
+
+  useEffect(() => {
+    fetchItemsSolve();
+  }, []);
+
+  useEffect(() => {
+    fetchItemsTestinomials();
+  }, []);
+
+  useEffect(() => {
+    fetchItemsProjects();
+  }, []);
+  const fetchItemsClients = async () => {
+    try {
+      const response = await axios.get(`${BACKEND_URL}/api/home/ourClients`);
+      setItemsClients(response.data);
+    } catch (error) {
+      console.error("Error fetching items:", error);
+    }
+  };
+  const handleDeleteClients = async (itemId) => {
+    try {
+      await axios.delete(`${BACKEND_URL}/api/home/ourClients/${itemId}`);
+      setItemsClients(itemsClients.filter((item) => item._id !== itemId));
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
+  };
+
+  const fetchItemsSpaces = async () => {
+    try {
+      const response = await axios.get(
+        `${BACKEND_URL}/api/home/knowEverySpaces`
+      );
+      setItemsSpaces(response.data);
+    } catch (error) {
+      console.error("Error fetching items:", error);
+    }
+  };
+
+  const handleDeleteSpaces = async (itemId) => {
+    try {
+      await axios.delete(`${BACKEND_URL}/api/home/knowEverySpaces/${itemId}`);
+      setItemsSpaces(itemsSpaces.filter((item) => item._id !== itemId));
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
+  };
+
+  const fetchItemsSolve = async () => {
+    try {
+      const response = await axios.get(
+        `${BACKEND_URL}/api/home/solveForRightProblems`
+      );
+      setItemsSolve(response.data);
+    } catch (error) {
+      console.error("Error fetching items:", error);
+    }
+  };
+
+  const handleDeleteSolve = async (itemId) => {
+    try {
+      await axios.delete(
+        `${BACKEND_URL}/api/home/solveForRightProblems/${itemId}`
+      );
+      setItemsSolve(itemsSolve.filter((item) => item._id !== itemId));
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
+  };
+
+  const fetchItemsTestinomials = async () => {
+    try {
+      const response = await axios.get(`${BACKEND_URL}/api/home/testimonials`);
+      setItemsTestimonials(response.data);
+    } catch (error) {
+      console.error("Error fetching items:", error);
+    }
+  };
+
+  const handleDeleteTestinomials = async (itemId) => {
+    try {
+      await axios.delete(`${BACKEND_URL}/api/home/testimonials/${itemId}`);
+      setItemsTestimonials(
+        itemsTestimonials.filter((item) => item._id !== itemId)
+      );
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
+  };
+
+  const fetchItemsProjects = async () => {
+    try {
+      const response = await axios.get(
+        `${BACKEND_URL}/api/home/featuredProjects`
+      );
+      setItemsProjects(response.data);
+    } catch (error) {
+      console.error("Error fetching items:", error);
+    }
+  };
+
+  const handleDeleteProjects = async (itemId) => {
+    try {
+      await axios.delete(`${BACKEND_URL}/api/home/featuredProjects/${itemId}`);
+      setItemsProjects(
+        itemsProjects.filter((item) => item._id !== itemId)
+      );
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
+  };
+
   const handleSubmitTopCover = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -84,9 +219,7 @@ const Home = () => {
       console.error("Error uploading file to Cloudinary:", error);
     }
   };
-  const handleFileChangeClient = (e) => {
-    setMediaFilesClient(e.target.files[0]);
-  };
+
   const handleSubmitHello = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -122,7 +255,7 @@ const Home = () => {
     formData.append("upload_preset", "chat-app");
     try {
       const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload", 
+        "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload",
         formData
       );
 
@@ -354,21 +487,22 @@ const Home = () => {
               />
             </div>
           </div>
+
           <div>
             <h3>OUR CLIENTS</h3>
             <Button backgroundColor={"#2C6856"} color={"#fff"}>
-                <input
-                  type="file"
-                  id="uploadInputClient"
-                  accept="image/*"
-                  style={{ display: "none" }}
-                  onChange={handleFileChangeClient}
-                />
-                <label className="uploadbtn" htmlFor="uploadInputClient">
-                  ADD MEDIA
-                </label>
-              </Button>
-              <Button
+              <input
+                type="file"
+                id="uploadInputClient"
+                accept="image/*"
+                style={{ display: "none" }}
+                onChange={handleFileChangeClient}
+              />
+              <label className="uploadbtn" htmlFor="uploadInputClient">
+                ADD MEDIA
+              </label>
+            </Button>
+            <Button
               marginLeft={"2rem"}
               paddingRight={"2rem"}
               paddingLeft={"2rem"}
@@ -379,6 +513,34 @@ const Home = () => {
               ADD
             </Button>
             <div className="prev_clients">{/* clients logo pictures */}</div>
+          </div>
+          <div className="grid md:gap-10 gap-3 grid-cols-2 md:grid-cols-3 ">
+            {itemsClients.map((item) => (
+              <div
+                key={item._id}
+                style={{
+                  display: "flex",
+                  borderRadius: "1rem",
+                  height: "240px",
+                  width: "300px",
+                  backgroundImage: `url(${item.media})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  position: "relative", // Ensure the delete icon is positioned correctly
+                }}
+              >
+                <div
+                  style={{
+                    position: "absolute",
+                    padding: "10px",
+                    zIndex: "100",
+                  }}
+                  onClick={() => handleDeleteClients(item._id)}
+                >
+                  <Image cursor={"pointer"} src={del} height={"30px"} />
+                </div>
+              </div>
+            ))}
           </div>
           <div>
             <h3>HELLO.</h3>
@@ -517,6 +679,36 @@ const Home = () => {
             </div>
           </div>
           <div>
+            <div className="grid md:gap-10 gap-4 grid-cols-2 md:grid-cols-3 ">
+              {itemsSpaces.map((item) => (
+                <div
+                  key={item._id}
+                  className="bg-slate-300 p-[20px] rounded-xl flex-col max-w-[300px] align-middle justify-center text-justify items-center"
+                >
+                  <div className="flex justify-center">
+                    <Image src={item.media} />
+                  </div>
+                  <div className="flex justify-center">
+                    <h3>{item.title}</h3>
+                  </div>
+                  <Text fontSize={"12px"}>"{item.content}"</Text>
+                  <div
+                    style={{
+                      position: "relative",
+                      marginLeft: "235px",
+                      zIndex: "100",
+                    }}
+                    onClick={() => handleDeleteSpaces(item._id)}
+                  >
+                    <Image cursor={"pointer"} src={del} height={"30px"} />
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+          </div>
+
+          <div>
             <h3>WE SOLVE THE RIGHT PROBLEMS</h3>
             <div className="title1">
               <Button backgroundColor={"#2C6856"} color={"#fff"}>
@@ -575,6 +767,37 @@ const Home = () => {
               />
               {/* <Input placeholder='Write...' borderRadius={'20px'} minHeight={'80px'} /> */}
             </div>
+          </div>
+          <div className="grid md:gap-10 gap-4 grid-cols-2 md:grid-cols-3 ">
+            {itemsSolve.map((item) => (
+              <div key={item._id} className="flex-col gap-4">
+                <div className="bg-[gray] max-w-[300px] rounded-xl">
+                  <div
+                    style={{
+                      position: "relative",
+                      marginLeft: "250px",
+                      paddingTop: "10px",
+                      zIndex: "100",
+                    }}
+                    onClick={() => handleDeleteSolve(item._id)}
+                  >
+                    <Image cursor={"pointer"} src={del} height={"30px"} />
+                  </div>
+
+                  <div className="flex-col p-[20px] justify-center">
+                    <Image paddingLeft={"70px"} src={item.media} />
+                    <Text
+                      textAlign="center"
+                      fontSize={"30px"}
+                      fontWeight={"800"}
+                      color={"#1E443E"}
+                    >
+                      {item.title}
+                    </Text>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
           <div>
             <h3>TESTIMONIALS</h3>
@@ -645,6 +868,34 @@ const Home = () => {
               />
             </div>
           </div>
+          <div className="grid md:gap-10 gap-4 grid-cols-2 md:grid-cols-3 ">
+            {itemsTestimonials.map((item) => (
+              <div
+                key={item._id}
+                className="flex-col max-w-[300px] bg-slate-300 p-[20px] rounded-xl"
+              >
+                <div
+                  style={{
+                    position: "relative",
+                    marginLeft: "220px",
+                    zIndex: "100",
+                  }}
+                  onClick={() => handleDeleteTestinomials(item._id)}
+                >
+                  <Image cursor={"pointer"} src={del} height={"30px"} />
+                </div>
+                <Text fontStyle={"italic"} fontWeight={"700"}>
+                  “ {item.content} ”
+                </Text>
+                <div className="flex align-middle items-center gap-2">
+                  <Image src={item.image} borderRadius={"50%"} height="44px" />
+                  <Text fontStyle={"italic"} fontWeight={"600"}>
+                    {item.name}
+                  </Text>
+                </div>
+              </div>
+            ))}
+          </div>
           <div>
             <h3>OUR FEATURED PROJECTS</h3>
             <div className="title1">
@@ -712,6 +963,31 @@ const Home = () => {
                 minHeight={"80px"}
               />
             </div>
+          </div>
+          <div className="grid md:gap-10 gap-4 grid-cols-2 md:grid-cols-3 ">
+            {itemsProjects.map((item) => (
+              <div
+                className="w-[300px] h-[200px] bg-slate-300 p-[20px] rounded-xl"
+                style={{
+                  height: "240px",
+                  width: "300px",
+                  backgroundImage: `url(${item.media})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                <div
+                  style={{
+                    position: "relative",
+                    marginLeft: "230px",
+                    zIndex: "100",
+                  }}
+                  onClick={() => handleDeleteProjects(item._id)}
+                >
+                  <Image cursor={"pointer"} src={del} height={"30px"} />
+                </div>
+              </div>
+            ))}
           </div>
           <div>
             <h3>BLOGS</h3>
