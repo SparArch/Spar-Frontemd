@@ -29,6 +29,7 @@ import diff2 from '../Images/diff2.png'
 import diff3 from '../Images/diff3.png'
 import diff4 from '../Images/diff4.png'
 import diff5 from '../Images/diff5.png'
+import Navbar from './navbar';
 const Homepage = () => {
   useEffect(() => {
     // window.scrollTo(0, 0)
@@ -50,6 +51,7 @@ const Homepage = () => {
 
   return (
     <div className='Home'>
+    <Navbar />
       <div className=' '>
         <div className='w-full'>
           <img src={homebg} className='w-full' />

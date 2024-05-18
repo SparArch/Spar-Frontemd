@@ -11,6 +11,7 @@ import { useEffect } from 'react'
 import contactusbg from '../Images/contactusbg.png'
 import workprocess from '../Images/workprocess.png'
 import Bookacall from '../AboutUs/bookacall'
+import Navbar from '../HomePage/navbar'
 
 
 const Service = () => {
@@ -19,11 +20,12 @@ const Service = () => {
   }, [])
   return (
     <div className='flex flex-col items-center'>
+      <Navbar />
       <img src={service} alt="aboutimg1" className="z-10 w-full top-0" />
       <div className=" w-full md:top-[-1.25rem] top-[-0.5rem] flex flex-col items-center relative">
         <Clientlist />
       </div>
-      <div style={{ backgroundImage: `url(${contactusbg})` }} className='w-full  flex flex-col items-center services'> 
+      <div style={{ backgroundImage: `url(${contactusbg})` }} className='w-full  flex flex-col items-center services'>
         <p className='text-[10vw] leading-10 md:text-[5vw] font-bold md:my-8'>What We Do.</p>
         <p className='font-semibold my-2 text-[3vw] md:text-[1.8vw]'>Transformative, Tailored, Innovative.</p>
         <div className='md:mt-12 grid md:gap-8 gap-3 grid-cols-3 md:w-4/5 w-[90%] mb-12'>

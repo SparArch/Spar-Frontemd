@@ -14,24 +14,24 @@ const Social = () => {
       <SideNav />
       <div className='flex justify-center mt-[10rem] bg-white'>
         <div className='flex justify-flex-start gap-[50px]'>
-          <div className='flex-col justify-center ml-[100px] gap-[100px]' >
-            <div className='flex text-center  justify-center gap-10'>
+          <div className='flex-col content-center justify-center items-center ml-[100px] ' >
+            <div className='flex  gap-10'>
               <Image src={instaIcon} />
               <Input width={'600px'} />
-              <Button> ADD LINK</Button>
+              <Button backgroundColor={'#2C6856'} color={'#fff'}> ADD LINK</Button>
             </div>
-            <div className='flex text-center justify-center gap-10'>
+            <div className='flex gap-10'>
               <Image src={linkedIcon} />
               <Input width={'600px'} />
-              <Button> ADD LINK</Button></div>
-            <div className='flex text-center justify-center gap-10'>
-              <Image src={faceIcon} />
+              <Button backgroundColor={'#2C6856'} color={'#fff'}> ADD LINK</Button></div>
+            <div className='flex gap-10 ml-3'>
+              <Image paddingRight={'11px'} src={faceIcon} />
               <Input width={'600px'} />
-              <Button> ADD LINK</Button></div>
-            <div className='flex text-center justify-center gap-10'>
+              <Button backgroundColor={'#2C6856'} color={'#fff'}> ADD LINK</Button></div>
+            <div className='flex gap-10'>
               <Image src={twitterIcon} />
               <Input width={'600px'} />
-              <Button> ADD LINK</Button></div>
+              <Button backgroundColor={'#2C6856'} color={'#fff'}> ADD LINK</Button></div>
           </div>
         </div>
       </div>

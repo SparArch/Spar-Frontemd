@@ -14,7 +14,7 @@ import diff4 from '../Images/diff4.png'
 import diff5 from '../Images/diff5.png'
 import Bookacall from './bookacall'
 import { Button } from '@chakra-ui/react'
-
+import Navbar from '../HomePage/navbar'
 
 const Aboutus = () => {
   const [testimonials, setTestimonials] = useState([]);
@@ -43,6 +43,7 @@ const Aboutus = () => {
 
   return (
     <div className='flex flex-col items-center justify-center'>
+      <Navbar />
       <img src={aboutimg1} alt="aboutimg1" className="-z-20 w-full relative" />
       <div className=" w-full md:top-[-1.25rem] top-[-0.5rem] flex flex-col items-center relative">
         <Clientlist />
@@ -53,7 +54,7 @@ const Aboutus = () => {
         <div className='text-[7vw] font-bold md:block hidden'>About Us</div>
         <div className='text-center text-[#5C675A] text-[9px] my-2 md:text-xl font-semibold w-[85%] md:w-3/4'>SPAR is a leading provider of bespoke solutions for a wide range of spaces, including retail, hospitality, corporate, and more. With a focus on innovation and quality, we offer end-to-end services from concept to installation, ensuring that every project meets the highest standards of excellence. Our team of experts is committed to delivering tailored solutions that not only meet but exceed our clients' expectations. Join us on a journey of transformation and let us bring your vision to life.</div>
       </div>
-      
+
       <div className='md:text-[4vw] text-xl md:mt-12 my-2 font-bold'>We Solve the Right Problems.</div>
       <div className='flex gap-4 md:gap-12 flex-col mt-4 md:my-12 items-center w-[95%] md:w-[90%]'>
         <div className='flex w-full justify-evenly flex-row md:gap-6 items-center'>

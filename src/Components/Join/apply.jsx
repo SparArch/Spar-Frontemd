@@ -7,6 +7,7 @@ import contactusbg from '../Images/contactusbg.png'
 import { Button } from '@chakra-ui/react'
 import hiring1 from '../Images/hiring1.png'
 import hiring2 from '../Images/hiring2.png'
+import Navbar from '../HomePage/navbar'
 
 
 const Gallerypost = () => {
@@ -16,6 +17,7 @@ const Gallerypost = () => {
 
     return (
         <div className='flex flex-col items-center'>
+            <Navbar />
             <img src={contactusbanner} alt="aboutimg1" className="z-10 w-full top-0" />
             <div className="md:hidden w-full md:top-[-1.25rem] top-[-1.5rem] flex flex-col items-center relative">
                 <Clientlist />

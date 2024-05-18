@@ -5,6 +5,7 @@ import homepagebackground from '../Images/Homepage_back.png'
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import { Button, Image, Text, background } from '@chakra-ui/react'
 import './gallery.css'
+import Navbar from '../HomePage/navbar'
 
 
 const Gallery = () => {
@@ -13,8 +14,9 @@ const Gallery = () => {
     }, [])
     return (
         <div className='flex flex-col items-center'>
+            <Navbar />
             <img src={gallerybanner} alt="aboutimg1" className="z-10 w-full top-0" />
-            
+
             <div className="blogsec1 flex flex-col gap-6 items-center rounded-3xl">
                 <Tabs display={'flex'} justifyItems={'center'} alignItems={'center'} justifyContent={'center'} flexDirection={'column'}>
                     <TabList>
