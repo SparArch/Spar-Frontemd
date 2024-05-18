@@ -1,12 +1,13 @@
-import React, { useState } from "react";
-import { useEffect, Component } from "react";
-import contactusbanner from "../Images/contactusbanner.png";
-import Bookacall from "../AboutUs/bookacall";
-import Clientlist from "../AboutUs/clientlist";
-import contactusbg from "../Images/contactusbg.png";
-import { Button } from "@chakra-ui/react";
-import hiring1 from "../Images/hiring1.png";
-import hiring2 from "../Images/hiring2.png";
+import React, { useState } from 'react'
+import { useEffect, Component } from 'react'
+import contactusbanner from '../Images/contactusbanner.png'
+import Bookacall from '../AboutUs/bookacall'
+import Clientlist from '../AboutUs/clientlist'
+import contactusbg from '../Images/contactusbg.png'
+import { Button } from '@chakra-ui/react'
+import hiring1 from '../Images/hiring1.png'
+import hiring2 from '../Images/hiring2.png'
+import Navbar from '../HomePage/navbar'
 import axios from "axios";
 import BACKEND_URL from "../../helper";
 

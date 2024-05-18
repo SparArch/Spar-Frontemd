@@ -15,6 +15,7 @@ import diff5 from "../Images/diff5.png";
 import Bookacall from "./bookacall";
 import { Button } from "@chakra-ui/react";
 import blankimg from "../Images/black-img.png";
+import Navbar from "../HomePage/navbar";
 
 const Aboutus = () => {
   const [testimonials, setTestimonials] = useState([]);
@@ -101,6 +102,7 @@ const Aboutus = () => {
   return (
     // About Section
     <div className="flex flex-col items-center justify-center">
+      <Navbar />
       <img src={aboutimg1} alt="aboutimg1" className="-z-20 w-full relative" />
       <div className=" w-full md:top-[-1.25rem] top-[-0.5rem] flex flex-col items-center relative">
         <Clientlist />

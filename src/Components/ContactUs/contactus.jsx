@@ -4,9 +4,12 @@ import contactusbanner from "../Images/contactusbanner.png";
 import Bookacall from "../AboutUs/bookacall";
 import Clientlist from "../AboutUs/clientlist";
 import contactusbg from "../Images/contactusbg.png";
-import { Button } from "@chakra-ui/react";
+import { Button, Image } from "@chakra-ui/react";
 import BACKEND_URL from "../../helper";
 import axios from "axios";
+import Navbar from "../HomePage/navbar";
+import ReactWhatsapp from "react-whatsapp";
+import whatsappIcon from "../Images/whatapp-icon.png";
 
 const Gallerypost = () => {
   const [title, setTitle] = useState("");
@@ -80,7 +83,13 @@ const Gallerypost = () => {
               {title || "Contact Us"}
             </div>
             <div className="md:text-4xl text-xs mt-4 w-full md:text-left text-center text-[#707070] mr-[5vw]">
-              {description || "Feel Free To Contact And Reach Us For More Info!"}
+              {description ||
+                "Feel Free To Contact And Reach Us For More Info!"}
+            </div>
+            <div className="flex mt-[30px]">
+              <a href="https://wa.me/+917678532077" target="_blank">
+                <Image height={"80px"} width={"80px"} src={whatsappIcon} />
+              </a>
             </div>
           </div>
           <div className="bg-[#F5F5F5] drop-shadow-xl p-[7vw] md:p-[4vw] rounded-2xl md:rounded-[50px]">
