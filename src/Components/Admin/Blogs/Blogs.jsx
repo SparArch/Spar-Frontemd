@@ -108,7 +108,7 @@ const Blogs = () => {
         </div>
         <div className="blogs-cards" >
           {posts.map((post) => (
-            <div className="card" key={post._id}>
+            <div className="card py-4" key={post._id}>
               <Checkbox isChecked={selectedPosts.includes(post._id)} onChange={() => handlePostSelection(post._id)} />
               <Image
                 style={{

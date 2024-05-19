@@ -108,7 +108,7 @@ console.log();
         </div>
         <div className="blogs-cards">
           {projects.map((project) => (
-            <div className="card" key={project._id}>
+            <div  className="card py-4" key={project._id}>
               <Checkbox
                 isChecked={selectedProjects.includes(project._id)}
                 onChange={() => handleCheckboxChange(project._id)}

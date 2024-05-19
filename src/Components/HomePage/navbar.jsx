@@ -1,33 +1,31 @@
-import React, { useState } from 'react'
-import './homepage.css'
-import { Box, Button, Divider, Flex, Image, Input, List, ListItem, Popover, PopoverContent, PopoverTrigger, useDisclosure } from '@chakra-ui/react';
-import Logo from '../Images/SparLogo.png'
-import { useNavigate } from 'react-router-dom';
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
-import hamburger from '../Images/hamburger.svg'
-import SearchLogo from '../Images/SearchIcon.png'
+import React, { useState } from 'react';
 import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-} from '@chakra-ui/react'
+  Box,
+  Flex,
+  Image,
+  Input,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  useDisclosure,
+} from '@chakra-ui/react';
+import Logo from '../Images/SparLogo.png';
+import { useNavigate } from 'react-router-dom';
+import hamburger from '../Images/hamburger.svg';
+import SearchLogo from '../Images/SearchIcon.png';
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton, Divider } from '@chakra-ui/react';
+
 const Navbar = () => {
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [showSearchBox, setShowSearchBox] = useState(false);
-
-  const toggleSearchBox = () => {
-    setShowSearchBox(!showSearchBox);
-  };
   const [searchValue, setSearchValue] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
 
-  const handleInputChange = (e) => {
-    setSearchValue(e.target.value);
-  };
+
+
+
+
+
   return (
     <>
       <div className='NavBar flex justify-center align-middle'>
@@ -39,7 +37,6 @@ const Navbar = () => {
                   cursor={'pointer'}
                   src={Logo}
                   className="img"
-
                 />
               </div>
               <div className="column-2 flex justify-center align-middle mt-[20px]">
@@ -48,7 +45,7 @@ const Navbar = () => {
                   <li onClick={() => navigate("/about")} className="div-5 cursor-pointer">About</li>
                   <li onClick={() => navigate("/service")} className="div-6 cursor-pointer">Service</li>
                   <li className="div-7 cursor-pointer" onClick={() => navigate("/gallery")}>Gallery</li>
-                  <li onClick={() => navigate("/blogs")} className="div-8 cursor-pointer" >Blogs</li>
+                  <li onClick={() => navigate("/blogs")} className="div-8 cursor-pointer">Blogs</li>
                   <li onClick={() => navigate("/contactus")} className="div-9 cursor-pointer">Contact Us</li>
                 </ul>
               </div>
@@ -63,28 +60,26 @@ const Navbar = () => {
                       />
                     </PopoverTrigger>
                     <PopoverContent>
-                      <Input placeholder="Search..."
+                      <Input
+                        placeholder="Search..."
                         value={searchValue}
-                        onChange={handleInputChange}
                       />
                     </PopoverContent>
                   </Popover>
                 </Box>
-                <button className="bookbtn">Book A Call</button>
+                <button className="bookbtn" ><a href="tel://+447881424598">Book a Call</a></button>
                 <Image className='hamburger' cursor={'pointer'} onClick={onOpen} src={hamburger} />
               </div>
             </div>
           </div>
         </div>
-
       </div>
       <Modal size={'full'} onClose={onClose} isOpen={isOpen} isCentered>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader><input type="text" placeholder='Search..' /></ModalHeader>
+          <ModalHeader><input type="text" placeholder='Search..' value={searchValue} /></ModalHeader>
           <ModalCloseButton />
-          <ModalBody fontSize={'larger'}
-            fontWeight={'bolder'}>
+          <ModalBody fontSize={'larger'} fontWeight={'bolder'}>
             <Divider />
             <div onClick={() => {
               navigate("/");
@@ -111,8 +106,11 @@ const Navbar = () => {
               onClose();
             }}>Blogs</div>
             <Divider />
-            <div>Contact Us</div>
-            <button className="bookbtnalt">Book A Call</button>
+            <div onClick={() => {
+              navigate("/contactus");
+              onClose();
+            }}>Contact Us</div>
+            <button className="bookbtnalt"><a href="tel://+447881424598">Book a Call</a></button>
           </ModalBody>
         </ModalContent>
       </Modal>
@@ -120,4 +118,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default Navbar;
