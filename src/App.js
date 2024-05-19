@@ -48,6 +48,7 @@ function App() {
           <Route path="/about" element={<Aboutus />} />
           <Route path="/service" element={<Service />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/gallery/:id" element={<GalleryPost/>} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:id" element={<BlogPost />} />
           <Route path="/contactus" element={<Contactus />} />

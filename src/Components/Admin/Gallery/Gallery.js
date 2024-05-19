@@ -115,7 +115,7 @@ console.log();
               />
               <Image
                 style={{
-                  width: "750px",
+                  width: "740px",
                   height: "160px",
                   borderRadius: "16px",
                 }}

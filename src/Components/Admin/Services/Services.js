@@ -335,7 +335,7 @@ const Services = () => {
                         fontWeight={"800"}
                         color={"#1E443E"}
                       >
-                        {item.title}
+                        {item.content}
                       </Text>
                     </div>
                   </div>

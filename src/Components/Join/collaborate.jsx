@@ -10,8 +10,11 @@ import hiring2 from '../Images/hiring2.png'
 import Navbar from '../HomePage/navbar'
 import axios from "axios";
 import BACKEND_URL from "../../helper";
+import { useNavigate } from 'react-router-dom'
 
 const Gallerypost = () => {
+  const navigate = useNavigate();
+  const [itemsJobs, setItemsJobs] = useState([]);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -27,7 +30,9 @@ const Gallerypost = () => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
-
+  useEffect(() => {
+    fetchItemsJobs();
+  }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -49,8 +54,18 @@ const Gallerypost = () => {
     }
   };
 
+  const fetchItemsJobs = async () => {
+    try {
+      const response = await axios.get(`${BACKEND_URL}/api/contacts/jobs`);
+      setItemsJobs(response.data);
+    } catch (error) {
+      console.error("Error fetching items:", error);
+    }
+  };
+
   return (
     <div className="flex flex-col items-center">
+      <Navbar/>
       <img
         src={contactusbanner}
         alt="aboutimg1"
@@ -64,42 +79,21 @@ const Gallerypost = () => {
       </div>
       <img src={hiring2} alt="" className="w-3/4 relative" />
       <div className="grid gap-3 md:gap-6 w-3/4 mt-8 md:mt-12 grid-cols-2 md:grid-cols-3">
-        <div
+        {itemsJobs.map(item => <div
           style={{ backgroundImage: `url(${contactusbanner})` }}
           className="flex flex-col items-center justify-between p-4 h-28 md:h-36 bg-cover font-bold"
         >
-          <div className="text-2xl md:text-4xl text-white">Position</div>
-          <div className="text-xs md:text-xl bg-[#2C6856] py-1 px-4 rounded-full text-white">
+          <div className="text-2xl md:text-4xl text-white">{item.title}</div>
+          <div
+          style={{cursor:"pointer"}}
+           onClick={()=>{
+            navigate('/apply')
+          }} className="text-xs md:text-xl bg-[#2C6856] py-1 px-4 rounded-full text-white">
             Apply Now
           </div>
-        </div>
-        <div
-          style={{ backgroundImage: `url(${contactusbanner})` }}
-          className="flex flex-col items-center justify-between p-4 h-28 md:h-36 bg-cover font-bold"
-        >
-          <div className="text-2xl md:text-4xl text-white">Position</div>
-          <div className="text-xs md:text-xl bg-[#2C6856] py-1 px-4 rounded-full text-white">
-            Apply Now
-          </div>
-        </div>
-        <div
-          style={{ backgroundImage: `url(${contactusbanner})` }}
-          className="flex flex-col items-center justify-between p-4 h-28 md:h-36 bg-cover font-bold"
-        >
-          <div className="text-2xl md:text-4xl text-white">Position</div>
-          <div className="text-xs md:text-xl bg-[#2C6856] py-1 px-4 rounded-full text-white">
-            Apply Now
-          </div>
-        </div>
-        <div
-          style={{ backgroundImage: `url(${contactusbanner})` }}
-          className="flex md:hidden flex-col items-center justify-between p-4 h-28 md:h-36 bg-cover font-bold"
-        >
-          <div className="text-2xl md:text-4xl text-white">Position</div>
-          <div className="text-xs md:text-xl bg-[#2C6856] py-1 px-4 rounded-full text-white">
-            Apply Now
-          </div>
-        </div>
+        </div>)}
+       
+       
       </div>
       <div className="w-full text-center text-[#2C6856] mb-6 mt-6 md:mt-12 font-bold text-3xl md:text-6xl">
         Collaborate

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import img1 from "../Images/img1.png"
 import img2 from "../Images/img2.png"
 import img3 from "../Images/img3.png"
@@ -9,9 +9,12 @@ import fb from "../Images/fb.png"
 import insta from "../Images/insta.png"
 import linkedin from "../Images/linkedin.png"
 import twitter from "../Images/twitter.png"
+import axios from "axios";
+import BACKEND_URL from "../../helper";
 
 
 const Footer = () => {
+  
     return <div className='w-full flex flex-col items-center py-2 pb-6 px-6'>
         <div className="w-full h-[1px] bg-black mb-4"></div>
         <div className="flex flex-row text-[#666666] justify-between w-full md:w-[90%]">

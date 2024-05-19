@@ -53,6 +53,7 @@ const Gallerypost = () => {
 
   return (
     <div className="flex flex-col items-center">
+      <Navbar/>
       <img
         src={contactusbanner}
         alt="aboutimg1"
