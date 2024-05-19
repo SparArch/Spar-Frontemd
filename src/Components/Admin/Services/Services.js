@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavAd from "../NavAd";
 import SideNav from "../SideNav";
-import { Button, Image, Input } from "@chakra-ui/react";
+import { Button, Image, Input, Text } from "@chakra-ui/react";
 import clip from "../../Images/clip.png";
 import left_align_icon from "../../Images/left_align.png";
 import right_align_icon from "../../Images/right_align.png";
@@ -20,6 +20,8 @@ const Services = () => {
   const [contentWork, setContentWork] = useState("");
   const [mediaFileServices, setMediaFileServices] = useState(null);
   const [mediaFileWork, setMediaFileWork] = useState(null);
+  const [itemsWork, setItemsWork] = useState([]);
+  const [itemsServices, setItemsServices] = useState([]);
   // const handleButtonClick = () => {
   //   const boldText = `<b>${text}</b>`; // Wrap text in <b> HTML tag for bold formatting
   //   const data = { text: boldText };
@@ -35,6 +37,13 @@ const Services = () => {
   //   });
   // }
 
+  useEffect(() => {
+    fetchItemsWork();
+  }, []);
+
+  useEffect(() => {
+    fetchItemsServices();
+  }, []);
   const handleFileChangeServices = (e) => {
     setMediaFileServices(e.target.files[0]);
   };
@@ -101,7 +110,44 @@ const Services = () => {
     }
   };
 
+  const fetchItemsWork = async () => {
+    try {
+      const response = await axios.get(
+        `${BACKEND_URL}/api/service/workProcess`
+      );
+      setItemsWork(response.data);
+    } catch (error) {
+      console.error("Error fetching items:", error);
+    }
+  };
 
+  const handleDeleteWork = async (itemId) => {
+    try {
+      await axios.delete(`${BACKEND_URL}/api/service/workProcess/${itemId}`);
+      setItemsWork(itemsWork.filter((item) => item._id !== itemId));
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
+  };
+  const fetchItemsServices = async () => {
+    try {
+      const response = await axios.get(
+        `${BACKEND_URL}/api/service/services`
+      );
+      setItemsServices(response.data);
+    } catch (error) {
+      console.error("Error fetching items:", error);
+    }
+  };
+
+  const handleDeleteServices = async (itemId) => {
+    try {
+      await axios.delete(`${BACKEND_URL}/api/service/services/${itemId}`);
+      setItemsServices(itemsServices.filter((item) => item._id !== itemId));
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
+  };
   return (
     <div style={{ backgroundColor: "#D9E2DF" }}>
       <NavAd />
@@ -166,15 +212,44 @@ const Services = () => {
                 placeholder="Title"
               />
               <Input
-               value={contentServices}
-               onChange={(e) => {
-                 setContentServices(e.target.value);
-               }}
+                value={contentServices}
+                onChange={(e) => {
+                  setContentServices(e.target.value);
+                }}
                 placeholder="Write..."
                 borderRadius={"20px"}
                 minHeight={"80px"}
               />
             </div>
+          </div>
+          <div>
+            <div className="grid md:gap-10 gap-4 grid-cols-2 md:grid-cols-3 ">
+              {itemsServices.map((item) => (
+                <div
+                  key={item._id}
+                  className="bg-slate-300 p-[20px] rounded-xl flex-col max-w-[300px] align-middle justify-center text-justify items-center"
+                >
+                  <div className="flex justify-center">
+                    <Image src={item.media} />
+                  </div>
+                  <div className="flex justify-center">
+                    <h3>{item.title}</h3>
+                  </div>
+                  <Text fontSize={"12px"}>"{item.content}"</Text>
+                  <div
+                    style={{
+                      position: "relative",
+                      marginLeft: "235px",
+                      zIndex: "100",
+                    }}
+                    onClick={() => handleDeleteServices(item._id)}
+                  >
+                    <Image cursor={"pointer"} src={del} height={"30px"} />
+                  </div>
+                </div>
+              ))}
+            </div>
+            
           </div>
           <div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -204,46 +279,68 @@ const Services = () => {
             </div>
             <div>
               <Input
-               value={titleWork}
-               onChange={(e)=>{
-                setTitleWork(e.target.value)
-               }}
+                value={titleWork}
+                onChange={(e) => {
+                  setTitleWork(e.target.value);
+                }}
                 marginTop={"20px"}
                 borderRadius={"50px"}
                 marginBottom={"20px"}
                 placeholder="Title"
               />
               <Input
-              value={contentWork}
-              onChange={(e)=>{
-                setContentWork(e.target.value)
-               }}
+                value={contentWork}
+                onChange={(e) => {
+                  setContentWork(e.target.value);
+                }}
                 placeholder="Write..."
                 borderRadius={"20px"}
                 minHeight={"80px"}
+                marginBottom={"20px"}
               />
             </div>
-            <div>
-              <div className="work-process">
-                <div style={{ padding: "10px" }}>
-                  <Image cursor={"pointer"} src={del} height={"30px"} />
+
+            <div className="grid md:gap-10 gap-3 grid-cols-2 md:grid-cols-3 ">
+              {itemsWork.map((item) => (
+                <div className="flex gap-4">
+                  <div
+                    key={item._id}
+                    className="bg-[gray] max-w-[300px] rounded-xl"
+                  >
+                    <div
+                      style={{
+                        position: "relative",
+                        marginLeft: "250px",
+                        zIndex: "100",
+                      }}
+                      onClick={() => handleDeleteWork(item._id)}
+                    >
+                      <Image
+                        style={{
+                          paddingTop: "6px",
+                          marginTop: "4px",
+                          // marginRight: "12px",
+                        }}
+                        cursor={"pointer"}
+                        src={del}
+                        height={"30px"}
+                      />
+                    </div>
+
+                    <div className="flex-col p-[20px] justify-center">
+                      <Image src={item.media} />
+                      <Text
+                        textAlign="center"
+                        fontSize={"30px"}
+                        fontWeight={"800"}
+                        color={"#1E443E"}
+                      >
+                        {item.title}
+                      </Text>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
-              <h3>CERTIFICATES</h3>
-              <Button backgroundColor={"#2C6856"} color={"#fff"}>
-                ADD MEDIA
-              </Button>
-            </div>
-            <div>
-              <div className="certificates">
-                <div style={{ padding: "10px" }}>
-                  <Image cursor={"pointer"} src={del} height={"30px"} />
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

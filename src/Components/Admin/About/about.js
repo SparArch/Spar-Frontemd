@@ -1,18 +1,18 @@
-import React, { useState } from 'react'
-import NavAd from '../NavAd'
-import SideNav from '../SideNav'
-import '../Home/home.css'
-import { Button, Image, Input, Text } from '@chakra-ui/react'
-import clip from '../../Images/clip.png'
-import left_align_icon from '../../Images/left_align.png'
-import right_align_icon from '../../Images/right_align.png'
-import center_align_icon from '../../Images/center_align.png'
-import bullet_icon from '../../Images/bullets.png'
-import b from '../../Images/b.png'
-import axios from 'axios'
-import BACKEND_URL from '../../../helper'
-import del from '../../Images/delete.png'
-import solImage from '../../Images/solution1.png'
+import React, { useEffect, useState } from "react";
+import NavAd from "../NavAd";
+import SideNav from "../SideNav";
+import "../Home/home.css";
+import { Button, Image, Input, Text } from "@chakra-ui/react";
+import clip from "../../Images/clip.png";
+import left_align_icon from "../../Images/left_align.png";
+import right_align_icon from "../../Images/right_align.png";
+import center_align_icon from "../../Images/center_align.png";
+import bullet_icon from "../../Images/bullets.png";
+import b from "../../Images/b.png";
+import axios from "axios";
+import BACKEND_URL from "../../../helper";
+import del from "../../Images/delete.png";
+import solImage from "../../Images/solution1.png";
 const About = () => {
   const [titleAboutUs, setTitleAboutUs] = useState("");
   const [contentAboutUs, setContentAboutUs] = useState("");
@@ -24,7 +24,26 @@ const About = () => {
   const [contentVision, setContentVision] = useState("");
   const [mediaFilesVision, setMediaFilesVision] = useState(null);
   const [mediaFilesClient, setMediaFilesClient] = useState(null);
+  const [itemsSolve, setItemsSolve] = useState([]);
+  const [itemsMission, setItemsMission] = useState([]);
+  const [itemsClients, setItemsClients] = useState([]);
+  const [itemsCertifications, setItemsCertifications] = useState([]);
 
+  useEffect(() => {
+    fetchItemsSolve();
+  }, []);
+
+  useEffect(() => {
+    fetchItemsMission();
+  }, []);
+
+  useEffect(() => {
+    fetchItemsClients();
+  }, []);
+
+  useEffect(() => {
+    fetchItemsCertifications();
+  }, []);
   const handleFileChangeAboutUs = (e) => {
     setMediaFileAboutUs(e.target.files[0]);
   };
@@ -62,6 +81,80 @@ const About = () => {
       console.log("Uploaded media URL:", secure_url);
     } catch (error) {
       console.error("Error uploading file to Cloudinary:", error);
+    }
+  };
+
+  const fetchItemsSolve = async () => {
+    try {
+      const response = await axios.get(`${BACKEND_URL}/api/about/solutions`);
+      setItemsSolve(response.data);
+    } catch (error) {
+      console.error("Error fetching items:", error);
+    }
+  };
+
+  const handleDeleteSolve = async (itemId) => {
+    try {
+      await axios.delete(`${BACKEND_URL}/api/about/solutions/${itemId}`);
+      setItemsSolve(itemsSolve.filter((item) => item._id !== itemId));
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
+  };
+
+  const fetchItemsMission = async () => {
+    try {
+      const response = await axios.get(`${BACKEND_URL}/api/about/mission`);
+      setItemsMission(response.data);
+    } catch (error) {
+      console.error("Error fetching items:", error);
+    }
+  };
+
+  const handleDeleteMission = async (itemId) => {
+    try {
+      await axios.delete(`${BACKEND_URL}/api/about/mission/${itemId}`);
+      setItemsMission(itemsMission.filter((item) => item._id !== itemId));
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
+  };
+
+  const fetchItemsClients = async () => {
+    try {
+      const response = await axios.get(`${BACKEND_URL}/api/about/ourClients`);
+      setItemsClients(response.data);
+    } catch (error) {
+      console.error("Error fetching items:", error);
+    }
+  };
+  const handleDeleteClients = async (itemId) => {
+    try {
+      await axios.delete(`${BACKEND_URL}/api/about/ourClients/${itemId}`);
+      setItemsClients(itemsClients.filter((item) => item._id !== itemId));
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
+  };
+
+  const fetchItemsCertifications = async () => {
+    try {
+      const response = await axios.get(
+        `${BACKEND_URL}/api/about/certifications`
+      );
+      setItemsCertifications(response.data);
+    } catch (error) {
+      console.error("Error fetching items:", error);
+    }
+  };
+  const handleDeleteCertifications = async (itemId) => {
+    try {
+      await axios.delete(`${BACKEND_URL}/api/about/certifications/${itemId}`);
+      setItemsCertifications(
+        itemsCertifications.filter((item) => item._id !== itemId)
+      );
+    } catch (error) {
+      console.error("Error deleting item:", error);
     }
   };
 
@@ -142,7 +235,6 @@ const About = () => {
       console.error("Error creating Clients:", error);
     }
   };
-
 
   return (
     <div style={{ backgroundColor: "#D9E2DF" }}>
@@ -308,20 +400,45 @@ const About = () => {
               minHeight={"80px"}
             />
           </div>
+          <div className="grid md:gap-10 gap-3 grid-cols-2 md:grid-cols-3 ">
+            {itemsSolve.map((item) => (
+              <div className="flex gap-4">
+                <div
+                  key={item._id}
+                  className="bg-[gray] max-w-[300px] rounded-xl"
+                >
+                  <div
+                    style={{
+                      position: "relative",
+                      marginLeft: "250px",
+                      zIndex: "100",
+                    }}
+                    onClick={() => handleDeleteSolve(item._id)}
+                  >
+                    <Image
+                      style={{ paddingTop: "6px", marginTop: "4px" }}
+                      cursor={"pointer"}
+                      src={del}
+                      height={"30px"}
+                    />
+                  </div>
 
-          <div className='flex-col gap-4'>
-            <div className='bg-[gray] max-w-[300px] rounded-xl'>
-
-              <div style={{ position: "relative", marginLeft: "250px", zIndex: "100" }}><Image cursor={'pointer'} src={del} height={'30px'} /></div>
-
-              <div className='flex-col p-[20px] justify-center'>
-                <Image paddingLeft={'70px'} src={solImage} />
-                <Text fontSize={'30px'} fontWeight={'800'} color={"#1E443E"}>Highly Commited <br /> to Work</Text>
+                  <div className="flex-col p-[20px] justify-center">
+                    <Image paddingLeft={"70px"} src={item.media} />
+                    <Text
+                      textAlign="center"
+                      fontSize={"30px"}
+                      fontWeight={"800"}
+                      color={"#1E443E"}
+                    >
+                      {/* Highly Commited <br /> to Work */}
+                      {item.title}
+                    </Text>
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
-
-
           <div>
             <h3>MISSION/ VISION</h3>
             <div className="title1">
@@ -388,18 +505,34 @@ const About = () => {
               />
             </div>
           </div>
-          <div>
-            <div className='flex-col gap-4'>
-              <div className='max-w-[300px] rounded-xl'>
+          <div className="grid md:gap-10 gap-3 grid-cols-2 md:grid-cols-3 ">
+            {itemsMission.map((item) => (
+              <div key={item._id} className="flex-col gap-4">
+                <div className="max-w-[300px] rounded-xl">
+                  <div
+                    style={{
+                      position: "relative",
+                      marginLeft: "250px",
+                      zIndex: "100",
+                    }}
+                    onClick={() => handleDeleteMission(item._id)}
+                  >
+                    <Image cursor={"pointer"} src={del} height={"30px"} />
+                  </div>
 
-                <div style={{ position: "relative", marginLeft: "250px", zIndex: "100" }}><Image cursor={'pointer'} src={del} height={'30px'} /></div>
-
-                <div className='flex-col p-[20px] justify-center'>
-                  <Text fontWeight={'800'} fontSize={'20px'} marginBottom={'20px'}>Our Mission</Text>
-                  <Text fontSize={'15px'}  >To Digitize the Construction Supply Chain to bring in the control and predictability in construction project management.​</Text>
+                  <div className="flex-col p-[20px] justify-center">
+                    <Text
+                      fontWeight={"800"}
+                      fontSize={"20px"}
+                      marginBottom={"20px"}
+                    >
+                      {item.title}
+                    </Text>
+                    <Text fontSize={"15px"}>{item.content}</Text>
+                  </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
           <div className="title3">
             <h3>OUR CLIENTS</h3>
@@ -426,12 +559,30 @@ const About = () => {
               ADD
             </Button>
           </div>
-          <div className='flex mb-[20px]'>
-            <div className='w-[300px] h-[200px] bg-slate-300 p-[20px] rounded-xl' >
-              <div style={{ position: "relative", marginLeft: "230px", zIndex: "100" }}><Image cursor={'pointer'} src={del} height={'30px'} /></div>
 
-            </div>
-            <div></div>
+          <div className="grid md:gap-10 gap-3 grid-cols-2 md:grid-cols-3 ">
+            {itemsClients.map((item) => (
+              <div
+                key={item._id}
+                className="w-[300px] h-[200px] bg-slate-300 p-[20px] rounded-xl"
+                style={{
+                  backgroundImage: `url(${item.media})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                <div
+                  style={{
+                    position: "relative",
+                    marginLeft: "230px",
+                    zIndex: "100",
+                  }}
+                  onClick={() => handleDeleteClients(item._id)}
+                >
+                  <Image cursor={"pointer"} src={del} height={"30px"} />
+                </div>
+              </div>
+            ))}
           </div>
 
           <div className="title3">
@@ -459,14 +610,30 @@ const About = () => {
               ADD
             </Button>
           </div>
-          <div className='flex mb-[20px]'>
-            <div className='w-[300px] h-[200px] bg-slate-300 p-[20px] rounded-xl' >
-              <div style={{ position: "relative", marginLeft: "230px", zIndex: "100" }}><Image cursor={'pointer'} src={del} height={'30px'} /></div>
-
-            </div>
-            <div></div>
+          <div className="grid md:gap-10 gap-3 grid-cols-2 md:grid-cols-3 ">
+            {itemsCertifications.map((item) => (
+              <div
+                key={item._id}
+                style={{
+                  backgroundImage: `url(${item.media})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+                className="w-[300px] h-[200px] bg-slate-300 p-[20px] rounded-xl"
+              >
+                <div
+                  style={{
+                    position: "relative",
+                    marginLeft: "230px",
+                    zIndex: "100",
+                  }}
+                  onClick={() => handleDeleteCertifications(item._id)}
+                >
+                  <Image cursor={"pointer"} src={del} height={"30px"} />
+                </div>
+              </div>
+            ))}
           </div>
-
         </div>
       </div>
     </div>

@@ -30,6 +30,7 @@ import AdminJobs from './Components/Admin/Jobs/Jobs';
 import AdminSocial from './Components/Admin/Social/Social';
 import TrackPageViews from "./Components/TrackPageViews";
 import AdminNewJoin from './Components/Admin/NewJoin/NewJoin'
+import BlogPost from "./Components/Blogs/blogpost";
 
 const ProtectedRoute = ({ element }) => {
   const { isAuthenticated } = useAuth();
@@ -48,6 +49,7 @@ function App() {
           <Route path="/service" element={<Service />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blogs/:id" element={<BlogPost />} />
           <Route path="/contactus" element={<Contactus />} />
           <Route path="/apply" element={<Apply />} />
           <Route path="/collaborate" element={<Collaborate />} />
