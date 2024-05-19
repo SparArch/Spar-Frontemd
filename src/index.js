@@ -13,26 +13,7 @@ root.render(
   <ChakraProvider>
     <BrowserRouter>
       <Helmet>
-        <title>turnkey</title>
-        <title>officespace</title>
-        <title>design</title>
-        <title>interior design
-        </title>
-        <title>retail design
-        </title>
-        <title>innovation
-        </title>
-        <title>craftmanship
-        </title>
-        <title>corporate interior
-        </title>
-        <title>designand biuld
-        </title>
-        <title>interior
-        </title>
-        <title>decore
-        </title>
-        <meta name="Bespoke" content={"Bespoke fitout"} />
+        <meta name="turnkey" content={"Bespoke fitout"} />
         <meta name="Bespoke" content={"Corporate Fitout"} />
         <meta name="turnkey" content={"turnkey fitout"} />
         <meta name="solution" content={"one stop solution"} />

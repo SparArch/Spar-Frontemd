@@ -30,29 +30,26 @@ const NavAd = () => {
   };
   return (
     <>
-      <div className='NavBar flex justify-center'>
+      <div className=' flex justify-center  align-middle'>
         <div className='fixed z-[120]  p-2 flex justify-center'>
-          <div className="navbar drop-shadow-xl">
-            <div className="div-2 flex flex-row justify-center gap-[240px]">
-              <div className="column flex">
-                <Image
-                  cursor={'pointer'}
-                  src={Logo}
-                  className="img"
-                />
+          <div className="navbar flex justify-between sm:justify-center py-4 items-center w-[95vw]  sm:px-[1.5rem] sm:py-[1.5rem] rounded-[2rem] bg-white  drop-shadow-xl">
+            <div className="flex w-full lg:justify-center justify-between  px-10 sm:px-0   sm:gap-[240px]">
+              <div className=" flex">
+                <img onClick={() => navigate("/admin-home")} src={Logo} className='sm:h-16 h-12 ' />
+
               </div>
-              <div className="column-2 flex justify-center align-middle mt-[20px]">
-                <ul className="div-3 text-[14px] flex flex-row justify-center gap-[60px] font-bold">
+              <div className="flex justify-center align-middle mt-[20px]">
+                <ul className=" text-[14px] flex flex-row justify-center gap-[60px] font-bold">
                   <li onClick={() => navigate("/admin-home")} className="div-4 cursor-pointer">Home</li>
                   <li onClick={() => navigate("/admin-about")} className="div-5 cursor-pointer">About</li>
                   <li onClick={() => navigate("/admin-services")} className="div-6 cursor-pointer">Service</li>
                   <li className="div-7 cursor-pointer" onClick={() => navigate("/admin-gallery")}>Gallery</li>
-                  <li onClick={() => navigate("/admin-blogs")} className="div-8 cursor-pointer" >Blogs</li>
-                  <li onClick={() => navigate("/admin-contact-main")} className="div-9 cursor-pointer">Contact Us</li>
+                  <li onClick={() => navigate("/admin-blogs")} className="div-8 cursor-pointer">Blogs</li>
+                  <li onClick={() => navigate("/admin-contactus")} className="div-9 cursor-pointer">Contact Us</li>
                 </ul>
               </div>
-              <div className="column-3 flex flex-row justify-center md:ml-[-100px]">
-                <Box position="relative" marginTop={'15px'}>
+              <div className=" flex flex-row justify-center items-center ">
+                <Box position="relative" >
                   <Popover>
                     <PopoverTrigger>
                       <Image
@@ -62,55 +59,55 @@ const NavAd = () => {
                       />
                     </PopoverTrigger>
                     <PopoverContent>
-                      <Input placeholder="Search..."
+                      <Input
+                        placeholder="Search..."
                         value={searchValue}
-                        onChange={handleInputChange}
                       />
                     </PopoverContent>
                   </Popover>
                 </Box>
-                {/* <button className="bookbtn">Book A Call</button> */}
-                <Image className='hamburger' cursor={'pointer'} onClick={onOpen} src={hamburger} />
+                <img src={hamburger} className='cursor-pointer xl:hidden  ' onClick={onOpen} />
               </div>
             </div>
           </div>
         </div>
-
       </div>
       <Modal size={'full'} onClose={onClose} isOpen={isOpen} isCentered>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader><input type="text" placeholder='Search..' /></ModalHeader>
+          <ModalHeader><input type="text" placeholder='Search..' value={searchValue} /></ModalHeader>
           <ModalCloseButton />
-          <ModalBody fontSize={'larger'}
-            fontWeight={'bolder'}>
+          <ModalBody fontSize={'larger'} fontWeight={'bolder'}>
             <Divider />
             <div onClick={() => {
-              navigate("/");
+              navigate("/admin-home");
               onClose();
             }}>Home</div>
             <Divider />
             <div onClick={() => {
-              navigate("/about");
+              navigate("/admin-about");
               onClose();
             }}>About</div>
             <Divider />
             <div onClick={() => {
-              navigate("/services");
+              navigate("/admin-services");
               onClose();
             }}>Service</div>
             <Divider />
             <div onClick={() => {
-              navigate("/gallery");
+              navigate("/admin-gallery");
               onClose();
             }}>Gallery</div>
             <Divider />
             <div onClick={() => {
-              navigate("/blogs");
+              navigate("/admin-blogs");
               onClose();
             }}>Blogs</div>
             <Divider />
-            <div>Contact Us</div>
+            <div onClick={() => {
+              navigate("/admin-contactus");
+              onClose();
+            }}>Contact Us</div>
           </ModalBody>
         </ModalContent>
       </Modal>
