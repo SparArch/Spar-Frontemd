@@ -3,7 +3,7 @@ import NavAd from "../NavAd";
 import SideNav from "../SideNav";
 import { Button, Checkbox, Image, Input, Text } from "@chakra-ui/react";
 import "./blogs.css";
-      import blankimg from "../../Images/black-img.png";
+import blankimg from "../../Images/black-img.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import BACKEND_URL from "../../../helper";
@@ -82,19 +82,11 @@ const Blogs = () => {
           </div>
           <div className="blogs-filter">
             <div className="blogs-check">
-            <Checkbox isChecked={selectAll} onChange={handleSelectAll} />
+              <Checkbox isChecked={selectAll} onChange={handleSelectAll} />
               <Text>SELECT ALL</Text>
             </div>
             <div className="blogs-fil">
-              <div className="blogs-fil1">
-                <div>FILTER BY</div>
-                <select
-                  style={{ border: "2px black solid", borderRadius: "30px" }}
-                >
-                  <option value="someOption">Some option</option>
-                  <option value="otherOption">Other option</option>
-                </select>
-              </div>
+
               <div>
                 <Input
                   borderRadius={"2rem"}
@@ -108,7 +100,7 @@ const Blogs = () => {
         </div>
         <div className="blogs-cards" >
           {posts.map((post) => (
-            <div className="card" key={post._id}>
+            <div className="card py-4" key={post._id}>
               <Checkbox isChecked={selectedPosts.includes(post._id)} onChange={() => handlePostSelection(post._id)} />
               <Image
                 style={{

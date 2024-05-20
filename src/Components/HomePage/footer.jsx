@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import img1 from "../Images/img1.png"
 import img2 from "../Images/img2.png"
 import img3 from "../Images/img3.png"
@@ -9,13 +9,31 @@ import fb from "../Images/fb.png"
 import insta from "../Images/insta.png"
 import linkedin from "../Images/linkedin.png"
 import twitter from "../Images/twitter.png"
+import axios from "axios";
+import BACKEND_URL from "../../helper";
 
 
 const Footer = () => {
+    const [itemsSocial, setItemsSocial] = useState({})
+    useEffect(() => {
+        fetchSocial()
+    }, [])
+
+    const fetchSocial = async () => {
+        try {
+            const response = await axios.get(
+                `${BACKEND_URL}/api/social-media`
+            );
+            setItemsSocial(response.data);
+
+        } catch (error) {
+            console.error("Error fetching items:", error);
+        }
+    };
     return <div className='w-full flex flex-col items-center py-2 pb-6 px-6'>
         <div className="w-full h-[1px] bg-black mb-4"></div>
         <div className="flex flex-row text-[#666666] justify-between w-full md:w-[90%]">
-        <div className="flex flex-col h-48">
+            <div className="flex flex-col h-48">
                 <div className="text-base md:text-xl font-bold">Community</div>
                 <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer">Blogs</div>
                 <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer">Case Studies</div>
@@ -50,13 +68,13 @@ const Footer = () => {
         <div className="flex flex-col-reverse md:flex-row items-center justify-between w-full md:w-[90%] mt-1 md:mt-4">
             <div className=" text-xs md:text-xl">Copyright @ 2024 SPAR. All rights reserved</div>
             <div className="flex flex-row w-2/5 my-3 md:w-[15%] justify-between">
-                <img src={insta} className="h-4 md:h-6 cursor-pointer" alt="" />
-                <img src={linkedin} className="h-4 md:h-6 cursor-pointer" alt="" />
-                <img src={fb} className="h-4 md:h-6 cursor-pointer" alt="" />
-                <img src={twitter} className="h-4 md:h-6 cursor-pointer" alt="" />
-            </div>
-        </div>
-    </div>
+                <a href={itemsSocial.instagram} target="_blank"> <img src={insta} className="h-4 md:h-6 cursor-pointer" alt="" /></a>
+                <a href={itemsSocial.linkedin} target="_blank"> <img src={linkedin} className="h-4 md:h-6 cursor-pointer" alt="" /></a>
+                <a href={itemsSocial.facebook} target="_blank"> <img src={fb} className="h-4 md:h-6 cursor-pointer" alt="" /></a>
+                <a href={itemsSocial.twitter} target="_blank"> <img src={twitter} className="h-4 md:h-6 cursor-pointer" alt="" /></a>
+            </div >
+        </div >
+    </div >
 }
 
 export default Footer;

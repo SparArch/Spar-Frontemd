@@ -7,6 +7,7 @@ import Bookacall from "./bookacall";
 import { Button } from "@chakra-ui/react";
 import aboutimg1 from "../Images/About img1.png";
 import blankimg from "../Images/black-img.png";
+import Footer from "../HomePage/footer";
 
 const Aboutus = () => {
   const [testimonials, setTestimonials] = useState([]);
@@ -101,7 +102,7 @@ const Aboutus = () => {
     <div className="flex flex-col items-center justify-center">
       <Navbar />
       <img src={aboutimg1} alt="aboutimg1" className="-z-20 w-full relative" />
-      <div className=" w-full md:top-[-1.25rem] top-[-0.5rem] flex flex-col items-center relative">
+      <div className=" w-full md:top-[-1.25rem] top-[0rem] flex flex-col items-center relative">
         <Clientlist />
       </div>
       <div className="w-full flex flex-col items-center">
@@ -167,7 +168,7 @@ const Aboutus = () => {
         ))}
       </div>
 
-      <div className="flex flex-col items-center mt-4 w-full">
+      {/* <div className="flex flex-col items-center mt-4 w-full">
         <Button
           padding={"20px"}
           fontSize={"20px"}
@@ -177,7 +178,7 @@ const Aboutus = () => {
         >
           View More
         </Button>
-      </div>
+      </div> */}
 
       <div className="text-[6vw] hidden md:block my-2 font-bold">
         Our Certification
@@ -196,6 +197,7 @@ const Aboutus = () => {
       <div className="w-full items-center flex flex-col md:my-8">
         <Bookacall />
       </div>
+      <Footer />
     </div>
   );
 };

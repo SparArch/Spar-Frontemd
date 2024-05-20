@@ -15,7 +15,7 @@ const SideNav = () => {
 
 
          <aside id="sidebar-multi-level-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 " aria-label="Sidebar">
-            <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50">
+            <div class="h-full px-6 py-4 overflow-y-auto bg-gray-50">
                <ul class="space-y-6 font-medium mt-[7rem] ">
                   <li className='flex flex-col gap-2'>
                      <a class="flex gap-5 align-middle items-center p-2 text-gray-900 rounded-lg dark:text-gray-400  ">
@@ -154,4 +154,4 @@ const SideNav = () => {
    )
 }
 
-export default SideNav
+export default SideNav;

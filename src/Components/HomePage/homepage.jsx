@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./homepage.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { Button, Divider, Image, position } from "@chakra-ui/react";
 import Slider from "react-slick";
 import homebg from "../Images/homebg.png";
@@ -36,12 +38,19 @@ import Navbar from "./navbar";
 import axios from "axios";
 import BACKEND_URL from "../../helper";
 import blankimg from "../Images/black-img.png";
+import { useNavigate } from "react-router-dom";
+import Footer from "./footer";
+
 const Homepage = () => {
+  const navigate = useNavigate();
+  const [itemsTopCover, setItemsTopCover] = useState([]);
+  const [itemsHello, setItemsHello] = useState([]);
   const [itemsSpaces, setItemsSpaces] = useState([]);
   const [itemsSolve, setItemsSolve] = useState([]);
   const [itemsTestimonials, setItemsTestimonials] = useState([]);
+  const [itemsJoin, setItemsJoin] = useState([]);
   const [projects, setProjects] = useState([]);
-
+  const [blogPosts, setBlogPosts] = useState([]);
   useEffect(() => {
     fetchItemsSpaces();
   }, []);
@@ -58,6 +67,70 @@ const Homepage = () => {
     fetchProjects();
   }, []);
 
+  useEffect(() => {
+    fetchItemsTopCover();
+  }, []);
+
+  useEffect(() => {
+    fetchItemsHello();
+  }, []);
+
+  useEffect(() => {
+    fetchDataBlogs();
+  }, []);
+
+  useEffect(() => {
+    fetchDataJoin();
+  }, []);
+  const truncateText = (text, maxLength) => {
+    const words = text.split(" ");
+    if (words.length > maxLength) {
+      return words.slice(0, maxLength).join(" ") + "...";
+    }
+    return text;
+  };
+
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    const date = new Date(dateString);
+    const formattedDate = date.toLocaleDateString(undefined, options);
+    return `${formattedDate}`;
+  };
+  const fetchDataBlogs = async () => {
+    try {
+      const response = await axios.get(`${BACKEND_URL}/api/posts`);
+      setBlogPosts(response.data);
+    } catch (error) {
+      console.error("Error fetching blog posts:", error);
+    }
+  };
+
+  const fetchDataJoin = async () => {
+    try {
+      const response = await axios.get(
+        `${BACKEND_URL}/api/home/joinCollaborateTransform`
+      );
+      setItemsJoin(response.data);
+    } catch (error) {
+      console.error("Error fetching blog posts:", error);
+    }
+  };
+  const fetchItemsTopCover = async () => {
+    try {
+      const response = await axios.get(`${BACKEND_URL}/api/home/topCover`);
+      setItemsTopCover(response.data);
+    } catch (error) {
+      console.error("Error fetching items:", error);
+    }
+  };
+  const fetchItemsHello = async () => {
+    try {
+      const response = await axios.get(`${BACKEND_URL}/api/home/hello`);
+      setItemsHello(response.data);
+    } catch (error) {
+      console.error("Error fetching items:", error);
+    }
+  };
   const fetchItemsSolve = async () => {
     try {
       const response = await axios.get(
@@ -140,20 +213,22 @@ const Homepage = () => {
     );
   }
 
-  const images = [homebg, homebg, homebg];
-
   const settings2 = {
     dots: true,
     arrows: false,
     infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    // slidesToShow: 1,
+    // slidesToScroll: 1,
     // autoplay: true,
     autoplaySpeed: 2000,
   };
 
-  const homecontent =
-    "Welcome to SPAR, a leading provider of  fittings, fixtures, and end-to-end solutions for all Spaces .With years of experience and a commitment to excellence, we have become a trusted partner looking to enhance their interior environments.";
+  let helloIndex = itemsHello.length - 1;
+  let topCoverCount = itemsTopCover.length;
+  const homecontent = itemsHello[helloIndex]?.content;
+
+  let joinIndex = itemsJoin.length - 1;
+
   const slider = React.useRef(null);
   // const homecontent="";
   return (
@@ -172,57 +247,109 @@ const Homepage = () => {
           </button>
         </div>
         <div className="w-full flex flex-col items-center">
-          <Slider ref={slider} {...settings2} className="w-full my-8 md:my-16">
-            {images.map((testimonial) => (
-              <div className="relative flex items-center justify-center">
-                <div className="p-1 md:p-4">
-                  <img src={testimonial} alt="" className="w-full" />
+          {topCoverCount === 1 && (
+            <div className="relative flex items-center justify-center">
+              <div className="p-1 md:p-4">
+                <img src={itemsTopCover[0]?.media} alt="" className="w-full" />
+              </div>
+              <div className="absolute w-full h-full flex flex-col items-center justify-center text-center text-white bottom-0">
+                <div className="font-bold text-[4vw] z-40">
+                  {itemsTopCover[0]?.title}
                 </div>
-                <div className="absolute w-full h-full flex flex-col items-center justify-center text-center text-white bottom-0">
-                  <div className="font-bold text-[4vw] z-40">
-                    CRAFTING UNIQUE SPACES
-                  </div>
-                  <div className="text-[2vw] w-1/2 z-40">
-                    EXPERTS IN INTERIOR FITTINGS, FIXTURES, AND END-TO-END
-                    SOLUTIONS
-                  </div>
-                  <div className="flex flex-row">
-                    <button className="font-semibold text-white bg-transparent border-2 border-white p-2 md:p-4 mt-4 md:m-4 rounded-xl text-center text-xs md:text-[1.2vw] flex flex-col items-center justify-center">
-                      DOWNLOAD
-                    </button>
-                    <button className="font-semibold text-white bg-[#2C6856] p-2 md:p-4 mt-4 md:m-4 rounded-xl text-center text-xs md:text-[1.2vw] flex flex-col items-center justify-center">
+                <div className="text-[2vw] w-1/2 z-40">
+                  {itemsTopCover[0]?.content}
+                </div>
+                <div className="flex flex-row">
+                  <button
+                    onClick={() => {
+                      navigate("/download");
+                    }}
+                    className="font-semibold text-white bg-transparent border-2 border-white p-2 md:p-4 mt-4 md:m-4 rounded-xl text-center text-xs md:text-[1.2vw] flex flex-col items-center justify-center"
+                  >
+                    DOWNLOAD
+                  </button>
+                  <button className="font-semibold text-white bg-[#2C6856] p-2 md:p-4 mt-4 md:m-4 rounded-xl text-center text-xs md:text-[1.2vw] flex flex-col items-center justify-center">
+                    <a href="https://wa.me/+917678532077" target="_blank">
+                      {" "}
                       GET A QUOTE
-                    </button>
-                  </div>
+                    </a>
+                  </button>
                 </div>
               </div>
-            ))}
-          </Slider>
+            </div>
+          )}
+          {topCoverCount > 1 && (
+            <Slider
+              ref={slider}
+              {...settings2}
+              className="w-full my-8 md:my-16"
+            >
+              {itemsTopCover.map((testimonial) => (
+                <div className="relative flex items-center justify-center">
+                  <div className="p-1 md:p-4">
+                    <img src={testimonial.media} alt="" className="w-full" />
+                  </div>
+                  <div className="absolute w-full h-full flex flex-col items-center justify-center text-center text-white bottom-0">
+                    <div className="font-bold text-[4vw] z-40">
+                      {testimonial.title}
+                    </div>
+                    <div className="text-[2vw] w-1/2 z-40">
+                      {testimonial.content}
+                    </div>
+                    <div className="flex flex-row">
+                      <button
+                        onClick={() => {
+                          navigate("/download");
+                        }}
+                        className="font-semibold text-white bg-transparent border-2 border-white p-2 md:p-4 mt-4 md:m-4 rounded-xl text-center text-xs md:text-[1.2vw] flex flex-col items-center justify-center"
+                      >
+                        DOWNLOAD
+                      </button>
+                      <button className="font-semibold text-white bg-[#2C6856] p-2 md:p-4 mt-4 md:m-4 rounded-xl text-center text-xs md:text-[1.2vw] flex flex-col items-center justify-center">
+                        <a href="https://wa.me/+917678532077" target="_blank">
+                          {" "}
+                          GET A QUOTE
+                        </a>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </Slider>
+          )}
         </div>
         {/* <div className='relative bottom-36 -mt-16 -mb-20'><Clientlist /></div> */}
-        <div className=" w-full md:top-[-1.25rem] top-[-4rem] flex flex-col items-center relative">
+        <div className=" w-full md:top-[-1.25rem] top-[-2rem] flex flex-col items-center relative">
           <Clientlist />
         </div>
         <div className="w-full flex items-center top-[-5rem] md:top-0 justify-center  relative">
-          <img src={homebg2} className="w-full hidden md:block brightness-75" />
           <img
-            src={homebg2phone}
+            src={itemsHello[helloIndex]?.media}
+            className="w-full hidden md:block brightness-75"
+          />
+          <img
+            src={itemsHello[helloIndex]?.media}
             className="w-full block md:hidden brightness-75"
           />
           {homecontent && (
             <div className="absolute w-[90%] md:w-1/2 rounded-xl p-4 md:p-[2vw] text-white font-semibold flex flex-col items-center justify-center text-center text-[10px] md:text-[1vw] bg-home-2">
               <div className="text-[10vw] md:text-[7vw] font-bold mb-4">
-                Hello.
+                {itemsHello[helloIndex]?.title}
               </div>
               {homecontent}
-              <button className="font-semibold text-white bg-[#2C6856] p-2 md:p-4 mt-4 md:m-4 rounded-xl text-center text-xs md:text-[1.2vw] flex flex-col items-center justify-center">
+              <button
+                onClick={() => {
+                  navigate("/about");
+                }}
+                className="font-semibold text-white bg-[#2C6856] p-2 md:p-4 mt-4 md:m-4 rounded-xl text-center text-xs md:text-[1.2vw] flex flex-col items-center justify-center"
+              >
                 KNOW MORE
               </button>
             </div>
           )}
           {!homecontent && (
             <div className="text-[10vw] md:text-[10vw] font-bold absolute text-white mb-4">
-              Hello.
+              {itemsHello[helloIndex]?.title}
             </div>
           )}
         </div>
@@ -255,12 +382,23 @@ const Homepage = () => {
               </p>
             </div>
           ))}
-          <div className="bg-[#2C6856] flex flex-row rounded-xl md:rounded-3xl text-white">
+          <div
+            onClick={() => {
+              navigate("/service");
+            }}
+            className="bg-[#2C6856] flex flex-row rounded-xl md:rounded-3xl text-white"
+            style={{ cursor: "pointer" }}
+          >
             <div className="ml-3">
               <p className="md:text-[1.6vw] text-sm text-center font-semibold my-1 md:my-4 pl-[0] pt-14 md:pt-20 pb-0">
                 +4
               </p>
-              <p className="md:text-[1.6vw] text-sm font-semibold my-1 md:my-10 pl-[0] pb-0">
+              <p
+                onClick={() => {
+                  navigate("/service");
+                }}
+                className="md:text-[1.6vw] text-sm font-semibold my-1 md:my-10 pl-[0] pb-0"
+              >
                 Learn More
               </p>
             </div>
@@ -271,7 +409,14 @@ const Homepage = () => {
                 className="md:w-[60px] md:h-[125px] h-[70px] w-[50px]"
               />
               <div>
-                <img src={morebtn} alt="" className="h-[20px] md:h-auto m-4" />
+                <img
+                  onClick={() => {
+                    navigate("/service");
+                  }}
+                  src={morebtn}
+                  alt=""
+                  className="h-[20px] md:h-auto m-4"
+                />
               </div>
             </div>
           </div>
@@ -297,12 +442,24 @@ const Homepage = () => {
               {item.title}
             </div>
           ))}
-          <div className="md:hidden font-bold text-white bg-[#2C6856] m-4 rounded-xl text-center text-xl flex flex-col items-center justify-center">
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              navigate("/about");
+            }}
+            className="md:hidden font-bold text-white bg-[#2C6856] m-4 rounded-xl text-center text-xl flex flex-col items-center justify-center"
+          >
             KNOW
             <br /> MORE
           </div>
         </div>
-        <div className="font-bold text-white bg-[#2C6856] p-4 m-4 rounded-xl text-center text-xl hidden md:flex flex-col items-center justify-center">
+        <div
+          style={{ cursor: "pointer" }}
+          onClick={() => {
+            navigate("/about");
+          }}
+          className="font-bold text-white bg-[#2C6856] p-4 m-4 rounded-xl text-center text-xl hidden md:flex flex-col items-center justify-center"
+        >
           KNOW MORE
         </div>
       </div>
@@ -314,11 +471,8 @@ const Homepage = () => {
         </div>
         <Slider {...settings} className="w-[98%] md:w-[90%] max-w-[1100px]">
           {itemsTestimonials.map((testimonial) => (
-            <div className="p-1 md:p-4">
-              <div
-                key={testimonial._id}
-                className=" md:p-5 p-3 text-white bg-[#4A8780] rounded-lg"
-              >
+            <div className="p-1 md:p-4" key={testimonial._id}>
+              <div className=" md:p-5 p-3 text-white bg-[#4A8780] rounded-lg">
                 <div className="italic text-[8px] md:text-lg">
                   " {testimonial.content} "
                 </div>
@@ -335,10 +489,7 @@ const Homepage = () => {
       </div>
 
       <div className="midsec5 flex items-center flex-col p-[40px] md:p-[100px] justify-center">
-        <div
-          className="flex flex-row justify-start w-[80vw] mb-2 md:mb-8"
-
-        >
+        <div className="flex flex-row justify-start w-[80vw] mb-2 md:mb-8">
           <p className="md:text-[35px] flex-shrink-0 text-[20px] font-bold">
             Our Featured Projects
           </p>
@@ -358,7 +509,13 @@ const Homepage = () => {
                   <p className="text-[2cqw] md:text-[1cqw] md:my-2">
                     Location:- {projects[0]?.location || "Example"}
                   </p>
-                  <button className="text-[2cqw] md:text-[1cqw] w-fit bg-opacity-30 bg-white rounded-sm md:rounded-lg border-white border-[1px] md:border-2 px-1 md:px-4 md:py-2">
+                  <button
+                    style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      navigate("/gallery");
+                    }}
+                    className="text-[2cqw] md:text-[1cqw] w-fit bg-opacity-30 bg-white rounded-sm md:rounded-lg border-white border-[1px] md:border-2 px-1 md:px-4 md:py-2"
+                  >
                     View More
                   </button>
                 </div>
@@ -378,7 +535,10 @@ const Homepage = () => {
                     <p className="text-[2cqw] md:text-[1cqw] md:my-2">
                       Location:- {projects[1]?.location || "Example"}
                     </p>
-                    <button className="text-[2cqw] md:text-[1cqw] w-fit bg-opacity-30 bg-white rounded-sm md:rounded-lg border-white border-[1px] md:border-2 px-1 md:px-4 md:py-2">
+                    <button style={{ cursor: "pointer" }}
+                      onClick={() => {
+                        navigate("/gallery");
+                      }} className="text-[2cqw] md:text-[1cqw] w-fit bg-opacity-30 bg-white rounded-sm md:rounded-lg border-white border-[1px] md:border-2 px-1 md:px-4 md:py-2">
                       View More
                     </button>
                   </div>
@@ -397,7 +557,10 @@ const Homepage = () => {
                     <p className="text-[2cqw] md:text-[1cqw] md:my-2">
                       Location:- {projects[2]?.location || "Example"}
                     </p>
-                    <button className="text-[2cqw] md:text-[1cqw] w-fit bg-opacity-30 bg-white rounded-sm md:rounded-lg border-white border-[1px] md:border-2 px-1 md:px-4 md:py-2">
+                    <button style={{ cursor: "pointer" }}
+                      onClick={() => {
+                        navigate("/gallery");
+                      }} className="text-[2cqw] md:text-[1cqw] w-fit bg-opacity-30 bg-white rounded-sm md:rounded-lg border-white border-[1px] md:border-2 px-1 md:px-4 md:py-2">
                       View More
                     </button>
                   </div>
@@ -420,7 +583,10 @@ const Homepage = () => {
                   <p className="text-[2cqw] md:text-[1cqw] md:my-2">
                     Location:- {projects[3]?.location || "Example"}
                   </p>
-                  <button className="text-[2cqw] md:text-[1cqw] w-fit bg-opacity-30 bg-white rounded-sm md:rounded-lg border-white border-[1px] md:border-2 px-1 md:px-4 md:py-2">
+                  <button style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      navigate("/gallery");
+                    }} className="text-[2cqw] md:text-[1cqw] w-fit bg-opacity-30 bg-white rounded-sm md:rounded-lg border-white border-[1px] md:border-2 px-1 md:px-4 md:py-2">
                     View More
                   </button>
                 </div>
@@ -439,7 +605,10 @@ const Homepage = () => {
                   <p className="text-[2cqw] md:text-[1cqw] md:my-2">
                     Location:- {projects[4]?.location || "Example"}
                   </p>
-                  <button className="text-[2cqw] md:text-[1cqw] w-fit bg-opacity-30 bg-white rounded-sm md:rounded-lg border-white border-[1px] md:border-2 px-1 md:px-4 md:py-2">
+                  <button style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      navigate("/gallery");
+                    }} className="text-[2cqw] md:text-[1cqw] w-fit bg-opacity-30 bg-white rounded-sm md:rounded-lg border-white border-[1px] md:border-2 px-1 md:px-4 md:py-2">
                     View More
                   </button>
                 </div>
@@ -453,6 +622,10 @@ const Homepage = () => {
             className="my-2"
             backgroundColor={"#2C6856"}
             color={"white"}
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              navigate("/gallery");
+            }}
           >
             View More
           </Button>
@@ -463,70 +636,52 @@ const Homepage = () => {
           Read Our Blog.
         </div>
         <div className="grid gap-4 md:gap-10 grid-cols-3">
-          <div className="bg-[#D9D9D9] flex flex-col md:gap-4 gap-1 rounded-lg md:rounded-3xl">
-            <div className="relative">
-              <img src={homebg} className="rounded-lg md:rounded-3xl" />
-              <div className="md:text-base text-[8px] absolute bottom-0 m-1 md:m-4 text-white">
-                23 jun 2019
+          {blogPosts.map((item) => (
+            <div className="bg-[#D9D9D9] flex flex-col md:gap-4 gap-1 rounded-lg md:rounded-3xl">
+              <div key={item._id} className="relative">
+                <img src={item.media} className="rounded-lg md:rounded-3xl" />
+                <div className="md:text-base text-[8px] absolute bottom-0 m-1 md:m-4 text-white">
+                  {formatDate(item.date)}
+                </div>
               </div>
-            </div>
-            <div className="font-bold text-[10px] md:text-xl px-1 md:px-4">
-              We'll your next project, because nobody wants.....
-            </div>
-            <div className="text-[8px] md:text-base px-1 md:px-4">
-              Lorem Ipsum is simply dummy text of the printing and typesetting.
-            </div>
-            <button className="font-semibold text-white w-fit bg-[#2C6856] px-2 py-1 md:py-2 md:px-4 mx-1 md:mx-4 mb-4 md:mb-6 rounded my-1 md:rounded-xl text-[9px] md:text-lg">
-              READ MORE
-            </button>
-          </div>
-          <div className="bg-[#D9D9D9] flex flex-col md:gap-4 gap-1 rounded-lg md:rounded-3xl">
-            <div className="relative">
-              <img src={homebg} className="rounded-lg md:rounded-3xl" />
-              <div className="md:text-base text-[8px] absolute bottom-0 m-1 md:m-4 text-white">
-                23 jun 2019
+              <div className="font-bold text-[10px] md:text-xl px-1 md:px-4">
+                {item.title}
               </div>
-            </div>
-            <div className="font-bold text-[10px] md:text-xl px-1 md:px-4">
-              We'll your next project, because nobody wants.....
-            </div>
-            <div className="text-[8px] md:text-base px-1 md:px-4">
-              Lorem Ipsum is simply dummy text of the printing and typesetting.
-            </div>
-            <button className="font-semibold text-white w-fit bg-[#2C6856] px-2 py-1 md:py-2 md:px-4 mx-1 md:mx-4 mb-4 md:mb-6 rounded my-1 md:rounded-xl text-[9px] md:text-lg">
-              READ MORE
-            </button>
-          </div>
-          <div className="bg-[#D9D9D9] flex flex-col md:gap-4 gap-1 rounded-lg md:rounded-3xl">
-            <div className="relative">
-              <img src={homebg} className="rounded-lg md:rounded-3xl" />
-              <div className="md:text-base text-[8px] absolute bottom-0 m-1 md:m-4 text-white">
-                23 jun 2019
+              <div className="text-[8px] md:text-base px-1 md:px-4">
+                {truncateText(item.content, 12)}
               </div>
+              <button
+                onClick={() => {
+                  navigate(`/blogs/${item._id}`);
+                }}
+                className="font-semibold text-white w-fit bg-[#2C6856] px-2 py-1 md:py-2 md:px-4 mx-1 md:mx-4 mb-4 md:mb-6 rounded my-1 md:rounded-xl text-[9px] md:text-lg"
+              >
+                READ MORE
+              </button>
             </div>
-            <div className="font-bold text-[10px] md:text-xl px-1 md:px-4">
-              We'll your next project, because nobody wants.....
-            </div>
-            <div className="text-[8px] md:text-base px-1 md:px-4">
-              Lorem Ipsum is simply dummy text of the printing and typesetting.
-            </div>
-            <button className="font-semibold text-white w-fit bg-[#2C6856] px-2 py-1 md:py-2 md:px-4 mx-1 md:mx-4 mb-4 md:mb-6 rounded my-1 md:rounded-xl text-[9px] md:text-lg">
-              READ MORE
-            </button>
-          </div>
+          ))}
         </div>
       </div>
       <div className="w-4/5 flex flex-col items-center mx-auto">
         <div className="md:text-[35px] text-center mt-8 text-[20px] font-bold">
-          Join, Collaborate, and Transform Together!
+          {itemsJoin[joinIndex]?.title ||
+            "Join, Collaborate, and Transform Together!"}
         </div>
-        <img src={joinus} className="md:w-3/5 w-full my-4 md:my-8" alt="" />
+        <img
+          src={itemsJoin[joinIndex]?.media || joinus}
+          className="md:w-3/5 w-full my-4 md:my-8"
+          alt=""
+        />
         <div className="flex flex-col items-center w-full">
           <Button
             maxWidth={"120px"}
             className="my-2"
             backgroundColor={"#2C6856"}
             color={"white"}
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              navigate("/collaborate");
+            }}
           >
             View More
           </Button>
@@ -535,6 +690,7 @@ const Homepage = () => {
       <div className="w-full items-center flex flex-col my-8">
         <Bookacall />
       </div>
+      <Footer />
     </div>
   );
 };

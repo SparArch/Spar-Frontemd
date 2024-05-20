@@ -29,8 +29,8 @@ const Navbar = () => {
   return (
     <>
       <div className=' flex justify-center  align-middle'>
-        <div className='fixed z-[120]  p-2 flex justify-center'>
-          <div className="navbar flex justify-between sm:justify-center py-4 items-center w-[95vw]  sm:px-[1.5rem] sm:py-[1.5rem] rounded-[2rem] bg-white  drop-shadow-xl">
+        <div className='fixed z-[120]  p-0 sm:p-2 flex justify-center'>
+          <div className="navbar flex justify-between sm:justify-center py-3 items-center w-[95vw]  sm:px-[1.5rem] sm:py-[1.5rem] rounded-[2rem] bg-white  drop-shadow-xl">
             <div className="flex w-full lg:justify-center justify-between  px-10 sm:px-0   sm:gap-[240px]">
               <div className=" flex">
                 <img onClick={() => navigate("/")} src={Logo} className='sm:h-16 h-12 cursor-pointer' />

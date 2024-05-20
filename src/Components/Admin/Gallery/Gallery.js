@@ -26,7 +26,7 @@ const Gallery = () => {
     }
   };
 
-console.log();
+  console.log();
   const fetchProjects = async () => {
     try {
       const response = await axios.get(`${BACKEND_URL}/api/project`);
@@ -82,19 +82,11 @@ console.log();
           </div>
           <div className="blogs-filter">
             <div className="blogs-check">
-            <Checkbox isChecked={selectAll} onChange={handleSelectAll} />
+              <Checkbox isChecked={selectAll} onChange={handleSelectAll} />
               <Text>SELECT ALL</Text>
             </div>
             <div className="blogs-fil">
-              <div className="blogs-fil1">
-                <div>FILTER BY</div>
-                <select
-                  style={{ border: "2px black solid", borderRadius: "30px" }}
-                >
-                  <option value="someOption">Some option</option>
-                  <option value="otherOption">Other option</option>
-                </select>
-              </div>
+
               <div>
                 <Input
                   borderRadius={"2rem"}
@@ -108,14 +100,14 @@ console.log();
         </div>
         <div className="blogs-cards">
           {projects.map((project) => (
-            <div className="card" key={project._id}>
+            <div className="card py-4" key={project._id}>
               <Checkbox
                 isChecked={selectedProjects.includes(project._id)}
                 onChange={() => handleCheckboxChange(project._id)}
               />
               <Image
                 style={{
-                  width: "750px",
+                  width: "740px",
                   height: "160px",
                   borderRadius: "16px",
                 }}

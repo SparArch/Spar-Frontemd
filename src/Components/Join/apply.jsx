@@ -10,6 +10,7 @@ import hiring2 from '../Images/hiring2.png'
 import Navbar from '../HomePage/navbar'
 import axios from "axios";
 import BACKEND_URL from "../../helper";
+import Footer from '../HomePage/footer'
 
 const Gallerypost = () => {
   const [formData, setFormData] = useState({
@@ -53,6 +54,7 @@ const Gallerypost = () => {
 
   return (
     <div className="flex flex-col items-center">
+      <Navbar />
       <img
         src={contactusbanner}
         alt="aboutimg1"
@@ -133,6 +135,7 @@ const Gallerypost = () => {
       <div className="w-full items-center flex flex-col my-8">
         <Bookacall />
       </div>
+      <Footer />
     </div>
   );
 };

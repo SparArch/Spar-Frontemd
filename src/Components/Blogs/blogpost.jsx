@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import blogsbg from "../Images/blogsbg.png";
-import { Text } from "@chakra-ui/react";
+import { Text, useToast } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import Arrow from "../Images/Arrow.png";
 import axios from "axios";
@@ -11,11 +11,36 @@ import homebg from "../Images/homebg.png";
 import { useNavigate, useParams } from "react-router-dom";
 import blogbtn from "../Images/blogbtn.png";
 import Navbar from "../HomePage/navbar";
+import Footer from "../HomePage/footer";
 const BlogPost = () => {
   const { id } = useParams();
   const [blogPost, setBlogPost] = useState([]);
   const [otherPosts, setOtherPosts] = useState([]);
   const navigate = useNavigate();
+  const toast = useToast();
+
+  const copyURLToClipboard = () => {
+    const url = window.location.href; // Get the current URL
+    navigator.clipboard.writeText(url).then(() => {
+      toast({
+        title: "URL copied!",
+        description: "The URL has been copied to your clipboard.",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+    }).catch(err => {
+      console.error('Failed to copy the URL: ', err);
+      toast({
+        title: "Failed to copy URL",
+        description: "There was an issue copying the URL. Please try again.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    });
+  };
+
   useEffect(() => {
     fetchData();
     fetchOtherPosts();
@@ -61,11 +86,11 @@ const BlogPost = () => {
         <Clientlist />
       </div>
       <div className="flex flex-col gap-3 md:gap-10 md:my-16 my-4 w-[90%] md:w-4/5 items-center">
-        <div className="md:text-4xl text-sm text-center font-semibold">
+        <div className="md:text-4xl flex flex-row items-center text-sm text-center font-semibold">
           {blogPost.title}
-          <img src={blogbtn} className='h-8 hidden md:block ml-6' />
+          <img onClick={copyURLToClipboard} style={{ cursor: "pointer" }} src={blogbtn} className="h-8 hidden md:block ml-6" />
         </div>
-        <img src={homebg} className="w-full" alt="" />
+        <img src={blogPost.media} className="w-full" alt="" />
         <div className="text-[10px] leading-3 md:text-lg">
           {blogPost.content}
         </div>
@@ -91,6 +116,7 @@ const BlogPost = () => {
       <div className="w-full items-center flex flex-col md:my-8">
         <Bookacall />
       </div>
+      <Footer />
     </div>
   );
 };

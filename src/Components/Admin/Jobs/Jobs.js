@@ -118,6 +118,37 @@ const Jobs = () => {
       setSelectedContacts([...selectedContacts, id]);
     }
   };
+  const handleExport = async () => {
+    try {
+      const response = await axios.post(
+        `${BACKEND_URL}/api/contacts/collab/export`,
+        {
+          selectedContacts,
+        },
+        { responseType: "blob" }
+      );
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "collab.csv");
+      document.body.appendChild(link);
+      link.click();
+    } catch (error) {
+      console.error("Error exporting contacts:", error);
+    }
+  };
+
+  const handleSendEmail = async () => {
+    try {
+      const response = await axios.post(`${BACKEND_URL}/api/contacts/collab/send-email`, {
+        selectedContacts,
+      });
+      alert("Email sent successfully");
+    } catch (error) {
+      console.error("Error sending email:", error);
+      alert("Failed to send email");
+    }
+  };
 
   const currentContacts = contacts.slice(0, currentPage * contactsPerPage);
 
@@ -260,7 +291,7 @@ const Jobs = () => {
                 >
                   DELETE
                 </Button>
-                <Button backgroundColor={"#2C6856"} color={"#fff"}>
+                <Button onClick={handleSendEmail} backgroundColor={"#2C6856"} color={"#fff"}>
                   SEND TO MAIL
                 </Button>
               </div>
@@ -358,7 +389,7 @@ const Jobs = () => {
                 marginLeft: "-10rem",
               }}
             >
-              <Button backgroundColor={"#2C6856"} color={"#fff"}>
+              <Button onClick={handleExport} backgroundColor={"#2C6856"} color={"#fff"}>
                 EXPORT
               </Button>
             </div>

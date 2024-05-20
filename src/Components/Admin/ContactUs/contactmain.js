@@ -67,6 +67,38 @@ const ContactMain = () => {
     }
   };
 
+  const handleExport = async () => {
+    try {
+      const response = await axios.post(
+        `${BACKEND_URL}/api/contacts/export`,
+        {
+          selectedContacts,
+        },
+        { responseType: "blob" }
+      );
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "contacts.csv");
+      document.body.appendChild(link);
+      link.click();
+    } catch (error) {
+      console.error("Error exporting contacts:", error);
+    }
+  };
+
+  const handleSendEmail = async () => {
+    try {
+      const response = await axios.post(`${BACKEND_URL}/api/contacts/send-email`, {
+        selectedContacts,
+      });
+      alert("Email sent successfully");
+    } catch (error) {
+      console.error("Error sending email:", error);
+      alert("Failed to send email");
+    }
+  };
+
   const currentContacts = contacts.slice(0, currentPage * contactsPerPage);
 
   return (
@@ -84,7 +116,7 @@ const ContactMain = () => {
                   <Text>SELECT ALL</Text>
                 </div>
                 <Button backgroundColor={'#2C6856'} color={'#fff'} onClick={handleDelete}>DELETE</Button>
-                <Button backgroundColor={'#2C6856'} color={'#fff'}>SEND TO MAIL</Button>
+                <Button onClick={handleSendEmail} backgroundColor={'#2C6856'} color={'#fff'}>SEND TO MAIL</Button>
               </div>
               <div>
                 <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
@@ -139,7 +171,7 @@ const ContactMain = () => {
               </div>
             )}
             <div style={{ display: "flex", justifyContent: "center", gap: "3rem", marginTop: "2rem", marginLeft: "-10rem" }}>
-              <Button backgroundColor={'#2C6856'} color={'#fff'}>EXPORT</Button>
+              <Button onClick={handleExport} backgroundColor={'#2C6856'} color={'#fff'}>EXPORT</Button>
             </div>
           </div>
         </div>
