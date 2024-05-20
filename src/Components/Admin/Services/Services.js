@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import NavAd from "../NavAd";
 import SideNav from "../SideNav";
-import { Button, Image, Input, Text } from "@chakra-ui/react";
+import { Button, Image, Input, Text, useToast } from "@chakra-ui/react";
 import clip from "../../Images/clip.png";
 import left_align_icon from "../../Images/left_align.png";
 import right_align_icon from "../../Images/right_align.png";
@@ -14,6 +14,7 @@ import axios from "axios";
 import BACKEND_URL from "../../../helper";
 const Services = () => {
   // const [text, setText] = useState('');
+  const toast = useToast();
   const [titleServices, setTitleServices] = useState("");
   const [contentServices, setContentServices] = useState("");
   const [titleWork, setTitleWork] = useState("");
@@ -73,7 +74,12 @@ const Services = () => {
         media: secure_url,
       });
       console.log("Services created successfully");
-
+      toast({
+        title: "Successfully Added",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
       // Now you can use secure_url to display the media or save it to your backend
       console.log("Uploaded media URL:", secure_url);
     } catch (error) {
@@ -102,7 +108,12 @@ const Services = () => {
         media: secure_url,
       });
       console.log("Services created successfully");
-
+      toast({
+        title: "Successfully Added",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
       // Now you can use secure_url to display the media or save it to your backend
       console.log("Uploaded media URL:", secure_url);
     } catch (error) {
@@ -131,9 +142,7 @@ const Services = () => {
   };
   const fetchItemsServices = async () => {
     try {
-      const response = await axios.get(
-        `${BACKEND_URL}/api/service/services`
-      );
+      const response = await axios.get(`${BACKEND_URL}/api/service/services`);
       setItemsServices(response.data);
     } catch (error) {
       console.error("Error fetching items:", error);
@@ -249,7 +258,6 @@ const Services = () => {
                 </div>
               ))}
             </div>
-            
           </div>
           <div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>

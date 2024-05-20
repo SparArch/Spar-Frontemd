@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import NavAd from "../NavAd";
 import SideNav from "../SideNav";
-import { Button, Input } from "@chakra-ui/react";
+import { Button, Input, useToast } from "@chakra-ui/react";
 import "./newblog.css";
 import clip from "../../Images/clip.png";
 import left_align_icon from "../../Images/left_align.png";
@@ -13,6 +13,7 @@ import BACKEND_URL from "../../../helper";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 const Newblog = () => {
+  const toast =useToast()
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [tags, setTags] = useState("");
@@ -48,7 +49,12 @@ const Newblog = () => {
         tags,
         media: mediaUrls,
       });
-
+      toast({
+        title: "Successfully Added",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
       // Reset form fields after successful submission
       setTitle("");
       setContent("");
