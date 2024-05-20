@@ -14,6 +14,7 @@ import {
   Th,
   Thead,
   Tr,
+  useToast,
 } from "@chakra-ui/react";
 import clip from "../../Images/clip.png";
 import left_align_icon from "../../Images/left_align.png";
@@ -26,6 +27,7 @@ import pos from "../../Images/position.jpeg";
 import axios from "axios";
 import BACKEND_URL from "../../../helper";
 const Jobs = () => {
+  const toast = useToast();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [itemsJobs, setItemsJobs] = useState([]);
@@ -50,6 +52,12 @@ const Jobs = () => {
       const response = await axios.post(`${BACKEND_URL}/api/contacts/jobs`, {
         title,
         content,
+      });
+      toast({
+        title: "Successfully Added",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
       });
       setTitle("");
       setContent("");

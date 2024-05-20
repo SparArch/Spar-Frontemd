@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import NavAd from "../NavAd";
 import SideNav from "../SideNav";
 import "../Home/home.css";
-import { Button, Image, Input, Text } from "@chakra-ui/react";
+import { Button, Image, Input, Text, useToast } from "@chakra-ui/react";
 import clip from "../../Images/clip.png";
 import left_align_icon from "../../Images/left_align.png";
 import right_align_icon from "../../Images/right_align.png";
@@ -14,6 +14,7 @@ import BACKEND_URL from "../../../helper";
 import del from "../../Images/delete.png";
 import solImage from "../../Images/solution1.png";
 const About = () => {
+  const toast = useToast()
   const [titleAboutUs, setTitleAboutUs] = useState("");
   const [contentAboutUs, setContentAboutUs] = useState("");
   const [mediaFileAboutUs, setMediaFileAboutUs] = useState(null);
@@ -76,6 +77,12 @@ const About = () => {
         title: titleAboutUs,
         content: contentAboutUs,
         image: secure_url,
+      });
+      toast({
+        title: "Successfully Added",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
       });
       console.log("About Us created successfully");
       console.log("Uploaded media URL:", secure_url);
@@ -177,6 +184,12 @@ const About = () => {
         content: contentSolutions,
         media: secure_url,
       });
+      toast({
+        title: "Successfully Added",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
       console.log("Solutions created successfully");
     } catch (error) {
       console.error("Error creating Solutions:", error);
@@ -201,10 +214,22 @@ const About = () => {
           content: contentVision,
           media: secure_url,
         });
+        toast({
+          title: "Successfully Added",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
       } else {
         await axios.post(`${BACKEND_URL}/api/about/mission`, {
           title: titleVision,
           content: contentVision,
+        });
+        toast({
+          title: "Successfully Added",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
         });
       }
 
@@ -229,6 +254,12 @@ const About = () => {
 
       await axios.post(`${BACKEND_URL}/api/about/ourClients`, {
         media: secure_url,
+      });
+      toast({
+        title: "Successfully Added",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
       });
       console.log("Clients created successfully");
     } catch (error) {

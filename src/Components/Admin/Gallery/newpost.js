@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import NavAd from "../NavAd";
 import SideNav from "../SideNav";
-import { Button, Input } from "@chakra-ui/react";
+import { Button, Input, useToast } from "@chakra-ui/react";
 import "../Blogs/newblog.css";
 import clip from "../../Images/clip.png";
 import left_align_icon from "../../Images/left_align.png";
@@ -14,6 +14,7 @@ import BACKEND_URL from "../../../helper";
 import { useNavigate } from "react-router-dom";
 const Newblog = () => {
   const [title, setTitle] = useState("");
+  const toast = useToast()
   const [content, setContent] = useState("");
   const [location, setLocation] = useState("");
   const [scope, setScope] = useState("");
@@ -40,6 +41,7 @@ const Newblog = () => {
             "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload",
             formData
           );
+          
 
           return response.data.secure_url;
         })
@@ -57,7 +59,12 @@ const Newblog = () => {
         keywords,
         media: mediaUrls,
       });
-
+      toast({
+        title: "Successfully Added",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
       // Reset form fields after successful submission
       setTitle("");
       setContent("");
