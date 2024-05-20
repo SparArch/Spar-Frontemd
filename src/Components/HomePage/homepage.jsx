@@ -488,7 +488,7 @@ const Homepage = () => {
       </div>
 
       <div className="midsec5 flex items-center flex-col p-[40px] md:p-[100px] justify-center">
-        <div className="flex flex-row justify-start w-[80vw] mb-2 md:mb-8">
+        <div className="flex flex-row justify-center mx-auto w-[80vw] mb-2 md:mb-8">
           <p className="md:text-[35px] flex-shrink-0 text-[20px] font-bold">
             Our Featured Projects
           </p>
@@ -497,7 +497,7 @@ const Homepage = () => {
           <div className="flex flex-row gap-1 md:gap-4">
             <div className="relative">
               <Image
-                className="h-[464px] w-[937px] rounded-xl"
+                className=" sm:h-[464px] w-[937px] rounded-xl"
                 src={projects[0]?.media || blankimg}
               />
               <div className="w-full h-full opacity-0 duration-500 hover:opacity-100 bg-black/50 absolute top-0">
@@ -523,7 +523,7 @@ const Homepage = () => {
             <div className="flex flex-col gap-1 md:gap-4">
               <div className="relative">
                 <Image
-                  className="h-[200px] w-[451px] rounded-xl"
+                  className="sm:h-[200px] w-[451px] rounded-xl"
                   src={projects[1]?.media || blankimg}
                 />
                 <div className="w-full h-full opacity-0 duration-500 hover:opacity-100 bg-black/50 absolute top-0">
@@ -545,7 +545,7 @@ const Homepage = () => {
               </div>
               <div className="relative">
                 <Image
-                  className="h-[233px] w-[451px] rounded-xl"
+                  className="sm:h-[233px] w-[451px] rounded-xl"
                   src={projects[2]?.media || blankimg}
                 />
                 <div className="w-full h-full opacity-0 duration-500 hover:opacity-100 bg-black/50 absolute top-0">
@@ -571,7 +571,7 @@ const Homepage = () => {
           <div className="flex flex-row gap-1 md:gap-4">
             <div className="relative">
               <Image
-                className="h-[288px] w-[816px] rounded-xl"
+                className="sm:h-[288px] w-[816px] rounded-xl"
                 src={projects[3]?.media || blankimg}
               />
               <div className="w-full h-full opacity-0 duration-500 hover:opacity-100 bg-black/50 absolute top-0">
@@ -593,7 +593,7 @@ const Homepage = () => {
             </div>
             <div className="relative">
               <Image
-                className="h-[290px] w-[575px] rounded-xl"
+                className="sm:h-[290px] w-[575px] rounded-xl"
                 src={projects[4]?.media || blankimg}
               />
               <div className="w-full h-full opacity-0 duration-500 hover:opacity-100 bg-black/50 absolute top-0">
