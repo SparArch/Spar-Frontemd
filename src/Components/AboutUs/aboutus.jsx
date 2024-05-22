@@ -123,7 +123,7 @@ const Aboutus = () => {
       <div className="md:text-[4vw] text-xl md:mt-12 my-2 font-bold">
         We Solve the Right Problems.
       </div>
-      <div className="flex gap-4 md:gap-12 flex-col mt-4 md:my-12 items-center w-[95%] md:w-[90%]">
+      <div className="flex gap-4 md:gap-12 flex-col mt-4 md:my-12 items-center w-[95%] md:w-[80%]">
         {itemsSolve.map((item, index) => (
           <div key={index} ref={scrollRef} className={`flex w-full justify-evenly flex-row ${index % 2 === 0 ? "" : "flex-row-reverse"} md:gap-6 items-center ${searchIndex === index ? "bg-gray-200" : ""}`}>
             <div className="flex flex-col items-center">
@@ -132,11 +132,11 @@ const Aboutus = () => {
                 alt="aboutus"
                 className="w-12 md:w-20"
               />
-              <div className="text-center font-semibold text-[10px] md:text-3xl">
+              <div className="text-center md:w-64 font-semibold text-[10px] md:text-2xl">
                 {item?.title}
               </div>
             </div>
-            <div className={`text-white text-[10px] md:text-[1.5vw] md:text-left text-center p-2 md:p-6 px-4 md:px-12 rounded-full w-[70%] md:w-3/5 ${index % 2 === 0 ? "bg-[#2C6856]" : "bg-[#4A8780]"} `}>
+            <div className={`text-white text-[10px] md:text-[1.2vw] md:text-left text-center p-2 md:p-10 px-4 md:px-12 rounded-full w-[70%] md:w-3/5 ${index % 2 === 0 ? "bg-[#2C6856]" : "bg-[#4A8780]"} `}>
               <b>{item?.title}:</b> {item?.content}
             </div>
           </div>
@@ -156,14 +156,14 @@ const Aboutus = () => {
         ))}
       </div>
 
-      <div className="text-[10vw] my-2 font-bold">Our Clients</div>
-      <div className="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-8 w-[90%]">
+      <div className="text-[10vw] md:text-[4vw] my-2 font-bold">Our Clients</div>
+      <div className="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-8 w-[90%] mb-14">
         {itemsClients?.map((item, index) => (
           <img
             key={index}
             src={item?.media}
             alt="aboutus"
-            className="w-full rounded-xl md:rounded-3xl"
+            className="w-full"
           />
         ))}
       </div>
@@ -180,7 +180,7 @@ const Aboutus = () => {
         </Button>
       </div> */}
 
-      <div className="text-[6vw] hidden md:block my-2 font-bold">
+      <div className="text-[6vw] md:text-[4vw] hidden md:block my-2 font-bold">
         Our Certification
       </div>
       <div className="hidden md:grid grid-cols-6 mb-24 gap-8 w-[90%]">
