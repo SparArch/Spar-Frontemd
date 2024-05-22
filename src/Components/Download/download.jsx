@@ -142,10 +142,10 @@ const Gallerypost = () => {
         alt="aboutimg1"
         className="z-10 w-full top-0"
       />
-      <div className="w-full md:top-[-1.25rem] top-[-1.5rem] flex flex-col items-center relative">
+      <div className="w-full md:top-[-1.25rem] top-[1.5rem] flex flex-col items-center relative">
         <Clientlist />
       </div>
-      <div className="w-full text-center font-bold md:text-4xl text-xl">
+      <div className="w-full mt-[24px] text-center font-bold md:text-4xl text-xl">
         Download Resources
       </div>
       <div className="grid gap-2 md:gap-4 w-[90%] mt-8 md:mt-12 grid-cols-3 mb-48">

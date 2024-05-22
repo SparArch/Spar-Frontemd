@@ -11,9 +11,10 @@ import linkedin from "../Images/linkedin.png"
 import twitter from "../Images/twitter.png"
 import axios from "axios";
 import BACKEND_URL from "../../helper";
-
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+    const navigate = useNavigate();
     const [itemsSocial, setItemsSocial] = useState({})
     useEffect(() => {
         fetchSocial()
@@ -35,32 +36,32 @@ const Footer = () => {
         <div className="flex flex-row text-[#666666] justify-between w-full md:w-[90%]">
             <div className="flex flex-col h-48">
                 <div className="text-base md:text-xl font-bold">Community</div>
-                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer">Blogs</div>
-                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer">Case Studies</div>
-                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer">Media</div>
+                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer" onClick={() => { navigate('/blogs') }}>Blogs</div>
+                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer" onClick={() => { navigate('/blogs') }}>Case Studies</div>
+                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer" onClick={() => { navigate('/blogs') }}>Media</div>
             </div>
             <div className="flex flex-col h-48">
                 <div className="text-base md:text-xl font-bold">Company</div>
-                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer">About Us</div>
-                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer">Testimonials</div>
-                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer">Gallery</div>
-                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer">Contact</div>
+                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer" onClick={() => { navigate('/about') }}>About Us</div>
+                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer" onClick={() => { navigate('/') }}>Testimonials</div>
+                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer" onClick={() => { navigate('/gallery') }}>Gallery</div>
+                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer" onClick={() => { navigate('/contactus') }}>Contact</div>
             </div>
             <div className="flex flex-col md:h-48">
                 <div className="text-base md:text-xl font-bold">Useful Links</div>
                 <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer">Privacy Policy</div>
-                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer">Testimonials</div>
+                <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer" onClick={() => { navigate('/') }}>Testimonials</div>
                 <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer">Terms & Conditions</div>
             </div>
             <div className="md:block hidden text-xl font-bold">
                 Recent Work
                 <div className="grid grid-cols-3 gap-2 mr-3 md:gap-4 mt-6 mb-6 cursor-pointer">
-                    <img src={img1} alt="" className="w-12 md:w-16" />
-                    <img src={img2} alt="" className="w-12 md:w-16" />
-                    <img src={img3} alt="" className="w-12 md:w-16" />
-                    <img src={img4} alt="" className="w-12 md:w-16" />
-                    <img src={img5} alt="" className="w-12 md:w-16" />
-                    <img src={img6} alt="" className="w-12 md:w-16" />
+                    <img onClick={() => { navigate('/gallery') }} src={img1} alt="" className="w-12 md:w-16" />
+                    <img onClick={() => { navigate('/gallery') }} src={img2} alt="" className="w-12 md:w-16" />
+                    <img onClick={() => { navigate('/gallery') }} src={img3} alt="" className="w-12 md:w-16" />
+                    <img onClick={() => { navigate('/gallery') }} src={img4} alt="" className="w-12 md:w-16" />
+                    <img onClick={() => { navigate('/gallery') }} src={img5} alt="" className="w-12 md:w-16" />
+                    <img onClick={() => { navigate('/gallery') }} src={img6} alt="" className="w-12 md:w-16" />
                 </div>
             </div>
         </div>

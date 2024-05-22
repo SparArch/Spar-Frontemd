@@ -72,7 +72,7 @@ const Gallerypost = () => {
         alt="aboutimg1"
         className="z-10 w-full top-0"
       />
-      <div className="md:hidden w-full md:top-[-1.25rem] top-[-1.5rem] flex flex-col items-center relative">
+      <div className="md:hidden w-full md:top-[-1.25rem] top-[1rem] flex flex-col items-center relative">
         <Clientlist />
       </div>
       <div className="w-full hidden md:block text-center text-[#2C6856] mt-12 mb-24 font-bold text-7xl">

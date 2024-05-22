@@ -447,7 +447,7 @@ const Homepage = () => {
             onClick={() => {
               navigate("/about");
             }}
-            className="md:hidden font-bold text-white bg-[#2C6856] m-4 rounded-xl text-center text-xl flex flex-col items-center justify-center"
+            className="md:hidden text-[1rem] font-bold text-white bg-[#2C6856] m-4 rounded-xl text-center text-xl flex flex-col items-center justify-center"
           >
             KNOW
             <br /> MORE
