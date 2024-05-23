@@ -75,13 +75,13 @@ const Service = () => {
         style={{ backgroundImage: `url(${contactusbg})` }}
         className="w-full  flex flex-col items-center services"
       >
-        <p className="text-[10vw] leading-10 md:text-[5vw] font-bold md:my-8">
+        <p className="text-[8vw] leading-10 md:text-[4vw] font-bold mt-2 md:mt-8">
           What We Do.
         </p>
-        <p className="font-semibold my-2 text-[3vw] md:text-[1.8vw]">
+        <p className="font-semibold md:my-3 mb-4 text-[3vw] md:text-[1.5vw]">
           Transformative, Tailored, Innovative.
         </p>
-        <div className="md:mt-12 grid md:gap-8 gap-3 grid-cols-3 md:w-4/5 w-[90%] mb-12">
+        <div className="md:mt-12 grid md:gap-8 gap-3 grid-cols-3 md:w-4/5 w-[95%] mb-12">
           {services.map((service, index) => (
             <div
               key={index}
@@ -89,13 +89,13 @@ const Service = () => {
             >
               <img
                 src={service.media}
-                className="md:h-[30%] h-[98px] w-[98px]"
+                className="md:h-[30%] h-[40px] md:w-auto w-[40px]"
                 alt={service.title}
               />
               <p className="md:text-[1.2vw] text-xs text-center font-bold my-1 md:my-4">
                 {service.title}
               </p>
-              <p className="text-center text-[1.3vw] md:text-[1vw]">
+              <p className="text-center text-[1.4vw] text-[#5C675A] md:leading-normal leading-[1.7vw] md:text-[1vw]">
                 {service.content}
               </p>
             </div>
@@ -108,7 +108,7 @@ const Service = () => {
       <p className="font-semibold my-6 md:my-12 text-[5vw] md:text-[3vw]">
         Design
       </p>
-      <div className="flex flex-row items-center">
+      <div className="flex flex-row justify-center text-center items-center">
         <div className="flex flex-col items-center">
           <img
             src={design[0]?.media || consultation}
@@ -145,7 +145,7 @@ const Service = () => {
       <p className="font-semibold my-6 md:my-12 text-[5vw] md:text-[3vw]">
         Develop
       </p>
-      <div className="flex flex-row items-center">
+      <div className="flex flex-row justify-center text-center w-3/5 items-center">
         <div className="flex flex-col items-center">
           <img
             src={develop[0]?.media || manuf}
@@ -171,7 +171,7 @@ const Service = () => {
       <p className="font-semibold my-6 md:my-12 text-[5vw] md:text-[3vw]">
         Deliver
       </p>
-      <div className="flex flex-row items-center">
+      <div className="flex flex-row justify-center text-center items-center">
         <div className="flex flex-col items-center">
           <img
             src={deliver[0]?.media || ship}

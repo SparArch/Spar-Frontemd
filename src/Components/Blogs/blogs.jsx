@@ -97,29 +97,29 @@ const Blogs = () => {
           <>
             {blogPosts.slice(0, 5).map((item, index) => (
               <div className="flex flex-row gap-2 md:gap-12">
-                <div className="h-[25vw] md:h-[20vw]">
+                <div className="h-[20vw] w-[35vw]">
                   <img
                     src={item.media[0]}
-                    className=" h-full w-full md:rounded-2xl"
+                    className="object-cover h-full w-full md:rounded-2xl"
                   />
                 </div>
                 <div className="flex flex-col justify-between w-2/3">
-                  <div className="font-semibold text-[3.5vw] md:text-[2vw]">
+                  <div className="font-semibold text-[2.5vw] md:text-[2vw]">
                     {item.title}
                     <br />
-                    <div className="text-[1.5vw] font-bold">
+                    <div className="text-[1.5vw] md:text-[1vw] font-bold">
                       {formatDate(item.date)}
                     </div>
                   </div>
-                  <div className="text-[1vw] md:block hidden">
+                  <div className="text-[0.8vw] text-[#8D8D94] md:block hidden">
                     {truncateText(item.content, 75)}
                   </div>
                   <div className="flex flex-row items-center">
                     <Link
                       to={`/blogs/${item._id}`}
-                      className="text-[2vw] md:mb-0 mb-2 md:text-[1.5vw] p-1 px-2 md:p-3 md:px-5 md:rounded-xl border-[#4A8780] border-[1px] md:border-2 w-fit font-semibold"
+                      className="text-[1.5vw] md:mb-0 mb-1 p-1 px-2 md:p-3 md:px-5 md:rounded-xl border-[#4A8780] border-[1px] md:border-2 w-fit font-semibold"
                     >
-                      Read More →
+                      READ MORE →
                     </Link>
                     <img
                       style={{ cursor: "pointer" }}
