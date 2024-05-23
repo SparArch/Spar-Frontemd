@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import NavAd from "../NavAd";
 import SideNav from "../SideNav";
 import "../Home/home.css";
-import { Button, Image, Input, Text, useToast } from "@chakra-ui/react";
+import { Button, Image, Input, Text, Textarea, useToast } from "@chakra-ui/react";
 import clip from "../../Images/clip.png";
 import left_align_icon from "../../Images/left_align.png";
 import right_align_icon from "../../Images/right_align.png";
@@ -327,7 +327,7 @@ const About = () => {
                 marginBottom={"20px"}
                 placeholder="Title"
               />
-              <Input
+              <Textarea
                 value={contentAboutUs}
                 onChange={(e) => setContentAboutUs(e.target.value)}
                 placeholder="Write..."
@@ -419,7 +419,7 @@ const About = () => {
                 ADD
               </Button>
             </div>
-            <Input
+            <Textarea
               value={contentSolutions}
               onChange={(e) => {
                 setContentSolutions(e.target.value);
@@ -525,7 +525,7 @@ const About = () => {
                 marginBottom={"20px"}
                 placeholder="Title"
               />
-              <Input
+              <Textarea
                 value={contentVision}
                 onChange={(e) => {
                   setContentVision(e.target.value);

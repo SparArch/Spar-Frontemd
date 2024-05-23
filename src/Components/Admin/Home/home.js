@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import NavAd from "../NavAd";
 import SideNav from "../SideNav";
 import "./home.css";
-import { Button, Image, Input, Text, useToast } from "@chakra-ui/react";
+import { Button, Image, Input, Text, Textarea, useToast } from "@chakra-ui/react";
 import clip from "../../Images/clip.png";
 import left_align_icon from "../../Images/left_align.png";
 import right_align_icon from "../../Images/right_align.png";
@@ -219,7 +219,7 @@ const Home = () => {
         duration: 3000,
         isClosable: true,
       });
-      
+
 
       // Now you can use secure_url to display the media or save it to your backend
       console.log("Uploaded media URL:", secure_url);
@@ -522,7 +522,7 @@ const Home = () => {
                 marginBottom={"20px"}
                 placeholder="Title"
               />
-              <Input
+              <Textarea
                 value={contentTopCover}
                 onChange={(e) => {
                   setContentTopCover(e.target.value);
@@ -645,7 +645,7 @@ const Home = () => {
                 marginBottom={"20px"}
                 placeholder="Title"
               />
-              <Input
+              <Textarea
                 value={contentHello}
                 onChange={(e) => {
                   setContentHello(e.target.value);
@@ -713,7 +713,7 @@ const Home = () => {
                 marginBottom={"20px"}
                 placeholder="Title"
               />
-              <Input
+              <Textarea
                 value={contentSpaces}
                 onChange={(e) => {
                   setContentSpaces(e.target.value);
@@ -751,7 +751,7 @@ const Home = () => {
                 </div>
               ))}
             </div>
-            
+
           </div>
 
           <div>
@@ -903,7 +903,7 @@ const Home = () => {
                 marginBottom={"20px"}
                 placeholder="Title"
               />
-              <Input
+              <Textarea
                 value={contentTestimonials}
                 onChange={(e) => {
                   setContentTestimonials(e.target.value);
@@ -1035,7 +1035,7 @@ const Home = () => {
               </div>
             ))}
           </div>
-          <div>
+          {/* <div>
             <h3>BLOGS</h3>
             <div>
               <Button
@@ -1050,8 +1050,8 @@ const Home = () => {
                 ADD
               </Button>
             </div>
-          </div>
-          <div>
+          </div> */}
+          <div className="mb-[100px]">
             <h3>JOIN , COLLABORATE AND TRANSFORM TOGETHER</h3>
             <div className="title2">
               <Button backgroundColor={"#2C6856"} color={"#fff"}>

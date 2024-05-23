@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import NavAd from "../NavAd";
 import SideNav from "../SideNav";
-import { Button, Image, Input, Text, useToast } from "@chakra-ui/react";
+import { Button, Image, Input, Text, Textarea, useToast } from "@chakra-ui/react";
 import clip from "../../Images/clip.png";
 import left_align_icon from "../../Images/left_align.png";
 import right_align_icon from "../../Images/right_align.png";
@@ -220,7 +220,7 @@ const Services = () => {
                 marginBottom={"20px"}
                 placeholder="Title"
               />
-              <Input
+              <Textarea
                 value={contentServices}
                 onChange={(e) => {
                   setContentServices(e.target.value);
@@ -296,7 +296,7 @@ const Services = () => {
                 marginBottom={"20px"}
                 placeholder="Title"
               />
-              <Input
+              <Textarea
                 value={contentWork}
                 onChange={(e) => {
                   setContentWork(e.target.value);

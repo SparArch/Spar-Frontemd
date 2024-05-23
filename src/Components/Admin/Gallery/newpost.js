@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import NavAd from "../NavAd";
 import SideNav from "../SideNav";
-import { Button, Input, useToast } from "@chakra-ui/react";
+import { Button, Input, Textarea, useToast } from "@chakra-ui/react";
 import "../Blogs/newblog.css";
 import clip from "../../Images/clip.png";
 import left_align_icon from "../../Images/left_align.png";
@@ -41,7 +41,7 @@ const Newblog = () => {
             "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload",
             formData
           );
-          
+
 
           return response.data.secure_url;
         })
@@ -161,7 +161,7 @@ const Newblog = () => {
               {/* <Button marginLeft={'20rem'} paddingRight={'2rem'} paddingLeft={'2rem'} backgroundColor={'#2C6856'} color={'#fff'}>ADD</Button> */}
             </div>
             <div>
-              <Input
+              <Textarea
                 value={content}
                 onChange={(e) => {
                   setContent(e.target.value);
@@ -169,14 +169,14 @@ const Newblog = () => {
                 maxWidth={"90%"}
                 placeholder="Write..."
                 borderRadius={"20px"}
-                minHeight={"300px"}
+
               />
             </div>
             <div>
               <h3>Location</h3>
             </div>
             <div>
-              <Input
+              <Textarea
                 value={location}
                 onChange={(e) => {
                   setLocation(e.target.value);
@@ -190,7 +190,7 @@ const Newblog = () => {
               <h3>Scope</h3>
             </div>
             <div>
-              <Input
+              <Textarea
                 value={scope}
                 onChange={(e) => {
                   setScope(e.target.value);
@@ -201,10 +201,10 @@ const Newblog = () => {
               />
             </div>
             <div>
-              <h3>Keywords</h3>
+              <h3>Categories</h3>
             </div>
             <div>
-              <Input
+              <Textarea
                 value={keywords}
                 onChange={(e) => {
                   setKeywords(e.target.value);

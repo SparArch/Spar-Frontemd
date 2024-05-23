@@ -45,7 +45,7 @@ const NavAd = () => {
                   <li onClick={() => navigate("/admin-services")} className="div-6 cursor-pointer">Service</li>
                   <li className="div-7 cursor-pointer" onClick={() => navigate("/admin-gallery")}>Gallery</li>
                   <li onClick={() => navigate("/admin-blogs")} className="div-8 cursor-pointer">Blogs</li>
-                  <li onClick={() => navigate("/admin-contactus")} className="div-9 cursor-pointer">Contact Us</li>
+                  <li onClick={() => navigate("/admin-contact-main")} className="div-9 cursor-pointer">Contact Us</li>
                 </ul>
               </div>
               <div className=" flex flex-row justify-center items-center ">
@@ -105,7 +105,7 @@ const NavAd = () => {
             }}>Blogs</div>
             <Divider />
             <div onClick={() => {
-              navigate("/admin-contactus");
+              navigate("/admin-contact-main");
               onClose();
             }}>Contact Us</div>
           </ModalBody>

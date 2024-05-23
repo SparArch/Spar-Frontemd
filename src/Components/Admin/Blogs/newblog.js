@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import NavAd from "../NavAd";
 import SideNav from "../SideNav";
-import { Button, Input, useToast } from "@chakra-ui/react";
+import { Button, Input, Textarea, useToast } from "@chakra-ui/react";
 import "./newblog.css";
 import clip from "../../Images/clip.png";
 import left_align_icon from "../../Images/left_align.png";
@@ -13,7 +13,7 @@ import BACKEND_URL from "../../../helper";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 const Newblog = () => {
-  const toast =useToast()
+  const toast = useToast()
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [tags, setTags] = useState("");
@@ -146,7 +146,7 @@ const Newblog = () => {
               {/* <Button marginLeft={'20rem'} paddingRight={'2rem'} paddingLeft={'2rem'} backgroundColor={'#2C6856'} color={'#fff'}>ADD</Button> */}
             </div>
             <div>
-              <Input
+              <Textarea
                 value={content}
                 onChange={(e) => {
                   setContent(e.target.value);
@@ -154,14 +154,14 @@ const Newblog = () => {
                 maxWidth={"90%"}
                 placeholder="Write..."
                 borderRadius={"20px"}
-                minHeight={"300px"}
+
               />
             </div>
             <div>
               <h3>Tags</h3>
             </div>
             <div>
-              <Input
+              <Textarea
                 value={tags}
                 onChange={(e) => {
                   setTags(e.target.value);
