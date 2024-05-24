@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from "react";
-import img1 from "../Images/img1.png"
-import img2 from "../Images/img2.png"
-import img3 from "../Images/img3.png"
-import img4 from "../Images/img4.png"
-import img5 from "../Images/img5.png"
-import img6 from "../Images/img6.png"
-import fb from "../Images/fb.png"
-import insta from "../Images/insta.png"
-import linkedin from "../Images/linkedin.png"
-import twitter from "../Images/twitter.png"
+
+import fb from "../Images/facebook-icon.png"
+import insta from "../Images/insta-icon.png"
+import linkedin from "../Images/linkedin-icon.png"
+import twitter from "../Images/twitter-icon.png"
 import axios from "axios";
 import BACKEND_URL from "../../helper";
 import { useNavigate } from "react-router-dom";
@@ -53,27 +48,27 @@ const Footer = () => {
                 <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer" onClick={() => { navigate('/') }}>Testimonials</div>
                 <div className="md:text-base mt-3 font-semibold text-xs cursor-pointer">Terms & Conditions</div>
             </div>
-            <div className="md:block hidden text-xl font-bold">
-                Recent Work
-                <div className="grid grid-cols-3 gap-2 mr-3 md:gap-4 mt-6 mb-6 cursor-pointer">
-                    <img onClick={() => { navigate('/gallery') }} src={img1} alt="" className="w-12 md:w-16" />
-                    <img onClick={() => { navigate('/gallery') }} src={img2} alt="" className="w-12 md:w-16" />
-                    <img onClick={() => { navigate('/gallery') }} src={img3} alt="" className="w-12 md:w-16" />
-                    <img onClick={() => { navigate('/gallery') }} src={img4} alt="" className="w-12 md:w-16" />
-                    <img onClick={() => { navigate('/gallery') }} src={img5} alt="" className="w-12 md:w-16" />
-                    <img onClick={() => { navigate('/gallery') }} src={img6} alt="" className="w-12 md:w-16" />
+            <div className="hidden md:flex flex-col gap-6 mt-6 mb-6 mr-[10%] cursor-pointer">
+                <div className="flex gap-8 align-middle items-center justify-center"><a href={itemsSocial.instagram} target="_blank"> <img src={insta} className="h-4 md:h-6 cursor-pointer" alt="" /></a>
+                    <a href={itemsSocial.linkedin} target="_blank"> <img src={linkedin} className="h-4 md:h-6 cursor-pointer" alt="" /></a>
+                </div>
+                <div className="flex gap-8 align-middle items-center justify-center"><a href={itemsSocial.facebook} target="_blank"> <img src={fb} className="h-4 md:h-6 cursor-pointer" alt="" /></a>
+                    <a href={itemsSocial.twitter} target="_blank"> <img src={twitter} className="h-4 md:h-6 cursor-pointer" alt="" /></a>
                 </div>
             </div>
         </div>
         <div className="w-full h-[1px] bg-black"></div>
-        <div className="flex flex-col-reverse md:flex-row items-center justify-between w-full md:w-[90%] mt-1 md:mt-4">
-            <div className=" text-xs md:text-xl">Copyright @ 2024 SPAR. All rights reserved</div>
-            <div className="flex flex-row w-2/5 my-3 md:w-[15%] justify-between">
+        <div className="flex flex-col md:flex-row items-center justify-between w-full md:w-[90%] mt-1 md:mt-4">
+            <div className="flex md:hidden gap-6 p-4">
                 <a href={itemsSocial.instagram} target="_blank"> <img src={insta} className="h-4 md:h-6 cursor-pointer" alt="" /></a>
                 <a href={itemsSocial.linkedin} target="_blank"> <img src={linkedin} className="h-4 md:h-6 cursor-pointer" alt="" /></a>
+
                 <a href={itemsSocial.facebook} target="_blank"> <img src={fb} className="h-4 md:h-6 cursor-pointer" alt="" /></a>
                 <a href={itemsSocial.twitter} target="_blank"> <img src={twitter} className="h-4 md:h-6 cursor-pointer" alt="" /></a>
-            </div >
+
+            </div>
+            <div className=" text-xs md:text-xl">Copyright @ 2024 SPAR. All rights reserved</div>
+
         </div >
     </div >
 }

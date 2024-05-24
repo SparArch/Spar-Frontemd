@@ -4,10 +4,11 @@ import BACKEND_URL from "../../helper";
 import Navbar from "../HomePage/navbar";
 import Clientlist from "./clientlist";
 import Bookacall from "./bookacall";
-import { Button } from "@chakra-ui/react";
+import { Button, Image } from "@chakra-ui/react";
 import aboutimg1 from "../Images/About img1.png";
 import blankimg from "../Images/black-img.png";
 import Footer from "../HomePage/footer";
+import whatsappIcon from "../Images/whatapp-icon.png";
 
 const Aboutus = () => {
   const [testimonials, setTestimonials] = useState([]);
@@ -27,8 +28,6 @@ const Aboutus = () => {
     fetchItemsMission();
     fetchItemsClients();
     fetchItemsCertifications();
-    handleSearch();
-    scrollToItem();
   }, []);
 
   const fetchData = async () => {
@@ -78,35 +77,40 @@ const Aboutus = () => {
     }
   };
 
-  const handleSearch = () => {
-    if (searchTerm.trim() !== "") {
-      const foundIndex = itemsSolve.findIndex(
-        (item) =>
-          item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          item.content.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      setSearchIndex(foundIndex);
-      scrollToItem(foundIndex);
-    } else {
-      setSearchIndex(-1);
-    }
-  };
-  const scrollToItem = (index) => {
-    if (index !== -1 && scrollRef.current) {
-      const itemElement = scrollRef.current.childNodes[index];
-      itemElement.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  // const handleSearch = () => {
+  //   if (searchTerm.trim() !== "") {
+  //     const foundIndex = itemsSolve.findIndex(
+  //       (item) =>
+  //         item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  //         item.content.toLowerCase().includes(searchTerm.toLowerCase())
+  //     );
+  //     setSearchIndex(foundIndex);
+  //     scrollToItem(foundIndex);
+  //   } else {
+  //     setSearchIndex(-1);
+  //   }
+  // };
+  // const scrollToItem = (index) => {
+  //   if (index !== -1 && scrollRef.current) {
+  //     const itemElement = scrollRef.current.childNodes[index];
+  //     itemElement.scrollIntoView({ behavior: "smooth" });
+  //   }
+  // };
 
   return (
     <div className="flex flex-col items-center justify-center">
       <Navbar />
+      <div className="fixed z-50 cursor-pointer top-[92%] right-[2%]">
+        <a href="https://wa.me/+447678532077" target="_blank">
+          <Image height={"50px"} width={"50px"} src={whatsappIcon} />
+        </a>
+      </div>
       <img src={aboutimg1} alt="aboutimg1" className="-z-20 w-full relative" />
       <div className=" w-full md:top-[-1.25rem] top-[0rem] flex flex-col items-center relative">
         <Clientlist />
       </div>
       <div className="w-full flex flex-col items-center">
-        <div className="text-[10vw] md:hidden block my-2 font-bold">
+        <div className="md:text-[4vw] text-[#707070] md:text:[black] text-[8vw] md:mt-12 my-2 font-bold block md:hidden ">
           {aboutTitle}
         </div>
         <img
@@ -114,7 +118,7 @@ const Aboutus = () => {
           alt="aboutusphone"
           className="w-[90%] h-[20%] md:w-3/4 rounded-xl"
         />
-        <div className="text-[7vw] font-bold md:block hidden">{aboutTitle}</div>
+        <div className="md:text-[4vw] text-[100px] md:mt-12 my-2 font-bold md:block hidden mb-[40px]">{aboutTitle}</div>
         <div className="text-center text-[#5C675A] text-[9px] my-2 md:text-xl font-semibold w-[85%] md:w-3/4">
           {about}
         </div>

@@ -9,8 +9,9 @@ import BACKEND_URL from "../../helper";
 import axios from "axios";
 import Navbar from "../HomePage/navbar";
 import ReactWhatsapp from "react-whatsapp";
-import whatsappIcon from "../Images/whatapp-icon.png";
+
 import Footer from "../HomePage/footer";
+import whatsappIcon from "../Images/whatapp-icon.png";
 
 const Gallerypost = () => {
   const [title, setTitle] = useState("");
@@ -67,6 +68,11 @@ const Gallerypost = () => {
   return (
     <div className="flex flex-col items-center">
       <Navbar />
+      <div className="fixed z-50 cursor-pointer top-[92%] right-[2%]">
+        <a href="https://wa.me/+447678532077" target="_blank">
+          <Image height={"50px"} width={"50px"} src={whatsappIcon} />
+        </a>
+      </div>
       <img
         src={contactusbanner}
         alt="aboutimg1"
@@ -88,11 +94,7 @@ const Gallerypost = () => {
               {description ||
                 "Feel Free To Contact And Reach Us For More Info!"}
             </div>
-            <div className="flex mt-[30px]">
-              <a href="https://wa.me/+917678532077" target="_blank">
-                <Image height={"80px"} width={"80px"} src={whatsappIcon} />
-              </a>
-            </div>
+
           </div>
           <div className="bg-[#F5F5F5] drop-shadow-xl p-[7vw] md:p-[4vw] rounded-2xl md:rounded-[50px]">
             <div className="text-sm md:text-xl font-bold">Full Name</div>

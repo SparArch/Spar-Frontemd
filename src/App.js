@@ -31,6 +31,7 @@ import AdminSocial from './Components/Admin/Social/Social';
 import TrackPageViews from "./Components/TrackPageViews";
 import AdminNewJoin from './Components/Admin/NewJoin/NewJoin'
 import BlogPost from "./Components/Blogs/blogpost";
+import { Image } from "@chakra-ui/react";
 
 const ProtectedRoute = ({ element }) => {
   const { isAuthenticated } = useAuth();

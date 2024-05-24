@@ -4,13 +4,15 @@ import contactusbanner from '../Images/contactusbanner.png'
 import Bookacall from '../AboutUs/bookacall'
 import Clientlist from '../AboutUs/clientlist'
 import contactusbg from '../Images/contactusbg.png'
-import { Button } from '@chakra-ui/react'
+import { Button, Image } from '@chakra-ui/react'
 import hiring1 from '../Images/hiring1.png'
 import hiring2 from '../Images/hiring2.png'
 import Navbar from '../HomePage/navbar'
 import axios from "axios";
 import BACKEND_URL from "../../helper";
 import Footer from '../HomePage/footer'
+import whatsappIcon from "../Images/whatapp-icon.png";
+
 
 const Gallerypost = () => {
   const [formData, setFormData] = useState({
@@ -55,6 +57,11 @@ const Gallerypost = () => {
   return (
     <div className="flex flex-col items-center">
       <Navbar />
+      <div className="fixed z-50 cursor-pointer top-[92%] right-[2%]">
+        <a href="https://wa.me/+447678532077" target="_blank">
+          <Image height={"50px"} width={"50px"} src={whatsappIcon} />
+        </a>
+      </div>
       <img
         src={contactusbanner}
         alt="aboutimg1"

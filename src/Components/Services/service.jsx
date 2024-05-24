@@ -23,6 +23,8 @@ import final from "../Images/final.png";
 import axios from "axios";
 import BACKEND_URL from "../../helper";
 import Footer from "../HomePage/footer";
+import whatsappIcon from "../Images/whatapp-icon.png";
+import { Image } from "@chakra-ui/react";
 
 const Service = () => {
   const [services, setServices] = useState([]);
@@ -67,6 +69,11 @@ const Service = () => {
   return (
     <div className="flex flex-col items-center">
       <Navbar />
+      <div className="fixed z-50 cursor-pointer top-[92%] right-[2%]">
+        <a href="https://wa.me/+447678532077" target="_blank">
+          <Image height={"50px"} width={"50px"} src={whatsappIcon} />
+        </a>
+      </div>
       <img src={service} alt="aboutimg1" className="z-10 w-full top-0" />
       <div className=" w-full md:top-[-1.25rem] top-[0rem] flex flex-col items-center relative">
         <Clientlist />

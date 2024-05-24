@@ -20,7 +20,9 @@ import BACKEND_URL from "../../helper";
 import blankimg from "../Images/black-img.png";
 import { useNavigate } from "react-router-dom";
 import Footer from "./footer";
-import contactusbg from "../Images/contactusbg.png"; 
+import contactusbg from "../Images/contactusbg.png";
+import whatsappIcon from "../Images/whatapp-icon.png";
+
 
 const Homepage = () => {
   const navigate = useNavigate();
@@ -215,6 +217,11 @@ const Homepage = () => {
   return (
     <div className="Home">
       <Navbar />
+      <div className="fixed z-50 cursor-pointer top-[92%] right-[2%]">
+        <a href="https://wa.me/+447678532077" target="_blank">
+          <Image height={"50px"} width={"50px"} src={whatsappIcon} />
+        </a>
+      </div>
       <div className=" ">
         {/* <div className='w-full'>
           <img src={homebg} className='w-full' />
@@ -240,16 +247,16 @@ const Homepage = () => {
                 <div className="text-[2vw] w-1/2 z-40">
                   {itemsTopCover[0]?.content}
                 </div>
-                <div className="flex flex-row">
+                <div className="flex flex-row gap-2">
                   <button
                     onClick={() => {
                       navigate("/download");
                     }}
-                    className="font-semibold text-white bg-transparent border-2 border-white p-2 md:p-4 mt-4 md:m-4 rounded-xl text-center text-xs md:text-[1.2vw] flex flex-col items-center justify-center"
+                    className="font-semibold text-white bg-transparent border-2 border-white p-2 md:p-4 mt-4 md:m-4 rounded-xl text-center text-[1.16vw] md:text-[1.2vw] flex flex-col items-center justify-center"
                   >
                     DOWNLOAD
                   </button>
-                  <button className="font-semibold text-white bg-[#2C6856] p-2 md:p-4 mt-4 md:m-4 rounded-xl text-center text-xs md:text-[1.2vw] flex flex-col items-center justify-center">
+                  <button className="font-semibold text-white bg-[#2C6856] p-2 md:p-4 mt-4 md:m-4 rounded-xl text-center text-[1.16vw] md:text-[1.2vw] flex flex-col items-center justify-center">
                     <a href="https://wa.me/+917678532077" target="_blank">
                       {" "}
                       GET A QUOTE
@@ -309,28 +316,28 @@ const Homepage = () => {
             className="w-full hidden md:block brightness-75"
           />
           <div className="h-[70vw] block md:hidden">
-          <img
-            src={itemsHello[helloIndex]?.media}
-            className="w-full h-full object-cover block md:hidden brightness-75"
-          /></div>
+            <img
+              src={itemsHello[helloIndex]?.media}
+              className="w-full h-full object-cover block md:hidden brightness-75"
+            /></div>
           {homecontent && (
             <>
-            <div className="absolute w-[90%] md:w-1/2 mt-12 rounded-xl p-2 md:p-[2vw] text-white flex flex-col items-center justify-center text-center text-[2vw] md:text-[1.2vw] duration-500 hover:bg-black/50">
-              <div className="text-[8vw] md:text-[6vw] w-full text-center mb-[30vw] md:mb-[10vw] font-bold">
-                {itemsHello[helloIndex]?.title}
+              <div className="absolute w-[90%] md:w-1/2 mt-12 rounded-xl p-2 md:p-[2vw] text-white flex flex-col items-center justify-center text-center text-[2vw] md:text-[1.2vw] duration-500 hover:bg-black/50">
+                <div className="text-[8vw] md:text-[6vw] w-full text-center mb-[30vw] md:mb-[10vw] font-bold">
+                  {itemsHello[helloIndex]?.title}
+                </div>
+                <div className="w-full flex flex-col items-center justify-evenly h-full opacity-0 hover:opacity-100 duration-500 absolute">
+                  <div className="w-4/5 mt-[15vw] md:mt-[10vw]">{homecontent}</div>
+                  <button
+                    onClick={() => {
+                      navigate("/about");
+                    }}
+                    className="font-semibold text-white bg-[#2C6856] p-2 md:px-4 py-1 md:py-2 mt-2 md:m-4 md:rounded-xl rounded text-center text-[3vw] md:text-[1.2vw] flex flex-col items-center justify-center"
+                  >
+                    KNOW MORE
+                  </button></div>
               </div>
-              <div className="w-full flex flex-col items-center justify-evenly h-full opacity-0 hover:opacity-100 duration-500 absolute">
-                <div className="w-4/5 mt-[15vw] md:mt-[10vw]">{homecontent}</div>
-              <button
-                onClick={() => {
-                  navigate("/about");
-                }}
-                className="font-semibold text-white bg-[#2C6856] p-2 md:px-4 py-1 md:py-2 mt-2 md:m-4 md:rounded-xl rounded text-center text-[3vw] md:text-[1.2vw] flex flex-col items-center justify-center"
-              >
-                KNOW MORE
-              </button></div>
-            </div>
-            {/* <div style={{ backgroundImage: `url(${itemsHello[helloIndex]?.media})` }} className="w-full h-full text-[10vw] md:text-[7vw] font-bold text-white duration-500 absolute items-center justify-center flex hover:hidden">{itemsHello[helloIndex]?.title}</div> */}
+              {/* <div style={{ backgroundImage: `url(${itemsHello[helloIndex]?.media})` }} className="w-full h-full text-[10vw] md:text-[7vw] font-bold text-white duration-500 absolute items-center justify-center flex hover:hidden">{itemsHello[helloIndex]?.title}</div> */}
             </>
           )}
           {!homecontent && (
@@ -623,7 +630,7 @@ const Homepage = () => {
         </div>
         <div className="grid gap-4 md:gap-10 grid-cols-3">
           {blogPosts.map((item) => (
-            <div className="bg-[#D9D9D9] flex flex-col md:gap-4 gap-1 rounded-lg md:rounded-3xl">
+            <div className="bg-[#D9D9D9] flex flex-col justify-between md:gap-4 gap-1 rounded-lg md:rounded-3xl">
               <div key={item._id} className="relative">
                 <div className="w-full h-24 md:h-[15vw]"><img src={item.media} className="rounded-lg object-cover w-full h-full md:rounded-3xl" /></div>
                 <div className="md:text-base text-[8px] absolute bottom-0 m-1 md:m-4 text-white">

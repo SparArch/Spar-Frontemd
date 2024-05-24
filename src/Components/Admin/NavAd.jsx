@@ -4,7 +4,7 @@ import { Box, Button, Divider, Flex, Image, Input, List, ListItem, Popover, Popo
 import Logo from '../Images/SparLogo.png'
 import { useNavigate } from 'react-router-dom';
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
-import hamburger from '../Images/hamburger.svg'
+import hamburger from '../Images/hamburger.png'
 import SearchLogo from '../Images/SearchIcon.png'
 import {
   Modal,

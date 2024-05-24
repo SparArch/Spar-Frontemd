@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import blogsbg from "../Images/blogsbg.png";
-import { Text, useToast } from "@chakra-ui/react";
+import { Image, Text, useToast } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import Arrow from "../Images/Arrow.png";
 import axios from "axios";
@@ -12,6 +12,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import blogbtn from "../Images/blogbtn.png";
 import Navbar from "../HomePage/navbar";
 import Footer from "../HomePage/footer";
+import whatsappIcon from "../Images/whatapp-icon.png";
+
 const BlogPost = () => {
   const { id } = useParams();
   const [blogPost, setBlogPost] = useState([]);
@@ -67,6 +69,11 @@ const BlogPost = () => {
   return (
     <div className="flex flex-col items-center">
       <Navbar />
+      <div className="fixed z-50 cursor-pointer top-[92%] right-[2%]">
+        <a href="https://wa.me/+447678532077" target="_blank">
+          <Image height={"50px"} width={"50px"} src={whatsappIcon} />
+        </a>
+      </div>
       <img
         src={blogsbg}
         alt="aboutimg1"

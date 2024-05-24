@@ -3,7 +3,7 @@ import { useEffect, Component } from "react";
 import contactusbanner from "../Images/contactusbanner.png";
 import Bookacall from "../AboutUs/bookacall";
 import Clientlist from "../AboutUs/clientlist";
-import { Button, useToast } from "@chakra-ui/react";
+import { Button, Image, useToast } from "@chakra-ui/react";
 import download from "../Images/download.png";
 import { useState } from "react";
 import "./download.css";
@@ -11,6 +11,7 @@ import Navbar from "../HomePage/navbar";
 import axios from "axios";
 import BACKEND_URL from "../../helper";
 import Footer from "../HomePage/footer";
+import whatsappIcon from "../Images/whatapp-icon.png";
 
 const Gallerypost = () => {
   useEffect(() => {
@@ -68,6 +69,11 @@ const Gallerypost = () => {
   return (
     <div className="flex flex-col items-center">
       <Navbar />
+      <div className="fixed z-50 cursor-pointer top-[92%] right-[2%]">
+        <a href="https://wa.me/+447678532077" target="_blank">
+          <Image height={"50px"} width={"50px"} src={whatsappIcon} />
+        </a>
+      </div>
       {form == "open" && (
         <div className="w-[100vw] flex flex-col items-center justify-center h-[100vh] z-50 fixed bgdrop">
           <div className="bg-[#2C6856] flex flex-col justify-evenly w-4/5 md:w-2/5 drop-shadow-xl p-[7vw] md:p-[4vw] rounded-2xl md:rounded-[50px] text-white">
