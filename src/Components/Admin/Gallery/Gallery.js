@@ -7,6 +7,8 @@ import blankimg from "../../Images/black-img.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import BACKEND_URL from "../../../helper";
+import "react-quill/dist/quill.snow.css";
+import DOMPurify from "dompurify";
 const Gallery = () => {
   const navigate = useNavigate();
   const [projects, setProjects] = useState([]);
@@ -15,7 +17,20 @@ const Gallery = () => {
   useEffect(() => {
     fetchProjects();
   }, []);
+  const truncateText = (text, maxLength) => {
+    const words = text.split(" ");
+    if (words.length > maxLength) {
+      return words.slice(0, maxLength).join(" ") + "...";
+    }
+    return text;
+  };
 
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    const date = new Date(dateString);
+    const formattedDate = date.toLocaleDateString(undefined, options);
+    return `${formattedDate}`;
+  };
   const handleSelectAll = () => {
     setSelectAll(!selectAll);
     if (!selectAll) {
@@ -86,7 +101,6 @@ const Gallery = () => {
               <Text>SELECT ALL</Text>
             </div>
             <div className="blogs-fil">
-
               <div>
                 <Input
                   borderRadius={"2rem"}
@@ -105,18 +119,22 @@ const Gallery = () => {
                 isChecked={selectedProjects.includes(project._id)}
                 onChange={() => handleCheckboxChange(project._id)}
               />
-              <Image
-                style={{
-                  width: "740px",
-                  height: "160px",
-                  borderRadius: "16px",
-                }}
-                src={project.media.length > 0 ? project.media[0] : blankimg}
-              />
+              <div style={{ width: "100%" }}>
+                <img
+                  src={project.media.length > 0 ? project.media[0] : blankimg}
+                  className="rounded-lg object-cover w-full h-full "
+                />
+              </div>
               <div className="card-detail">
                 <h3>{project.name}</h3>
-                <h1>{project.date}</h1>
-                <p>{project.content}</p>
+                <h1>{formatDate(project.date)}</h1>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(truncateText(project.content, 100)),
+                  }}
+                >
+                  
+                </p>
               </div>
             </div>
           ))}

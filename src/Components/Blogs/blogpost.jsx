@@ -16,35 +16,42 @@ import blogbtn from "../Images/blogbtn.png";
 import Navbar from "../HomePage/navbar";
 import Footer from "../HomePage/footer";
 import whatsappIcon from "../Images/whatapp-icon.png";
-
+import next from "../Images/next.png";
+import prev from "../Images/prev.png";
+import "react-quill/dist/quill.snow.css";
+import DOMPurify from "dompurify";
 
 const BlogPost = () => {
   const { id } = useParams();
   const [blogPost, setBlogPost] = useState([]);
   const [otherPosts, setOtherPosts] = useState([]);
+  const [media, setMedia] = useState([]);
   const navigate = useNavigate();
   const toast = useToast();
 
   const copyURLToClipboard = () => {
     const url = window.location.href; // Get the current URL
-    navigator.clipboard.writeText(url).then(() => {
-      toast({
-        title: "URL copied!",
-        description: "The URL has been copied to your clipboard.",
-        status: "success",
-        duration: 3000,
-        isClosable: true,
+    navigator.clipboard
+      .writeText(url)
+      .then(() => {
+        toast({
+          title: "URL copied!",
+          description: "The URL has been copied to your clipboard.",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+      })
+      .catch((err) => {
+        console.error("Failed to copy the URL: ", err);
+        toast({
+          title: "Failed to copy URL",
+          description: "There was an issue copying the URL. Please try again.",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
       });
-    }).catch(err => {
-      console.error('Failed to copy the URL: ', err);
-      toast({
-        title: "Failed to copy URL",
-        description: "There was an issue copying the URL. Please try again.",
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-      });
-    });
   };
 
   useEffect(() => {
@@ -66,6 +73,7 @@ const BlogPost = () => {
     try {
       const response = await axios.get(`${BACKEND_URL}/api/posts/${id}`);
       setBlogPost(response.data);
+      setMedia(response.data.media);
     } catch (error) {
       console.error("Error fetching blog post:", error);
     }
@@ -133,20 +141,30 @@ const BlogPost = () => {
       <div className="flex flex-col gap-3 md:gap-10 md:my-16 my-4 w-[90%] md:w-4/5 items-center">
         <div className="md:text-4xl flex flex-row items-center text-sm text-center font-semibold">
           {blogPost.title}
-          <img onClick={copyURLToClipboard} style={{ cursor: "pointer" }} src={blogbtn} className="h-8 hidden md:block ml-6" />
+          <img
+            onClick={copyURLToClipboard}
+            style={{ cursor: "pointer" }}
+            src={blogbtn}
+            className="h-8 hidden md:block ml-6"
+          />
         </div>
-        {blogPost.media.length === 1 &&   <img src={blogPost.media[0]} className="w-full" alt="" />}
-        {blogPost.media.length >1 && <Slider {...settings} className="w-[85%] md:w-[90%] my-8 md:my-16">
-          {blogPost.media.map((testimonial) => (
-            <div className="p-1 md:p-4">
-              <img src={testimonial} alt="" className="w-full" />
-            </div>
-          ))}
-        </Slider>}
-      
-        <div className="text-[10px] leading-3 md:text-lg">
-          {blogPost.content}
-        </div>
+        {media.length === 1 && <img src={media[0]} className="w-full" alt="" />}
+        {media.length > 1 && (
+          <Slider {...settings} className="w-[85%] md:w-[90%] my-8 md:my-16">
+            {media.map((testimonial) => (
+              <div className="p-1 md:p-4">
+                <img src={testimonial} alt="" className="w-full" />
+              </div>
+            ))}
+          </Slider>
+        )}
+
+        <div
+          className="text-[10px] leading-3 md:text-lg"
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(blogPost.content),
+          }}
+        ></div>
         <div className="grid grid-cols-4 gap-2 md:gap-6 h-[20vw] md:h-[15vw]">
           {otherPosts.map((otherPost) => (
             <div

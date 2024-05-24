@@ -6,7 +6,7 @@ const Clientlist = () => {
   const navigate = useNavigate();
   return (
     <div className="md:rounded-3xl rounded-md z-20 flex flex-row w-[95%] justify-evenly items-center bg-[#1E443E] drop-shadow-xl">
-      <div className="w-[70%]">
+      <div className="w-[70%] items-center justify-center">
         <AutoPlay />
       </div>
       <div className="w-[1px] md:w-[2px] bg-white h-[6vw]"></div>

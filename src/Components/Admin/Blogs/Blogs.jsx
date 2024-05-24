@@ -7,6 +7,8 @@ import blankimg from "../../Images/black-img.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import BACKEND_URL from "../../../helper";
+import "react-quill/dist/quill.snow.css";
+import DOMPurify from "dompurify";
 const Blogs = () => {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
@@ -135,7 +137,11 @@ const Blogs = () => {
               <div className="card-detail">
                 <h3>{post.title}</h3>
                 <h1>{formatDate(post.date)}</h1>
-                <p>{truncateText(post.content, 100)}</p>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(truncateText(post.content, 100)),
+                  }}
+                ></p>
               </div>
             </div>
           ))}

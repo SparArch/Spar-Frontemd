@@ -479,15 +479,32 @@ const Homepage = () => {
           Where Excellence Meets Execution
         </div>
         <Slider {...settings} className="w-[98%] md:w-[90%] max-w-[1100px]">
-          {itemsTestimonials.map((testimonial) => (
+          {itemsTestimonials.map((testimonial, index) => (
             <div className="p-1 md:p-4" key={testimonial._id}>
-              <div className=" md:p-5 p-3 text-white bg-[#4A8780] h-[50vw] md:h-[30vw] lg:h-96 flex flex-col justify-between rounded-lg">
-                <div className="italic text-[2vw] md:text-[1.3vw] lg:text-base">
+              <div
+                className={` md:p-5 p-3 text-white bg-[#4A8780] h-[50vw] md:h-[30vw] lg:h-96 flex flex-col justify-between rounded-lg ${
+                  index % 2 === 0 ? "bg-[#E7E7E7]" : "bg-[#4A8780]"
+                }`}
+              >
+                <div
+                  className={`italic text-[2vw] md:text-[1.3vw] lg:text-base ${
+                    index % 2 === 0 ? "text-slate-950" : "text-gray-50"
+                  }`}
+                >
                   " {testimonial.content} "
                 </div>
                 <div className="flex flex-row items-center mt-4">
-                  <img src={testimonial.image} className="md:w-16 w-5" alt="" />
-                  <div className="italic text-[8px] md:text-lg ml-4">
+                  <img
+                    style={{ borderRadius: "50%" }}
+                    src={testimonial.image}
+                    className="md:w-16 w-5"
+                    alt=""
+                  />
+                  <div
+                    className={`italic text-[8px] md:text-lg ml-4 ${
+                      index % 2 === 0 ? "text-slate-950" : "text-gray-50"
+                    }`}
+                  >
                     {testimonial.name}
                   </div>
                 </div>

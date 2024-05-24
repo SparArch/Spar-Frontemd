@@ -9,6 +9,7 @@ import aboutimg1 from "../Images/About img1.png";
 import blankimg from "../Images/black-img.png";
 import Footer from "../HomePage/footer";
 import whatsappIcon from "../Images/whatapp-icon.png";
+import "react-quill/dist/quill.snow.css";
 import DOMPurify from "dompurify";
 
 const Aboutus = () => {
@@ -113,7 +114,7 @@ const Aboutus = () => {
         <Clientlist />
       </div>
       <div className="w-full flex flex-col items-center">
-        <div className="md:text-[4vw] text-[#707070] md:text:[black] text-[8vw] md:mt-12 my-2 font-bold block md:hidden ">
+        <div className="md:text-[4vw] text-[#707070] md:text:[black] text-[8vw] md:mt-12 my-2 font-bold block md:hidden">
           {aboutTitle}
         </div>
         <img
@@ -121,10 +122,15 @@ const Aboutus = () => {
           alt="aboutusphone"
           className="w-[90%] h-[20%] md:w-3/4 rounded-xl"
         />
-        <div className="md:text-[4vw] text-[100px] md:mt-12 my-2 font-bold md:block hidden mb-[40px]">{aboutTitle}</div>
-        <div className="text-center text-[#5C675A] text-[9px] my-2 md:text-xl font-semibold w-[85%] md:w-3/4">
-          {about}
+        <div className="md:text-[4vw] text-[100px] md:mt-12 my-2 font-bold md:block hidden mb-[40px]">
+          {aboutTitle}
         </div>
+        <div
+          className="text-center text-[#5C675A] text-[9px] my-2 md:text-xl font-semibold w-[85%] md:w-3/4"
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(about),
+          }}
+        ></div>
       </div>
 
       <div className="md:text-[4vw] text-xl md:mt-12 my-2 font-bold">
@@ -151,8 +157,16 @@ const Aboutus = () => {
                 {item?.title}
               </div>
             </div>
-            <div className={`text-white text-[10px] md:text-[1.2vw] md:text-left text-center p-2 md:p-10 px-4 md:px-12 rounded-full w-[70%] md:w-3/5 ${index % 2 === 0 ? "bg-[#2C6856]" : "bg-[#4A8780]"} `}>
-              <b>{item?.title}:</b> {item?.content}
+            <div
+              className={`text-white text-[10px] md:text-[1.2vw] md:text-left text-center p-2 md:p-10 px-4 md:px-12 rounded-full w-[70%] md:w-3/5 ${
+                index % 2 === 0 ? "bg-[#2C6856]" : "bg-[#4A8780]"
+              } `}
+            >
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(item.content),
+                }}
+              ></p>
             </div>
           </div>
         ))}
@@ -174,15 +188,12 @@ const Aboutus = () => {
         ))}
       </div>
 
-      <div className="text-[10vw] md:text-[4vw] my-2 font-bold">Our Clients</div>
+      <div className="text-[10vw] md:text-[4vw] my-2 font-bold">
+        Our Clients
+      </div>
       <div className="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-8 w-[90%] mb-14">
         {itemsClients?.map((item, index) => (
-          <img
-            key={index}
-            src={item?.media}
-            alt="aboutus"
-            className="w-full"
-          />
+          <img key={index} src={item?.media} alt="aboutus" className="w-full" />
         ))}
       </div>
 

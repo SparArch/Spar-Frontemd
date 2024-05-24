@@ -25,7 +25,8 @@ import BACKEND_URL from "../../helper";
 import Footer from "../HomePage/footer";
 import whatsappIcon from "../Images/whatapp-icon.png";
 import { Image } from "@chakra-ui/react";
-
+import DOMPurify from "dompurify";
+import "react-quill/dist/quill.snow.css";
 const Service = () => {
   const [services, setServices] = useState([]);
   const [itemsWork, setItemsWork] = useState([]);
@@ -102,9 +103,12 @@ const Service = () => {
               <p className="md:text-[1.2vw] text-xs text-center font-bold my-1 md:my-4">
                 {service.title}
               </p>
-              <p className="text-center text-[1.4vw] text-[#5C675A] md:leading-normal leading-[1.7vw] md:text-[1vw]">
-                {service.content}
-              </p>
+              <p
+                className="text-center text-[1.4vw] text-[#5C675A] md:leading-normal leading-[1.7vw] md:text-[1vw]"
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(service.content),
+                }}
+              ></p>
             </div>
           ))}
         </div>
@@ -169,7 +173,6 @@ const Service = () => {
         <div className="flex flex-col items-center">
           <img src={deliver[1]?.media || assembling} className="w-1/2" />
           <p className="text-[3vw] md:text-[1vw] font-bold">
-          
             {deliver[1]?.content || "Assembling"}
           </p>
         </div>

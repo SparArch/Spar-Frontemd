@@ -13,6 +13,9 @@ import blogbtn from "../Images/blogbtn.png";
 import { Link } from "react-router-dom";
 import Footer from "../HomePage/footer";
 import whatsappIcon from "../Images/whatapp-icon.png";
+import "react-quill/dist/quill.snow.css";
+import DOMPurify from "dompurify";
+
 
 const Blogs = () => {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -117,8 +120,10 @@ const Blogs = () => {
                       {formatDate(item.date)}
                     </div>
                   </div>
-                  <div className="text-[0.8vw] text-[#8D8D94] md:block hidden">
-                    {truncateText(item.content, 75)}
+                  <div className="text-[0.8vw] text-[#8D8D94] md:block hidden"    dangerouslySetInnerHTML={{
+                      __html: DOMPurify.sanitize(truncateText(item.content, 75)),
+                    }}>
+               
                   </div>
                   <div className="flex flex-row items-center">
                     <Link
@@ -159,8 +164,13 @@ const Blogs = () => {
                       {formatDate(item.date)}
                     </div>
                   </div>
-                  <div className="text-[1vw] md:block hidden">
-                    {truncateText(item.content, 75)}
+                  <div
+                    className="text-[1vw] md:block hidden"
+                    dangerouslySetInnerHTML={{
+                      __html: DOMPurify.sanitize(truncateText(item.content, 75)),
+                    }}
+                  >
+                  
                   </div>
                   <div className="flex flex-row items-center">
                     <Link
@@ -169,10 +179,14 @@ const Blogs = () => {
                     >
                       Read More →
                     </Link>
-                    <img style={{ cursor: "pointer" }}
+                    <img
+                      style={{ cursor: "pointer" }}
                       onClick={() => {
                         copyURLToClipboard(item._id);
-                      }} src={blogbtn} className="hidden h-3/4 ml-6 md:block" />
+                      }}
+                      src={blogbtn}
+                      className="hidden h-3/4 ml-6 md:block"
+                    />
                   </div>
                 </div>
               </div>

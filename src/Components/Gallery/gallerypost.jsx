@@ -11,9 +11,10 @@ import Bookacall from "../AboutUs/bookacall";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import BACKEND_URL from "../../helper";
-
+import "react-quill/dist/quill.snow.css";
 import Navbar from "../HomePage/navbar";
 import Footer from "../HomePage/footer";
+import DOMPurify from "dompurify";
 
 const Contactus = () => {
   const { id } = useParams();
@@ -94,9 +95,12 @@ const Contactus = () => {
       <div className="w-[82%] md:w-[88%] md:text-left text-center text-3xl md:text-6xl font-semibold">
         {post.name}
       </div>
-      <div className="w-[82%] md:w-[88%] text-gray-500 text-xs md:text-2xl font-semibold my-4">
-        {post.content}
-      </div>
+      <div
+        className="w-[82%] md:w-[88%] text-gray-500 text-xs md:text-2xl font-semibold my-4"
+        dangerouslySetInnerHTML={{
+          __html: DOMPurify.sanitize(post.content),
+        }}
+      ></div>
       <div className="w-[82%] mt-8 md:mt-16 md:w-[88%] md:text-left text-center text-3xl md:text-6xl font-semibold">
         Project Detail
       </div>

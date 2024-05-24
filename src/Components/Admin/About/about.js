@@ -2,7 +2,14 @@ import React, { useEffect, useState } from "react";
 import NavAd from "../NavAd";
 import SideNav from "../SideNav";
 import "../Home/home.css";
-import { Button, Image, Input, Text, Textarea, useToast } from "@chakra-ui/react";
+import {
+  Button,
+  Image,
+  Input,
+  Text,
+  Textarea,
+  useToast,
+} from "@chakra-ui/react";
 import clip from "../../Images/clip.png";
 import left_align_icon from "../../Images/left_align.png";
 import right_align_icon from "../../Images/right_align.png";
@@ -15,6 +22,7 @@ import del from "../../Images/delete.png";
 import solImage from "../../Images/solution1.png";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import DOMPurify from "dompurify";
 const About = () => {
   const toast = useToast();
   const [titleAboutUs, setTitleAboutUs] = useState("");
@@ -27,7 +35,8 @@ const About = () => {
   const [contentVision, setContentVision] = useState("");
   const [mediaFilesVision, setMediaFilesVision] = useState(null);
   const [mediaFilesClient, setMediaFilesClient] = useState(null);
-  const [mediaFilesCertifications, setMediaFilesCertifications] = useState(null);
+  const [mediaFilesCertifications, setMediaFilesCertifications] =
+    useState(null);
   const [itemsAboutUs, setItemsAboutUs] = useState([]);
   const [itemsSolve, setItemsSolve] = useState([]);
   const [itemsMission, setItemsMission] = useState([]);
@@ -414,30 +423,30 @@ const About = () => {
               />
             </div>
             <div className="grid md:gap-10 gap-4 grid-cols-2 md:grid-cols-3 ">
-            {itemsAboutUs.map((item) => (
-              <div
-                className="mt-[12px] w-[300px] h-[200px] bg-slate-300 p-[20px] rounded-xl"
-                style={{
-                  height: "240px",
-                  width: "300px",
-                  backgroundImage: `url(${item.image})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
-              >
+              {itemsAboutUs.map((item) => (
                 <div
+                  className="mt-[12px] w-[300px] h-[200px] bg-slate-300 p-[20px] rounded-xl"
                   style={{
-                    position: "relative",
-                    marginLeft: "230px",
-                    zIndex: "100",
+                    height: "240px",
+                    width: "300px",
+                    backgroundImage: `url(${item.image})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
                   }}
-                  onClick={() => handleDeleteAboutUs(item._id)}
                 >
-                  <Image cursor={"pointer"} src={del} height={"30px"} />
+                  <div
+                    style={{
+                      position: "relative",
+                      marginLeft: "230px",
+                      zIndex: "100",
+                    }}
+                    onClick={() => handleDeleteAboutUs(item._id)}
+                  >
+                    <Image cursor={"pointer"} src={del} height={"30px"} />
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
           </div>
           <div>
             <h3>SOLUTIONS</h3>
@@ -534,10 +543,10 @@ const About = () => {
               borderRadius={"20px"}
               minHeight={"80px"}
             /> */}
-             <ReactQuill
-                value={contentSolutions}
-                onChange={handleEditorChangeSolutions}
-              />
+            <ReactQuill
+              value={contentSolutions}
+              onChange={handleEditorChangeSolutions}
+            />
           </div>
           <div className="grid md:gap-10 gap-3 grid-cols-2 md:grid-cols-3 ">
             {itemsSolve.map((item) => (
@@ -671,7 +680,13 @@ const About = () => {
                     >
                       {item.title}
                     </Text>
-                    <Text fontSize={"15px"}>{item.content}</Text>
+                    <Text
+                      dangerouslySetInnerHTML={{
+                        __html: DOMPurify.sanitize(item.content),
+                      }}
+                      fontSize={"15px"}
+                    >
+                    </Text>
                   </div>
                 </div>
               </div>
@@ -704,7 +719,7 @@ const About = () => {
           </div>
 
           <div className="grid md:gap-10 gap-3 grid-cols-2 md:grid-cols-3 ">
-          {itemsClients.map((item) => (
+            {itemsClients.map((item) => (
               <div
                 key={item._id}
                 style={{
@@ -770,15 +785,15 @@ const About = () => {
                 }}
                 // className="w-[300px] h-[200px] bg-slate-300 p-[20px] rounded-xl"
               >
-                 <div className="flex-col p-[20px] justify-center">
+                <div className="flex-col p-[20px] justify-center">
                   <Image paddingLeft={"70px"} src={item.media} />
                 </div>
                 <div
-                style={{
-                  position: "absolute",
-                  padding: "10px",
-                  zIndex: "100",
-                }}
+                  style={{
+                    position: "absolute",
+                    padding: "10px",
+                    zIndex: "100",
+                  }}
                   onClick={() => handleDeleteCertifications(item._id)}
                 >
                   <Image cursor={"pointer"} src={del} height={"30px"} />

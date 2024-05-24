@@ -965,10 +965,12 @@ const Home = () => {
             </div>
           </div>
           <div className="grid md:gap-10 gap-4 grid-cols-2 md:grid-cols-3 ">
-            {itemsTestimonials.map((item) => (
+            {itemsTestimonials.map((item, index) => (
               <div
                 key={item._id}
-                className="flex-col max-w-[300px] bg-slate-300 p-[20px] rounded-xl"
+                className={`flex-col  max-w-[300px]  p-[20px] rounded-xl ${
+                  index % 2 === 0 ? "bg-[#E7E7E7]" : "bg-[#4A8780]"
+                }`}
               >
                 <div
                   style={{
@@ -980,14 +982,29 @@ const Home = () => {
                 >
                   <Image cursor={"pointer"} src={del} height={"30px"} />
                 </div>
-                <Text fontStyle={"italic"} fontWeight={"700"}>
-                  “ {item.content} ”
-                </Text>
-                <div className="flex align-middle items-center gap-2">
-                  <Image src={item.image} borderRadius={"50%"} height="44px" />
-                  <Text fontStyle={"italic"} fontWeight={"600"}>
-                    {item.name}
+                <div className="flex-col justify-around">
+                  <Text
+                    fontStyle={"italic"}
+                    fontWeight={"700"}
+                    className={` ${
+                      index % 2 === 0 ? "text-slate-950" : "text-gray-50"
+                    }`}
+                  >
+                    “ {item.content} ”
                   </Text>
+                  <div className="flex align-middle items-center gap-2">
+                    <Image
+                      src={item.image}
+                      borderRadius={"50%"}
+                      height="44px"
+                     
+                    />
+                    <Text fontStyle={"italic"} fontWeight={"600"}  className={` ${
+                        index % 2 === 0 ? "text-slate-950" : "text-gray-50"
+                      }`}>
+                      {item.name}
+                    </Text>
+                  </div>
                 </div>
               </div>
             ))}

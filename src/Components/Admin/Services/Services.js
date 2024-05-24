@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import NavAd from "../NavAd";
 import SideNav from "../SideNav";
-import { Button, Image, Input, Text, Textarea, useToast } from "@chakra-ui/react";
+import {
+  Button,
+  Image,
+  Input,
+  Text,
+  Textarea,
+  useToast,
+} from "@chakra-ui/react";
 import clip from "../../Images/clip.png";
 import left_align_icon from "../../Images/left_align.png";
 import right_align_icon from "../../Images/right_align.png";
@@ -13,7 +20,8 @@ import "./services.css";
 import axios from "axios";
 import BACKEND_URL from "../../../helper";
 import ReactQuill from "react-quill";
-import 'react-quill/dist/quill.snow.css';
+import "react-quill/dist/quill.snow.css";
+import DOMPurify from "dompurify";
 const Services = () => {
   // const [text, setText] = useState('');
   const toast = useToast();
@@ -165,7 +173,6 @@ const Services = () => {
     setContentServices(content);
   };
 
-
   return (
     <div style={{ backgroundColor: "#D9E2DF" }}>
       <NavAd />
@@ -238,7 +245,7 @@ const Services = () => {
                 borderRadius={"20px"}
                 minHeight={"80px"}
               /> */}
-                <ReactQuill
+              <ReactQuill
                 value={contentServices}
                 onChange={handleEditorChangeServices}
               />
@@ -257,7 +264,13 @@ const Services = () => {
                   <div className="flex justify-center">
                     <h3>{item.title}</h3>
                   </div>
-                  <Text fontSize={"12px"}>"{item.content}"</Text>
+                  <Text
+                    dangerouslySetInnerHTML={{
+                      __html: DOMPurify.sanitize(item.content),
+                    }}
+                    fontSize={"12px"}
+                  >
+                  </Text>
                   <div
                     style={{
                       position: "relative",
@@ -323,7 +336,7 @@ const Services = () => {
 
             <div className="grid md:gap-10 gap-3 grid-cols-2 md:grid-cols-3 ">
               {itemsWork.map((item) => (
-                <div className="flex gap-4">
+                <div className="flex gap-4" style={{marginBottom:"24px"}}>
                   <div
                     key={item._id}
                     className="bg-[gray] max-w-[300px] rounded-xl"
@@ -340,7 +353,7 @@ const Services = () => {
                         style={{
                           paddingTop: "6px",
                           marginTop: "4px",
-                          // marginRight: "12px",
+                          marginRight: "12px",
                         }}
                         cursor={"pointer"}
                         src={del}

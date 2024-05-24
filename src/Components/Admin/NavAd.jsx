@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import '../HomePage/homepage.css'
 import { Box, Button, Divider, Flex, Image, Input, List, ListItem, Popover, PopoverContent, PopoverTrigger, useDisclosure } from '@chakra-ui/react';
-import Logo from '../Images/SparLogo.png'
+import Logo from '../Images/SparLogoNormal.png'
 import { useNavigate } from 'react-router-dom';
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import hamburger from '../Images/hamburger.png'

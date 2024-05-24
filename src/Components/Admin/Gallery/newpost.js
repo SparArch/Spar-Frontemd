@@ -8,8 +8,6 @@ import left_align_icon from "../../Images/left_align.png";
 import right_align_icon from "../../Images/right_align.png";
 import center_align_icon from "../../Images/center_align.png";
 import bullet_icon from "../../Images/bullets.png";
-import next from "../Ima";
-import prev from "../Images/prev.png";
 import b from "../../Images/b.png";
 import axios from "axios";
 import BACKEND_URL from "../../../helper";
@@ -24,6 +22,7 @@ const Newblog = () => {
   const [scope, setScope] = useState("");
   const [keywords, setKeywords] = useState("");
   const [mediaFiles, setMediaFiles] = useState([]);
+
   const navigate = useNavigate();
 
   const handleFileChange = (e) => {
