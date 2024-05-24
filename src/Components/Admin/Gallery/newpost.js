@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import NavAd from "../NavAd";
 import SideNav from "../SideNav";
-import { Button, Input, useToast } from "@chakra-ui/react";
+import { Button, Input, Textarea, useToast } from "@chakra-ui/react";
 import "../Blogs/newblog.css";
 import clip from "../../Images/clip.png";
 import left_align_icon from "../../Images/left_align.png";
 import right_align_icon from "../../Images/right_align.png";
 import center_align_icon from "../../Images/center_align.png";
 import bullet_icon from "../../Images/bullets.png";
+import next from "../Ima";
+import prev from "../Images/prev.png";
 import b from "../../Images/b.png";
 import axios from "axios";
 import BACKEND_URL from "../../../helper";
@@ -49,7 +51,7 @@ const Newblog = () => {
             "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload",
             formData
           );
-          
+
 
           return response.data.secure_url;
         })
@@ -188,7 +190,7 @@ const Newblog = () => {
               <h3>Location</h3>
             </div>
             <div>
-              <Input
+              <Textarea
                 value={location}
                 onChange={(e) => {
                   setLocation(e.target.value);
@@ -202,7 +204,7 @@ const Newblog = () => {
               <h3>Scope</h3>
             </div>
             <div>
-              <Input
+              <Textarea
                 value={scope}
                 onChange={(e) => {
                   setScope(e.target.value);
@@ -213,10 +215,10 @@ const Newblog = () => {
               />
             </div>
             <div>
-              <h3>Category</h3>
+              <h3>Categories</h3>
             </div>
             <div>
-              <Input
+              <Textarea
                 value={keywords}
                 onChange={(e) => {
                   setKeywords(e.target.value);

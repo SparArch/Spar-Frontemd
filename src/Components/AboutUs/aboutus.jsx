@@ -4,9 +4,11 @@ import BACKEND_URL from "../../helper";
 import Navbar from "../HomePage/navbar";
 import Clientlist from "./clientlist";
 import Bookacall from "./bookacall";
-import { Button } from "@chakra-ui/react";
+import { Button, Image } from "@chakra-ui/react";
 import aboutimg1 from "../Images/About img1.png";
 import blankimg from "../Images/black-img.png";
+import Footer from "../HomePage/footer";
+import whatsappIcon from "../Images/whatapp-icon.png";
 import DOMPurify from "dompurify";
 
 const Aboutus = () => {
@@ -27,8 +29,6 @@ const Aboutus = () => {
     fetchItemsMission();
     fetchItemsClients();
     fetchItemsCertifications();
-    handleSearch();
-    scrollToItem();
   }, []);
 
   const fetchData = async () => {
@@ -80,35 +80,40 @@ const Aboutus = () => {
     }
   };
 
-  const handleSearch = () => {
-    if (searchTerm.trim() !== "") {
-      const foundIndex = itemsSolve.findIndex(
-        (item) =>
-          item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          item.content.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      setSearchIndex(foundIndex);
-      scrollToItem(foundIndex);
-    } else {
-      setSearchIndex(-1);
-    }
-  };
-  const scrollToItem = (index) => {
-    if (index !== -1 && scrollRef.current) {
-      const itemElement = scrollRef.current.childNodes[index];
-      itemElement.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  // const handleSearch = () => {
+  //   if (searchTerm.trim() !== "") {
+  //     const foundIndex = itemsSolve.findIndex(
+  //       (item) =>
+  //         item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  //         item.content.toLowerCase().includes(searchTerm.toLowerCase())
+  //     );
+  //     setSearchIndex(foundIndex);
+  //     scrollToItem(foundIndex);
+  //   } else {
+  //     setSearchIndex(-1);
+  //   }
+  // };
+  // const scrollToItem = (index) => {
+  //   if (index !== -1 && scrollRef.current) {
+  //     const itemElement = scrollRef.current.childNodes[index];
+  //     itemElement.scrollIntoView({ behavior: "smooth" });
+  //   }
+  // };
 
   return (
     <div className="flex flex-col items-center justify-center">
       <Navbar />
+      <div className="fixed z-50 cursor-pointer top-[92%] right-[2%]">
+        <a href="https://wa.me/+447678532077" target="_blank">
+          <Image height={"50px"} width={"50px"} src={whatsappIcon} />
+        </a>
+      </div>
       <img src={aboutimg1} alt="aboutimg1" className="-z-20 w-full relative" />
-      <div className=" w-full md:top-[-1.25rem] top-[-0.5rem] flex flex-col items-center relative">
+      <div className=" w-full md:top-[-1.25rem] top-[0rem] flex flex-col items-center relative">
         <Clientlist />
       </div>
       <div className="w-full flex flex-col items-center">
-        <div className="text-[10vw] md:hidden block my-2 font-bold">
+        <div className="md:text-[4vw] text-[#707070] md:text:[black] text-[8vw] md:mt-12 my-2 font-bold block md:hidden ">
           {aboutTitle}
         </div>
         <img
@@ -116,7 +121,7 @@ const Aboutus = () => {
           alt="aboutusphone"
           className="w-[90%] h-[20%] md:w-3/4 rounded-xl"
         />
-        <div className="text-[7vw] font-bold md:block hidden">{aboutTitle}</div>
+        <div className="md:text-[4vw] text-[100px] md:mt-12 my-2 font-bold md:block hidden mb-[40px]">{aboutTitle}</div>
         <div className="text-center text-[#5C675A] text-[9px] my-2 md:text-xl font-semibold w-[85%] md:w-3/4">
           {about}
         </div>
@@ -125,7 +130,7 @@ const Aboutus = () => {
       <div className="md:text-[4vw] text-xl md:mt-12 my-2 font-bold">
         We Solve the Right Problems.
       </div>
-      <div className="flex gap-4 md:gap-12 flex-col mt-4 md:my-12 items-center w-[95%] md:w-[90%]">
+      <div className="flex gap-4 md:gap-12 flex-col mt-4 md:my-12 items-center w-[95%] md:w-[80%]">
         {itemsSolve.map((item, index) => (
           <div
             key={index}
@@ -142,15 +147,11 @@ const Aboutus = () => {
                 alt="aboutus"
                 className="w-12 md:w-20"
               />
-              <div className="text-center font-semibold text-[10px] md:text-3xl">
+              <div className="text-center md:w-64 font-semibold text-[10px] md:text-2xl">
                 {item?.title}
               </div>
             </div>
-            <div
-              className={`text-white text-[10px] md:text-[1.5vw] md:text-left text-center p-2 md:p-6 px-4 md:px-12 rounded-full w-[70%] md:w-3/5 ${
-                index % 2 === 0 ? "bg-[#2C6856]" : "bg-[#4A8780]"
-              } `}
-            >
+            <div className={`text-white text-[10px] md:text-[1.2vw] md:text-left text-center p-2 md:p-10 px-4 md:px-12 rounded-full w-[70%] md:w-3/5 ${index % 2 === 0 ? "bg-[#2C6856]" : "bg-[#4A8780]"} `}>
               <b>{item?.title}:</b> {item?.content}
             </div>
           </div>
@@ -173,14 +174,14 @@ const Aboutus = () => {
         ))}
       </div>
 
-      <div className="text-[10vw] my-2 font-bold">Our Clients</div>
-      <div className="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-8 w-[90%]">
+      <div className="text-[10vw] md:text-[4vw] my-2 font-bold">Our Clients</div>
+      <div className="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-8 w-[90%] mb-14">
         {itemsClients?.map((item, index) => (
           <img
             key={index}
             src={item?.media}
             alt="aboutus"
-            className="w-full rounded-xl md:rounded-3xl"
+            className="w-full"
           />
         ))}
       </div>
@@ -197,7 +198,7 @@ const Aboutus = () => {
         </Button>
       </div> */}
 
-      <div className="text-[6vw] hidden md:block my-2 font-bold">
+      <div className="text-[6vw] md:text-[4vw] hidden md:block my-2 font-bold">
         Our Certification
       </div>
       <div className="hidden md:grid grid-cols-6 mb-24 gap-8 w-[90%]">
@@ -214,6 +215,7 @@ const Aboutus = () => {
       <div className="w-full items-center flex flex-col md:my-8">
         <Bookacall />
       </div>
+      <Footer />
     </div>
   );
 };

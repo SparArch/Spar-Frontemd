@@ -1,2 +1,2 @@
-const BACKEND_URL = "https://uk.spartechnovet.com";
+const BACKEND_URL = "http://localhost:8000";
 export default BACKEND_URL;

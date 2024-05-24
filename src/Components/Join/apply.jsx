@@ -4,12 +4,15 @@ import contactusbanner from '../Images/contactusbanner.png'
 import Bookacall from '../AboutUs/bookacall'
 import Clientlist from '../AboutUs/clientlist'
 import contactusbg from '../Images/contactusbg.png'
-import { Button } from '@chakra-ui/react'
+import { Button, Image } from '@chakra-ui/react'
 import hiring1 from '../Images/hiring1.png'
 import hiring2 from '../Images/hiring2.png'
 import Navbar from '../HomePage/navbar'
 import axios from "axios";
 import BACKEND_URL from "../../helper";
+import Footer from '../HomePage/footer'
+import whatsappIcon from "../Images/whatapp-icon.png";
+
 
 const Gallerypost = () => {
   const [formData, setFormData] = useState({
@@ -53,20 +56,25 @@ const Gallerypost = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <Navbar/>
+      <Navbar />
+      <div className="fixed z-50 cursor-pointer top-[92%] right-[2%]">
+        <a href="https://wa.me/+447678532077" target="_blank">
+          <Image height={"50px"} width={"50px"} src={whatsappIcon} />
+        </a>
+      </div>
       <img
         src={contactusbanner}
         alt="aboutimg1"
         className="z-10 w-full top-0"
       />
-      <div className="md:hidden w-full md:top-[-1.25rem] top-[-1.5rem] flex flex-col items-center relative">
+      <div className="md:hidden w-full md:top-[-1.25rem] top-[1.3rem] flex flex-col items-center relative">
         <Clientlist />
       </div>
       <img src={hiring1} alt="" className="w-3/4 hidden md:block mt-12" />
       <img
         src={hiring2}
         alt=""
-        className="w-4/5 top-[-30px] relative block md:hidden"
+        className="w-4/5 top-[6px] relative block md:hidden"
       />
       <div className="w-full block md:hidden text-center text-[#2C6856] mb-4 font-semibold text-4xl">
         Join us
@@ -134,6 +142,7 @@ const Gallerypost = () => {
       <div className="w-full items-center flex flex-col my-8">
         <Bookacall />
       </div>
+      <Footer />
     </div>
   );
 };

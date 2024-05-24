@@ -6,8 +6,8 @@ const Bookacall = () => {
         <div className='w-[70%] md:text-[2vw] font-semibold text-white'>
             Ready To Get Started With Your Next Project?
         </div>
-        <Button><div className=' rounded-lg bg-white h-fit w-[14vw] text-center md:py-2 py-1 text-[1.6vw] font-bold text-[#2C6856] drop-shadow-xl'><a href="tel://+447881424598">BOOK A CALL</a></div>
-        </Button>  </div>
+        <div className=' rounded-lg bg-white h-fit w-[14vw] text-center md:py-2 py-1 text-[1.6vw] font-bold text-[#2C6856] drop-shadow-xl'><a href="tel://+447881424598">BOOK A CALL</a></div>
+    </div>
 }
 
 export default Bookacall

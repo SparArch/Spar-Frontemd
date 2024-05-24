@@ -9,50 +9,52 @@ import BACKEND_URL from "../../helper";
 import axios from "axios";
 import Navbar from "../HomePage/navbar";
 import ReactWhatsapp from "react-whatsapp";
+
+import Footer from "../HomePage/footer";
 import whatsappIcon from "../Images/whatapp-icon.png";
 
 const Gallerypost = () => {
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [formData, setFormData] = useState({
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    contactNo: "",
+    message: "",
+  });
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        `${BACKEND_URL}/api/contacts`,
+        formData
+      );
+      alert("Your message has been sent successfully!");
+      // Reset form data
+      setFormData({
         fullName: "",
         email: "",
         contactNo: "",
         message: "",
-    });
-    useEffect(() => {
-        fetchData();
-    }, []);
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({ ...prevData, [name]: value }));
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await axios.post(
-                `${BACKEND_URL}/api/contacts`,
-                formData
-            );
-            alert("Your message has been sent successfully!");
-            // Reset form data
-            setFormData({
-                fullName: "",
-                email: "",
-                contactNo: "",
-                message: "",
-            });
-        } catch (error) {
-            console.error("Error sending message:", error);
-            alert("There was an error sending your message. Please try again later.");
-        }
-    };
+      });
+    } catch (error) {
+      console.error("Error sending message:", error);
+      alert("There was an error sending your message. Please try again later.");
+    }
+  };
 
   const fetchData = async () => {
     try {
@@ -65,7 +67,12 @@ const Gallerypost = () => {
   };
   return (
     <div className="flex flex-col items-center">
-      <Navbar/>
+      <Navbar />
+      <div className="fixed z-50 cursor-pointer top-[92%] right-[2%]">
+        <a href="https://wa.me/+447678532077" target="_blank">
+          <Image height={"50px"} width={"50px"} src={whatsappIcon} />
+        </a>
+      </div>
       <img
         src={contactusbanner}
         alt="aboutimg1"
@@ -87,11 +94,7 @@ const Gallerypost = () => {
               {description ||
                 "Feel Free To Contact And Reach Us For More Info!"}
             </div>
-            <div className="flex mt-[30px]">
-              <a href="https://wa.me/+917678532077" target="_blank">
-                <Image height={"80px"} width={"80px"} src={whatsappIcon} />
-              </a>
-            </div>
+
           </div>
           <div className="bg-[#F5F5F5] drop-shadow-xl p-[7vw] md:p-[4vw] rounded-2xl md:rounded-[50px]">
             <div className="text-sm md:text-xl font-bold">Full Name</div>
@@ -151,6 +154,7 @@ const Gallerypost = () => {
       <div className="w-full items-center flex flex-col my-8">
         <Bookacall />
       </div>
+      <Footer />
     </div>
   );
 };

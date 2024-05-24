@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import blogsbg from "../Images/blogsbg.png";
-import { Text, useToast } from "@chakra-ui/react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { Image, Text, useToast } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import Arrow from "../Images/Arrow.png";
 import axios from "axios";
@@ -11,6 +14,10 @@ import homebg from "../Images/homebg.png";
 import { useNavigate, useParams } from "react-router-dom";
 import blogbtn from "../Images/blogbtn.png";
 import Navbar from "../HomePage/navbar";
+import Footer from "../HomePage/footer";
+import whatsappIcon from "../Images/whatapp-icon.png";
+
+
 const BlogPost = () => {
   const { id } = useParams();
   const [blogPost, setBlogPost] = useState([]);
@@ -63,9 +70,48 @@ const BlogPost = () => {
       console.error("Error fetching blog post:", error);
     }
   };
+  const settings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+  };
+  function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "" }}
+        onClick={onClick}
+      >
+        <img className="w-3 md:w-auto" src={next} alt="" />
+      </div>
+    );
+  }
+  function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block" }}
+        onClick={onClick}
+      >
+        <img className="w-3 md:w-auto" src={prev} alt="" />
+      </div>
+    );
+  }
   return (
     <div className="flex flex-col items-center">
       <Navbar />
+      <div className="fixed z-50 cursor-pointer top-[92%] right-[2%]">
+        <a href="https://wa.me/+447678532077" target="_blank">
+          <Image height={"50px"} width={"50px"} src={whatsappIcon} />
+        </a>
+      </div>
       <img
         src={blogsbg}
         alt="aboutimg1"
@@ -87,9 +133,17 @@ const BlogPost = () => {
       <div className="flex flex-col gap-3 md:gap-10 md:my-16 my-4 w-[90%] md:w-4/5 items-center">
         <div className="md:text-4xl flex flex-row items-center text-sm text-center font-semibold">
           {blogPost.title}
-          <img onClick={copyURLToClipboard} style={{cursor:"pointer"}} src={blogbtn} className="h-8 hidden md:block ml-6" />
+          <img onClick={copyURLToClipboard} style={{ cursor: "pointer" }} src={blogbtn} className="h-8 hidden md:block ml-6" />
         </div>
-        <img src={blogPost.media} className="w-full" alt="" />
+        {blogPost.media.length === 1 &&   <img src={blogPost.media[0]} className="w-full" alt="" />}
+        {blogPost.media.length >1 && <Slider {...settings} className="w-[85%] md:w-[90%] my-8 md:my-16">
+          {blogPost.media.map((testimonial) => (
+            <div className="p-1 md:p-4">
+              <img src={testimonial} alt="" className="w-full" />
+            </div>
+          ))}
+        </Slider>}
+      
         <div className="text-[10px] leading-3 md:text-lg">
           {blogPost.content}
         </div>
@@ -115,6 +169,7 @@ const BlogPost = () => {
       <div className="w-full items-center flex flex-col md:my-8">
         <Bookacall />
       </div>
+      <Footer />
     </div>
   );
 };

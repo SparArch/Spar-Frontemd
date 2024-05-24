@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import NavAd from "../NavAd";
 import SideNav from "../SideNav";
-import { Button, Input, useToast } from "@chakra-ui/react";
+import { Button, Input, Textarea, useToast } from "@chakra-ui/react";
 import "./newblog.css";
 import clip from "../../Images/clip.png";
 import left_align_icon from "../../Images/left_align.png";
@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 const Newblog = () => {
-  const toast =useToast()
+  const toast = useToast()
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [tags, setTags] = useState("");
@@ -172,7 +172,7 @@ const Newblog = () => {
               <h3>Tags</h3>
             </div>
             <div>
-              <Input
+              <Textarea
                 value={tags}
                 onChange={(e) => {
                   setTags(e.target.value);

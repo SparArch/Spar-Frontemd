@@ -4,13 +4,16 @@ import contactusbanner from '../Images/contactusbanner.png'
 import Bookacall from '../AboutUs/bookacall'
 import Clientlist from '../AboutUs/clientlist'
 import contactusbg from '../Images/contactusbg.png'
-import { Button } from '@chakra-ui/react'
+import { Button, Image } from '@chakra-ui/react'
 import hiring1 from '../Images/hiring1.png'
 import hiring2 from '../Images/hiring2.png'
 import Navbar from '../HomePage/navbar'
 import axios from "axios";
 import BACKEND_URL from "../../helper";
 import { useNavigate } from 'react-router-dom'
+import Footer from '../HomePage/footer'
+import whatsappIcon from "../Images/whatapp-icon.png";
+
 
 const Gallerypost = () => {
   const navigate = useNavigate();
@@ -65,13 +68,18 @@ const Gallerypost = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <Navbar/>
+      <Navbar />
+      <div className="fixed z-50 cursor-pointer top-[92%] right-[2%]">
+        <a href="https://wa.me/+447678532077" target="_blank">
+          <Image height={"50px"} width={"50px"} src={whatsappIcon} />
+        </a>
+      </div>
       <img
         src={contactusbanner}
         alt="aboutimg1"
         className="z-10 w-full top-0"
       />
-      <div className="md:hidden w-full md:top-[-1.25rem] top-[-1.5rem] flex flex-col items-center relative">
+      <div className="md:hidden w-full md:top-[-1.25rem] top-[1rem] flex flex-col items-center relative">
         <Clientlist />
       </div>
       <div className="w-full hidden md:block text-center text-[#2C6856] mt-12 mb-24 font-bold text-7xl">
@@ -85,15 +93,15 @@ const Gallerypost = () => {
         >
           <div className="text-2xl md:text-4xl text-white">{item.title}</div>
           <div
-          style={{cursor:"pointer"}}
-           onClick={()=>{
-            navigate('/apply')
-          }} className="text-xs md:text-xl bg-[#2C6856] py-1 px-4 rounded-full text-white">
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              navigate('/apply')
+            }} className="text-xs md:text-xl bg-[#2C6856] py-1 px-4 rounded-full text-white">
             Apply Now
           </div>
         </div>)}
-       
-       
+
+
       </div>
       <div className="w-full text-center text-[#2C6856] mb-6 mt-6 md:mt-12 font-bold text-3xl md:text-6xl">
         Collaborate
@@ -101,7 +109,7 @@ const Gallerypost = () => {
       <div className="bg-[#F5F5F5] drop-shadow-xl p-[7vw] w-[80%] md:w-auto md:p-[4vw] rounded-2xl md:rounded-[50px] md:mb-16">
         <div className="text-sm md:text-xl font-bold">Full Name</div>
         <input
-        name="fullName"
+          name="fullName"
           value={formData.fullName}
           onChange={handleChange}
           type="text"
@@ -110,7 +118,7 @@ const Gallerypost = () => {
         />
         <div className="text-sm md:text-xl mt-6 font-bold">Email</div>
         <input
-        name="email"
+          name="email"
           value={formData.email}
           onChange={handleChange}
           type="text"
@@ -119,7 +127,7 @@ const Gallerypost = () => {
         />
         <div className="text-sm md:text-xl mt-6 font-bold">Contact No</div>
         <input
-        name="contactNo"
+          name="contactNo"
           value={formData.contactNo}
           onChange={handleChange}
           type="text"
@@ -128,9 +136,9 @@ const Gallerypost = () => {
         />
         <div className="text-sm md:text-xl mt-6 font-bold">Message/Enquiry</div>
         <textarea
-        name="message"
-        value={formData.message}
-        onChange={handleChange}
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
           rows={5}
           cols={60}
           style={{ resize: "none" }}
@@ -139,7 +147,7 @@ const Gallerypost = () => {
         />
         <div className="w-full flex flex-col items-center">
           <Button
-          onClick={handleSubmit}
+            onClick={handleSubmit}
             maxWidth={"120px"}
             className="my-2"
             backgroundColor={"#2C6856"}
@@ -152,6 +160,7 @@ const Gallerypost = () => {
       <div className="w-full items-center flex flex-col my-8">
         <Bookacall />
       </div>
+      <Footer />
     </div>
   );
 };

@@ -2,7 +2,14 @@ import React, { useEffect, useState } from "react";
 import NavAd from "../NavAd";
 import SideNav from "../SideNav";
 import "./home.css";
-import { Button, Image, Input, Text, useToast } from "@chakra-ui/react";
+import {
+  Button,
+  Image,
+  Input,
+  Text,
+  Textarea,
+  useToast,
+} from "@chakra-ui/react";
 import clip from "../../Images/clip.png";
 import left_align_icon from "../../Images/left_align.png";
 import right_align_icon from "../../Images/right_align.png";
@@ -39,6 +46,7 @@ const Home = () => {
   const [titleJoin, setTitleJoin] = useState("");
   const [mediaFileJoin, setMediaFileJoin] = useState(null);
   const [mediaFilesClient, setMediaFilesClient] = useState(null);
+  const [itemsTopCover, setItemsTopCover] = useState([]);
   const [itemsClients, setItemsClients] = useState([]);
   const [itemsSpaces, setItemsSpaces] = useState([]);
   const [itemsSolve, setItemsSolve] = useState([]);
@@ -73,6 +81,10 @@ const Home = () => {
   };
 
   useEffect(() => {
+    fetchItemsTopCover();
+  }, []);
+
+  useEffect(() => {
     fetchItemsClients();
   }, []);
 
@@ -91,6 +103,14 @@ const Home = () => {
   useEffect(() => {
     fetchItemsProjects();
   }, []);
+  const fetchItemsTopCover = async () => {
+    try {
+      const response = await axios.get(`${BACKEND_URL}/api/home/topCover`);
+      setItemsTopCover(response.data);
+    } catch (error) {
+      console.error("Error fetching items:", error);
+    }
+  };
   const fetchItemsClients = async () => {
     try {
       const response = await axios.get(`${BACKEND_URL}/api/home/ourClients`);
@@ -184,9 +204,16 @@ const Home = () => {
   const handleDeleteProjects = async (itemId) => {
     try {
       await axios.delete(`${BACKEND_URL}/api/home/featuredProjects/${itemId}`);
-      setItemsProjects(
-        itemsProjects.filter((item) => item._id !== itemId)
-      );
+      setItemsProjects(itemsProjects.filter((item) => item._id !== itemId));
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
+  };
+
+  const handleDeleteTopCover = async (itemId) => {
+    try {
+      await axios.delete(`${BACKEND_URL}/api/home/topCover/${itemId}`);
+      setItemsTopCover(itemsTopCover.filter((item) => item._id !== itemId));
     } catch (error) {
       console.error("Error deleting item:", error);
     }
@@ -219,7 +246,6 @@ const Home = () => {
         duration: 3000,
         isClosable: true,
       });
-      
 
       // Now you can use secure_url to display the media or save it to your backend
       console.log("Uploaded media URL:", secure_url);
@@ -522,7 +548,7 @@ const Home = () => {
                 marginBottom={"20px"}
                 placeholder="Title"
               />
-              <Input
+              <Textarea
                 value={contentTopCover}
                 onChange={(e) => {
                   setContentTopCover(e.target.value);
@@ -532,6 +558,31 @@ const Home = () => {
                 minHeight={"80px"}
               />
             </div>
+          </div>
+          <div className="grid md:gap-10 gap-4 grid-cols-2 md:grid-cols-3 ">
+            {itemsTopCover.map((item) => (
+              <div
+                className="w-[300px] h-[200px] bg-slate-300 p-[20px] rounded-xl"
+                style={{
+                  height: "240px",
+                  width: "300px",
+                  backgroundImage: `url(${item.media})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                <div
+                  style={{
+                    position: "relative",
+                    marginLeft: "230px",
+                    zIndex: "100",
+                  }}
+                  onClick={() => handleDeleteTopCover(item._id)}
+                >
+                  <Image cursor={"pointer"} src={del} height={"30px"} />
+                </div>
+              </div>
+            ))}
           </div>
 
           <div>
@@ -569,12 +620,12 @@ const Home = () => {
                   borderRadius: "1rem",
                   height: "240px",
                   width: "300px",
-                  backgroundImage: `url(${item.media})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
                   position: "relative", // Ensure the delete icon is positioned correctly
                 }}
               >
+                <div className="flex-col p-[20px] justify-center">
+                  <Image paddingLeft={"70px"} src={item.media} />
+                </div>
                 <div
                   style={{
                     position: "absolute",
@@ -645,7 +696,7 @@ const Home = () => {
                 marginBottom={"20px"}
                 placeholder="Title"
               />
-              <Input
+              <Textarea
                 value={contentHello}
                 onChange={(e) => {
                   setContentHello(e.target.value);
@@ -713,7 +764,7 @@ const Home = () => {
                 marginBottom={"20px"}
                 placeholder="Title"
               />
-              <Input
+              <Textarea
                 value={contentSpaces}
                 onChange={(e) => {
                   setContentSpaces(e.target.value);
@@ -751,7 +802,6 @@ const Home = () => {
                 </div>
               ))}
             </div>
-            
           </div>
 
           <div>
@@ -903,7 +953,7 @@ const Home = () => {
                 marginBottom={"20px"}
                 placeholder="Title"
               />
-              <Input
+              <Textarea
                 value={contentTestimonials}
                 onChange={(e) => {
                   setContentTestimonials(e.target.value);
@@ -1035,7 +1085,7 @@ const Home = () => {
               </div>
             ))}
           </div>
-          <div>
+          {/* <div>
             <h3>BLOGS</h3>
             <div>
               <Button
@@ -1050,8 +1100,8 @@ const Home = () => {
                 ADD
               </Button>
             </div>
-          </div>
-          <div>
+          </div> */}
+          <div className="mb-[100px]">
             <h3>JOIN , COLLABORATE AND TRANSFORM TOGETHER</h3>
             <div className="title2">
               <Button backgroundColor={"#2C6856"} color={"#fff"}>

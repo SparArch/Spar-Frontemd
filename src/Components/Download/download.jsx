@@ -3,13 +3,15 @@ import { useEffect, Component } from "react";
 import contactusbanner from "../Images/contactusbanner.png";
 import Bookacall from "../AboutUs/bookacall";
 import Clientlist from "../AboutUs/clientlist";
-import { Button, useToast } from "@chakra-ui/react";
+import { Button, Image, useToast } from "@chakra-ui/react";
 import download from "../Images/download.png";
 import { useState } from "react";
 import "./download.css";
 import Navbar from "../HomePage/navbar";
 import axios from "axios";
 import BACKEND_URL from "../../helper";
+import Footer from "../HomePage/footer";
+import whatsappIcon from "../Images/whatapp-icon.png";
 
 const Gallerypost = () => {
   useEffect(() => {
@@ -32,7 +34,7 @@ const Gallerypost = () => {
         fullName,
         email,
         projectName: selectedItem.projectName,
-        content : selectedItem.content,
+        content: selectedItem.content,
         media: selectedItem.media,
       });
       toast({
@@ -67,38 +69,43 @@ const Gallerypost = () => {
   return (
     <div className="flex flex-col items-center">
       <Navbar />
+      <div className="fixed z-50 cursor-pointer top-[92%] right-[2%]">
+        <a href="https://wa.me/+447678532077" target="_blank">
+          <Image height={"50px"} width={"50px"} src={whatsappIcon} />
+        </a>
+      </div>
       {form == "open" && (
         <div className="w-[100vw] flex flex-col items-center justify-center h-[100vh] z-50 fixed bgdrop">
           <div className="bg-[#2C6856] flex flex-col justify-evenly w-4/5 md:w-2/5 drop-shadow-xl p-[7vw] md:p-[4vw] rounded-2xl md:rounded-[50px] text-white">
             <div className="text-sm md:text-xl font-bold">Full Name</div>
             <input
-            name="fullName"
+              name="fullName"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
               type="text"
               className="w-full p-1 my-2"
               placeholder="Enter Your Full Name"
-              style={{color:"black"}}
+              style={{ color: "black" }}
             />
             <div className="text-sm md:text-xl mt-6 font-bold">Email</div>
             <input
-            name="email"
+              name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               type="text"
               className="w-full p-1 my-2"
               placeholder="Enter Your Email"
-              style={{color:"black"}}
+              style={{ color: "black" }}
             />
             <div className="text-sm md:text-xl mt-6 font-bold">Contact No</div>
             <input
-            name="contactNo"
+              name="contactNo"
               value={contact}
               onChange={(e) => setContact(e.target.value)}
               type="text"
               className="w-full p-1 my-2"
               placeholder="Enter Your Contact No"
-              style={{color:"black"}}
+              style={{ color: "black" }}
             />
             <div className="w-full flex flex-col items-center">
               <Button
@@ -141,10 +148,10 @@ const Gallerypost = () => {
         alt="aboutimg1"
         className="z-10 w-full top-0"
       />
-      <div className="w-full md:top-[-1.25rem] top-[-1.5rem] flex flex-col items-center relative">
+      <div className="w-full md:top-[-1.25rem] top-[1.5rem] flex flex-col items-center relative">
         <Clientlist />
       </div>
-      <div className="w-full text-center font-bold md:text-4xl text-xl">
+      <div className="w-full mt-[24px] text-center font-bold md:text-4xl text-xl">
         Download Resources
       </div>
       <div className="grid gap-2 md:gap-4 w-[90%] mt-8 md:mt-12 grid-cols-3 mb-48">
@@ -179,6 +186,7 @@ const Gallerypost = () => {
       <div className="w-full items-center flex flex-col my-8">
         <Bookacall />
       </div>
+      <Footer />
     </div>
   );
 };

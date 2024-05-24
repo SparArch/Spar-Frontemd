@@ -31,6 +31,7 @@ import AdminSocial from './Components/Admin/Social/Social';
 import TrackPageViews from "./Components/TrackPageViews";
 import AdminNewJoin from './Components/Admin/NewJoin/NewJoin'
 import BlogPost from "./Components/Blogs/blogpost";
+import { Image } from "@chakra-ui/react";
 
 const ProtectedRoute = ({ element }) => {
   const { isAuthenticated } = useAuth();
@@ -44,11 +45,13 @@ function App() {
       <div>
         <Routes>
 
+
+
           <Route path="/" element={<Homepage />} />
           <Route path="/about" element={<Aboutus />} />
           <Route path="/service" element={<Service />} />
           <Route path="/gallery" element={<Gallery />} />
-          <Route path="/gallery/:id" element={<GalleryPost/>} />
+          <Route path="/gallery/:id" element={<GalleryPost />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:id" element={<BlogPost />} />
           <Route path="/contactus" element={<Contactus />} />
@@ -72,7 +75,7 @@ function App() {
           <Route path="/admin-newjoin" element={<ProtectedRoute element={<AdminNewJoin />} />} />
 
         </Routes>
-        {/* <Footer /> */}
+
       </div>
     </AuthProvider>
   );

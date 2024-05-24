@@ -4,41 +4,24 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Button, Divider, Image, position } from "@chakra-ui/react";
 import Slider from "react-slick";
-import homebg from "../Images/homebg.png";
-import homebg2 from "../Images/homebg2.png";
-import homebg2phone from "../Images/homebg2phone.png";
 import { useEffect } from "react";
 import Clientlist from "../AboutUs/clientlist";
-import service1 from "../Images/service1.png";
-import service2 from "../Images/service2.png";
-import service3 from "../Images/service3.png";
-import service4 from "../Images/service4.png";
-import service5 from "../Images/service5.png";
 import service6 from "../Images/midsec2-1.png";
-import rightprob from "../Images/rightprob.png";
-import rightprobphone from "../Images/rightprobphone.png";
 import joinus from "../Images/joinhome.png";
 import Bookacall from "../AboutUs/bookacall";
 import morebtn from "../Images/midsec2-2.png";
-import midsec51 from "../Images/midsec5-1.png";
-import midsec52 from "../Images/midsec5-2.png";
-import midsec53 from "../Images/midsec5-3.png";
-import midsec54 from "../Images/midsec5-4.png";
-import midsec55 from "../Images/midsec5-5.png";
 import next from "../Images/next.png";
 import prev from "../Images/prev.png";
 import next1 from "../Images/next1.png";
 import prev1 from "../Images/prev1.png";
-import diff1 from "../Images/diff1.png";
-import diff2 from "../Images/diff2.png";
-import diff3 from "../Images/diff3.png";
-import diff4 from "../Images/diff4.png";
-import diff5 from "../Images/diff5.png";
 import Navbar from "./navbar";
 import axios from "axios";
 import BACKEND_URL from "../../helper";
 import blankimg from "../Images/black-img.png";
 import { useNavigate } from "react-router-dom";
+import Footer from "./footer";
+import contactusbg from "../Images/contactusbg.png";
+import whatsappIcon from "../Images/whatapp-icon.png";
 
 const Homepage = () => {
   const navigate = useNavigate();
@@ -233,23 +216,34 @@ const Homepage = () => {
   return (
     <div className="Home">
       <Navbar />
+      <div className="fixed z-50 cursor-pointer top-[92%] right-[2%]">
+        <a href="https://wa.me/+447678532077" target="_blank">
+          <Image height={"50px"} width={"50px"} src={whatsappIcon} />
+        </a>
+      </div>
       <div className=" ">
         {/* <div className='w-full'>
           <img src={homebg} className='w-full' />
         </div> */}
-        <div className="w-full flex flex-row absolute z-30 md:px-10 px-4 justify-between md:top-[30vw] top-[40vw]">
-          <button onClick={() => slider?.current?.slickPrev()}>
-            <img src={prev1} className="w-3 md:w-auto" alt="" />
-          </button>
-          <button onClick={() => slider?.current?.slickNext()}>
-            <img src={next1} className="w-3 md:w-auto" alt="" />
-          </button>
-        </div>
-        <div className="w-full flex flex-col items-center">
+        {topCoverCount > 1 && (
+          <div className="w-full flex flex-row absolute z-30 md:px-10 px-4 justify-between md:top-[30vw] top-[40vw]">
+            <button onClick={() => slider?.current?.slickPrev()}>
+              <img src={prev1} className="w-3 md:w-auto" alt="" />
+            </button>
+            <button onClick={() => slider?.current?.slickNext()}>
+              <img src={next1} className="w-3 md:w-auto" alt="" />
+            </button>
+          </div>
+        )}
+        <div className="w-full flex md:mt-0 mt-12 flex-col items-center">
           {topCoverCount === 1 && (
             <div className="relative flex items-center justify-center">
-              <div className="p-1 md:p-4">
-                <img src={itemsTopCover[0]?.media} alt="" className="w-full" />
+              <div className="">
+                <img
+                  src={itemsTopCover[0]?.media}
+                  alt=""
+                  className="w-full brightness-75"
+                />
               </div>
               <div className="absolute w-full h-full flex flex-col items-center justify-center text-center text-white bottom-0">
                 <div className="font-bold text-[4vw] z-40">
@@ -258,16 +252,16 @@ const Homepage = () => {
                 <div className="text-[2vw] w-1/2 z-40">
                   {itemsTopCover[0]?.content}
                 </div>
-                <div className="flex flex-row">
+                <div className="flex flex-row gap-2">
                   <button
                     onClick={() => {
                       navigate("/download");
                     }}
-                    className="font-semibold text-white bg-transparent border-2 border-white p-2 md:p-4 mt-4 md:m-4 rounded-xl text-center text-xs md:text-[1.2vw] flex flex-col items-center justify-center"
+                    className="font-semibold text-white bg-transparent border-2 border-white p-2 md:p-4 mt-4 md:m-4 rounded-xl text-center text-[1.16vw] md:text-[1.2vw] flex flex-col items-center justify-center"
                   >
                     DOWNLOAD
                   </button>
-                  <button className="font-semibold text-white bg-[#2C6856] p-2 md:p-4 mt-4 md:m-4 rounded-xl text-center text-xs md:text-[1.2vw] flex flex-col items-center justify-center">
+                  <button className="font-semibold text-white bg-[#2C6856] p-2 md:p-4 mt-4 md:m-4 rounded-xl text-center text-[1.16vw] md:text-[1.2vw] flex flex-col items-center justify-center">
                     <a href="https://wa.me/+917678532077" target="_blank">
                       {" "}
                       GET A QUOTE
@@ -281,12 +275,16 @@ const Homepage = () => {
             <Slider
               ref={slider}
               {...settings2}
-              className="w-full my-8 md:my-16"
+              className="w-[105%] my-8 md:my-16"
             >
               {itemsTopCover.map((testimonial) => (
                 <div className="relative flex items-center justify-center">
                   <div className="p-1 md:p-4">
-                    <img src={testimonial.media} alt="" className="w-full" />
+                    <img
+                      src={testimonial.media}
+                      alt=""
+                      className="w-full brightness-75"
+                    />
                   </div>
                   <div className="absolute w-full h-full flex flex-col items-center justify-center text-center text-white bottom-0">
                     <div className="font-bold text-[4vw] z-40">
@@ -318,33 +316,42 @@ const Homepage = () => {
           )}
         </div>
         {/* <div className='relative bottom-36 -mt-16 -mb-20'><Clientlist /></div> */}
-        <div className=" w-full md:top-[-1.25rem] top-[-4rem] flex flex-col items-center relative">
+        <div className=" w-full md:top-[-1.25rem] top-[-2rem] flex flex-col items-center relative">
           <Clientlist />
         </div>
-        <div className="w-full flex items-center top-[-5rem] md:top-0 justify-center  relative">
+        <div className="w-full flex items-center overflow-y-none top-[-5rem] md:top-0 justify-center  relative">
           <img
             src={itemsHello[helloIndex]?.media}
             className="w-full hidden md:block brightness-75"
           />
-          <img
-            src={itemsHello[helloIndex]?.media}
-            className="w-full block md:hidden brightness-75"
-          />
+          <div className="h-[70vw] block md:hidden">
+            <img
+              src={itemsHello[helloIndex]?.media}
+              className="w-full h-full object-cover block md:hidden brightness-75"
+            />
+          </div>
           {homecontent && (
-            <div className="absolute w-[90%] md:w-1/2 rounded-xl p-4 md:p-[2vw] text-white font-semibold flex flex-col items-center justify-center text-center text-[10px] md:text-[1vw] bg-home-2">
-              <div className="text-[10vw] md:text-[7vw] font-bold mb-4">
-                {itemsHello[helloIndex]?.title}
+            <>
+              <div className="absolute w-[90%] md:w-1/2 mt-12 rounded-xl p-2 md:p-[2vw] text-white flex flex-col items-center justify-center text-center text-[2vw] md:text-[1.2vw] duration-500 hover:bg-black/50">
+                <div className="text-[8vw] md:text-[6vw] w-full text-center mb-[30vw] md:mb-[10vw] font-bold">
+                  {itemsHello[helloIndex]?.title}
+                </div>
+                <div className="w-full flex flex-col items-center justify-evenly h-full opacity-0 hover:opacity-100 duration-500 absolute">
+                  <div className="w-4/5 mt-[15vw] md:mt-[10vw]">
+                    {homecontent}
+                  </div>
+                  <button
+                    onClick={() => {
+                      navigate("/about");
+                    }}
+                    className="font-semibold text-white bg-[#2C6856] p-2 md:px-4 py-1 md:py-2 mt-2 md:m-4 md:rounded-xl rounded text-center text-[3vw] md:text-[1.2vw] flex flex-col items-center justify-center"
+                  >
+                    KNOW MORE
+                  </button>
+                </div>
               </div>
-              {homecontent}
-              <button
-                onClick={() => {
-                  navigate("/about");
-                }}
-                className="font-semibold text-white bg-[#2C6856] p-2 md:p-4 mt-4 md:m-4 rounded-xl text-center text-xs md:text-[1.2vw] flex flex-col items-center justify-center"
-              >
-                KNOW MORE
-              </button>
-            </div>
+              {/* <div style={{ backgroundImage: `url(${itemsHello[helloIndex]?.media})` }} className="w-full h-full text-[10vw] md:text-[7vw] font-bold text-white duration-500 absolute items-center justify-center flex hover:hidden">{itemsHello[helloIndex]?.title}</div> */}
+            </>
           )}
           {!homecontent && (
             <div className="text-[10vw] md:text-[10vw] font-bold absolute text-white mb-4">
@@ -355,7 +362,10 @@ const Homepage = () => {
       </div>
 
       {/* We Know Every Spaces */}
-      <div className="midsec22 flex flex-col items-center justify-center">
+      <div
+        style={{ backgroundImage: `url(${contactusbg})` }}
+        className="midsec22 flex flex-col items-center justify-center"
+      >
         <div className="text-3xl md:text-5xl font-bold mt-8 text-center">
           We Know Every Spaces.
         </div>
@@ -446,7 +456,7 @@ const Homepage = () => {
             onClick={() => {
               navigate("/about");
             }}
-            className="md:hidden font-bold text-white bg-[#2C6856] m-4 rounded-xl text-center text-xl flex flex-col items-center justify-center"
+            className="md:hidden text-[1rem] font-bold text-white bg-[#2C6856] m-4 rounded-xl text-center text-xl flex flex-col items-center justify-center"
           >
             KNOW
             <br /> MORE
@@ -471,8 +481,8 @@ const Homepage = () => {
         <Slider {...settings} className="w-[98%] md:w-[90%] max-w-[1100px]">
           {itemsTestimonials.map((testimonial) => (
             <div className="p-1 md:p-4" key={testimonial._id}>
-              <div className=" md:p-5 p-3 text-white bg-[#4A8780] rounded-lg">
-                <div className="italic text-[8px] md:text-lg">
+              <div className=" md:p-5 p-3 text-white bg-[#4A8780] h-[50vw] md:h-[30vw] lg:h-96 flex flex-col justify-between rounded-lg">
+                <div className="italic text-[2vw] md:text-[1.3vw] lg:text-base">
                   " {testimonial.content} "
                 </div>
                 <div className="flex flex-row items-center mt-4">
@@ -534,10 +544,13 @@ const Homepage = () => {
                     <p className="text-[2cqw] md:text-[1cqw] md:my-2">
                       Location:- {projects[1]?.location || "Example"}
                     </p>
-                    <button style={{ cursor: "pointer" }}
-                    onClick={() => {
-                      navigate("/gallery");
-                    }} className="text-[2cqw] md:text-[1cqw] w-fit bg-opacity-30 bg-white rounded-sm md:rounded-lg border-white border-[1px] md:border-2 px-1 md:px-4 md:py-2">
+                    <button
+                      style={{ cursor: "pointer" }}
+                      onClick={() => {
+                        navigate("/gallery");
+                      }}
+                      className="text-[2cqw] md:text-[1cqw] w-fit bg-opacity-30 bg-white rounded-sm md:rounded-lg border-white border-[1px] md:border-2 px-1 md:px-4 md:py-2"
+                    >
                       View More
                     </button>
                   </div>
@@ -556,10 +569,13 @@ const Homepage = () => {
                     <p className="text-[2cqw] md:text-[1cqw] md:my-2">
                       Location:- {projects[2]?.location || "Example"}
                     </p>
-                    <button style={{ cursor: "pointer" }}
-                    onClick={() => {
-                      navigate("/gallery");
-                    }} className="text-[2cqw] md:text-[1cqw] w-fit bg-opacity-30 bg-white rounded-sm md:rounded-lg border-white border-[1px] md:border-2 px-1 md:px-4 md:py-2">
+                    <button
+                      style={{ cursor: "pointer" }}
+                      onClick={() => {
+                        navigate("/gallery");
+                      }}
+                      className="text-[2cqw] md:text-[1cqw] w-fit bg-opacity-30 bg-white rounded-sm md:rounded-lg border-white border-[1px] md:border-2 px-1 md:px-4 md:py-2"
+                    >
                       View More
                     </button>
                   </div>
@@ -582,10 +598,13 @@ const Homepage = () => {
                   <p className="text-[2cqw] md:text-[1cqw] md:my-2">
                     Location:- {projects[3]?.location || "Example"}
                   </p>
-                  <button style={{ cursor: "pointer" }}
+                  <button
+                    style={{ cursor: "pointer" }}
                     onClick={() => {
                       navigate("/gallery");
-                    }} className="text-[2cqw] md:text-[1cqw] w-fit bg-opacity-30 bg-white rounded-sm md:rounded-lg border-white border-[1px] md:border-2 px-1 md:px-4 md:py-2">
+                    }}
+                    className="text-[2cqw] md:text-[1cqw] w-fit bg-opacity-30 bg-white rounded-sm md:rounded-lg border-white border-[1px] md:border-2 px-1 md:px-4 md:py-2"
+                  >
                     View More
                   </button>
                 </div>
@@ -604,10 +623,13 @@ const Homepage = () => {
                   <p className="text-[2cqw] md:text-[1cqw] md:my-2">
                     Location:- {projects[4]?.location || "Example"}
                   </p>
-                  <button style={{ cursor: "pointer" }}
+                  <button
+                    style={{ cursor: "pointer" }}
                     onClick={() => {
                       navigate("/gallery");
-                    }} className="text-[2cqw] md:text-[1cqw] w-fit bg-opacity-30 bg-white rounded-sm md:rounded-lg border-white border-[1px] md:border-2 px-1 md:px-4 md:py-2">
+                    }}
+                    className="text-[2cqw] md:text-[1cqw] w-fit bg-opacity-30 bg-white rounded-sm md:rounded-lg border-white border-[1px] md:border-2 px-1 md:px-4 md:py-2"
+                  >
                     View More
                   </button>
                 </div>
@@ -622,9 +644,9 @@ const Homepage = () => {
             backgroundColor={"#2C6856"}
             color={"white"}
             style={{ cursor: "pointer" }}
-                    onClick={() => {
-                      navigate("/gallery");
-                    }}
+            onClick={() => {
+              navigate("/gallery");
+            }}
           >
             View More
           </Button>
@@ -636,9 +658,14 @@ const Homepage = () => {
         </div>
         <div className="grid gap-4 md:gap-10 grid-cols-3">
           {blogPosts.map((item) => (
-            <div className="bg-[#D9D9D9] flex flex-col md:gap-4 gap-1 rounded-lg md:rounded-3xl">
+            <div className="bg-[#D9D9D9] flex flex-col justify-between md:gap-4 gap-1 rounded-lg md:rounded-3xl">
               <div key={item._id} className="relative">
-                <img src={item.media} className="rounded-lg md:rounded-3xl" />
+                <div className="w-full h-24 md:h-[15vw]">
+                  <img
+                    src={item.media}
+                    className="rounded-lg object-cover w-full h-full md:rounded-3xl"
+                  />
+                </div>
                 <div className="md:text-base text-[8px] absolute bottom-0 m-1 md:m-4 text-white">
                   {formatDate(item.date)}
                 </div>
@@ -678,9 +705,9 @@ const Homepage = () => {
             backgroundColor={"#2C6856"}
             color={"white"}
             style={{ cursor: "pointer" }}
-                    onClick={() => {
-                      navigate("/collaborate");
-                    }}
+            onClick={() => {
+              navigate("/collaborate");
+            }}
           >
             View More
           </Button>
@@ -689,6 +716,7 @@ const Homepage = () => {
       <div className="w-full items-center flex flex-col my-8">
         <Bookacall />
       </div>
+      <Footer />
     </div>
   );
 };

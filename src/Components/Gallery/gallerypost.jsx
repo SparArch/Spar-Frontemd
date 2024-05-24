@@ -13,6 +13,7 @@ import axios from "axios";
 import BACKEND_URL from "../../helper";
 
 import Navbar from "../HomePage/navbar";
+import Footer from "../HomePage/footer";
 
 const Contactus = () => {
   const { id } = useParams();
@@ -108,6 +109,7 @@ const Contactus = () => {
       <div className="w-full items-center flex flex-col my-8">
         <Bookacall />
       </div>
+      <Footer />
     </div>
   );
 };

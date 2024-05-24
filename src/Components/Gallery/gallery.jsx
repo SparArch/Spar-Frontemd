@@ -9,6 +9,8 @@ import Navbar from "../HomePage/navbar";
 import axios from "axios";
 import BACKEND_URL from "../../helper";
 import { useNavigate } from "react-router-dom";
+import Footer from "../HomePage/footer";
+import whatsappIcon from "../Images/whatapp-icon.png";
 
 const Gallery = () => {
   const [gallery, setGallery] = useState([]);
@@ -33,6 +35,11 @@ const Gallery = () => {
   return (
     <div className="flex flex-col items-center">
       <Navbar />
+      <div className="fixed z-50 cursor-pointer top-[92%] right-[2%]">
+        <a href="https://wa.me/+447678532077" target="_blank">
+          <Image height={"50px"} width={"50px"} src={whatsappIcon} />
+        </a>
+      </div>
       <img src={gallerybanner} alt="aboutimg1" className="z-10 w-full top-0" />
 
       <div className="blogsec1 flex flex-col gap-6 items-center rounded-3xl">
@@ -407,6 +414,7 @@ const Gallery = () => {
           </TabPanels>
         </Tabs>
       </div>
+      <Footer />
     </div>
   );
 };

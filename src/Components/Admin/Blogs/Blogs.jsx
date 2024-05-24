@@ -3,7 +3,7 @@ import NavAd from "../NavAd";
 import SideNav from "../SideNav";
 import { Button, Checkbox, Image, Input, Text } from "@chakra-ui/react";
 import "./blogs.css";
-      import blankimg from "../../Images/black-img.png";
+import blankimg from "../../Images/black-img.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import BACKEND_URL from "../../../helper";
@@ -21,7 +21,20 @@ const Blogs = () => {
       console.error("Error fetching posts:", error);
     }
   };
+  const truncateText = (text, maxLength) => {
+    const words = text.split(" ");
+    if (words.length > maxLength) {
+      return words.slice(0, maxLength).join(" ") + "...";
+    }
+    return text;
+  };
 
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    const date = new Date(dateString);
+    const formattedDate = date.toLocaleDateString(undefined, options);
+    return `${formattedDate}`;
+  };
   // Function to handle post selection
   const handlePostSelection = (postId) => {
     if (selectedPosts.includes(postId)) {
@@ -52,7 +65,6 @@ const Blogs = () => {
     }
   };
 
-
   useEffect(() => {
     // Fetch all posts when the component mounts
     fetchPosts();
@@ -82,19 +94,10 @@ const Blogs = () => {
           </div>
           <div className="blogs-filter">
             <div className="blogs-check">
-            <Checkbox isChecked={selectAll} onChange={handleSelectAll} />
+              <Checkbox isChecked={selectAll} onChange={handleSelectAll} />
               <Text>SELECT ALL</Text>
             </div>
             <div className="blogs-fil">
-              <div className="blogs-fil1">
-                <div>FILTER BY</div>
-                <select
-                  style={{ border: "2px black solid", borderRadius: "30px" }}
-                >
-                  <option value="someOption">Some option</option>
-                  <option value="otherOption">Other option</option>
-                </select>
-              </div>
               <div>
                 <Input
                   borderRadius={"2rem"}
@@ -106,23 +109,33 @@ const Blogs = () => {
             </div>
           </div>
         </div>
-        <div className="blogs-cards" >
+        <div className="blogs-cards">
           {posts.map((post) => (
             <div className="card py-4" key={post._id}>
-              <Checkbox isChecked={selectedPosts.includes(post._id)} onChange={() => handlePostSelection(post._id)} />
-              <Image
-                style={{
-                  width: "750px",
-                  height: "160px",
-                  borderRadius: "16px",
-                }}
-                src={post.media.length > 0 ? post.media[0] : blankimg}
-              />
-
+              <Checkbox
+                isChecked={selectedPosts.includes(post._id)}
+                onChange={() => handlePostSelection(post._id)}
+              />{" "}
+              {/* <Image
+                width="750px"
+                height="160px"
+                  style={{
+                    width: "750px",
+                    height: "160px",
+                    borderRadius: "16px",
+                  }}
+                 
+                /> */}
+              <div style={{ width: "100%" }}>
+                <img
+                  src={post.media.length > 0 ? post.media[0] : blankimg}
+                  className="rounded-lg object-cover w-full h-full "
+                />
+              </div>
               <div className="card-detail">
                 <h3>{post.title}</h3>
-                <h1>{post.date}</h1>
-                <p>{post.content}</p>
+                <h1>{formatDate(post.date)}</h1>
+                <p>{truncateText(post.content, 100)}</p>
               </div>
             </div>
           ))}

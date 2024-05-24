@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import NavAd from "../NavAd";
 import SideNav from "../SideNav";
 import "../Home/home.css";
-import { Button, Image, Input, Text, useToast } from "@chakra-ui/react";
+import { Button, Image, Input, Text, Textarea, useToast } from "@chakra-ui/react";
 import clip from "../../Images/clip.png";
 import left_align_icon from "../../Images/left_align.png";
 import right_align_icon from "../../Images/right_align.png";
@@ -27,11 +27,17 @@ const About = () => {
   const [contentVision, setContentVision] = useState("");
   const [mediaFilesVision, setMediaFilesVision] = useState(null);
   const [mediaFilesClient, setMediaFilesClient] = useState(null);
+  const [mediaFilesCertifications, setMediaFilesCertifications] = useState(null);
+  const [itemsAboutUs, setItemsAboutUs] = useState([]);
   const [itemsSolve, setItemsSolve] = useState([]);
   const [itemsMission, setItemsMission] = useState([]);
   const [itemsClients, setItemsClients] = useState([]);
   const [itemsCertifications, setItemsCertifications] = useState([]);
- 
+
+  useEffect(() => {
+    fetchItemsAboutUs();
+  }, []);
+
   useEffect(() => {
     fetchItemsSolve();
   }, []);
@@ -63,33 +69,24 @@ const About = () => {
     setMediaFilesClient(e.target.files[0]);
   };
 
-  const handleSubmitAboutUs = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("file", mediaFileAboutUs);
-    formData.append("upload_preset", "chat-app");
+  const handleFileChangeCertifications = (e) => {
+    setMediaFilesCertifications(e.target.files[0]);
+  };
+  const fetchItemsAboutUs = async () => {
     try {
-      const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload", // Replace with your Cloudinary cloud name
-        formData
-      );
-      const { secure_url } = response.data;
-
-      await axios.post(`${BACKEND_URL}/api/about`, {
-        title: titleAboutUs,
-        content: contentAboutUs,
-        image: secure_url,
-      });
-      toast({
-        title: "Successfully Added",
-        status: "success",
-        duration: 3000,
-        isClosable: true,
-      });
-      console.log("About Us created successfully");
-      console.log("Uploaded media URL:", secure_url);
+      const response = await axios.get(`${BACKEND_URL}/api/about`);
+      setItemsAboutUs(response.data);
     } catch (error) {
-      console.error("Error uploading file to Cloudinary:", error);
+      console.error("Error fetching items:", error);
+    }
+  };
+
+  const handleDeleteAboutUs = async (itemId) => {
+    try {
+      await axios.delete(`${BACKEND_URL}/api/about/${itemId}`);
+      setItemsAboutUs(itemsAboutUs.filter((item) => item._id !== itemId));
+    } catch (error) {
+      console.error("Error deleting item:", error);
     }
   };
 
@@ -164,6 +161,36 @@ const About = () => {
       );
     } catch (error) {
       console.error("Error deleting item:", error);
+    }
+  };
+
+  const handleSubmitAboutUs = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("file", mediaFileAboutUs);
+    formData.append("upload_preset", "chat-app");
+    try {
+      const response = await axios.post(
+        "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload", // Replace with your Cloudinary cloud name
+        formData
+      );
+      const { secure_url } = response.data;
+
+      await axios.post(`${BACKEND_URL}/api/about`, {
+        title: titleAboutUs,
+        content: contentAboutUs,
+        image: secure_url,
+      });
+      toast({
+        title: "Successfully Added",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+      console.log("About Us created successfully");
+      console.log("Uploaded media URL:", secure_url);
+    } catch (error) {
+      console.error("Error uploading file to Cloudinary:", error);
     }
   };
 
@@ -270,6 +297,35 @@ const About = () => {
     }
   };
 
+  const handleSubmitCertifications = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("file", mediaFilesCertifications);
+    formData.append("upload_preset", "chat-app");
+    try {
+      const response = await axios.post(
+        "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload",
+        formData
+      );
+
+      // Obtain URL of the uploaded file
+      const { secure_url } = response.data;
+
+      await axios.post(`${BACKEND_URL}/api/about/certifications`, {
+        media: secure_url,
+      });
+      toast({
+        title: "Successfully Added",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+      console.log("Certifications created successfully");
+    } catch (error) {
+      console.error("Error creating Clients:", error);
+    }
+  };
+
   const handleEditorChangeVision = (content, editor) => {
     console.log("Content was updated:", content);
     setContentVision(content);
@@ -357,6 +413,31 @@ const About = () => {
                 onChange={handleEditorChangeAboutUs}
               />
             </div>
+            <div className="grid md:gap-10 gap-4 grid-cols-2 md:grid-cols-3 ">
+            {itemsAboutUs.map((item) => (
+              <div
+                className="mt-[12px] w-[300px] h-[200px] bg-slate-300 p-[20px] rounded-xl"
+                style={{
+                  height: "240px",
+                  width: "300px",
+                  backgroundImage: `url(${item.image})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                <div
+                  style={{
+                    position: "relative",
+                    marginLeft: "230px",
+                    zIndex: "100",
+                  }}
+                  onClick={() => handleDeleteAboutUs(item._id)}
+                >
+                  <Image cursor={"pointer"} src={del} height={"30px"} />
+                </div>
+              </div>
+            ))}
+          </div>
           </div>
           <div>
             <h3>SOLUTIONS</h3>
@@ -623,20 +704,24 @@ const About = () => {
           </div>
 
           <div className="grid md:gap-10 gap-3 grid-cols-2 md:grid-cols-3 ">
-            {itemsClients.map((item) => (
+          {itemsClients.map((item) => (
               <div
                 key={item._id}
-                className="w-[300px] h-[200px] bg-slate-300 p-[20px] rounded-xl"
                 style={{
-                  backgroundImage: `url(${item.media})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
+                  display: "flex",
+                  borderRadius: "1rem",
+                  height: "240px",
+                  width: "300px",
+                  position: "relative", // Ensure the delete icon is positioned correctly
                 }}
               >
+                <div className="flex-col p-[20px] justify-center">
+                  <Image paddingLeft={"70px"} src={item.media} />
+                </div>
                 <div
                   style={{
-                    position: "relative",
-                    marginLeft: "230px",
+                    position: "absolute",
+                    padding: "10px",
                     zIndex: "100",
                   }}
                   onClick={() => handleDeleteClients(item._id)}
@@ -652,12 +737,12 @@ const About = () => {
             <Button backgroundColor={"#2C6856"} color={"#fff"}>
               <input
                 type="file"
-                id="uploadInputClient"
+                id="uploadInputCertifications"
                 accept="image/*"
                 style={{ display: "none" }}
-                onChange={handleFileChangeClient}
+                onChange={handleFileChangeCertifications}
               />
-              <label className="uploadbtn" htmlFor="uploadInputClient">
+              <label className="uploadbtn" htmlFor="uploadInputCertifications">
                 ADD MEDIA
               </label>
             </Button>
@@ -667,7 +752,7 @@ const About = () => {
               paddingLeft={"2rem"}
               backgroundColor={"#2C6856"}
               color={"#fff"}
-              onClick={handleSubmitClient}
+              onClick={handleSubmitCertifications}
             >
               ADD
             </Button>
@@ -677,18 +762,23 @@ const About = () => {
               <div
                 key={item._id}
                 style={{
-                  backgroundImage: `url(${item.media})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
+                  display: "flex",
+                  borderRadius: "1rem",
+                  height: "240px",
+                  width: "300px",
+                  position: "relative", // Ensure the delete icon is positioned correctly
                 }}
-                className="w-[300px] h-[200px] bg-slate-300 p-[20px] rounded-xl"
+                // className="w-[300px] h-[200px] bg-slate-300 p-[20px] rounded-xl"
               >
+                 <div className="flex-col p-[20px] justify-center">
+                  <Image paddingLeft={"70px"} src={item.media} />
+                </div>
                 <div
-                  style={{
-                    position: "relative",
-                    marginLeft: "230px",
-                    zIndex: "100",
-                  }}
+                style={{
+                  position: "absolute",
+                  padding: "10px",
+                  zIndex: "100",
+                }}
                   onClick={() => handleDeleteCertifications(item._id)}
                 >
                   <Image cursor={"pointer"} src={del} height={"30px"} />

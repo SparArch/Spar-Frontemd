@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import blogsbg from "../Images/blogsbg.png";
-import { Text, useToast } from "@chakra-ui/react";
+import { Image, Text, useToast } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import Arrow from "../Images/Arrow.png";
 import axios from "axios";
@@ -11,6 +11,8 @@ import homebg from "../Images/homebg.png";
 import Navbar from "../HomePage/navbar";
 import blogbtn from "../Images/blogbtn.png";
 import { Link } from "react-router-dom";
+import Footer from "../HomePage/footer";
+import whatsappIcon from "../Images/whatapp-icon.png";
 
 const Blogs = () => {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -74,6 +76,11 @@ const Blogs = () => {
   return (
     <div className="flex flex-col items-center">
       <Navbar />
+      <div className="fixed z-50 cursor-pointer top-[92%] right-[2%]">
+        <a href="https://wa.me/+447678532077" target="_blank">
+          <Image height={"50px"} width={"50px"} src={whatsappIcon} />
+        </a>
+      </div>
       <img
         src={blogsbg}
         alt="aboutimg1"
@@ -83,13 +90,12 @@ const Blogs = () => {
         position={"relative"}
         display={"flex"}
         justifyContent={"center"}
-        color={"white"}
-        className="md:text-[35px] text-[15px] bottom-0 mt-[-30px] md:mt-[-60px] z-20"
+        className="md:text-[35px] text-[15px] bottom-0 tetx-black md:text-white mt-[1rem] md:mt-[-60px] z-20"
         fontWeight={"600"}
       >
         BLOGS, CASE STUDIES & MEDIA MENTIONS
       </Text>
-      <div className=" w-full top-[-0.1rem] md:hidden flex flex-col items-center relative">
+      <div className=" w-full sm:top-[-0.1rem] top-1 md:hidden flex flex-col items-center relative">
         <Clientlist />
       </div>
       <div className="flex flex-col gap-3 md:gap-10 md:my-24 my-4 w-4/5 items-center">
@@ -97,29 +103,29 @@ const Blogs = () => {
           <>
             {blogPosts.slice(0, 5).map((item, index) => (
               <div className="flex flex-row gap-2 md:gap-12">
-                <div className="h-[25vw] md:h-[20vw]">
+                <div className="h-[20vw] w-[35vw]">
                   <img
                     src={item.media[0]}
-                    className=" h-full w-full md:rounded-2xl"
+                    className="object-cover h-full w-full md:rounded-2xl"
                   />
                 </div>
                 <div className="flex flex-col justify-between w-2/3">
-                  <div className="font-semibold text-[3.5vw] md:text-[2vw]">
+                  <div className="font-semibold text-[2.5vw] md:text-[2vw]">
                     {item.title}
                     <br />
-                    <div className="text-[1.5vw] font-bold">
+                    <div className="text-[1.5vw] md:text-[1vw] font-bold">
                       {formatDate(item.date)}
                     </div>
                   </div>
-                  <div className="text-[1vw] md:block hidden">
+                  <div className="text-[0.8vw] text-[#8D8D94] md:block hidden">
                     {truncateText(item.content, 75)}
                   </div>
                   <div className="flex flex-row items-center">
                     <Link
                       to={`/blogs/${item._id}`}
-                      className="text-[2vw] md:mb-0 mb-2 md:text-[1.5vw] p-1 px-2 md:p-3 md:px-5 md:rounded-xl border-[#4A8780] border-[1px] md:border-2 w-fit font-semibold"
+                      className="text-[1.5vw] md:mb-0 mb-1 p-1 px-2 md:p-3 md:px-5 md:rounded-xl border-[#4A8780] border-[1px] md:border-2 w-fit font-semibold"
                     >
-                      Read More →
+                      READ MORE →
                     </Link>
                     <img
                       style={{ cursor: "pointer" }}
@@ -157,17 +163,17 @@ const Blogs = () => {
                     {truncateText(item.content, 75)}
                   </div>
                   <div className="flex flex-row items-center">
-                  <Link
-                    to={`/blogs/${item._id}`}
-                    className="text-[2vw] md:mb-0 mb-2 md:text-[1.5vw] p-1 px-2 md:p-3 md:px-5 md:rounded-xl border-[#4A8780] border-[1px] md:border-2 w-fit font-semibold"
-                  >
-                    Read More →
-                  </Link>
-                  <img  style={{ cursor: "pointer" }}
+                    <Link
+                      to={`/blogs/${item._id}`}
+                      className="text-[2vw] md:mb-0 mb-2 md:text-[1.5vw] p-1 px-2 md:p-3 md:px-5 md:rounded-xl border-[#4A8780] border-[1px] md:border-2 w-fit font-semibold"
+                    >
+                      Read More →
+                    </Link>
+                    <img style={{ cursor: "pointer" }}
                       onClick={() => {
                         copyURLToClipboard(item._id);
                       }} src={blogbtn} className="hidden h-3/4 ml-6 md:block" />
-                      </div>
+                  </div>
                 </div>
               </div>
             ))}
@@ -192,6 +198,7 @@ const Blogs = () => {
       <div className="w-full items-center flex flex-col md:my-8">
         <Bookacall />
       </div>
+      <Footer />
     </div>
   );
 };
