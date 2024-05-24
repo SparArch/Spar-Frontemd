@@ -39,18 +39,28 @@ function AutoPlay() {
   return (
     <div className="slider-container">
       <Slider {...settings}>
-        <div>
+      {itemsClients?.map((item, index) => (
+          <div key={index} className="flex justify-center items-center h-full">
+            <img
+              src={item.media}
+              alt="client list"
+              className="h-auto"
+              style={{ filter: 'invert(1) brightness(2)' }}
+            />
+          </div>
+        ))}
+        {/* <div>
           <img src={hobbs} className="" alt="client list" />
-        </div>
+        </div> */}
         <div>
           <img src={whistles} className="" alt="client list" />
         </div>
         <div>
           <img src={geox} className="" alt="client list" />
         </div>
-        <div>
+        {/* <div>
           <img src={phase} className="" alt="client list" />
-        </div>
+        </div> */}
         <div>
           <img src={radisson} className="" alt="client list" />
         </div>
