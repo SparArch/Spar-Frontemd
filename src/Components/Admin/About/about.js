@@ -13,8 +13,10 @@ import axios from "axios";
 import BACKEND_URL from "../../../helper";
 import del from "../../Images/delete.png";
 import solImage from "../../Images/solution1.png";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 const About = () => {
-  const toast = useToast()
+  const toast = useToast();
   const [titleAboutUs, setTitleAboutUs] = useState("");
   const [contentAboutUs, setContentAboutUs] = useState("");
   const [mediaFileAboutUs, setMediaFileAboutUs] = useState(null);
@@ -29,7 +31,7 @@ const About = () => {
   const [itemsMission, setItemsMission] = useState([]);
   const [itemsClients, setItemsClients] = useState([]);
   const [itemsCertifications, setItemsCertifications] = useState([]);
-
+ 
   useEffect(() => {
     fetchItemsSolve();
   }, []);
@@ -238,6 +240,7 @@ const About = () => {
       console.error("Error creating Mission/Vision:", error);
     }
   };
+
   const handleSubmitClient = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -265,6 +268,21 @@ const About = () => {
     } catch (error) {
       console.error("Error creating Clients:", error);
     }
+  };
+
+  const handleEditorChangeVision = (content, editor) => {
+    console.log("Content was updated:", content);
+    setContentVision(content);
+  };
+
+  const handleEditorChangeAboutUs = (content, editor) => {
+    console.log("Content was updated:", content);
+    setContentAboutUs(content);
+  };
+
+  const handleEditorChangeSolutions = (content, editor) => {
+    console.log("Content was updated:", content);
+    setContentSolutions(content);
   };
 
   return (
@@ -327,12 +345,16 @@ const About = () => {
                 marginBottom={"20px"}
                 placeholder="Title"
               />
-              <Input
+              {/* <Input
                 value={contentAboutUs}
                 onChange={(e) => setContentAboutUs(e.target.value)}
                 placeholder="Write..."
                 borderRadius={"20px"}
                 minHeight={"80px"}
+              /> */}
+              <ReactQuill
+                value={contentAboutUs}
+                onChange={handleEditorChangeAboutUs}
               />
             </div>
           </div>
@@ -411,6 +433,7 @@ const About = () => {
               </Button>
               <Button
                 marginLeft={"28rem"}
+                marginBottom={"16px"}
                 backgroundColor={"#2C6856"}
                 color={"#fff"}
                 paddingLeft={"2rem"}
@@ -419,7 +442,7 @@ const About = () => {
                 ADD
               </Button>
             </div>
-            <Input
+            {/* <Input
               value={contentSolutions}
               onChange={(e) => {
                 setContentSolutions(e.target.value);
@@ -429,7 +452,11 @@ const About = () => {
               marginBottom={"20px"}
               borderRadius={"20px"}
               minHeight={"80px"}
-            />
+            /> */}
+             <ReactQuill
+                value={contentSolutions}
+                onChange={handleEditorChangeSolutions}
+              />
           </div>
           <div className="grid md:gap-10 gap-3 grid-cols-2 md:grid-cols-3 ">
             {itemsSolve.map((item) => (
@@ -525,7 +552,7 @@ const About = () => {
                 marginBottom={"20px"}
                 placeholder="Title"
               />
-              <Input
+              {/* <Input
                 value={contentVision}
                 onChange={(e) => {
                   setContentVision(e.target.value);
@@ -533,6 +560,10 @@ const About = () => {
                 placeholder="Write..."
                 borderRadius={"20px"}
                 minHeight={"80px"}
+              /> */}
+              <ReactQuill
+                value={contentVision}
+                onChange={handleEditorChangeVision}
               />
             </div>
           </div>

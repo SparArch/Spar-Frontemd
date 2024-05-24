@@ -12,6 +12,8 @@ import del from "../../Images/delete.png";
 import "./services.css";
 import axios from "axios";
 import BACKEND_URL from "../../../helper";
+import ReactQuill from "react-quill";
+import 'react-quill/dist/quill.snow.css';
 const Services = () => {
   // const [text, setText] = useState('');
   const toast = useToast();
@@ -157,6 +159,13 @@ const Services = () => {
       console.error("Error deleting item:", error);
     }
   };
+
+  const handleEditorChangeServices = (content, editor) => {
+    console.log("Content was updated:", content);
+    setContentServices(content);
+  };
+
+
   return (
     <div style={{ backgroundColor: "#D9E2DF" }}>
       <NavAd />
@@ -220,7 +229,7 @@ const Services = () => {
                 marginBottom={"20px"}
                 placeholder="Title"
               />
-              <Input
+              {/* <Input
                 value={contentServices}
                 onChange={(e) => {
                   setContentServices(e.target.value);
@@ -228,6 +237,10 @@ const Services = () => {
                 placeholder="Write..."
                 borderRadius={"20px"}
                 minHeight={"80px"}
+              /> */}
+                <ReactQuill
+                value={contentServices}
+                onChange={handleEditorChangeServices}
               />
             </div>
           </div>

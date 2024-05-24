@@ -12,6 +12,8 @@ import b from "../../Images/b.png";
 import BACKEND_URL from "../../../helper";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import ReactQuill from "react-quill";
+import 'react-quill/dist/quill.snow.css';
 const Newblog = () => {
   const toast =useToast()
   const [title, setTitle] = useState("");
@@ -23,6 +25,11 @@ const Newblog = () => {
   const handleFileChange = (e) => {
     const files = Array.from(e.target.files);
     setMediaFiles(files);
+  };
+
+  const handleEditorChange = (content, editor) => {
+    console.log("Content was updated:", content);
+    setContent(content);
   };
 
   const handleSubmit = async () => {
@@ -145,8 +152,8 @@ const Newblog = () => {
               <Button>FONT OPTION</Button>
               {/* <Button marginLeft={'20rem'} paddingRight={'2rem'} paddingLeft={'2rem'} backgroundColor={'#2C6856'} color={'#fff'}>ADD</Button> */}
             </div>
-            <div>
-              <Input
+            <div style={{maxWidth:"90%"}}>
+              {/* <Input
                 value={content}
                 onChange={(e) => {
                   setContent(e.target.value);
@@ -155,6 +162,10 @@ const Newblog = () => {
                 placeholder="Write..."
                 borderRadius={"20px"}
                 minHeight={"300px"}
+              /> */}
+               <ReactQuill
+                value={content}
+                onChange={handleEditorChange}
               />
             </div>
             <div>

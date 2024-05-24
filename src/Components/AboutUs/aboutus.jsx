@@ -7,6 +7,7 @@ import Bookacall from "./bookacall";
 import { Button } from "@chakra-ui/react";
 import aboutimg1 from "../Images/About img1.png";
 import blankimg from "../Images/black-img.png";
+import DOMPurify from "dompurify";
 
 const Aboutus = () => {
   const [testimonials, setTestimonials] = useState([]);
@@ -70,7 +71,9 @@ const Aboutus = () => {
 
   const fetchItemsCertifications = async () => {
     try {
-      const response = await axios.get(`${BACKEND_URL}/api/about/certifications`);
+      const response = await axios.get(
+        `${BACKEND_URL}/api/about/certifications`
+      );
       setItemsCertifications(response.data);
     } catch (error) {
       console.error("Error fetching certifications items:", error);
@@ -124,7 +127,15 @@ const Aboutus = () => {
       </div>
       <div className="flex gap-4 md:gap-12 flex-col mt-4 md:my-12 items-center w-[95%] md:w-[90%]">
         {itemsSolve.map((item, index) => (
-          <div key={index} ref={scrollRef} className={`flex w-full justify-evenly flex-row ${index % 2 === 0 ? "" : "flex-row-reverse"} md:gap-6 items-center ${searchIndex === index ? "bg-gray-200" : ""}`}>
+          <div
+            key={index}
+            ref={scrollRef}
+            className={`flex w-full justify-evenly flex-row ${
+              index % 2 === 0 ? "" : "flex-row-reverse"
+            } md:gap-6 items-center ${
+              searchIndex === index ? "bg-gray-200" : ""
+            }`}
+          >
             <div className="flex flex-col items-center">
               <img
                 src={item?.media || blankimg}
@@ -135,7 +146,11 @@ const Aboutus = () => {
                 {item?.title}
               </div>
             </div>
-            <div className={`text-white text-[10px] md:text-[1.5vw] md:text-left text-center p-2 md:p-6 px-4 md:px-12 rounded-full w-[70%] md:w-3/5 ${index % 2 === 0 ? "bg-[#2C6856]" : "bg-[#4A8780]"} `}>
+            <div
+              className={`text-white text-[10px] md:text-[1.5vw] md:text-left text-center p-2 md:p-6 px-4 md:px-12 rounded-full w-[70%] md:w-3/5 ${
+                index % 2 === 0 ? "bg-[#2C6856]" : "bg-[#4A8780]"
+              } `}
+            >
               <b>{item?.title}:</b> {item?.content}
             </div>
           </div>
@@ -148,9 +163,12 @@ const Aboutus = () => {
             <p className="md:text-2xl text-[11px] font-bold mb-2">
               {item?.title}
             </p>
-            <p className="text-[10px] md:text-[20px]">
-              {item?.content}
-            </p>
+            <p
+              className="text-[10px] md:text-[20px]"
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(item.content),
+              }}
+            ></p>
           </div>
         ))}
       </div>
