@@ -506,25 +506,7 @@ const Home = () => {
                   ADD MEDIA
                 </label>
               </Button>
-              <Button fontWeight={"800"}>
-                <img src={b} alt="" />
-              </Button>
-              <Button fontStyle={"italic"}>I</Button>
-              <Button>
-                <img src={clip} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={left_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={right_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={center_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={bullet_icon} alt="clip_logo" />
-              </Button>
+
 
               <Button
                 marginLeft={"20rem"}
@@ -654,25 +636,7 @@ const Home = () => {
                   ADD MEDIA
                 </label>
               </Button>
-              <Button fontWeight={"800"}>
-                <img src={b} alt="" />
-              </Button>
-              <Button fontStyle={"italic"}>I</Button>
-              <Button>
-                <img src={clip} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={left_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={right_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={center_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={bullet_icon} alt="clip_logo" />
-              </Button>
+
 
               <Button
                 onClick={handleSubmitHello}
@@ -722,25 +686,7 @@ const Home = () => {
                   ADD MEDIA
                 </label>
               </Button>
-              <Button fontWeight={"800"}>
-                <img src={b} alt="" />
-              </Button>
-              <Button fontStyle={"italic"}>I</Button>
-              <Button>
-                <img src={clip} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={left_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={right_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={center_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={bullet_icon} alt="clip_logo" />
-              </Button>
+
 
               <Button
                 onClick={handleSubmitSpaces}
@@ -819,25 +765,7 @@ const Home = () => {
                   ADD MEDIA
                 </label>
               </Button>
-              <Button fontWeight={"800"}>
-                <img src={b} alt="" />
-              </Button>
-              <Button fontStyle={"italic"}>I</Button>
-              <Button>
-                <img src={clip} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={left_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={right_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={center_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={bullet_icon} alt="clip_logo" />
-              </Button>
+
 
               <Button
                 onClick={handleSubmitSolve}
@@ -910,25 +838,7 @@ const Home = () => {
                   ADD MEDIA
                 </label>
               </Button>
-              <Button fontWeight={"800"}>
-                <img src={b} alt="" />
-              </Button>
-              <Button fontStyle={"italic"}>I</Button>
-              <Button>
-                <img src={clip} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={left_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={right_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={center_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={bullet_icon} alt="clip_logo" />
-              </Button>
+
               <Button>FONT Options</Button>
 
               <Button
@@ -968,9 +878,8 @@ const Home = () => {
             {itemsTestimonials.map((item, index) => (
               <div
                 key={item._id}
-                className={`flex-col  max-w-[300px]  p-[20px] rounded-xl ${
-                  index % 2 === 0 ? "bg-[#E7E7E7]" : "bg-[#4A8780]"
-                }`}
+                className={`flex-col  max-w-[300px]  p-[20px] rounded-xl ${index % 2 === 0 ? "bg-[#E7E7E7]" : "bg-[#4A8780]"
+                  }`}
               >
                 <div
                   style={{
@@ -986,9 +895,8 @@ const Home = () => {
                   <Text
                     fontStyle={"italic"}
                     fontWeight={"700"}
-                    className={` ${
-                      index % 2 === 0 ? "text-slate-950" : "text-gray-50"
-                    }`}
+                    className={` ${index % 2 === 0 ? "text-slate-950" : "text-gray-50"
+                      }`}
                   >
                     “ {item.content} ”
                   </Text>
@@ -997,10 +905,9 @@ const Home = () => {
                       src={item.image}
                       borderRadius={"50%"}
                       height="44px"
-                     
+
                     />
-                    <Text fontStyle={"italic"} fontWeight={"600"}  className={` ${
-                        index % 2 === 0 ? "text-slate-950" : "text-gray-50"
+                    <Text fontStyle={"italic"} fontWeight={"600"} className={` ${index % 2 === 0 ? "text-slate-950" : "text-gray-50"
                       }`}>
                       {item.name}
                     </Text>
@@ -1024,25 +931,7 @@ const Home = () => {
                   ADD MEDIA
                 </label>
               </Button>
-              <Button fontWeight={"800"}>
-                <img src={b} alt="" />
-              </Button>
-              <Button fontStyle={"italic"}>I</Button>
-              <Button>
-                <img src={clip} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={left_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={right_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={center_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={bullet_icon} alt="clip_logo" />
-              </Button>
+
 
               <Button
                 onClick={handleSubmitProjects}

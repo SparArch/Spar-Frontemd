@@ -167,7 +167,7 @@ const Jobs = () => {
       <SideNav />
       <div className="flex justify-center mt-[10rem] bg-white">
         <div className="flex justify-flex-start g-[50px]">
-          <div className="ml-[100px]">
+          <div className="ml-[150px]">
             <div className="flex gap-[700px] mb-[30px]">
               <h1 className=" text-[#4a8780] font-bold text-[32px]">JOB</h1>
               <div className="flex ">
@@ -186,29 +186,7 @@ const Jobs = () => {
               className="mb-[30px]"
               placeholder="Title..."
             />
-            <div className="flex gap-2">
-              {/* <Button backgroundColor={'#2C6856'} color={'#fff'}>ADD MEDIA</Button> */}
-              <Button fontWeight={"800"}>
-                <img src={b} alt="" />
-              </Button>
-              <Button fontStyle={"italic"}>I</Button>
-              <Button>
-                <img src={clip} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={left_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={right_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={center_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={bullet_icon} alt="clip_logo" />
-              </Button>
-              <Button>FONT Options</Button>
-            </div>
+
             <div>
               <Textarea
                 value={content}

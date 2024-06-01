@@ -64,7 +64,7 @@ const Navbar = () => {
 
             <div className='cursor-pointer flex flex-col justify-end items-end gap-4 px-[50px] mt-4 mb-[50px]'>
               <div>
-                <input className='rounded-[0] w-[full] md:w-[20vw]' type="text" placeholder='Search..' value={searchValue} />
+                <input className='rounded-[0] w-[100%] md:w-[100%]' type="text" placeholder='Search..' value={searchValue} />
               </div>
               <div onClick={() => {
                 navigate("/");

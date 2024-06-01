@@ -22,6 +22,7 @@ import { useNavigate } from "react-router-dom";
 import Footer from "./footer";
 import contactusbg from "../Images/contactusbg.png";
 import whatsappIcon from "../Images/whatapp-icon.png";
+import ReactGa from 'react-ga'
 
 const Homepage = () => {
   const navigate = useNavigate();
@@ -63,6 +64,9 @@ const Homepage = () => {
 
   useEffect(() => {
     fetchDataJoin();
+  }, []);
+  useEffect(() => {
+    ReactGa.pageview(window.location.pathname)
   }, []);
   const truncateText = (text, maxLength) => {
     const words = text.split(" ");
@@ -217,16 +221,16 @@ const Homepage = () => {
     <div className="Home">
       <Navbar />
       <div className="fixed z-50 cursor-pointer top-[92%] right-[2%]">
-        <a href="https://wa.me/+447678532077" target="_blank">
+        <a href="https://wa.me/+447881424598" target="_blank">
           <Image height={"50px"} width={"50px"} src={whatsappIcon} />
         </a>
       </div>
-      <div className=" ">
+      <div className="">
         {/* <div className='w-full'>
           <img src={homebg} className='w-full' />
         </div> */}
         {topCoverCount > 1 && (
-          <div className="w-full flex flex-row absolute z-30 md:px-10 px-4 justify-between md:top-[30vw] top-[40vw]">
+          <div className="w-full flex flex-row absolute z-30 md:px-10 px-4 ">
             <button onClick={() => slider?.current?.slickPrev()}>
               <img src={prev1} className="w-3 md:w-auto" alt="" />
             </button>
@@ -235,7 +239,7 @@ const Homepage = () => {
             </button>
           </div>
         )}
-        <div className="w-full flex md:mt-0 mt-12 flex-col items-center">
+        <div className="w-full flex md:mt-0 flex-col items-center">
           {topCoverCount === 1 && (
             <div className="relative flex items-center justify-center">
               <div className="">
@@ -262,7 +266,7 @@ const Homepage = () => {
                     DOWNLOAD
                   </button>
                   <button className="font-semibold text-white bg-[#2C6856] p-2 md:p-4 mt-4 md:m-4 rounded-xl text-center text-[1.16vw] md:text-[1.2vw] flex flex-col items-center justify-center">
-                    <a href="https://wa.me/+917678532077" target="_blank">
+                    <a href="https://wa.me/+447881424598" target="_blank">
                       {" "}
                       GET A QUOTE
                     </a>
@@ -303,7 +307,7 @@ const Homepage = () => {
                         DOWNLOAD
                       </button>
                       <button className="font-semibold text-white bg-[#2C6856] p-2 md:p-4 mt-4 md:m-4 rounded-xl text-center text-xs md:text-[1.2vw] flex flex-col items-center justify-center">
-                        <a href="https://wa.me/+917678532077" target="_blank">
+                        <a href="https://wa.me/+447881424598" target="_blank">
                           {" "}
                           GET A QUOTE
                         </a>
@@ -324,6 +328,7 @@ const Homepage = () => {
             src={itemsHello[helloIndex]?.media}
             className="w-full hidden md:block brightness-75"
           />
+
           <div className="h-[70vw] block md:hidden">
             <img
               src={itemsHello[helloIndex]?.media}
@@ -364,7 +369,7 @@ const Homepage = () => {
       {/* We Know Every Spaces */}
       <div
         style={{ backgroundImage: `url(${contactusbg})` }}
-        className="midsec22 flex flex-col items-center justify-center"
+        className="midsec22 flex flex-col items-center justify-center mt-[-5rem] md:mt-[0]"
       >
         <div className="text-3xl md:text-5xl font-bold mt-8 text-center">
           We Know Every Spaces.
@@ -482,14 +487,12 @@ const Homepage = () => {
           {itemsTestimonials.map((testimonial, index) => (
             <div className="p-1 md:p-4" key={testimonial._id}>
               <div
-                className={` md:p-5 p-3 text-white bg-[#4A8780] h-[50vw] md:h-[30vw] lg:h-96 flex flex-col justify-between rounded-lg ${
-                  index % 2 === 0 ? "bg-[#E7E7E7]" : "bg-[#4A8780]"
-                }`}
+                className={` md:p-5 p-3 text-white bg-[#4A8780] h-[50vw] md:h-[30vw] lg:h-96 flex flex-col justify-between rounded-lg ${index % 2 === 0 ? "bg-[#E7E7E7]" : "bg-[#4A8780]"
+                  }`}
               >
                 <div
-                  className={`italic text-[2vw] md:text-[1.3vw] lg:text-base ${
-                    index % 2 === 0 ? "text-slate-950" : "text-gray-50"
-                  }`}
+                  className={`italic text-[2vw] md:text-[1.3vw] lg:text-base ${index % 2 === 0 ? "text-slate-950" : "text-gray-50"
+                    }`}
                 >
                   " {testimonial.content} "
                 </div>
@@ -501,9 +504,8 @@ const Homepage = () => {
                     alt=""
                   />
                   <div
-                    className={`italic text-[8px] md:text-lg ml-4 ${
-                      index % 2 === 0 ? "text-slate-950" : "text-gray-50"
-                    }`}
+                    className={`italic text-[8px] md:text-lg ml-4 ${index % 2 === 0 ? "text-slate-950" : "text-gray-50"
+                      }`}
                   >
                     {testimonial.name}
                   </div>

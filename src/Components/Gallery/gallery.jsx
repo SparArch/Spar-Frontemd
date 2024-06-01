@@ -11,7 +11,7 @@ import BACKEND_URL from "../../helper";
 import { useNavigate } from "react-router-dom";
 import Footer from "../HomePage/footer";
 import whatsappIcon from "../Images/whatapp-icon.png";
-
+import ReactGa from 'react-ga'
 const Gallery = () => {
   const [gallery, setGallery] = useState([]);
   const [viewMore, setViewMore] = useState(false);
@@ -32,11 +32,14 @@ const Gallery = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  useEffect(() => {
+    ReactGa.pageview(window.location.pathname)
+  }, []);
   return (
     <div className="flex flex-col items-center">
       <Navbar />
       <div className="fixed z-50 cursor-pointer top-[92%] right-[2%]">
-        <a href="https://wa.me/+447678532077" target="_blank">
+        <a href="https://wa.me/+447881424598" target="_blank">
           <Image height={"50px"} width={"50px"} src={whatsappIcon} />
         </a>
       </div>

@@ -24,7 +24,7 @@ const TrackPageViews = () => {
 
         // Update visit counts on the server
         axios.post(`${BACKEND_URL}/api/visits`, visitCounts)
-          .then(() => console.log(`Page view: ${currentPath} at ${currentDate}`))
+          .then()
           .catch(error => console.error('Error updating visit counts:', error));
       })
       .catch(error => console.error('Error fetching visit counts:', error));

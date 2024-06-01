@@ -194,25 +194,7 @@ const Services = () => {
                   ADD MEDIA
                 </label>
               </Button>
-              <Button fontWeight={"800"}>
-                <img src={b} alt="" />
-              </Button>
-              <Button fontStyle={"italic"}>I</Button>
-              <Button>
-                <img src={clip} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={left_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={right_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={center_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={bullet_icon} alt="clip_logo" />
-              </Button>
+
 
               <Button
                 marginLeft={"20rem"}
@@ -336,7 +318,7 @@ const Services = () => {
 
             <div className="grid md:gap-10 gap-3 grid-cols-2 md:grid-cols-3 ">
               {itemsWork.map((item) => (
-                <div className="flex gap-4" style={{marginBottom:"24px"}}>
+                <div className="flex gap-4" style={{ marginBottom: "24px" }}>
                   <div
                     key={item._id}
                     className="bg-[gray] max-w-[300px] rounded-xl"

@@ -27,20 +27,13 @@ import whatsappIcon from "../Images/whatapp-icon.png";
 import { Image } from "@chakra-ui/react";
 import DOMPurify from "dompurify";
 import "react-quill/dist/quill.snow.css";
+import ReactGa from 'react-ga'
 const Service = () => {
   const [services, setServices] = useState([]);
   const [itemsWork, setItemsWork] = useState([]);
-  const [design, setDesign] = useState([]);
-  const [develop, setDevelop] = useState([]);
-  const [deliver, setDeliver] = useState([]);
 
-  useEffect(() => {
-    fetchItemsWork();
-  }, []);
 
-  useEffect(() => {
-    fetchServices();
-  }, []);
+
 
   const fetchItemsWork = async () => {
     try {
@@ -48,9 +41,7 @@ const Service = () => {
         `${BACKEND_URL}/api/service/workProcess`
       );
       setItemsWork(response.data);
-      setDesign(itemsWork.filter((item) => item.title === "Design"));
-      setDevelop(itemsWork.filter((item) => item.title === "Develop"));
-      setDeliver(itemsWork.filter((item) => item.title === "Deliver"));
+
     } catch (error) {
       console.error("Error fetching items:", error);
     }
@@ -67,11 +58,21 @@ const Service = () => {
   useEffect(() => {
     // window.scrollTo(0, 0)
   }, []);
+  useEffect(() => {
+    fetchItemsWork();
+  }, []);
+
+  useEffect(() => {
+    fetchServices();
+  }, []);
+  useEffect(() => {
+    ReactGa.pageview(window.location.pathname)
+  }, []);
   return (
     <div className="flex flex-col items-center">
       <Navbar />
       <div className="fixed z-50 cursor-pointer top-[92%] right-[2%]">
-        <a href="https://wa.me/+447678532077" target="_blank">
+        <a href="https://wa.me/+447881424598" target="_blank">
           <Image height={"50px"} width={"50px"} src={whatsappIcon} />
         </a>
       </div>
@@ -93,7 +94,7 @@ const Service = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-white flex flex-col items-center px-1 md:px-6 py-2 md:py-4 rounded-xl md:rounded-3xl"
+              className="bg-white flex flex-col justify-between items-center px-1 md:px-6 py-2 md:py-4 rounded-xl md:rounded-3xl"
             >
               <img
                 src={service.media}
@@ -119,71 +120,48 @@ const Service = () => {
       <p className="font-semibold my-6 md:my-12 text-[5vw] md:text-[3vw]">
         Design
       </p>
+
       <div className="flex flex-row justify-center text-center items-center">
-        <div className="flex flex-col items-center">
-          <img src={design[0]?.media} className="w-1/2" />
-          <p className="text-[3vw] md:text-[1vw] font-bold">
-            {design[0]?.content}
-          </p>
-        </div>
-        <img src={arrowservice} alt="arrow" className="w-6 md:w-12" />
-        <div className="flex flex-col items-center">
-          <img src={design[1]?.media || idea} className="w-1/2" />
-          <p className="text-[3vw] md:text-[1vw] font-bold">
-            {design[1]?.content || "Ideation"}
-          </p>
-        </div>
-        <img src={arrowservice} alt="arrow" className="w-6 md:w-12" />
-        <div className="flex flex-col items-center">
-          <img src={design[2]?.media || threed} className="w-1/2" />
-          <p className="text-[3vw] md:text-[1vw] font-bold">
-            {design[2]?.content || "3D Design"}
-          </p>
-        </div>
+        {itemsWork.filter((item) => item.title === "Design").map((item, index) => <>
+          <div className="flex flex-col items-center">
+            <img src={item.media || idea} className="w-1/2" />
+            <p className="text-[3vw] md:text-[1vw] font-bold">
+              {item.content || "Ideation"}
+            </p>
+          </div>
+          <img className={`w-6 md:w-12 ${index === 2 ? "hidden" : "block"
+            }`} src={arrowservice} alt="arrow" />
+        </>)}
       </div>
       <p className="font-semibold my-6 md:my-12 text-[5vw] md:text-[3vw]">
         Develop
       </p>
       <div className="flex flex-row justify-center text-center w-3/5 items-center">
-        <div className="flex flex-col items-center">
-          <img src={develop[0]?.media || manuf} className="w-1/2" />
-          <p className="text-[3vw] md:text-[1vw] font-bold">
-            {develop[0]?.content || "In house Manufacturing"}
-          </p>
-        </div>
-        <img src={arrowservice} alt="arrow" className="w-6 md:w-12" />
-        <div className="flex flex-col items-center">
-          <img src={develop[1]?.media || strategy} className="w-1/2" />
-          <p className="text-[3vw] md:text-[1vw] font-bold">
-            {develop[1]?.content || "Strategy Implementation"}
-          </p>
-        </div>
+        {itemsWork.filter((item) => item.title === "Develop").map((item, index) => <>
+          <div className="flex flex-col items-center">
+            <img src={item.media || idea} className="w-1/2" />
+            <p className="text-[3vw] md:text-[1vw] font-bold">
+              {item.content || "Ideation"}
+            </p>
+          </div>
+          <img className={`w-6 md:w-12 ${index === 1 ? "hidden" : "block"
+            }`} src={arrowservice} alt="arrow" />
+        </>)}
       </div>
       <p className="font-semibold my-6 md:my-12 text-[5vw] md:text-[3vw]">
         Deliver
       </p>
       <div className="flex flex-row justify-center text-center items-center">
-        <div className="flex flex-col items-center">
-          <img src={deliver[0]?.media || ship} className="w-1/2" />
-          <p className="text-[3vw] md:text-[1vw] font-bold">
-            {deliver[0]?.content || "Material Shipping"}
-          </p>
-        </div>
-        <img src={arrowservice} alt="arrow" className="w-6 md:w-12" />
-        <div className="flex flex-col items-center">
-          <img src={deliver[1]?.media || assembling} className="w-1/2" />
-          <p className="text-[3vw] md:text-[1vw] font-bold">
-            {deliver[1]?.content || "Assembling"}
-          </p>
-        </div>
-        <img src={arrowservice} alt="arrow" className="w-6 md:w-12" />
-        <div className="flex flex-col items-center">
-          <img src={deliver[2]?.media || final} className="w-1/2" />
-          <p className="text-[3vw] md:text-[1vw] font-bold">
-            {" "}
-            {deliver[2]?.content || "Final Delivery"}
-          </p>
-        </div>
+        {itemsWork.filter((item) => item.title === "Deliver").map((item, index) => <>
+          <div className="flex flex-col items-center">
+            <img src={item.media || idea} className="w-1/2" />
+            <p className="text-[3vw] md:text-[1vw] font-bold">
+              {item.content || "Ideation"}
+            </p>
+          </div>
+          <img className={`w-6 md:w-12 ${index === 2 ? "hidden" : "block"
+            }`} src={arrowservice} alt="arrow" />
+        </>)}
       </div>
       {/* <img src={workprocess} alt="journey" className='w-4/5 mt-8 md:mb-48' /> */}
       <div className="w-full items-center flex flex-col mt-16 my-4">

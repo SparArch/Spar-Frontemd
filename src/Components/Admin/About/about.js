@@ -371,26 +371,8 @@ const About = () => {
                   ADD MEDIA
                 </label>
               </Button>
-              <Button fontWeight={"800"}>
-                <img src={b} alt="" />
-              </Button>
-              <Button fontStyle={"italic"}>I</Button>
-              <Button>
-                <img src={clip} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={left_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={right_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={center_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={bullet_icon} alt="clip_logo" />
-              </Button>
-              <Button>FONT Options</Button>
+
+
 
               <Button
                 onClick={handleSubmitAboutUs}
@@ -461,25 +443,7 @@ const About = () => {
                 />
                 <label htmlFor="uploadInputSol">ADD MEDIA</label>
               </Button>
-              <Button fontWeight={"800"}>
-                <img src={b} alt="" />
-              </Button>
-              <Button fontStyle={"italic"}>I</Button>
-              <Button>
-                <img src={clip} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={left_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={right_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={center_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={bullet_icon} alt="clip_logo" />
-              </Button>
+
               <Button
                 onClick={handleSubmitSolutions}
                 marginLeft={"20rem"}
@@ -502,25 +466,7 @@ const About = () => {
             />
             <div className="title1">
               {/* <Button backgroundColor={'#2C6856'} color={'#fff'}>ADD MEDIA</Button> */}
-              <Button fontWeight={"800"}>
-                <img src={b} alt="" />
-              </Button>
-              <Button fontStyle={"italic"}>I</Button>
-              <Button>
-                <img src={clip} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={left_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={right_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={center_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={bullet_icon} alt="clip_logo" />
-              </Button>
+
               <Button
                 marginLeft={"28rem"}
                 marginBottom={"16px"}
@@ -600,25 +546,7 @@ const About = () => {
                 />
                 <label htmlFor="uploadInputVision">ADD MEDIA</label>
               </Button>
-              <Button fontWeight={"800"}>
-                <img src={b} alt="" />
-              </Button>
-              <Button fontStyle={"italic"}>I</Button>
-              <Button>
-                <img src={clip} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={left_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={right_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={center_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={bullet_icon} alt="clip_logo" />
-              </Button>
+
 
               <Button
                 marginLeft={"20rem"}
@@ -783,7 +711,7 @@ const About = () => {
                   width: "300px",
                   position: "relative", // Ensure the delete icon is positioned correctly
                 }}
-                // className="w-[300px] h-[200px] bg-slate-300 p-[20px] rounded-xl"
+              // className="w-[300px] h-[200px] bg-slate-300 p-[20px] rounded-xl"
               >
                 <div className="flex-col p-[20px] justify-center">
                   <Image paddingLeft={"70px"} src={item.media} />

@@ -9,7 +9,7 @@ import BACKEND_URL from "../../helper";
 import axios from "axios";
 import Navbar from "../HomePage/navbar";
 import ReactWhatsapp from "react-whatsapp";
-
+import ReactGa from 'react-ga'
 import Footer from "../HomePage/footer";
 import whatsappIcon from "../Images/whatapp-icon.png";
 
@@ -65,11 +65,14 @@ const Gallerypost = () => {
       console.error("Error fetching title:", error);
     }
   };
+  useEffect(() => {
+    ReactGa.pageview(window.location.pathname)
+  }, []);
   return (
     <div className="flex flex-col items-center">
       <Navbar />
       <div className="fixed z-50 cursor-pointer top-[92%] right-[2%]">
-        <a href="https://wa.me/+447678532077" target="_blank">
+        <a href="https://wa.me/+447881424598" target="_blank">
           <Image height={"50px"} width={"50px"} src={whatsappIcon} />
         </a>
       </div>
@@ -78,7 +81,7 @@ const Gallerypost = () => {
         alt="aboutimg1"
         className="z-10 w-full top-0"
       />
-      <div className=" w-full md:top-[-1.25rem] top-[-1.5rem] flex flex-col items-center relative">
+      <div className=" w-full md:top-[-1.25rem] top-[-1rem] flex flex-col items-center relative">
         <Clientlist />
       </div>
       <div

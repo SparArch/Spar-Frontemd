@@ -116,7 +116,7 @@ const BlogPost = () => {
     <div className="flex flex-col items-center">
       <Navbar />
       <div className="fixed z-50 cursor-pointer top-[92%] right-[2%]">
-        <a href="https://wa.me/+447678532077" target="_blank">
+        <a href="https://wa.me/+447881424598" target="_blank">
           <Image height={"50px"} width={"50px"} src={whatsappIcon} />
         </a>
       </div>

@@ -32,11 +32,14 @@ import TrackPageViews from "./Components/TrackPageViews";
 import AdminNewJoin from './Components/Admin/NewJoin/NewJoin'
 import BlogPost from "./Components/Blogs/blogpost";
 import { Image } from "@chakra-ui/react";
-
+import ReactGa from 'react-ga'
 const ProtectedRoute = ({ element }) => {
   const { isAuthenticated } = useAuth();
   return isAuthenticated ? element : <Navigate to="/adminlogin" />;
 };
+
+const TRACKING_ID = "G-TXWNX7TPJ7";
+ReactGa.initialize(TRACKING_ID);
 
 function App() {
   return (

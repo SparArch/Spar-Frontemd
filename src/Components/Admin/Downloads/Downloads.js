@@ -109,29 +109,7 @@ const Downloads = () => {
               />
               <label htmlFor="uploadInput">ADD MEDIA</label>
             </Button>
-            <div className="flex gap-2">
-              {/* <Button backgroundColor={'#2C6856'} color={'#fff'}>ADD MEDIA</Button> */}
-              <Button fontWeight={"800"}>
-                <img src={b} alt="" />
-              </Button>
-              <Button fontStyle={"italic"}>I</Button>
-              <Button>
-                <img src={clip} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={left_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={right_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={center_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={bullet_icon} alt="clip_logo" />
-              </Button>
-              <Button>FONT Options</Button>
-            </div>
+
             <div>
               <Input
                 value={content}
@@ -143,30 +121,30 @@ const Downloads = () => {
               />
             </div>
             <div className="grid md:gap-10 gap-3 grid-cols-2 md:grid-cols-3 ">
-            {itemsDownloads.map((item) => (
-              <div
-                style={{
-                  height: "240px",
-                  width: "300px",
-                  backgroundImage: `url(${item.media})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
-                key={item._id}
-                className="flex justify-end mt-[20px] mb-[100px] h-[200px] w-[300px] bg-[#dedcdc] rounded-xl"
-              >
-                <div style={{ padding: "10px" }}>
-                  <Image
-                    onClick={() => {
-                      handleDeleteDownloads(item._id);
-                    }}
-                    cursor={"pointer"}
-                    src={del}
-                    height={"30px"}
-                  />
+              {itemsDownloads.map((item) => (
+                <div
+                  style={{
+                    height: "240px",
+                    width: "300px",
+                    backgroundImage: `url(${item.media})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                  key={item._id}
+                  className="flex justify-end mt-[20px] mb-[100px] h-[200px] w-[300px] bg-[#dedcdc] rounded-xl"
+                >
+                  <div style={{ padding: "10px" }}>
+                    <Image
+                      onClick={() => {
+                        handleDeleteDownloads(item._id);
+                      }}
+                      cursor={"pointer"}
+                      src={del}
+                      height={"30px"}
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
             </div>
           </div>
         </div>

@@ -36,6 +36,10 @@ const Newblog = () => {
     setContent(content);
   };
 
+  const handleSelectChange = (e) => {
+    const value = e.target.value;
+    setKeywords(value);
+  }
 
   const handleSubmit = async () => {
     try {
@@ -146,30 +150,8 @@ const Newblog = () => {
                 </label>
               </Button>
             </div>
-            <div className="blogs1">
-              <Button fontWeight={"800"}>
-                <img src={b} alt="" />
-              </Button>
-              <Button fontStyle={"italic"}>I</Button>
-              <Button>
-                <img src={clip} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={left_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={right_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={center_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={bullet_icon} alt="clip_logo" />
-              </Button>
-              <Button>FONT OPTION</Button>
-              {/* <Button marginLeft={'20rem'} paddingRight={'2rem'} paddingLeft={'2rem'} backgroundColor={'#2C6856'} color={'#fff'}>ADD</Button> */}
-            </div>
-            <div style={{maxWidth:"90%"}}>
+
+            <div style={{ maxWidth: "90%" }}>
               {/* <Input
                 value={content}
                 onChange={(e) => {
@@ -216,21 +198,20 @@ const Newblog = () => {
             <div>
               <h3>Categories</h3>
             </div>
-            <div>
-              <Textarea
-                value={keywords}
-                onChange={(e) => {
-                  setKeywords(e.target.value);
-                }}
-                maxWidth={"90%"}
-                borderRadius={"20px"}
-                minHeight={"80px"}
-              />
+            <div className="mb-[80px]" >
+              <select onChange={handleSelectChange}>
+                <option value="">Select</option>
+                <option value="Architecture">Architecture</option>
+                <option value="Interiors">Interiors</option>
+                <option value="Commercial">Commercial</option>
+                <option value="F&B">F&B</option>
+                <option value="Retail Fit-Out">Retail Fit-Out</option>
+              </select>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

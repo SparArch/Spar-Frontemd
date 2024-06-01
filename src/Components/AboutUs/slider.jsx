@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import clientlist from "../Images/client list.png";
-import hobbs from "../Images/Homepage_backphone.png";
+import hobbs from "../Images/SparLogo.png";
 import geox from "../Images/geox.png";
 import whistles from "../Images/whistles.png";
 import phase from "../Images/phase.png";
@@ -39,19 +39,30 @@ function AutoPlay() {
   return (
     <div className="slider-container">
       <Slider {...settings}>
-        {itemsClients.map((item, index) => {
-          <div key={index}>
-            <img src={item.media} className="" alt="client list" />
-          </div>
-        })}
+        {itemsClients?.map((item, index) => (
+          <div key={index} className="flex justify-center items-center h-full ">
+            <div className="pt-[20%] px-[4%]">
+              <img
+                src={item.media}
+                alt="client list"
+                className=""
+                style={{ filter: 'invert(1) brightness(2)' }}
+              /></div>
 
+          </div>
+        ))}
+        {/* <div>
+          <img src={hobbs} className="" alt="client list" />
+        </div> */}
         <div>
           <img src={whistles} className="" alt="client list" />
         </div>
         <div>
           <img src={geox} className="" alt="client list" />
         </div>
-
+        {/* <div>
+          <img src={phase} className="" alt="client list" />
+        </div> */}
         <div>
           <img src={radisson} className="" alt="client list" />
         </div>

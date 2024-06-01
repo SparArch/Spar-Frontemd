@@ -11,7 +11,7 @@ import Footer from "../HomePage/footer";
 import whatsappIcon from "../Images/whatapp-icon.png";
 import "react-quill/dist/quill.snow.css";
 import DOMPurify from "dompurify";
-
+import ReactGa from 'react-ga'
 const Aboutus = () => {
   const [testimonials, setTestimonials] = useState([]);
   const [itemsSolve, setItemsSolve] = useState([]);
@@ -30,6 +30,9 @@ const Aboutus = () => {
     fetchItemsMission();
     fetchItemsClients();
     fetchItemsCertifications();
+  }, []);
+  useEffect(() => {
+    ReactGa.pageview(window.location.pathname)
   }, []);
 
   const fetchData = async () => {
@@ -105,7 +108,7 @@ const Aboutus = () => {
     <div className="flex flex-col items-center justify-center">
       <Navbar />
       <div className="fixed z-50 cursor-pointer top-[92%] right-[2%]">
-        <a href="https://wa.me/+447678532077" target="_blank">
+        <a href="https://wa.me/+447881424598" target="_blank">
           <Image height={"50px"} width={"50px"} src={whatsappIcon} />
         </a>
       </div>
@@ -141,11 +144,9 @@ const Aboutus = () => {
           <div
             key={index}
             ref={scrollRef}
-            className={`flex w-full justify-evenly flex-row ${
-              index % 2 === 0 ? "" : "flex-row-reverse"
-            } md:gap-6 items-center ${
-              searchIndex === index ? "bg-gray-200" : ""
-            }`}
+            className={`flex w-full justify-evenly flex-row ${index % 2 === 0 ? "" : "flex-row-reverse"
+              } md:gap-6 items-center ${searchIndex === index ? "bg-gray-200" : ""
+              }`}
           >
             <div className="flex flex-col items-center">
               <img
@@ -158,9 +159,8 @@ const Aboutus = () => {
               </div>
             </div>
             <div
-              className={`text-white text-[10px] md:text-[1.2vw] md:text-left text-center p-2 md:p-10 px-4 md:px-12 rounded-full w-[70%] md:w-3/5 ${
-                index % 2 === 0 ? "bg-[#2C6856]" : "bg-[#4A8780]"
-              } `}
+              className={`text-white text-[10px] md:text-[1.2vw] md:text-left text-center p-2 md:p-10 px-4 md:px-12 rounded-full w-[70%] md:w-3/5 ${index % 2 === 0 ? "bg-[#2C6856]" : "bg-[#4A8780]"
+                } `}
             >
               <p
                 dangerouslySetInnerHTML={{

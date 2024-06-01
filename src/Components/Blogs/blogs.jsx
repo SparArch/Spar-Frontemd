@@ -15,7 +15,7 @@ import Footer from "../HomePage/footer";
 import whatsappIcon from "../Images/whatapp-icon.png";
 import "react-quill/dist/quill.snow.css";
 import DOMPurify from "dompurify";
-
+import ReactGa from 'react-ga'
 
 const Blogs = () => {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -76,11 +76,14 @@ const Blogs = () => {
       console.error("Error fetching blog posts:", error);
     }
   };
+  useEffect(() => {
+    ReactGa.pageview(window.location.pathname)
+  }, []);
   return (
     <div className="flex flex-col items-center">
       <Navbar />
       <div className="fixed z-50 cursor-pointer top-[92%] right-[2%]">
-        <a href="https://wa.me/+447678532077" target="_blank">
+        <a href="https://wa.me/+447881424598" target="_blank">
           <Image height={"50px"} width={"50px"} src={whatsappIcon} />
         </a>
       </div>
@@ -120,10 +123,10 @@ const Blogs = () => {
                       {formatDate(item.date)}
                     </div>
                   </div>
-                  <div className="text-[0.8vw] text-[#8D8D94] md:block hidden"    dangerouslySetInnerHTML={{
-                      __html: DOMPurify.sanitize(truncateText(item.content, 75)),
-                    }}>
-               
+                  <div className="text-[0.8vw] text-[#8D8D94] md:block hidden" dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(truncateText(item.content, 75)),
+                  }}>
+
                   </div>
                   <div className="flex flex-row items-center">
                     <Link
@@ -170,7 +173,7 @@ const Blogs = () => {
                       __html: DOMPurify.sanitize(truncateText(item.content, 75)),
                     }}
                   >
-                  
+
                   </div>
                   <div className="flex flex-row items-center">
                     <Link

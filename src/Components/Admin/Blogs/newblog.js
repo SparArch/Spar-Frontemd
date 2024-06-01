@@ -129,30 +129,8 @@ const Newblog = () => {
                 </label>
               </Button>
             </div>
-            <div className="blogs1">
-              <Button fontWeight={"800"}>
-                <img src={b} alt="" />
-              </Button>
-              <Button fontStyle={"italic"}>I</Button>
-              <Button>
-                <img src={clip} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={left_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={right_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={center_align_icon} alt="clip_logo" />
-              </Button>
-              <Button>
-                <img src={bullet_icon} alt="clip_logo" />
-              </Button>
-              <Button>FONT OPTION</Button>
-              {/* <Button marginLeft={'20rem'} paddingRight={'2rem'} paddingLeft={'2rem'} backgroundColor={'#2C6856'} color={'#fff'}>ADD</Button> */}
-            </div>
-            <div style={{maxWidth:"90%"}}>
+
+            <div style={{ maxWidth: "90%" }}>
               {/* <Input
                 value={content}
                 onChange={(e) => {
@@ -163,7 +141,7 @@ const Newblog = () => {
                 borderRadius={"20px"}
                 minHeight={"300px"}
               /> */}
-               <ReactQuill
+              <ReactQuill
                 value={content}
                 onChange={handleEditorChange}
               />
