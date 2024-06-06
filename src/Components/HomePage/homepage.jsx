@@ -320,10 +320,10 @@ const Homepage = () => {
           )}
         </div>
         {/* <div className='relative bottom-36 -mt-16 -mb-20'><Clientlist /></div> */}
-        <div className=" w-full md:top-[-1.25rem] top-[-2rem] flex flex-col items-center relative">
+        <div className=" w-full md:top-[-1.25rem] top-[-0.5rem] flex flex-col items-center relative">
           <Clientlist />
         </div>
-        <div className="w-full flex items-center overflow-y-none top-[-5rem] md:top-0 justify-center  relative">
+        <div className="w-full flex items-center overflow-y-none top-[-1rem] md:top-0 justify-center  relative">
           <img
             src={itemsHello[helloIndex]?.media}
             className="w-full hidden md:block brightness-75"
@@ -337,11 +337,11 @@ const Homepage = () => {
           </div>
           {homecontent && (
             <>
-              <div className="absolute w-[90%] md:w-1/2 mt-12 rounded-xl p-2 md:p-[2vw] text-white flex flex-col items-center justify-center text-center text-[2vw] md:text-[1.2vw] duration-500 hover:bg-black/50">
+              <div className="absolute w-[90%] md:w-1/2 mt-12 rounded-xl p-2 md:p-[2vw] text-white flex flex-col items-center justify-center text-center text-[2vw] md:text-[1.2vw] duration-500 bg-black/50 md:bg-transparent hover:bg-black/50">
                 <div className="text-[8vw] md:text-[6vw] w-full text-center mb-[30vw] md:mb-[10vw] font-bold">
                   {itemsHello[helloIndex]?.title}
                 </div>
-                <div className="w-full flex flex-col items-center justify-evenly h-full opacity-0 hover:opacity-100 duration-500 absolute">
+                <div className="w-full flex flex-col items-center justify-evenly h-full opacity-100 md:opacity-0 hover:opacity-100 duration-500 absolute">
                   <div className="w-4/5 mt-[15vw] md:mt-[10vw]">
                     {homecontent}
                   </div>
@@ -516,17 +516,17 @@ const Homepage = () => {
         </Slider>
       </div>
 
-      <div className="midsec5 flex items-center flex-col p-[40px] md:p-[100px] justify-center">
+      <div className="midsec5 flex items-center flex-col p-[30px] md:p-[100px] justify-center">
         <div className="flex flex-row justify-center mx-auto w-[80vw] mb-2 md:mb-8">
           <p className="md:text-[35px] flex-shrink-0 text-[20px] font-bold">
             Our Featured Projects
           </p>
         </div>
-        <div className="flex flex-col gap-1 w-[80vw] font-semibold md:gap-4 items-center">
+        <div className="flex flex-col gap-1 w-[85vw] font-semibold md:gap-4 items-center">
           <div className="flex flex-row gap-1 md:gap-4">
             <div className="relative">
               <Image
-                className=" sm:h-[464px] w-[937px] rounded-xl"
+                className=" sm:h-[464px] w-[937px] object-cover rounded-xl"
                 src={projects[0]?.media || blankimg}
               />
               <div className="w-full h-full opacity-0 duration-500 hover:opacity-100 bg-black/50 absolute top-0">
@@ -552,7 +552,7 @@ const Homepage = () => {
             <div className="flex flex-col gap-1 md:gap-4">
               <div className="relative">
                 <Image
-                  className="sm:h-[200px] w-[451px] rounded-xl"
+                  className="sm:h-[200px] w-[451px] object-cover rounded-xl"
                   src={projects[1]?.media || blankimg}
                 />
                 <div className="w-full h-full opacity-0 duration-500 hover:opacity-100 bg-black/50 absolute top-0">
@@ -577,7 +577,7 @@ const Homepage = () => {
               </div>
               <div className="relative">
                 <Image
-                  className="sm:h-[233px] w-[451px] rounded-xl"
+                  className="sm:h-[233px] w-[451px] object-cover rounded-xl"
                   src={projects[2]?.media || blankimg}
                 />
                 <div className="w-full h-full opacity-0 duration-500 hover:opacity-100 bg-black/50 absolute top-0">
@@ -606,7 +606,7 @@ const Homepage = () => {
           <div className="flex flex-row gap-1 md:gap-4">
             <div className="relative">
               <Image
-                className="sm:h-[288px] w-[816px] rounded-xl"
+                className="sm:h-[288px] w-[816px] object-cover rounded-xl"
                 src={projects[3]?.media || blankimg}
               />
               <div className="w-full h-full opacity-0 duration-500 hover:opacity-100 bg-black/50 absolute top-0">
@@ -631,7 +631,7 @@ const Homepage = () => {
             </div>
             <div className="relative">
               <Image
-                className="sm:h-[290px] w-[575px] rounded-xl"
+                className="sm:h-[290px] w-[575px] object-cover rounded-xl"
                 src={projects[4]?.media || blankimg}
               />
               <div className="w-full h-full opacity-0 duration-500 hover:opacity-100 bg-black/50 absolute top-0">
@@ -671,11 +671,11 @@ const Homepage = () => {
           </Button>
         </div>
       </div>
-      <div className="md:w-4/5 w-[95%] flex flex-col items-center mx-auto">
+      <div className="w-[83%] flex flex-col items-center mx-auto">
         <div className="md:text-[35px] text-center text-[20px] font-bold mb-6">
           Read Our Blog.
         </div>
-        <div className="grid gap-4 md:gap-10 grid-cols-3">
+        <div className="grid gap-2 md:gap-10 grid-cols-3">
           {blogPosts.map((item) => (
             <div className="bg-[#D9D9D9] flex flex-col justify-between md:gap-4 gap-1 rounded-lg md:rounded-3xl">
               <div key={item._id} className="relative">
