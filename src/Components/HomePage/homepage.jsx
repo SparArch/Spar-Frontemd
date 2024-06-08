@@ -22,7 +22,9 @@ import { useNavigate } from "react-router-dom";
 import Footer from "./footer";
 import contactusbg from "../Images/contactusbg.png";
 import whatsappIcon from "../Images/whatapp-icon.png";
-import ReactGa from 'react-ga'
+import ReactGa from "react-ga";
+import "react-quill/dist/quill.snow.css";
+import DOMPurify from "dompurify";
 
 const Homepage = () => {
   const navigate = useNavigate();
@@ -66,7 +68,7 @@ const Homepage = () => {
     fetchDataJoin();
   }, []);
   useEffect(() => {
-    ReactGa.pageview(window.location.pathname)
+    ReactGa.pageview(window.location.pathname);
   }, []);
   const truncateText = (text, maxLength) => {
     const words = text.split(" ");
@@ -242,12 +244,22 @@ const Homepage = () => {
         <div className="w-full flex md:mt-0 flex-col items-center">
           {topCoverCount === 1 && (
             <div className="relative flex items-center justify-center">
-              <div className="">
-                <img
-                  src={itemsTopCover[0]?.media}
-                  alt=""
-                  className="w-full brightness-75"
-                />
+              <div className="w-full">
+                {/\.(jpg|jpeg|png|gif)$/i.test(itemsTopCover[0]?.media) ? (
+                  <img
+                    src={itemsTopCover[0]?.media}
+                    alt=""
+                    className="w-full brightness-75"
+                  />
+                ) : (
+                  <video
+                    src={itemsTopCover[0]?.media}
+                    autoPlay
+                    loop
+                    muted
+                    className="w-full brightness-75"
+                  />
+                )}
               </div>
               <div className="absolute w-full h-full flex flex-col items-center justify-center text-center text-white bottom-0">
                 <div className="font-bold text-[4vw] z-40">
@@ -267,7 +279,6 @@ const Homepage = () => {
                   </button>
                   <button className="font-semibold text-white bg-[#2C6856] p-2 md:p-4 mt-4 md:m-4 rounded-xl text-center text-[1.16vw] md:text-[1.2vw] flex flex-col items-center justify-center">
                     <a href="https://wa.me/+447881424598" target="_blank">
-                      {" "}
                       GET A QUOTE
                     </a>
                   </button>
@@ -282,13 +293,26 @@ const Homepage = () => {
               className="w-[105%] my-8 md:my-16"
             >
               {itemsTopCover.map((testimonial) => (
-                <div className="relative flex items-center justify-center">
-                  <div className="p-1 md:p-4">
-                    <img
-                      src={testimonial.media}
-                      alt=""
-                      className="w-full brightness-75"
-                    />
+                <div
+                  key={testimonial._id}
+                  className="relative flex items-center justify-center"
+                >
+                  <div className="p-1 md:p-4 w-full">
+                    {/\.(jpg|jpeg|png|gif)$/i.test(testimonial.media) ? (
+                      <img
+                        src={testimonial.media}
+                        alt=""
+                        className="w-full brightness-75"
+                      />
+                    ) : (
+                      <video
+                        src={testimonial.media}
+                        autoPlay
+                        loop
+                        muted
+                        className="w-full brightness-75"
+                      />
+                    )}
                   </div>
                   <div className="absolute w-full h-full flex flex-col items-center justify-center text-center text-white bottom-0">
                     <div className="font-bold text-[4vw] z-40">
@@ -308,7 +332,6 @@ const Homepage = () => {
                       </button>
                       <button className="font-semibold text-white bg-[#2C6856] p-2 md:p-4 mt-4 md:m-4 rounded-xl text-center text-xs md:text-[1.2vw] flex flex-col items-center justify-center">
                         <a href="https://wa.me/+447881424598" target="_blank">
-                          {" "}
                           GET A QUOTE
                         </a>
                       </button>
@@ -446,7 +469,7 @@ const Homepage = () => {
           {itemsSolve.slice(0, 5).map((item, index) => (
             <div
               key={index}
-              className="flex flex-col items-center justify-center text-base md:text-xl text-center font-semibold text-[#1E443E]"
+              className="flex flex-col items-center justify-center text-base md:text-2xl text-center font-semibold text-[#1E443E]"
             >
               <img
                 src={item.media || blankimg}
@@ -487,12 +510,14 @@ const Homepage = () => {
           {itemsTestimonials.map((testimonial, index) => (
             <div className="p-1 md:p-4" key={testimonial._id}>
               <div
-                className={` md:p-5 p-3 text-white bg-[#4A8780] h-[50vw] md:h-[30vw] lg:h-96 flex flex-col justify-between rounded-lg ${index % 2 === 0 ? "bg-[#E7E7E7]" : "bg-[#4A8780]"
-                  }`}
+                className={` md:p-5 p-3 text-white bg-[#4A8780] h-[50vw] md:h-[30vw] lg:h-96 flex flex-col justify-between rounded-lg ${
+                  index % 2 === 0 ? "bg-[#E7E7E7]" : "bg-[#4A8780]"
+                }`}
               >
                 <div
-                  className={`italic text-[2vw] md:text-[1.3vw] lg:text-base ${index % 2 === 0 ? "text-slate-950" : "text-gray-50"
-                    }`}
+                  className={`italic text-[2vw] md:text-[1.3vw] lg:text-base ${
+                    index % 2 === 0 ? "text-slate-950" : "text-gray-50"
+                  }`}
                 >
                   " {testimonial.content} "
                 </div>
@@ -504,8 +529,9 @@ const Homepage = () => {
                     alt=""
                   />
                   <div
-                    className={`italic text-[8px] md:text-lg ml-4 ${index % 2 === 0 ? "text-slate-950" : "text-gray-50"
-                      }`}
+                    className={`italic text-[8px] md:text-lg ml-4 ${
+                      index % 2 === 0 ? "text-slate-950" : "text-gray-50"
+                    }`}
                   >
                     {testimonial.name}
                   </div>
@@ -692,9 +718,12 @@ const Homepage = () => {
               <div className="font-bold text-[10px] md:text-xl px-1 md:px-4">
                 {item.title}
               </div>
-              <div className="text-[8px] md:text-base px-1 md:px-4">
-                {truncateText(item.content, 12)}
-              </div>
+              <div
+                className="text-[8px] md:text-base px-1 md:px-4"
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(truncateText(item.content, 12)),
+                }}
+              ></div>
               <button
                 onClick={() => {
                   navigate(`/blogs/${item._id}`);

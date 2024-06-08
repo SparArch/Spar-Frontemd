@@ -31,10 +31,19 @@ import ReactGa from 'react-ga'
 const Service = () => {
   const [services, setServices] = useState([]);
   const [itemsWork, setItemsWork] = useState([]);
+  useEffect(() => {
+    // window.scrollTo(0, 0)
+  }, []);
+  useEffect(() => {
+    fetchItemsWork();
+  }, []);
 
-
-
-
+  useEffect(() => {
+    fetchServices();
+  }, []);
+  useEffect(() => {
+    ReactGa.pageview(window.location.pathname)
+  }, []);
   const fetchItemsWork = async () => {
     try {
       const response = await axios.get(
@@ -55,19 +64,7 @@ const Service = () => {
       console.error("Error fetching services:", error);
     }
   };
-  useEffect(() => {
-    // window.scrollTo(0, 0)
-  }, []);
-  useEffect(() => {
-    fetchItemsWork();
-  }, []);
 
-  useEffect(() => {
-    fetchServices();
-  }, []);
-  useEffect(() => {
-    ReactGa.pageview(window.location.pathname)
-  }, []);
   return (
     <div className="flex flex-col items-center">
       <Navbar />

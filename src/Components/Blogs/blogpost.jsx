@@ -148,12 +148,28 @@ const BlogPost = () => {
             className="h-8 hidden md:block ml-6"
           />
         </div>
-        {media.length === 1 && <img src={media[0]} className="w-full" alt="" />}
+        {media.length === 1 &&
+          (/\.(jpg|jpeg|png|gif)$/i.test(media[0]) ? (
+            <img src={media[0]} className="w-full" alt="" />
+          ) : (
+            <video src={media[0]} autoPlay loop muted className="w-full" />
+          ))}
+
         {media.length > 1 && (
           <Slider {...settings} className="w-[85%] md:w-[90%] my-8 md:my-16">
-            {media.map((testimonial) => (
-              <div className="p-1 md:p-4">
-                <img src={testimonial} alt="" className="w-full" />
+            {media.map((testimonial, index) => (
+              <div key={index} className="p-1 md:p-4">
+                {/\.(jpg|jpeg|png|gif)$/i.test(testimonial) ? (
+                  <img src={testimonial} alt="" className="w-full" />
+                ) : (
+                  <video
+                    src={testimonial}
+                    autoPlay
+                    loop
+                    muted
+                    className="w-full"
+                  />
+                )}
               </div>
             ))}
           </Slider>

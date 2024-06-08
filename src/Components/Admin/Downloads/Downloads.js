@@ -28,10 +28,10 @@ const Downloads = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", mediaFiles);
-    formData.append("upload_preset", "chat-app");
+    formData.append("upload_preset", "spar-app");
     try {
       const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload", // Replace with your Cloudinary cloud name
+        "https://api.cloudinary.com/v1_1/dpdrteifc/upload", // Replace with your Cloudinary cloud name
         formData
       );
       const { secure_url } = response.data;

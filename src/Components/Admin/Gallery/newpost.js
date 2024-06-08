@@ -48,10 +48,10 @@ const Newblog = () => {
         mediaFiles.map(async (file) => {
           const formData = new FormData();
           formData.append("file", file);
-          formData.append("upload_preset", "chat-app");
+          formData.append("upload_preset", "spar-app");
 
           const response = await axios.post(
-            "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload",
+            "https://api.cloudinary.com/v1_1/dpdrteifc/upload",
             formData
           );
 
@@ -140,7 +140,7 @@ const Newblog = () => {
                 <input
                   type="file"
                   id="uploadInput"
-                  accept="image/*"
+                  accept="image/*,video/*"
                   style={{ display: "none" }}
                   onChange={handleFileChange}
                   multiple

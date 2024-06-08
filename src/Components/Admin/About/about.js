@@ -177,10 +177,10 @@ const About = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", mediaFileAboutUs);
-    formData.append("upload_preset", "chat-app");
+    formData.append("upload_preset", "spar-app");
     try {
       const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload", // Replace with your Cloudinary cloud name
+        "https://api.cloudinary.com/v1_1/dpdrteifc/upload", // Replace with your Cloudinary cloud name
         formData
       );
       const { secure_url } = response.data;
@@ -207,10 +207,10 @@ const About = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", mediaFilesSolutions);
-    formData.append("upload_preset", "chat-app");
+    formData.append("upload_preset", "spar-app");
     try {
       const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload",
+        "https://api.cloudinary.com/v1_1/dpdrteifc/upload",
         formData
       );
 
@@ -238,11 +238,11 @@ const About = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", mediaFilesVision);
-    formData.append("upload_preset", "chat-app");
+    formData.append("upload_preset", "spar-app");
     try {
       if (mediaFilesVision) {
         const response = await axios.post(
-          "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload",
+          "https://api.cloudinary.com/v1_1/dpdrteifc/upload",
           formData
         );
 
@@ -281,10 +281,10 @@ const About = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", mediaFilesClient);
-    formData.append("upload_preset", "chat-app");
+    formData.append("upload_preset", "spar-app");
     try {
       const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload",
+        "https://api.cloudinary.com/v1_1/dpdrteifc/upload",
         formData
       );
 
@@ -310,10 +310,10 @@ const About = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", mediaFilesCertifications);
-    formData.append("upload_preset", "chat-app");
+    formData.append("upload_preset", "spar-app");
     try {
       const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload",
+        "https://api.cloudinary.com/v1_1/dpdrteifc/upload",
         formData
       );
 
@@ -363,7 +363,7 @@ const About = () => {
                 <input
                   type="file"
                   id="uploadInput"
-                  accept="image/*"
+                  accept="image/*,video/*"
                   style={{ display: "none" }}
                   onChange={handleFileChangeAboutUs}
                 />
@@ -371,8 +371,6 @@ const About = () => {
                   ADD MEDIA
                 </label>
               </Button>
-
-
 
               <Button
                 onClick={handleSubmitAboutUs}
@@ -405,29 +403,43 @@ const About = () => {
               />
             </div>
             <div className="grid md:gap-10 gap-4 grid-cols-2 md:grid-cols-3 ">
-              {itemsAboutUs.map((item) => (
-                <div
-                  className="mt-[12px] w-[300px] h-[200px] bg-slate-300 p-[20px] rounded-xl"
-                  style={{
-                    height: "240px",
-                    width: "300px",
-                    backgroundImage: `url(${item.image})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
-                >
+              {itemsAboutUs.map((item) => {
+                // Check if the media is an image or video based on file extension
+                const isImage = /\.(jpg|jpeg|png|gif)$/i.test(item.image);
+                const isVideo = /\.(mp4|webm|ogg)$/i.test(item.image);
+
+                return (
                   <div
+                    key={item._id}
+                    className="relative mt-[12px] w-[300px] h-[240px] bg-slate-300 p-[20px] rounded-xl overflow-hidden"
                     style={{
-                      position: "relative",
-                      marginLeft: "230px",
-                      zIndex: "100",
+                      backgroundSize: isImage ? "cover" : "initial",
+                      backgroundPosition: isImage ? "center" : "initial",
+                      backgroundImage: isImage ? `url(${item.image})` : "none",
                     }}
-                    onClick={() => handleDeleteAboutUs(item._id)}
                   >
-                    <Image cursor={"pointer"} src={del} height={"30px"} />
+                    {isVideo && (
+                      <video
+                        src={item.image}
+                        autoPlay
+                        loop
+                        muted
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                    )}
+                    <div
+                      className="relative"
+                      style={{
+                        marginLeft: "230px",
+                        zIndex: "10",
+                      }}
+                      onClick={() => handleDeleteAboutUs(item._id)}
+                    >
+                      <Image cursor={"pointer"} src={del} height={"30px"} />
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
           <div>
@@ -466,17 +478,6 @@ const About = () => {
             />
             <div className="title1">
               {/* <Button backgroundColor={'#2C6856'} color={'#fff'}>ADD MEDIA</Button> */}
-
-              <Button
-                marginLeft={"28rem"}
-                marginBottom={"16px"}
-                backgroundColor={"#2C6856"}
-                color={"#fff"}
-                paddingLeft={"2rem"}
-                paddingRight={"2rem"}
-              >
-                ADD
-              </Button>
             </div>
             {/* <Input
               value={contentSolutions}
@@ -533,147 +534,6 @@ const About = () => {
               </div>
             ))}
           </div>
-          <div>
-            <h3>MISSION/ VISION</h3>
-            <div className="title1">
-              <Button backgroundColor={"#2C6856"} color={"#fff"}>
-                <input
-                  type="file"
-                  id="uploadInputVision"
-                  accept="image/*"
-                  style={{ display: "none" }}
-                  onChange={handleFileChangeVision}
-                />
-                <label htmlFor="uploadInputVision">ADD MEDIA</label>
-              </Button>
-
-
-              <Button
-                marginLeft={"20rem"}
-                paddingRight={"2rem"}
-                paddingLeft={"2rem"}
-                backgroundColor={"#2C6856"}
-                color={"#fff"}
-                onClick={handleSubmitVision}
-              >
-                ADD
-              </Button>
-            </div>
-            <div>
-              <Input
-                value={titleVision}
-                onChange={(e) => {
-                  setTitleVision(e.target.value);
-                }}
-                marginTop={"20px"}
-                borderRadius={"50px"}
-                marginBottom={"20px"}
-                placeholder="Title"
-              />
-              {/* <Input
-                value={contentVision}
-                onChange={(e) => {
-                  setContentVision(e.target.value);
-                }}
-                placeholder="Write..."
-                borderRadius={"20px"}
-                minHeight={"80px"}
-              /> */}
-              <ReactQuill
-                value={contentVision}
-                onChange={handleEditorChangeVision}
-              />
-            </div>
-          </div>
-          <div className="grid md:gap-10 gap-3 grid-cols-2 md:grid-cols-3 ">
-            {itemsMission.map((item) => (
-              <div key={item._id} className="flex-col gap-4">
-                <div className="max-w-[300px] rounded-xl">
-                  <div
-                    style={{
-                      position: "relative",
-                      marginLeft: "250px",
-                      zIndex: "100",
-                    }}
-                    onClick={() => handleDeleteMission(item._id)}
-                  >
-                    <Image cursor={"pointer"} src={del} height={"30px"} />
-                  </div>
-
-                  <div className="flex-col p-[20px] justify-center">
-                    <Text
-                      fontWeight={"800"}
-                      fontSize={"20px"}
-                      marginBottom={"20px"}
-                    >
-                      {item.title}
-                    </Text>
-                    <Text
-                      dangerouslySetInnerHTML={{
-                        __html: DOMPurify.sanitize(item.content),
-                      }}
-                      fontSize={"15px"}
-                    >
-                    </Text>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="title3">
-            <h3>OUR CLIENTS</h3>
-            <Button backgroundColor={"#2C6856"} color={"#fff"}>
-              <input
-                type="file"
-                id="uploadInputClient"
-                accept="image/*"
-                style={{ display: "none" }}
-                onChange={handleFileChangeClient}
-              />
-              <label className="uploadbtn" htmlFor="uploadInputClient">
-                ADD MEDIA
-              </label>
-            </Button>
-            <Button
-              // marginLeft={"20rem"}
-              paddingRight={"2rem"}
-              paddingLeft={"2rem"}
-              backgroundColor={"#2C6856"}
-              color={"#fff"}
-              onClick={handleSubmitClient}
-            >
-              ADD
-            </Button>
-          </div>
-
-          <div className="grid md:gap-10 gap-3 grid-cols-2 md:grid-cols-3 ">
-            {itemsClients.map((item) => (
-              <div
-                key={item._id}
-                style={{
-                  display: "flex",
-                  borderRadius: "1rem",
-                  height: "240px",
-                  width: "300px",
-                  position: "relative", // Ensure the delete icon is positioned correctly
-                }}
-              >
-                <div className="flex-col p-[20px] justify-center">
-                  <Image paddingLeft={"70px"} src={item.media} />
-                </div>
-                <div
-                  style={{
-                    position: "absolute",
-                    padding: "10px",
-                    zIndex: "100",
-                  }}
-                  onClick={() => handleDeleteClients(item._id)}
-                >
-                  <Image cursor={"pointer"} src={del} height={"30px"} />
-                </div>
-              </div>
-            ))}
-          </div>
 
           <div className="title3">
             <h3>OUR CERTIFICATION</h3>
@@ -711,7 +571,7 @@ const About = () => {
                   width: "300px",
                   position: "relative", // Ensure the delete icon is positioned correctly
                 }}
-              // className="w-[300px] h-[200px] bg-slate-300 p-[20px] rounded-xl"
+                // className="w-[300px] h-[200px] bg-slate-300 p-[20px] rounded-xl"
               >
                 <div className="flex-col p-[20px] justify-center">
                   <Image paddingLeft={"70px"} src={item.media} />

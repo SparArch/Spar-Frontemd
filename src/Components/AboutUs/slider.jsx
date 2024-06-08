@@ -54,18 +54,18 @@ function AutoPlay() {
         {/* <div>
           <img src={hobbs} className="" alt="client list" />
         </div> */}
-        <div>
+        {/* <div>
           <img src={whistles} className="" alt="client list" />
         </div>
         <div>
           <img src={geox} className="" alt="client list" />
-        </div>
+        </div> */}
         {/* <div>
           <img src={phase} className="" alt="client list" />
         </div> */}
-        <div>
+        {/* <div>
           <img src={radisson} className="" alt="client list" />
-        </div>
+        </div> */}
       </Slider>
     </div>
   );

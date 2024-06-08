@@ -11,7 +11,7 @@ import Footer from "../HomePage/footer";
 import whatsappIcon from "../Images/whatapp-icon.png";
 import "react-quill/dist/quill.snow.css";
 import DOMPurify from "dompurify";
-import ReactGa from 'react-ga'
+import ReactGa from "react-ga";
 const Aboutus = () => {
   const [testimonials, setTestimonials] = useState([]);
   const [itemsSolve, setItemsSolve] = useState([]);
@@ -32,7 +32,7 @@ const Aboutus = () => {
     fetchItemsCertifications();
   }, []);
   useEffect(() => {
-    ReactGa.pageview(window.location.pathname)
+    ReactGa.pageview(window.location.pathname);
   }, []);
 
   const fetchData = async () => {
@@ -120,11 +120,22 @@ const Aboutus = () => {
         <div className="md:text-[4vw] text-[#707070] md:text:[black] text-[8vw] md:mt-12 my-2 font-bold block md:hidden">
           {aboutTitle}
         </div>
-        <img
-          src={pic}
-          alt="aboutusphone"
-          className="w-[90%] h-[20%] md:w-3/4 rounded-xl"
-        />
+        {/\.(jpg|jpeg|png|gif)$/i.test(pic) ? (
+          <img
+            src={pic}
+            alt="aboutusphone"
+            className="w-[90%] h-[20%] md:w-3/4 rounded-xl"
+          />
+        ) : (
+          <video
+            src={pic}
+            autoPlay
+            loop
+            muted
+            className="w-[90%] h-[20%] md:w-3/4 rounded-xl"
+          />
+        )}
+
         <div className="md:text-[4vw] text-[100px] md:mt-12 my-2 font-bold md:block hidden mb-[40px]">
           {aboutTitle}
         </div>
@@ -144,9 +155,11 @@ const Aboutus = () => {
           <div
             key={index}
             ref={scrollRef}
-            className={`flex w-full justify-evenly flex-row ${index % 2 === 0 ? "" : "flex-row-reverse"
-              } md:gap-6 items-center ${searchIndex === index ? "bg-gray-200" : ""
-              }`}
+            className={`flex w-full justify-evenly flex-row ${
+              index % 2 === 0 ? "" : "flex-row-reverse"
+            } md:gap-6 items-center ${
+              searchIndex === index ? "bg-gray-200" : ""
+            }`}
           >
             <div className="flex flex-col items-center">
               <img
@@ -159,8 +172,9 @@ const Aboutus = () => {
               </div>
             </div>
             <div
-              className={`text-white text-[10px] md:text-[1.2vw] md:text-left text-center p-2 md:p-10 px-4 md:px-12 rounded-full w-[70%] md:w-3/5 ${index % 2 === 0 ? "bg-[#2C6856]" : "bg-[#4A8780]"
-                } `}
+              className={`text-white text-[10px] md:text-[1.2vw] md:text-left text-center p-2 md:p-10 px-4 md:px-12 rounded-full w-[70%] md:w-3/5 ${
+                index % 2 === 0 ? "bg-[#2C6856]" : "bg-[#4A8780]"
+              } `}
             >
               <p
                 dangerouslySetInnerHTML={{
@@ -172,21 +186,6 @@ const Aboutus = () => {
         ))}
       </div>
 
-      <div className="md:w-4/5 w-[90%] grid grid-cols-2 md:hidden p-4 pt-8 pb-6 md:p-12 rounded-[40px] mt-6 shade mb-3 md:mb-0">
-        {itemsMission.map((item, index) => (
-          <div key={index} className="px-3 pb-6 border-r-[1px] border-black">
-            <p className="md:text-2xl text-[11px] font-bold mb-2">
-              {item?.title}
-            </p>
-            <p
-              className="text-[10px] md:text-[20px]"
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(item.content),
-              }}
-            ></p>
-          </div>
-        ))}
-      </div>
 
       <div className="text-[10vw] md:text-[4vw] my-2 font-bold">
         Our Clients

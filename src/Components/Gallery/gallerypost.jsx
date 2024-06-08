@@ -79,14 +79,29 @@ const Contactus = () => {
       <img src={gallerybanner} alt="aboutimg1" className="z-10 w-full top-0" />
       {media.length === 1 && (
         <div className="p-1 md:p-4 w-[85%] md:w-[90%] my-8 md:my-16">
-          <img src={media[0]} alt="" className="w-full" />
+          {/\.(jpg|jpeg|png|gif)$/i.test(media[0]) ? (
+            <img src={media[0]} alt="" className="w-full" />
+          ) : (
+            <video src={media[0]} autoPlay loop muted className="w-full" />
+          )}
         </div>
       )}
+
       {media.length > 1 && (
         <Slider {...settings} className="w-[85%] md:w-[90%] my-8 md:my-16">
-          {media.map((testimonial) => (
-            <div className="p-1 md:p-4">
-              <img src={testimonial} alt="" className="w-full" />
+          {media.map((testimonial, index) => (
+            <div key={index} className="p-1 md:p-4">
+              {/\.(jpg|jpeg|png|gif)$/i.test(testimonial) ? (
+                <img src={testimonial} alt="" className="w-full" />
+              ) : (
+                <video
+                  src={testimonial}
+                  autoPlay
+                  loop
+                  muted
+                  className="w-full"
+                />
+              )}
             </div>
           ))}
         </Slider>

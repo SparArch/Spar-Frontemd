@@ -223,11 +223,11 @@ const Home = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", mediaFileTopCover);
-    formData.append("upload_preset", "chat-app");
+    formData.append("upload_preset", "spar-app");
     try {
       // Upload file to Cloudinary
       const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload", // Replace with your Cloudinary cloud name
+        "https://api.cloudinary.com/v1_1/dpdrteifc/upload", // Replace with your Cloudinary cloud name
         formData
       );
 
@@ -258,11 +258,11 @@ const Home = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", mediaFileHello);
-    formData.append("upload_preset", "chat-app");
+    formData.append("upload_preset", "spar-app");
     try {
       // Upload file to Cloudinary
       const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload", // Replace with your Cloudinary cloud name
+        "https://api.cloudinary.com/v1_1/dpdrteifc/upload", // Replace with your Cloudinary cloud name
         formData
       );
 
@@ -291,10 +291,10 @@ const Home = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", mediaFilesClient);
-    formData.append("upload_preset", "chat-app");
+    formData.append("upload_preset", "spar-app");
     try {
       const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload",
+        "https://api.cloudinary.com/v1_1/dpdrteifc/upload",
         formData
       );
 
@@ -320,11 +320,11 @@ const Home = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", mediaFileSpaces);
-    formData.append("upload_preset", "chat-app");
+    formData.append("upload_preset", "spar-app");
     try {
       // Upload file to Cloudinary
       const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload", // Replace with your Cloudinary cloud name
+        "https://api.cloudinary.com/v1_1/dpdrteifc/upload", // Replace with your Cloudinary cloud name
         formData
       );
 
@@ -355,11 +355,11 @@ const Home = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", mediaFileSolve);
-    formData.append("upload_preset", "chat-app");
+    formData.append("upload_preset", "spar-app");
     try {
       // Upload file to Cloudinary
       const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload", // Replace with your Cloudinary cloud name
+        "https://api.cloudinary.com/v1_1/dpdrteifc/upload", // Replace with your Cloudinary cloud name
         formData
       );
 
@@ -389,11 +389,11 @@ const Home = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", mediaFileTestimonials);
-    formData.append("upload_preset", "chat-app");
+    formData.append("upload_preset", "spar-app");
     try {
       // Upload file to Cloudinary
       const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload", // Replace with your Cloudinary cloud name
+        "https://api.cloudinary.com/v1_1/dpdrteifc/upload", // Replace with your Cloudinary cloud name
         formData
       );
 
@@ -422,11 +422,11 @@ const Home = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", mediaFileProjects);
-    formData.append("upload_preset", "chat-app");
+    formData.append("upload_preset", "spar-app");
     try {
       // Upload file to Cloudinary
       const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload", // Replace with your Cloudinary cloud name
+        "https://api.cloudinary.com/v1_1/dpdrteifc/upload", // Replace with your Cloudinary cloud name
         formData
       );
 
@@ -456,11 +456,11 @@ const Home = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", mediaFileJoin);
-    formData.append("upload_preset", "chat-app");
+    formData.append("upload_preset", "spar-app");
     try {
       // Upload file to Cloudinary
       const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/dlpvcxf2m/upload", // Replace with your Cloudinary cloud name
+        "https://api.cloudinary.com/v1_1/dpdrteifc/upload", // Replace with your Cloudinary cloud name
         formData
       );
 
@@ -498,7 +498,7 @@ const Home = () => {
                 <input
                   type="file"
                   id="uploadInputTopCover"
-                  accept="image/*"
+                  accept="image/*,video/*"
                   style={{ display: "none" }}
                   onChange={handleFileChangeTopCover}
                 />
@@ -506,7 +506,6 @@ const Home = () => {
                   ADD MEDIA
                 </label>
               </Button>
-
 
               <Button
                 marginLeft={"20rem"}
@@ -542,29 +541,43 @@ const Home = () => {
             </div>
           </div>
           <div className="grid md:gap-10 gap-4 grid-cols-2 md:grid-cols-3 ">
-            {itemsTopCover.map((item) => (
-              <div
-                className="w-[300px] h-[200px] bg-slate-300 p-[20px] rounded-xl"
-                style={{
-                  height: "240px",
-                  width: "300px",
-                  backgroundImage: `url(${item.media})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
-              >
+            {itemsTopCover.map((item) => {
+              // Check if the media is an image or video based on file extension
+              const isImage = /\.(jpg|jpeg|png|gif)$/i.test(item.media);
+              const isVideo = /\.(mp4|webm|ogg)$/i.test(item.media);
+
+              return (
                 <div
+                  key={item._id}
+                  className="relative w-[300px] h-[240px] bg-slate-300 p-[20px] rounded-xl overflow-hidden"
                   style={{
-                    position: "relative",
-                    marginLeft: "230px",
-                    zIndex: "100",
+                    backgroundSize: isImage ? "cover" : "initial",
+                    backgroundPosition: isImage ? "center" : "initial",
+                    backgroundImage: isImage ? `url(${item.media})` : "none",
                   }}
-                  onClick={() => handleDeleteTopCover(item._id)}
                 >
-                  <Image cursor={"pointer"} src={del} height={"30px"} />
+                  {isVideo && (
+                    <video
+                      src={item.media}
+                      autoPlay
+                      loop
+                      muted
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  )}
+                  <div
+                    className="relative"
+                    style={{
+                      marginLeft: "230px",
+                      zIndex: "10",
+                    }}
+                    onClick={() => handleDeleteTopCover(item._id)}
+                  >
+                    <Image cursor={"pointer"} src={del} height={"30px"} />
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <div>
@@ -637,7 +650,6 @@ const Home = () => {
                 </label>
               </Button>
 
-
               <Button
                 onClick={handleSubmitHello}
                 marginLeft={"20rem"}
@@ -686,7 +698,6 @@ const Home = () => {
                   ADD MEDIA
                 </label>
               </Button>
-
 
               <Button
                 onClick={handleSubmitSpaces}
@@ -765,7 +776,6 @@ const Home = () => {
                   ADD MEDIA
                 </label>
               </Button>
-
 
               <Button
                 onClick={handleSubmitSolve}
@@ -878,8 +888,9 @@ const Home = () => {
             {itemsTestimonials.map((item, index) => (
               <div
                 key={item._id}
-                className={`flex-col  max-w-[300px]  p-[20px] rounded-xl ${index % 2 === 0 ? "bg-[#E7E7E7]" : "bg-[#4A8780]"
-                  }`}
+                className={`flex-col  max-w-[300px]  p-[20px] rounded-xl ${
+                  index % 2 === 0 ? "bg-[#E7E7E7]" : "bg-[#4A8780]"
+                }`}
               >
                 <div
                   style={{
@@ -895,8 +906,9 @@ const Home = () => {
                   <Text
                     fontStyle={"italic"}
                     fontWeight={"700"}
-                    className={` ${index % 2 === 0 ? "text-slate-950" : "text-gray-50"
-                      }`}
+                    className={` ${
+                      index % 2 === 0 ? "text-slate-950" : "text-gray-50"
+                    }`}
                   >
                     “ {item.content} ”
                   </Text>
@@ -905,10 +917,14 @@ const Home = () => {
                       src={item.image}
                       borderRadius={"50%"}
                       height="44px"
-
                     />
-                    <Text fontStyle={"italic"} fontWeight={"600"} className={` ${index % 2 === 0 ? "text-slate-950" : "text-gray-50"
-                      }`}>
+                    <Text
+                      fontStyle={"italic"}
+                      fontWeight={"600"}
+                      className={` ${
+                        index % 2 === 0 ? "text-slate-950" : "text-gray-50"
+                      }`}
+                    >
                       {item.name}
                     </Text>
                   </div>
@@ -931,7 +947,6 @@ const Home = () => {
                   ADD MEDIA
                 </label>
               </Button>
-
 
               <Button
                 onClick={handleSubmitProjects}
